@@ -55,6 +55,7 @@ final class ShapesViewController: UIViewController {
     private func setupShapesButtons() {
         for _ in 0..<Int.random(in: 6..<10) {
             let shapeButton = ShapeButton(viewModel: generateRandomShapeButtonViewModel())
+            shapeButton.addTarget(self, action: #selector(updateShapeButtonViewModel(_:)), for: .touchUpInside)
             view.addSubview(shapeButton)
             shapeButtons.append(shapeButton)
         }
@@ -66,6 +67,17 @@ final class ShapesViewController: UIViewController {
         UIView.animate(withDuration: 0.9, delay: 0, options: [.curveLinear], animations: { [weak self] in
             guard let self = self else { return }
             self.shapeButtons.forEach({$0.configurate(with: self.generateRandomShapeButtonViewModel())})
+        }, completion: { [weak self] finished in
+            self?.updateViewButton.isEnabled = finished
+        })
+    }
+
+    @objc
+    func updateShapeButtonViewModel(_ sender: ShapeButton) {
+        updateViewButton.isEnabled = false
+        UIView.animate(withDuration: 0.9, delay: 0, options: [.curveEaseOut], animations: { [weak self] in
+            guard let self = self else { return }
+            sender.configurate(with: self.generateRandomShapeButtonViewModel())
         }, completion: { [weak self] finished in
             self?.updateViewButton.isEnabled = finished
         })
