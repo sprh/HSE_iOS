@@ -9,8 +9,14 @@ import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    var window: UIWindow?
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        let viewModel = ShapesViewModel()
+        let viewController = ShapesViewController(viewModel: viewModel)
+        window = UIWindow()
+        window?.rootViewController = viewController
+        window?.makeKeyAndVisible()
         return true
     }
 }
