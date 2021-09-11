@@ -32,6 +32,15 @@ final class ShapesViewController: UIViewController {
         setupShapesButtons()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        NotificationCenter.default.addObserver(self, selector: #selector(updateShapeButtonsViewModels), name: UIDevice.orientationDidChangeNotification, object: nil)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil)
+    }
+
+
     private func setupUI() {
         view.addSubview(updateViewButton)
         NSLayoutConstraint.activate([
@@ -54,7 +63,7 @@ final class ShapesViewController: UIViewController {
     @objc
     func updateShapeButtonsViewModels() {
         updateViewButton.isEnabled = false
-        UIView.animate(withDuration: 0.9, animations: { [weak self] in
+        UIView.animate(withDuration: 0.9, delay: 0, options: [.curveLinear], animations: { [weak self] in
             guard let self = self else { return }
             self.shapeButtons.forEach({$0.configurate(with: self.generateRandomShapeButtonViewModel())})
         }, completion: { [weak self] finished in
@@ -75,7 +84,7 @@ final class ShapesViewController: UIViewController {
         let width = CGFloat.random(in: maxWidth / 6...maxWidth / 2)
         let x = CGFloat.random(in: leftPadding...max(leftPadding, view.frame.width - width - rightPadding))
         let y = CGFloat.random(in: topPadding...max(rightPadding, view.frame.height - height - bottomPadding))
-        let cornerRadius = CGFloat.random(in: 2..<50)
+        let cornerRadius = CGFloat.random(in: 2..<(height + width) / 4)
         return ShapeButton.ViewModel(height: height,
                                      width: width,
                                      x: x,
