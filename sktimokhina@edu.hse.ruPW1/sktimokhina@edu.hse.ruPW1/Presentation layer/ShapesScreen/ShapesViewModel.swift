@@ -63,7 +63,15 @@ final class ShapesViewModel: UIView {
                                      x: x,
                                      y: y,
                                      cornerRadius: cornerRadius,
-                                     backgroundColor: "")
+                                     backgroundColor: generateRandomHexColor())
+    }
 
+    private func generateRandomHexColor() -> String {
+        let validValues = ["1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"]
+        var result = ["#"]
+        for _ in 0..<6 {
+            result.append(validValues[Int(arc4random_uniform(15))])
+        }
+        return result.joined()
     }
 }

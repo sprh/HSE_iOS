@@ -36,6 +36,6 @@ final class ShapeButton: UIButton {
     func configurate(with viewModel: ViewModel) {
         layer.cornerRadius = viewModel.cornerRadius
         frame = viewModel.frame
-        backgroundColor = .black
+        backgroundColor = UIColor.colorWithHexString(hexString: viewModel.backgroundColor)
     }
 }
