@@ -37,9 +37,7 @@ final class MainButton: UIButton {
                 backgroundColor = disabledBackgroundColor
                 setTitleColor(disabledTextColor, for: .normal)
             }
-
         }
-
     }
     init(frame: CGRect = .zero, viewModel: ViewModel) {
         super.init(frame: frame)
