@@ -8,9 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		E36EE56426EC768C00A20491 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36EE56326EC768C00A20491 /* AppDelegate.swift */; };
-		E36EE56626EC768C00A20491 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36EE56526EC768C00A20491 /* SceneDelegate.swift */; };
-		E36EE56826EC768C00A20491 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36EE56726EC768C00A20491 /* ViewController.swift */; };
-		E36EE56B26EC768C00A20491 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E36EE56926EC768C00A20491 /* Main.storyboard */; };
 		E36EE56D26EC769100A20491 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E36EE56C26EC769100A20491 /* Assets.xcassets */; };
 		E36EE57026EC769100A20491 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E36EE56E26EC769100A20491 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -18,9 +15,6 @@
 /* Begin PBXFileReference section */
 		E36EE56026EC768C00A20491 /* sktimokhina@edu.hse.ruPW1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "sktimokhina@edu.hse.ruPW1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E36EE56326EC768C00A20491 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E36EE56526EC768C00A20491 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E36EE56726EC768C00A20491 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		E36EE56A26EC768C00A20491 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E36EE56C26EC769100A20491 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E36EE56F26EC769100A20491 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E36EE57126EC769100A20491 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -56,15 +50,52 @@
 		E36EE56226EC768C00A20491 /* sktimokhina@edu.hse.ruPW1 */ = {
 			isa = PBXGroup;
 			children = (
-				E36EE56326EC768C00A20491 /* AppDelegate.swift */,
-				E36EE56526EC768C00A20491 /* SceneDelegate.swift */,
-				E36EE56726EC768C00A20491 /* ViewController.swift */,
-				E36EE56926EC768C00A20491 /* Main.storyboard */,
-				E36EE56C26EC769100A20491 /* Assets.xcassets */,
-				E36EE56E26EC769100A20491 /* LaunchScreen.storyboard */,
+				E36EE57926EC770000A20491 /* App resources */,
+				E36EE57826EC76F600A20491 /* Presentation layer */,
+				E36EE57726EC76F100A20491 /* Utils */,
 				E36EE57126EC769100A20491 /* Info.plist */,
 			);
 			path = "sktimokhina@edu.hse.ruPW1";
+			sourceTree = "<group>";
+		};
+		E36EE57726EC76F100A20491 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		E36EE57826EC76F600A20491 /* Presentation layer */ = {
+			isa = PBXGroup;
+			children = (
+				E36EE57B26EC778400A20491 /* ShapesScreen */,
+				E36EE57A26EC777400A20491 /* Custom elements */,
+			);
+			path = "Presentation layer";
+			sourceTree = "<group>";
+		};
+		E36EE57926EC770000A20491 /* App resources */ = {
+			isa = PBXGroup;
+			children = (
+				E36EE56326EC768C00A20491 /* AppDelegate.swift */,
+				E36EE56C26EC769100A20491 /* Assets.xcassets */,
+				E36EE56E26EC769100A20491 /* LaunchScreen.storyboard */,
+			);
+			path = "App resources";
+			sourceTree = "<group>";
+		};
+		E36EE57A26EC777400A20491 /* Custom elements */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Custom elements";
+			sourceTree = "<group>";
+		};
+		E36EE57B26EC778400A20491 /* ShapesScreen */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ShapesScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,7 +157,6 @@
 			files = (
 				E36EE57026EC769100A20491 /* LaunchScreen.storyboard in Resources */,
 				E36EE56D26EC769100A20491 /* Assets.xcassets in Resources */,
-				E36EE56B26EC768C00A20491 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,23 +167,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E36EE56826EC768C00A20491 /* ViewController.swift in Sources */,
 				E36EE56426EC768C00A20491 /* AppDelegate.swift in Sources */,
-				E36EE56626EC768C00A20491 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		E36EE56926EC768C00A20491 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E36EE56A26EC768C00A20491 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E36EE56E26EC769100A20491 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
