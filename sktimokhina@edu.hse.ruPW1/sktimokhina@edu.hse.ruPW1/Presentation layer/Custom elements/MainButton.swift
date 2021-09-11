@@ -40,6 +40,7 @@ final class MainButton: UIButton {
     init(frame: CGRect = .zero, viewModel: ViewModel) {
         super.init(frame: frame)
         configurate(with: viewModel)
+        addTarget(self, action: #selector(onPress), for: .touchUpInside)
     }
 
     private func configurate(with viewModel: ViewModel) {
