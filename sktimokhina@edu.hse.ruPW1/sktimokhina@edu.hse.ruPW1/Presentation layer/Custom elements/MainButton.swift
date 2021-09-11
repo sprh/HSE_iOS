@@ -11,9 +11,13 @@ final class MainButton: UIButton {
     struct ViewModel {
         let font: UIFont
         let title: String?
+        // Background color if isEnabled = true
         let enabledBackgroundColor: UIColor
+        // Background color if isEnabled = false
         let disabledBackgroundColor: UIColor
+        // Text color if isEnabled = true
         let enabledTextColor: UIColor
+        // Text color if isEnabled = false
         let disabledTextColor: UIColor
         let cornerRadius: CGFloat
     }

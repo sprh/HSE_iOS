@@ -22,12 +22,16 @@ final class ShapesViewModel: UIView {
         return button
     }()
 
+    private var shapeButtons: [ShapeButton] = []
+
     func setup() {
         backgroundColor = .background
         setupUI()
+        setupShapesButtons()
+
     }
 
-    func setupUI() {
+    private func setupUI() {
         addSubview(updateViewButton)
         NSLayoutConstraint.activate([
             updateViewButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
@@ -35,5 +39,31 @@ final class ShapesViewModel: UIView {
             updateViewButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -16),
             updateViewButton.heightAnchor.constraint(equalToConstant: 55)
         ])
+    }
+
+    private func setupShapesButtons() {
+        for _ in 0..<Int.random(in: 6..<10) {
+            let shapeButton = ShapeButton(viewModel: generateRandomShapeButtonViewModel())
+            addSubview(shapeButton)
+            shapeButtons.append(shapeButton)
+        }
+    }
+
+    private func generateRandomShapeButtonViewModel() -> ShapeButton.ViewModel {
+        let bottomPadding = UIView.bottomSafeAreaHeight + 75
+        let maxHeight = frame.height - UIView.topSafeAreaHeight - bottomPadding
+        let maxWidth = frame.width - UIView.leftSafeAreaWidth - UIView.rightSafeAreaWidth
+        let height = CGFloat.random(in: maxHeight / 10...maxHeight / 3)
+        let width = CGFloat.random(in: maxWidth / 10...maxWidth / 3)
+        let x = CGFloat.random(in: UIView.leftSafeAreaWidth...max(UIView.leftSafeAreaWidth, maxWidth - width))
+        let y = CGFloat.random(in: UIView.topSafeAreaHeight...max(UIView.topSafeAreaHeight, maxHeight - height * 2))
+        let cornerRadius = CGFloat.random(in: 2..<50)
+        return ShapeButton.ViewModel(height: height,
+                                     width: width,
+                                     x: x,
+                                     y: y,
+                                     cornerRadius: cornerRadius,
+                                     backgroundColor: "")
+
     }
 }

@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// A view controller with shapres.
 final class ShapesViewController: UIViewController {
     private let viewModel: ShapesViewModel
 
@@ -22,7 +23,7 @@ final class ShapesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.frame = view.frame
-        viewModel.setup()
         view = viewModel
+        viewModel.setup()
     }
 }
