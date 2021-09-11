@@ -16,7 +16,7 @@
 		E36EE58326EC797A00A20491 /* MainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36EE58226EC797A00A20491 /* MainButton.swift */; };
 		E36EE58526EC799C00A20491 /* ShapesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36EE58426EC799C00A20491 /* ShapesViewController.swift */; };
 		E36EE58926EC7CAF00A20491 /* UIButton+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36EE58826EC7CAF00A20491 /* UIButton+Utils.swift */; };
-		E36EE58D26EC83BE00A20491 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36EE58C26EC83BE00A20491 /* UIView+Utils.swift */; };
+		E36EE58F26EC8F6300A20491 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36EE58E26EC8F6300A20491 /* UIView+Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,7 +31,7 @@
 		E36EE58226EC797A00A20491 /* MainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButton.swift; sourceTree = "<group>"; };
 		E36EE58426EC799C00A20491 /* ShapesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapesViewController.swift; sourceTree = "<group>"; };
 		E36EE58826EC7CAF00A20491 /* UIButton+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Utils.swift"; sourceTree = "<group>"; };
-		E36EE58C26EC83BE00A20491 /* UIView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
+		E36EE58E26EC8F6300A20491 /* UIView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,7 +78,7 @@
 				E36EE57C26EC784700A20491 /* UIColor+Utils.swift */,
 				E36EE57E26EC785E00A20491 /* UIFont+Utils.swift */,
 				E36EE58826EC7CAF00A20491 /* UIButton+Utils.swift */,
-				E36EE58C26EC83BE00A20491 /* UIView+Utils.swift */,
+				E36EE58E26EC8F6300A20491 /* UIView+Utils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -190,11 +190,11 @@
 			files = (
 				E36EE58326EC797A00A20491 /* MainButton.swift in Sources */,
 				E36EE58526EC799C00A20491 /* ShapesViewController.swift in Sources */,
+				E36EE58F26EC8F6300A20491 /* UIView+Utils.swift in Sources */,
 				E36EE56426EC768C00A20491 /* AppDelegate.swift in Sources */,
 				E36EE58126EC796000A20491 /* ShapeButton.swift in Sources */,
 				E36EE58926EC7CAF00A20491 /* UIButton+Utils.swift in Sources */,
 				E36EE57F26EC785E00A20491 /* UIFont+Utils.swift in Sources */,
-				E36EE58D26EC83BE00A20491 /* UIView+Utils.swift in Sources */,
 				E36EE57D26EC784700A20491 /* UIColor+Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

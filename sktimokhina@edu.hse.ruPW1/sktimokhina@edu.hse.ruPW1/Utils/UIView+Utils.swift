@@ -28,4 +28,3 @@ extension UIView {
         return window?.safeAreaInsets.right ?? 0
     }
 }
-
