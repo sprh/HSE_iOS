@@ -24,22 +24,26 @@ final class ShapesViewController: UIViewController {
     }()
 
     private var shapeButtons: [ShapeButton] = []
+    private var previousOrientation: UIInterfaceOrientation?
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(didChangeOrientation),
+                                               name: UIDevice.orientationDidChangeNotification, object: nil)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        previousOrientation = UIApplication.orientation
         view.backgroundColor = .background
         setupUI()
         setupShapesButtons()
     }
-
-    override func viewWillAppear(_ animated: Bool) {
-        NotificationCenter.default.addObserver(self, selector: #selector(updateShapeButtonsViewModels), name: UIDevice.orientationDidChangeNotification, object: nil)
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil)
-    }
-
 
     private func setupUI() {
         view.addSubview(updateViewButton)
@@ -49,7 +53,7 @@ final class ShapesViewController: UIViewController {
             updateViewButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
             updateViewButton.heightAnchor.constraint(equalToConstant: 55)
         ])
-        updateViewButton.addTarget(self, action: #selector(updateShapeButtonsViewModels), for: .touchUpInside)
+        updateViewButton.addTarget(self, action: #selector(updateShapeButtonViewModels), for: .touchUpInside)
     }
 
     private func setupShapesButtons() {
@@ -61,8 +65,16 @@ final class ShapesViewController: UIViewController {
         }
     }
 
+    @objc func didChangeOrientation() {
+        var currentOrientation = UIApplication.orientation
+        if currentOrientation != previousOrientation {
+            updateShapeButtonViewModels()
+        }
+        previousOrientation = currentOrientation
+    }
+
     @objc
-    func updateShapeButtonsViewModels() {
+    private func updateShapeButtonViewModels() {
         updateViewButton.isEnabled = false
         UIView.animate(withDuration: 0.9, delay: 0, options: [.curveLinear], animations: { [weak self] in
             guard let self = self else { return }
@@ -73,7 +85,7 @@ final class ShapesViewController: UIViewController {
     }
 
     @objc
-    func updateShapeButtonViewModel(_ sender: ShapeButton) {
+    private func updateShapeButtonViewModel(_ sender: ShapeButton) {
         updateViewButton.isEnabled = false
         UIView.animate(withDuration: 0.9, delay: 0, options: [.curveEaseOut], animations: { [weak self] in
             guard let self = self else { return }

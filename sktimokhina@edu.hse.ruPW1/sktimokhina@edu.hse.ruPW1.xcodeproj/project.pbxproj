@@ -17,6 +17,7 @@
 		E36EE58526EC799C00A20491 /* ShapesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36EE58426EC799C00A20491 /* ShapesViewController.swift */; };
 		E36EE58926EC7CAF00A20491 /* UIButton+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36EE58826EC7CAF00A20491 /* UIButton+Utils.swift */; };
 		E36EE58F26EC8F6300A20491 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36EE58E26EC8F6300A20491 /* UIView+Utils.swift */; };
+		E396C97126EE1DB10057AACD /* UIApplication+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E396C97026EE1DB10057AACD /* UIApplication+Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		E36EE58426EC799C00A20491 /* ShapesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapesViewController.swift; sourceTree = "<group>"; };
 		E36EE58826EC7CAF00A20491 /* UIButton+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Utils.swift"; sourceTree = "<group>"; };
 		E36EE58E26EC8F6300A20491 /* UIView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
+		E396C97026EE1DB10057AACD /* UIApplication+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Utils.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 				E36EE57E26EC785E00A20491 /* UIFont+Utils.swift */,
 				E36EE58826EC7CAF00A20491 /* UIButton+Utils.swift */,
 				E36EE58E26EC8F6300A20491 /* UIView+Utils.swift */,
+				E396C97026EE1DB10057AACD /* UIApplication+Utils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -188,6 +191,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E396C97126EE1DB10057AACD /* UIApplication+Utils.swift in Sources */,
 				E36EE58326EC797A00A20491 /* MainButton.swift in Sources */,
 				E36EE58526EC799C00A20491 /* ShapesViewController.swift in Sources */,
 				E36EE58F26EC8F6300A20491 /* UIView+Utils.swift in Sources */,

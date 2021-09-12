@@ -39,10 +39,15 @@ final class MainButton: UIButton {
             }
         }
     }
+
     init(frame: CGRect = .zero, viewModel: ViewModel) {
         super.init(frame: frame)
         configurate(with: viewModel)
         addTarget(self, action: #selector(onPress), for: .touchUpInside)
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
     }
 
     private func configurate(with viewModel: ViewModel) {
@@ -53,9 +58,5 @@ final class MainButton: UIButton {
         disabledTextColor = viewModel.disabledTextColor
         enabledBackgroundColor = viewModel.enabledBackgroundColor
         disabledBackgroundColor = viewModel.disabledBackgroundColor
-    }
-
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
     }
 }
