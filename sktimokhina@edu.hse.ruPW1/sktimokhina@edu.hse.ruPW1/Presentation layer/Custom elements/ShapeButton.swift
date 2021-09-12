@@ -33,6 +33,8 @@ final class ShapeButton: UIButton {
         super.init(coder: coder)
     }
 
+    /// Confugurate the shape button with parameters from the view model.
+    /// It is not the private method so we can use it from  another view.
     func configurate(with viewModel: ViewModel) {
         layer.cornerRadius = viewModel.cornerRadius
         frame = viewModel.frame

@@ -27,6 +27,7 @@ final class MainButton: UIButton {
     private var enabledTextColor: UIColor!
     private var disabledTextColor: UIColor!
 
+    /// Override var isEnabled to change colors (background and text) to show user that it is not enabled.
     override var isEnabled: Bool {
         didSet {
             super.isEnabled = isEnabled
@@ -50,6 +51,7 @@ final class MainButton: UIButton {
         super.init(coder: coder)
     }
 
+    /// Confugurate the main button with parameters from the view model.
     private func configurate(with viewModel: ViewModel) {
         setTitle(viewModel.title, for: .normal)
         titleLabel?.font = viewModel.font

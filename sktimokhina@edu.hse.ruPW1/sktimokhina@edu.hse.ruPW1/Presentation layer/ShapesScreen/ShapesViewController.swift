@@ -20,20 +20,24 @@ final class ShapesViewController: UIViewController {
         let button = MainButton(viewModel: buttonViewModel)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.isEnabled = true
+        button.addTarget(self, action: #selector(updateShapeButtonViewModels), for: .touchUpInside)
         return button
     }()
 
     private var shapeButtons: [ShapeButton] = []
+    /// A state that has a previous orientation state.
     private var previousOrientation: UIInterfaceOrientation?
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        // Subscribing on the orientationDidChangeNotification.
         NotificationCenter.default.addObserver(self, selector: #selector(didChangeOrientation),
                                                name: UIDevice.orientationDidChangeNotification, object: nil)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        // Unsubscribing.
         NotificationCenter.default.removeObserver(self)
     }
 
@@ -45,6 +49,8 @@ final class ShapesViewController: UIViewController {
         setupShapesButtons()
     }
 
+    /// UI settaping.
+    /// Adding an updateViewButton and constraints.
     private func setupUI() {
         view.addSubview(updateViewButton)
         NSLayoutConstraint.activate([
@@ -53,9 +59,9 @@ final class ShapesViewController: UIViewController {
             updateViewButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
             updateViewButton.heightAnchor.constraint(equalToConstant: 55)
         ])
-        updateViewButton.addTarget(self, action: #selector(updateShapeButtonViewModels), for: .touchUpInside)
     }
 
+    /// Generating shapes buttons (with a random count from 6 to 10) add it to the screen.
     private func setupShapesButtons() {
         for _ in 0..<Int.random(in: 6..<10) {
             let shapeButton = ShapeButton(viewModel: generateRandomShapeButtonViewModel())
@@ -65,14 +71,18 @@ final class ShapesViewController: UIViewController {
         }
     }
 
-    @objc func didChangeOrientation() {
-        var currentOrientation = UIApplication.orientation
+    /// Checking is an orientation was changed.
+    @objc
+    func didChangeOrientation() {
+        let currentOrientation = UIApplication.orientation
         if currentOrientation != previousOrientation {
             updateShapeButtonViewModels()
         }
         previousOrientation = currentOrientation
     }
 
+    /// Apdating a view model for all shape buttons.
+    /// It works after someone clicks on the updateViewButton.
     @objc
     private func updateShapeButtonViewModels() {
         updateViewButton.isEnabled = false
@@ -84,6 +94,8 @@ final class ShapesViewController: UIViewController {
         })
     }
 
+    /// Apdating a view model for the sender (shape button).
+    /// It works after someone clicks on any shape button.
     @objc
     private func updateShapeButtonViewModel(_ sender: ShapeButton) {
         updateViewButton.isEnabled = false

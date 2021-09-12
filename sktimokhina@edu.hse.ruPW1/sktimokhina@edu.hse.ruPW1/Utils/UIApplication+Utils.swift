@@ -8,6 +8,7 @@
 import UIKit
 
 extension UIApplication {
+    /// A device orientation.
     static var orientation: UIInterfaceOrientation? {
         if #available(iOS 13.0, *) {
             return UIApplication.shared.windows.first?.windowScene?.interfaceOrientation
