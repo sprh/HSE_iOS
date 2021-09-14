@@ -11,7 +11,6 @@
 		E36EE56D26EC769100A20491 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E36EE56C26EC769100A20491 /* Assets.xcassets */; };
 		E36EE57026EC769100A20491 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E36EE56E26EC769100A20491 /* LaunchScreen.storyboard */; };
 		E36EE57D26EC784700A20491 /* UIColor+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36EE57C26EC784700A20491 /* UIColor+Utils.swift */; };
-		E36EE57F26EC785E00A20491 /* UIFont+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36EE57E26EC785E00A20491 /* UIFont+Utils.swift */; };
 		E36EE58126EC796000A20491 /* ShapeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36EE58026EC796000A20491 /* ShapeButton.swift */; };
 		E36EE58326EC797A00A20491 /* MainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36EE58226EC797A00A20491 /* MainButton.swift */; };
 		E36EE58526EC799C00A20491 /* ShapesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36EE58426EC799C00A20491 /* ShapesViewController.swift */; };
@@ -27,7 +26,6 @@
 		E36EE56F26EC769100A20491 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E36EE57126EC769100A20491 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E36EE57C26EC784700A20491 /* UIColor+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Utils.swift"; sourceTree = "<group>"; };
-		E36EE57E26EC785E00A20491 /* UIFont+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Utils.swift"; sourceTree = "<group>"; };
 		E36EE58026EC796000A20491 /* ShapeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeButton.swift; sourceTree = "<group>"; };
 		E36EE58226EC797A00A20491 /* MainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButton.swift; sourceTree = "<group>"; };
 		E36EE58426EC799C00A20491 /* ShapesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapesViewController.swift; sourceTree = "<group>"; };
@@ -78,7 +76,6 @@
 			isa = PBXGroup;
 			children = (
 				E36EE57C26EC784700A20491 /* UIColor+Utils.swift */,
-				E36EE57E26EC785E00A20491 /* UIFont+Utils.swift */,
 				E36EE58826EC7CAF00A20491 /* UIButton+Utils.swift */,
 				E36EE58E26EC8F6300A20491 /* UIView+Utils.swift */,
 				E396C97026EE1DB10057AACD /* UIApplication+Utils.swift */,
@@ -198,7 +195,6 @@
 				E36EE56426EC768C00A20491 /* AppDelegate.swift in Sources */,
 				E36EE58126EC796000A20491 /* ShapeButton.swift in Sources */,
 				E36EE58926EC7CAF00A20491 /* UIButton+Utils.swift in Sources */,
-				E36EE57F26EC785E00A20491 /* UIFont+Utils.swift in Sources */,
 				E36EE57D26EC784700A20491 /* UIColor+Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

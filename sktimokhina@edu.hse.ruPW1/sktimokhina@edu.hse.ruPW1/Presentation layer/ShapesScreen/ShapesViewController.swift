@@ -10,16 +10,19 @@ import UIKit
 /// A view controller with shapres.
 final class ShapesViewController: UIViewController {
     private var updateViewButton: UIButton = {
-        let buttonViewModel = MainButton.ViewModel(font: .buttonFont,
+        let buttonViewModel = MainButton.ViewModel(font: UIFont.preferredFont(forTextStyle: .headline),
                                                    title: "Tap me",
                                                    enabledBackgroundColor: .button,
                                                    disabledBackgroundColor: .disabledButton,
                                                    enabledTextColor: .text,
-                                                   disabledTextColor: .text,
-                                                   cornerRadius: 23)
+                                                   disabledTextColor: .text)
         let button = MainButton(viewModel: buttonViewModel)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.titleLabel?.adjustsFontForContentSizeCategory = true
         button.isEnabled = true
+        button.autoresizingMask = .flexibleHeight
+        button.contentEdgeInsets = UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
+        button.layer.cornerRadius = button.intrinsicContentSize.height / 2
         button.addTarget(self, action: #selector(updateShapeButtonViewModels), for: .touchUpInside)
         return button
     }()
@@ -56,8 +59,7 @@ final class ShapesViewController: UIViewController {
         NSLayoutConstraint.activate([
             updateViewButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
             updateViewButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            updateViewButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
-            updateViewButton.heightAnchor.constraint(equalToConstant: 55)
+            updateViewButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16)
         ])
     }
 

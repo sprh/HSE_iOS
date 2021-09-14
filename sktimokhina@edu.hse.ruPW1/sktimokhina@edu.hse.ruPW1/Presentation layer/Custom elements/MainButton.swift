@@ -19,7 +19,6 @@ final class MainButton: UIButton {
         let enabledTextColor: UIColor
         // Text color if isEnabled = false
         let disabledTextColor: UIColor
-        let cornerRadius: CGFloat
     }
 
     private var enabledBackgroundColor: UIColor!
@@ -55,7 +54,6 @@ final class MainButton: UIButton {
     private func configurate(with viewModel: ViewModel) {
         setTitle(viewModel.title, for: .normal)
         titleLabel?.font = viewModel.font
-        layer.cornerRadius = viewModel.cornerRadius
         enabledTextColor = viewModel.enabledTextColor
         disabledTextColor = viewModel.disabledTextColor
         enabledBackgroundColor = viewModel.enabledBackgroundColor
