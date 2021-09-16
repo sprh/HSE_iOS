@@ -10,11 +10,13 @@ import UIKit
 final class CarViewController: UIViewController {
     private var car: Car!
     private var carWidth: CGFloat!
+    private var previousOrientation: UIInterfaceOrientation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        previousOrientation = UIApplication.orientation
         view.backgroundColor = .background
-        carWidth = view.frame.width / 1.2
+        carWidth = view.frame.width / 1.3
         car = Car(frame: CGRect(x: -carWidth, y: 10, width: carWidth, height: view.frame.height / 1.5))
         view.addSubview(car)
     }
@@ -22,11 +24,27 @@ final class CarViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         animateCar()
+        NotificationCenter.default.addObserver(self, selector: #selector(didChangeOrientation),
+                                               name: UIDevice.orientationDidChangeNotification, object: nil)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         car.stopAnimation()
+        NotificationCenter.default.removeObserver(self)
+    }
+
+    @objc
+    func didChangeOrientation() {
+        let currentOrientation = UIApplication.orientation
+        if currentOrientation != previousOrientation {
+            car.stopAnimation()
+            carWidth = view.frame.width / 1.3
+            car.frame = CGRect(x: -carWidth, y: 10, width: carWidth, height: view.frame.height / 1.5)
+            animateCar()
+
+        }
+        previousOrientation = currentOrientation
     }
 
     func animateCar() {

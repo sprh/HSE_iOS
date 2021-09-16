@@ -11,7 +11,7 @@ final class Car: UIView {
     private var firstWheel: UIView!
     private var secondWheel: UIView!
     private var body: [UIView] = []
-    private var animationIndex: Int?
+    private var shouldAnimate: Bool = false
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -31,14 +31,14 @@ final class Car: UIView {
                                                           width: wheelWidth,
                                                           x: wheelWidth,
                                                           y: frame.height - wheelWidth,
-                                                          cornerRadius: wheelWidth / 1.7,
+                                                          cornerRadius: wheelWidth / 1.6,
                                                           backgroundColor: "#a5d6a7"))
         secondWheel = ShapeButton(viewModel:
                                     ShapeButton.ViewModel(height: wheelWidth,
                                                           width: wheelWidth,
                                                           x: frame.width - wheelWidth,
                                                           y: frame.height - wheelWidth,
-                                                          cornerRadius: wheelWidth / 1.7,
+                                                          cornerRadius: wheelWidth / 1.6,
                                                           backgroundColor: "#a5d6a7"))
         addSubview(firstWheel)
         addSubview(secondWheel)
@@ -51,45 +51,41 @@ final class Car: UIView {
                                                                   width: wheelWidth,
                                                                   x: (firstWheel.frame.width - wheelWidth) / 2,
                                                                   y: (firstWheel.frame.width - wheelWidth) / 2,
-                                                                  cornerRadius: wheelWidth / 1.5,
+                                                                  cornerRadius: wheelWidth / 1.2,
                                                                   backgroundColor: "#F6FAF6")))
         secondWheel.addSubview(ShapeButton(viewModel:
                                             ShapeButton.ViewModel(height: wheelWidth,
                                                                   width: wheelWidth,
                                                                   x: (secondWheel.frame.width - wheelWidth) / 2,
                                                                   y: (secondWheel.frame.width - wheelWidth) / 2,
-                                                                  cornerRadius: wheelWidth / 1.5,
+                                                                  cornerRadius: wheelWidth / 1.2,
                                                                   backgroundColor: "#F6FAF6")))
         addSubview(secondWheel)
     }
 
     func startAnimation() {
-        animationIndex = 0
+        shouldAnimate = true
         animateWheel(wheel: firstWheel)
         animateWheel(wheel: secondWheel)
         animateBody()
     }
 
     func stopAnimation() {
-        animationIndex = nil
+        shouldAnimate = false
         subviews.forEach({$0.layer.removeAllAnimations()})
         layer.removeAllAnimations()
         layoutIfNeeded()
     }
 
     private func animateWheel(wheel: UIView) {
-        UIView.animate(withDuration: 2, delay: 0, options: [.repeat], animations: {
-            wheel.transform = CGAffineTransform(rotationAngle: (CGFloat(Double.pi)))
+        UIView.animate(withDuration: 2, delay: 0.0, options: [.repeat, .curveEaseIn], animations: {
+            wheel.transform = CGAffineTransform(rotationAngle: (CGFloat(Double.pi / 2)))
         }, completion: nil)
     }
 
-    private func animateBody() {
-        guard let index = animationIndex else {
-            return
-        }
+    private func animateBody(index: Int = 0) {
         if index >= body.count {
-            animationIndex = 0
-            animateBody()
+            animateBody(index: 0)
             return
         }
         let currentView = body[index]
@@ -99,9 +95,9 @@ final class Car: UIView {
                                        width: currentView.frame.width,
                                        height: currentView.frame.height)
         }, completion: { [weak self] _ in
-            guard let self = self else { return }
-            self.animationIndex = self.animationIndex == nil ? nil : index + 1
-            self.animateBody()
+            guard let self = self,
+                  self.shouldAnimate else { return }
+            self.animateBody(index: index + 1)
             UIView.animate(withDuration: 0.1, delay: 0, options: [.autoreverse, .curveLinear], animations: {
                 currentView.frame = CGRect(x: currentView.frame.minX,
                                            y: currentView.frame.minY + 15,

@@ -112,7 +112,7 @@ final class ShapesViewController: UIViewController {
     /// Method to generate a random shape button view model.
     /// There are some calculations because we don't want to go beyond the screen.
     private func generateRandomShapeButtonViewModel() -> ShapeButton.ViewModel {
-        let bottomPadding = view.safeAreaInsets.bottom + 90
+        let bottomPadding = 90 + (tabBarController?.tabBar.frame.size.height ?? 0)
         let topPadding = view.safeAreaInsets.top
         let leftPadding = view.safeAreaInsets.left
         let rightPadding = view.safeAreaInsets.right
