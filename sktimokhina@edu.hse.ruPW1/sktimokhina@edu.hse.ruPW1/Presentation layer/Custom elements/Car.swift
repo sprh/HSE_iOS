@@ -119,7 +119,7 @@ final class Car: UIView {
                                                   x: x,
                                                   y: y,
                                                   cornerRadius: 10,
-                                                  backgroundColor: "#526B53")
+                                                  backgroundColor: "#80CBC4")
             let button = ShapeButton(viewModel: viewModel)
             addSubview(button)
             body.append(button)
