@@ -11,6 +11,7 @@ final class CarViewController: UIViewController {
     private var car: Car!
     private var carWidth: CGFloat!
     private var previousOrientation: UIInterfaceOrientation?
+    private var shouldAnimate: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +24,7 @@ final class CarViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        shouldAnimate = true
         animateCar()
         NotificationCenter.default.addObserver(self, selector: #selector(didChangeOrientation),
                                                name: UIDevice.orientationDidChangeNotification, object: nil)
@@ -30,6 +32,7 @@ final class CarViewController: UIViewController {
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        shouldAnimate = false
         car.stopAnimation()
         NotificationCenter.default.removeObserver(self)
     }
@@ -42,7 +45,6 @@ final class CarViewController: UIViewController {
             carWidth = view.frame.width / 1.3
             car.frame = CGRect(x: -carWidth, y: 10, width: carWidth, height: view.frame.height / 1.5)
             animateCar()
-
         }
         previousOrientation = currentOrientation
     }
@@ -50,9 +52,19 @@ final class CarViewController: UIViewController {
     func animateCar() {
         car.frame = CGRect(x: -carWidth, y: 10, width: carWidth, height: view.frame.height / 1.5)
         car.startAnimation()
-        UIView.animate(withDuration: 5.0, delay: 0, options: [.curveLinear, .repeat], animations: { [weak self] in
+        UIView.animate(withDuration: 2.5, delay: 0, options: [.curveLinear], animations: { [weak self] in
             guard let self = self else { return }
-            self.car.frame = CGRect(x: self.view.frame.width, y: 10, width: self.car.frame.width, height: self.car.frame.height)
-        }, completion: nil)
+            self.car.frame = CGRect(x: self.view.frame.width / 2 - self.car.frame.width / 2, y: 10, width: self.car.frame.width, height: self.car.frame.height)
+        }, completion: { [weak self] _ in
+            guard let self = self else { return }
+            UIView.animate(withDuration: 2.5, delay: 0.7, options: [.curveLinear], animations: { [weak self] in
+                guard let self = self else { return }
+                self.car.frame = CGRect(x: self.view.frame.width, y: 10, width: self.car.frame.width, height: self.car.frame.height)
+            }, completion: { [weak self] _ in
+                if self?.shouldAnimate ?? false {
+                    self?.animateCar()
+                }
+            })
+        })
     }
 }
