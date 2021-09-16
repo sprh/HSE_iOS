@@ -12,9 +12,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let viewController = ShapesViewController()
         window = UIWindow()
-        window?.rootViewController = viewController
+        window?.rootViewController = TabBarController()
         window?.makeKeyAndVisible()
         return true
     }

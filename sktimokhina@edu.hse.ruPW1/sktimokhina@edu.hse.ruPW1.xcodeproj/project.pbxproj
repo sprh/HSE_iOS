@@ -16,6 +16,8 @@
 		E36EE58526EC799C00A20491 /* ShapesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36EE58426EC799C00A20491 /* ShapesViewController.swift */; };
 		E36EE58926EC7CAF00A20491 /* UIButton+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36EE58826EC7CAF00A20491 /* UIButton+Utils.swift */; };
 		E36EE58F26EC8F6300A20491 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36EE58E26EC8F6300A20491 /* UIView+Utils.swift */; };
+		E37904E426F3A0F800B138A0 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37904E326F3A0F800B138A0 /* TabBarController.swift */; };
+		E37904E626F3A1F900B138A0 /* UIImage+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37904E526F3A1F900B138A0 /* UIImage+Utils.swift */; };
 		E396C97126EE1DB10057AACD /* UIApplication+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E396C97026EE1DB10057AACD /* UIApplication+Utils.swift */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +33,8 @@
 		E36EE58426EC799C00A20491 /* ShapesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapesViewController.swift; sourceTree = "<group>"; };
 		E36EE58826EC7CAF00A20491 /* UIButton+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Utils.swift"; sourceTree = "<group>"; };
 		E36EE58E26EC8F6300A20491 /* UIView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
+		E37904E326F3A0F800B138A0 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		E37904E526F3A1F900B138A0 /* UIImage+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Utils.swift"; sourceTree = "<group>"; };
 		E396C97026EE1DB10057AACD /* UIApplication+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Utils.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -79,6 +83,7 @@
 				E36EE58826EC7CAF00A20491 /* UIButton+Utils.swift */,
 				E36EE58E26EC8F6300A20491 /* UIView+Utils.swift */,
 				E396C97026EE1DB10057AACD /* UIApplication+Utils.swift */,
+				E37904E526F3A1F900B138A0 /* UIImage+Utils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -86,6 +91,7 @@
 		E36EE57826EC76F600A20491 /* Presentation layer */ = {
 			isa = PBXGroup;
 			children = (
+				E37904E226F3A0ED00B138A0 /* TabBar */,
 				E36EE57B26EC778400A20491 /* ShapesScreen */,
 				E36EE57A26EC777400A20491 /* Custom elements */,
 			);
@@ -117,6 +123,14 @@
 				E36EE58426EC799C00A20491 /* ShapesViewController.swift */,
 			);
 			path = ShapesScreen;
+			sourceTree = "<group>";
+		};
+		E37904E226F3A0ED00B138A0 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				E37904E326F3A0F800B138A0 /* TabBarController.swift */,
+			);
+			path = TabBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -191,6 +205,8 @@
 				E396C97126EE1DB10057AACD /* UIApplication+Utils.swift in Sources */,
 				E36EE58326EC797A00A20491 /* MainButton.swift in Sources */,
 				E36EE58526EC799C00A20491 /* ShapesViewController.swift in Sources */,
+				E37904E626F3A1F900B138A0 /* UIImage+Utils.swift in Sources */,
+				E37904E426F3A0F800B138A0 /* TabBarController.swift in Sources */,
 				E36EE58F26EC8F6300A20491 /* UIView+Utils.swift in Sources */,
 				E36EE56426EC768C00A20491 /* AppDelegate.swift in Sources */,
 				E36EE58126EC796000A20491 /* ShapeButton.swift in Sources */,
