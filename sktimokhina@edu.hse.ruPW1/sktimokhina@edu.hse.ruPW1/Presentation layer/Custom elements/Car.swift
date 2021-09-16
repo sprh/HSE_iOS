@@ -10,6 +10,7 @@ import UIKit
 final class Car: UIView {
     private var firstWheel: UIView!
     private var secondWheel: UIView!
+    private var body: [UIView] = []
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -62,6 +63,40 @@ final class Car: UIView {
         addSubview(secondWheel)
     }
 
+    func startAnimation() {
+        animateWheel(wheel: firstWheel)
+        animateWheel(wheel: secondWheel)
+        animateBody()
+    }
+
+    func animateWheel(wheel: UIView) {
+        UIView.animate(withDuration: 2, delay: 0, options: [.repeat], animations: {
+            wheel.transform = CGAffineTransform(rotationAngle: (CGFloat(Double.pi)))
+        }, completion: nil)
+    }
+
+    func animateBody(index: Int = 0) {
+        if index >= body.count {
+            animateBody(index: 0)
+            return
+        }
+        let currentView = body[index]
+        UIView.animate(withDuration: 0.1, delay: 0, options: [.autoreverse, .curveLinear], animations: {
+            currentView.frame = CGRect(x: currentView.frame.minX,
+                                       y: currentView.frame.minY - 15,
+                                       width: currentView.frame.width,
+                                       height: currentView.frame.height)
+        }, completion: { _ in
+            self.animateBody(index: index + 1)
+            UIView.animate(withDuration: 0.1, delay: 0, options: [.autoreverse, .curveLinear], animations: {
+                currentView.frame = CGRect(x: currentView.frame.minX,
+                                           y: currentView.frame.minY + 15,
+                                           width: currentView.frame.width,
+                                           height: currentView.frame.height)
+            }, completion: nil
+            )})
+    }
+
     private func generateBody() {
         let width = frame.width / 32
         var height = firstWheel.frame.height
@@ -75,7 +110,9 @@ final class Car: UIView {
                                                   y: y,
                                                   cornerRadius: 10,
                                                   backgroundColor: "#526B53")
-            addSubview(ShapeButton(viewModel: viewModel))
+            let button = ShapeButton(viewModel: viewModel)
+            addSubview(button)
+            body.append(button)
             x += width * 2
             if (x + width) < firstWheel.frame.minX {
                 height *= 1.3
@@ -103,7 +140,7 @@ final class Car: UIView {
                 index += 1
                 let maxCount = Int(secondWheel.frame.width / (width * 2))
                 let additionHeight: CGFloat = CGFloat((index == maxCount / 2 ? 0 :
-                                                (index > maxCount / 2 ? maxCount - index + 1 : index) * 3))
+                                                        (index > maxCount / 2 ? maxCount - index + 1 : index) * 3))
                 height = firstWheel.frame.height / 1.4
                 if index == maxCount {
                     height += additionHeight * 2
