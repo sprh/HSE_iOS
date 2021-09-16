@@ -25,10 +25,6 @@ extension UIColor {
         UIColor(named: "disabledButton")!
     }
 
-    static var tabBarTint: UIColor {
-        UIColor(named: "tabBarTint")!
-    }
-
     /// Returns color from a hex string.
     static func colorWithHexString(hexString: String) -> UIColor {
         if !hexString.starts(with: "#") || hexString.count != 7 {

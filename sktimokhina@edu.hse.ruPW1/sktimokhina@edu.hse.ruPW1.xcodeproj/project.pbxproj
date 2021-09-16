@@ -18,6 +18,8 @@
 		E36EE58F26EC8F6300A20491 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36EE58E26EC8F6300A20491 /* UIView+Utils.swift */; };
 		E37904E426F3A0F800B138A0 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37904E326F3A0F800B138A0 /* TabBarController.swift */; };
 		E37904E626F3A1F900B138A0 /* UIImage+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37904E526F3A1F900B138A0 /* UIImage+Utils.swift */; };
+		E37904E926F3A5CB00B138A0 /* CarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37904E826F3A5CB00B138A0 /* CarViewController.swift */; };
+		E37904EB26F3A6D000B138A0 /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37904EA26F3A6D000B138A0 /* Car.swift */; };
 		E396C97126EE1DB10057AACD /* UIApplication+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E396C97026EE1DB10057AACD /* UIApplication+Utils.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +37,8 @@
 		E36EE58E26EC8F6300A20491 /* UIView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
 		E37904E326F3A0F800B138A0 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		E37904E526F3A1F900B138A0 /* UIImage+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Utils.swift"; sourceTree = "<group>"; };
+		E37904E826F3A5CB00B138A0 /* CarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarViewController.swift; sourceTree = "<group>"; };
+		E37904EA26F3A6D000B138A0 /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		E396C97026EE1DB10057AACD /* UIApplication+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Utils.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -91,6 +95,7 @@
 		E36EE57826EC76F600A20491 /* Presentation layer */ = {
 			isa = PBXGroup;
 			children = (
+				E37904E726F3A5B800B138A0 /* CarScreen */,
 				E37904E226F3A0ED00B138A0 /* TabBar */,
 				E36EE57B26EC778400A20491 /* ShapesScreen */,
 				E36EE57A26EC777400A20491 /* Custom elements */,
@@ -113,6 +118,7 @@
 			children = (
 				E36EE58026EC796000A20491 /* ShapeButton.swift */,
 				E36EE58226EC797A00A20491 /* MainButton.swift */,
+				E37904EA26F3A6D000B138A0 /* Car.swift */,
 			);
 			path = "Custom elements";
 			sourceTree = "<group>";
@@ -131,6 +137,14 @@
 				E37904E326F3A0F800B138A0 /* TabBarController.swift */,
 			);
 			path = TabBar;
+			sourceTree = "<group>";
+		};
+		E37904E726F3A5B800B138A0 /* CarScreen */ = {
+			isa = PBXGroup;
+			children = (
+				E37904E826F3A5CB00B138A0 /* CarViewController.swift */,
+			);
+			path = CarScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,8 +218,10 @@
 			files = (
 				E396C97126EE1DB10057AACD /* UIApplication+Utils.swift in Sources */,
 				E36EE58326EC797A00A20491 /* MainButton.swift in Sources */,
+				E37904EB26F3A6D000B138A0 /* Car.swift in Sources */,
 				E36EE58526EC799C00A20491 /* ShapesViewController.swift in Sources */,
 				E37904E626F3A1F900B138A0 /* UIImage+Utils.swift in Sources */,
+				E37904E926F3A5CB00B138A0 /* CarViewController.swift in Sources */,
 				E37904E426F3A0F800B138A0 /* TabBarController.swift in Sources */,
 				E36EE58F26EC8F6300A20491 /* UIView+Utils.swift in Sources */,
 				E36EE56426EC768C00A20491 /* AppDelegate.swift in Sources */,

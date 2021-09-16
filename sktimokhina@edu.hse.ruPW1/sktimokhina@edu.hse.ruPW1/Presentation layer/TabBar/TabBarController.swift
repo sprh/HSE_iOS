@@ -23,7 +23,7 @@ final class TabBarController: UITabBarController {
         tabBar.barTintColor = .clear
         tabBar.backgroundColor = .clear
 
-        viewControllers = [createShapesVC(), createShapesVC()]
+        viewControllers = [createCarVC()]
     }
 
     private func createShapesVC() -> UIViewController {
@@ -31,6 +31,14 @@ final class TabBarController: UITabBarController {
         viewController.tabBarItem.title = "Shapes"
         viewController.tabBarItem.image = .rectangleBordered
         viewController.tabBarItem.selectedImage = .rectangle
+        return viewController
+    }
+
+    private func createCarVC() -> UIViewController {
+        let viewController = CarViewController()
+        viewController.tabBarItem.title = "Car"
+        viewController.tabBarItem.image = .carBordered
+        viewController.tabBarItem.selectedImage = .car
         return viewController
     }
 }
