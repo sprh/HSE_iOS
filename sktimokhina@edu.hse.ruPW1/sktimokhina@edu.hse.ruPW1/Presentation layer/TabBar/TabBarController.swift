@@ -23,7 +23,7 @@ final class TabBarController: UITabBarController {
         tabBar.barTintColor = .clear
         tabBar.backgroundColor = .clear
 
-        viewControllers = [createCarVC()]
+        viewControllers = [createCarVC(), createShapesVC()]
     }
 
     private func createShapesVC() -> UIViewController {

@@ -24,7 +24,13 @@ final class CarViewController: UIViewController {
         animateCar()
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        car.stopAnimation()
+    }
+
     func animateCar() {
+        car.frame = CGRect(x: -carWidth, y: 10, width: carWidth, height: view.frame.height / 1.5)
         car.startAnimation()
         UIView.animate(withDuration: 5.0, delay: 0, options: [.curveLinear, .repeat], animations: { [weak self] in
             guard let self = self else { return }
