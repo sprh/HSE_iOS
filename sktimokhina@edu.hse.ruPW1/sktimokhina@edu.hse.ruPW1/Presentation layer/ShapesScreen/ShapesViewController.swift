@@ -33,6 +33,7 @@ final class ShapesViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        (UIApplication.shared.delegate as? AppDelegate)?.supportedOrientation = .all
         // Subscribing on the orientationDidChangeNotification.
         NotificationCenter.default.addObserver(self, selector: #selector(didChangeOrientation),
                                                name: UIDevice.orientationDidChangeNotification, object: nil)
@@ -40,13 +41,13 @@ final class ShapesViewController: UIViewController {
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        (UIApplication.shared.delegate as? AppDelegate)?.supportedOrientation = .portrait
         // Unsubscribing.
         NotificationCenter.default.removeObserver(self)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        (UIApplication.shared.delegate as? AppDelegate)?.supportedOrientation = .all
         previousOrientation = UIApplication.orientation
         view.backgroundColor = .background
         setupUI()

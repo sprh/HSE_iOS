@@ -14,7 +14,6 @@ final class CarViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        (UIApplication.shared.delegate as? AppDelegate)?.supportedOrientation = .portrait
         view.backgroundColor = .background
         carWidth = view.frame.width / 1.3
         car = Car(frame: CGRect(x: -carWidth, y: 10, width: carWidth, height: view.frame.height / 1.5))
@@ -23,6 +22,7 @@ final class CarViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        (UIApplication.shared.delegate as? AppDelegate)?.supportedOrientation = .portrait
         shouldAnimate = true
         car.startAnimation()
         animateCar()
