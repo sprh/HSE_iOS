@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let graph = MainScreenGraph()
         window = UIWindow()
-        window?.rootViewController = graph.viewController
+        window?.rootViewController = UINavigationController(rootViewController: graph.viewController)
         window?.makeKeyAndVisible()
         return true
     }

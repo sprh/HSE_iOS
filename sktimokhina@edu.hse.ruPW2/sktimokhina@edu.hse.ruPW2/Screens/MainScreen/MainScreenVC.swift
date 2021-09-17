@@ -26,6 +26,14 @@ final class MainScreenVC: UIViewController, IMainScreenVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
+        view.backgroundColor = #colorLiteral(red: 1, green: 0.9764078259, blue: 0.8245866895, alpha: 1)
+        setupNavigationController()
+    }
+
+    private func setupNavigationController() {
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.title = "Main"
+        let settingsButton = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: nil)
+        navigationItem.rightBarButtonItem = settingsButton
     }
 }
