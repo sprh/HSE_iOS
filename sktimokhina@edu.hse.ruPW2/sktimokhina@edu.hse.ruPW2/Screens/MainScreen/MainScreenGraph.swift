@@ -17,8 +17,8 @@ final class MainScreenGraph {
         view
     }
 
-    init() {
-        router = MainScreenRouter()
+    init(navigationController: UINavigationController) {
+        router = MainScreenRouter(navigationController: navigationController)
         view = MainScreenVC(router: router)
         presenter = MainScreenPresenter(viewController: view)
         interactor = MainScreenInteractor(presenter: presenter)

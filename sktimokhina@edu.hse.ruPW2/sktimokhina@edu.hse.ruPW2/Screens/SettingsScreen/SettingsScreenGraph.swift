@@ -12,6 +12,10 @@ final class SettingsScreenGraph {
     private var interactor: ISettingsScreenInteractor
     private var view: ISettingsScreenVC
 
+    var viewController: UIViewController {
+        view
+    }
+
     init() {
         view = SettingsScreenVC()
         presenter = SettingsScreenPresenter(viewController: view)

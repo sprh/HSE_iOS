@@ -33,7 +33,11 @@ final class MainScreenVC: UIViewController, IMainScreenVC {
     private func setupNavigationController() {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "Main"
-        let settingsButton = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: nil)
+        let settingsButton = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(didTapSettingsButton))
         navigationItem.rightBarButtonItem = settingsButton
+    }
+
+    @objc func didTapSettingsButton() {
+        router.showSettingsScreen()
     }
 }
