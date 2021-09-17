@@ -78,33 +78,31 @@ final class Car: UIView {
     }
 
     private func animateWheel(wheel: UIView) {
-        UIView.animate(withDuration: 2, delay: 0.0, options: [.repeat, .curveEaseIn], animations: {
-            wheel.transform = CGAffineTransform(rotationAngle: (CGFloat(Double.pi / 2)))
+        UIView.animate(withDuration: 0.4, delay: 0.0, options: [.repeat, .curveEaseIn], animations: {
+            wheel.transform = wheel.transform.rotated(by: .pi / 2)
         }, completion: nil)
     }
 
-    private func animateBody(index: Int = 0) {
-        if index >= body.count {
-            animateBody(index: 0)
-            return
+    private func animateBody() {
+        let duration = 0.08
+        for i in 0..<body.count {
+            UIView.animate(withDuration: duration, delay: Double(i) * duration * 2, options: [.curveLinear], animations: { [weak self] in
+                guard let self = self else { return }
+                let startFrame = self.body[i].frame
+                self.body[i].frame = CGRect(x: startFrame.minX, y: startFrame.minY - 15, width: startFrame.width, height: startFrame.height)
+            }, completion: { [weak self] finished in
+                UIView.animate(withDuration: duration, delay: 0, options: [.curveLinear], animations: {
+                    guard let self = self else { return }
+                    let endFrame = self.body[i].frame
+                    self.body[i].frame = CGRect(x: endFrame.minX, y: endFrame.minY + 15, width: endFrame.width, height: endFrame.height)
+                }, completion: { _ in
+                    if i == (self?.body.count ?? 0) - 1,
+                       self?.shouldAnimate ?? false {
+                        self?.animateBody()
+                    }
+                })
+            })
         }
-        let currentView = body[index]
-        UIView.animate(withDuration: 0.1, delay: 0, options: [.autoreverse, .curveLinear], animations: { 
-            currentView.frame = CGRect(x: currentView.frame.minX,
-                                       y: currentView.frame.minY - 15,
-                                       width: currentView.frame.width,
-                                       height: currentView.frame.height)
-        }, completion: { [weak self] _ in
-            guard let self = self,
-                  self.shouldAnimate else { return }
-            self.animateBody(index: index + 1)
-            UIView.animate(withDuration: 0.1, delay: 0, options: [.autoreverse, .curveLinear], animations: {
-                currentView.frame = CGRect(x: currentView.frame.minX,
-                                           y: currentView.frame.minY + 15,
-                                           width: currentView.frame.width,
-                                           height: currentView.frame.height)
-            }, completion: nil
-            )})
     }
 
     private func generateBody() {
