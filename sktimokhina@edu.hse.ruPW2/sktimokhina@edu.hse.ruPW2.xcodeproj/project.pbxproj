@@ -8,18 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		E341811A26F4E9EF00DC38AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E341811926F4E9EF00DC38AE /* AppDelegate.swift */; };
-		E341811E26F4E9EF00DC38AE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E341811D26F4E9EF00DC38AE /* ViewController.swift */; };
 		E341812326F4E9F100DC38AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E341812226F4E9F100DC38AE /* Assets.xcassets */; };
 		E341812626F4E9F100DC38AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E341812426F4E9F100DC38AE /* LaunchScreen.storyboard */; };
+		E3D60B0F26F4ED5A00452A8C /* MainViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D60B0B26F4ED5A00452A8C /* MainViewPresenter.swift */; };
+		E3D60B1026F4ED5A00452A8C /* MainViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D60B0C26F4ED5A00452A8C /* MainViewInteractor.swift */; };
+		E3D60B1126F4ED5A00452A8C /* MainScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D60B0D26F4ED5A00452A8C /* MainScreenVC.swift */; };
+		E3D60B1226F4ED5A00452A8C /* MainScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D60B0E26F4ED5A00452A8C /* MainScreenRouter.swift */; };
+		E3D60B1426F4EE5300452A8C /* MainScreenGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D60B1326F4EE5300452A8C /* MainScreenGraph.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E341811626F4E9EF00DC38AE /* sktimokhina@edu.hse.ruPW2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "sktimokhina@edu.hse.ruPW2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E341811926F4E9EF00DC38AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E341811D26F4E9EF00DC38AE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E341812226F4E9F100DC38AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E341812526F4E9F100DC38AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E341812726F4E9F100DC38AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E3D60B0B26F4ED5A00452A8C /* MainViewPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewPresenter.swift; sourceTree = "<group>"; };
+		E3D60B0C26F4ED5A00452A8C /* MainViewInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewInteractor.swift; sourceTree = "<group>"; };
+		E3D60B0D26F4ED5A00452A8C /* MainScreenVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenVC.swift; sourceTree = "<group>"; };
+		E3D60B0E26F4ED5A00452A8C /* MainScreenRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenRouter.swift; sourceTree = "<group>"; };
+		E3D60B1326F4EE5300452A8C /* MainScreenGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenGraph.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,13 +60,33 @@
 		E341811826F4E9EF00DC38AE /* sktimokhina@edu.hse.ruPW2 */ = {
 			isa = PBXGroup;
 			children = (
+				E341812D26F4EBCA00DC38AE /* Screens */,
 				E341811926F4E9EF00DC38AE /* AppDelegate.swift */,
-				E341811D26F4E9EF00DC38AE /* ViewController.swift */,
 				E341812226F4E9F100DC38AE /* Assets.xcassets */,
 				E341812426F4E9F100DC38AE /* LaunchScreen.storyboard */,
 				E341812726F4E9F100DC38AE /* Info.plist */,
 			);
 			path = "sktimokhina@edu.hse.ruPW2";
+			sourceTree = "<group>";
+		};
+		E341812D26F4EBCA00DC38AE /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				E3D60B0A26F4ED5A00452A8C /* MainScreen */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		E3D60B0A26F4ED5A00452A8C /* MainScreen */ = {
+			isa = PBXGroup;
+			children = (
+				E3D60B0B26F4ED5A00452A8C /* MainViewPresenter.swift */,
+				E3D60B0C26F4ED5A00452A8C /* MainViewInteractor.swift */,
+				E3D60B0D26F4ED5A00452A8C /* MainScreenVC.swift */,
+				E3D60B0E26F4ED5A00452A8C /* MainScreenRouter.swift */,
+				E3D60B1326F4EE5300452A8C /* MainScreenGraph.swift */,
+			);
+			path = MainScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -130,8 +158,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E341811E26F4E9EF00DC38AE /* ViewController.swift in Sources */,
 				E341811A26F4E9EF00DC38AE /* AppDelegate.swift in Sources */,
+				E3D60B1026F4ED5A00452A8C /* MainViewInteractor.swift in Sources */,
+				E3D60B1226F4ED5A00452A8C /* MainScreenRouter.swift in Sources */,
+				E3D60B0F26F4ED5A00452A8C /* MainViewPresenter.swift in Sources */,
+				E3D60B1126F4ED5A00452A8C /* MainScreenVC.swift in Sources */,
+				E3D60B1426F4EE5300452A8C /* MainScreenGraph.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

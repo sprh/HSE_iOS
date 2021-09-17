@@ -13,8 +13,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        let graph = MainScreenGraph()
         window = UIWindow()
-        window?.rootViewController = ViewController()
+        window?.rootViewController = graph.viewController
         window?.makeKeyAndVisible()
         return true
     }
