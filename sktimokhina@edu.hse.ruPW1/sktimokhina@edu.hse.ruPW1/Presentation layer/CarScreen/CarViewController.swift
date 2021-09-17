@@ -10,12 +10,11 @@ import UIKit
 final class CarViewController: UIViewController {
     private var car: Car!
     private var carWidth: CGFloat!
-    private var previousOrientation: UIInterfaceOrientation?
     private var shouldAnimate: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        previousOrientation = UIApplication.orientation
+        (UIApplication.shared.delegate as? AppDelegate)?.supportedOrientation = .portrait
         view.backgroundColor = .background
         carWidth = view.frame.width / 1.3
         car = Car(frame: CGRect(x: -carWidth, y: 10, width: carWidth, height: view.frame.height / 1.5))
@@ -27,28 +26,12 @@ final class CarViewController: UIViewController {
         shouldAnimate = true
         car.startAnimation()
         animateCar()
-        NotificationCenter.default.addObserver(self, selector: #selector(didChangeOrientation),
-                                               name: UIDevice.orientationDidChangeNotification, object: nil)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         shouldAnimate = false
         car.stopAnimation()
-        NotificationCenter.default.removeObserver(self)
-    }
-
-    @objc
-    func didChangeOrientation() {
-        let currentOrientation = UIApplication.orientation
-        if currentOrientation != previousOrientation {
-            car.stopAnimation()
-            carWidth = view.frame.width / 1.3
-            car.frame = CGRect(x: -carWidth, y: 10, width: carWidth, height: view.frame.height / 1.5)
-            car.startAnimation()
-            animateCar()
-        }
-        previousOrientation = currentOrientation
     }
 
     func animateCar() {
@@ -59,7 +42,7 @@ final class CarViewController: UIViewController {
         }
         let firstAnimationCompletion: (Bool) -> Void = { [weak self] _ in
             guard let self = self else { return }
-            UIView.animate(withDuration: 2.5, delay: 0.7, options: [.curveLinear], animations: { [weak self] in
+            UIView.animate(withDuration: 2.5, delay: 1.5, options: [.curveLinear], animations: { [weak self] in
                 guard let self = self else { return }
                 self.car.frame = CGRect(x: self.view.frame.width, y: 10, width: self.car.frame.width, height: self.car.frame.height)
             }, completion: {[weak self] _ in

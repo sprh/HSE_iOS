@@ -46,6 +46,7 @@ final class ShapesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        (UIApplication.shared.delegate as? AppDelegate)?.supportedOrientation = .all
         previousOrientation = UIApplication.orientation
         view.backgroundColor = .background
         setupUI()
