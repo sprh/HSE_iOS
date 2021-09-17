@@ -15,6 +15,10 @@
 		E3D60B1126F4ED5A00452A8C /* MainScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D60B0D26F4ED5A00452A8C /* MainScreenVC.swift */; };
 		E3D60B1226F4ED5A00452A8C /* MainScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D60B0E26F4ED5A00452A8C /* MainScreenRouter.swift */; };
 		E3D60B1426F4EE5300452A8C /* MainScreenGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D60B1326F4EE5300452A8C /* MainScreenGraph.swift */; };
+		E3D60B1A26F4F3F400452A8C /* SettingsScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D60B1926F4F3F400452A8C /* SettingsScreenPresenter.swift */; };
+		E3D60B1C26F4F3FE00452A8C /* SettingsScreenInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D60B1B26F4F3FE00452A8C /* SettingsScreenInteractor.swift */; };
+		E3D60B1E26F4F40C00452A8C /* SettingsScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D60B1D26F4F40C00452A8C /* SettingsScreenVC.swift */; };
+		E3D60B2026F4F42400452A8C /* SettingsScreenGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D60B1F26F4F42400452A8C /* SettingsScreenGraph.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +32,10 @@
 		E3D60B0D26F4ED5A00452A8C /* MainScreenVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenVC.swift; sourceTree = "<group>"; };
 		E3D60B0E26F4ED5A00452A8C /* MainScreenRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenRouter.swift; sourceTree = "<group>"; };
 		E3D60B1326F4EE5300452A8C /* MainScreenGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenGraph.swift; sourceTree = "<group>"; };
+		E3D60B1926F4F3F400452A8C /* SettingsScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenPresenter.swift; sourceTree = "<group>"; };
+		E3D60B1B26F4F3FE00452A8C /* SettingsScreenInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenInteractor.swift; sourceTree = "<group>"; };
+		E3D60B1D26F4F40C00452A8C /* SettingsScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenVC.swift; sourceTree = "<group>"; };
+		E3D60B1F26F4F42400452A8C /* SettingsScreenGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenGraph.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +80,7 @@
 		E341812D26F4EBCA00DC38AE /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				E3D60B1826F4F3D700452A8C /* SettingsScreen */,
 				E3D60B0A26F4ED5A00452A8C /* MainScreen */,
 			);
 			path = Screens;
@@ -87,6 +96,17 @@
 				E3D60B1326F4EE5300452A8C /* MainScreenGraph.swift */,
 			);
 			path = MainScreen;
+			sourceTree = "<group>";
+		};
+		E3D60B1826F4F3D700452A8C /* SettingsScreen */ = {
+			isa = PBXGroup;
+			children = (
+				E3D60B1926F4F3F400452A8C /* SettingsScreenPresenter.swift */,
+				E3D60B1B26F4F3FE00452A8C /* SettingsScreenInteractor.swift */,
+				E3D60B1D26F4F40C00452A8C /* SettingsScreenVC.swift */,
+				E3D60B1F26F4F42400452A8C /* SettingsScreenGraph.swift */,
+			);
+			path = SettingsScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -159,10 +179,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				E341811A26F4E9EF00DC38AE /* AppDelegate.swift in Sources */,
+				E3D60B1E26F4F40C00452A8C /* SettingsScreenVC.swift in Sources */,
 				E3D60B1026F4ED5A00452A8C /* MainScreenInteractor.swift in Sources */,
+				E3D60B2026F4F42400452A8C /* SettingsScreenGraph.swift in Sources */,
 				E3D60B1226F4ED5A00452A8C /* MainScreenRouter.swift in Sources */,
 				E3D60B0F26F4ED5A00452A8C /* MainScreenPresenter.swift in Sources */,
 				E3D60B1126F4ED5A00452A8C /* MainScreenVC.swift in Sources */,
+				E3D60B1C26F4F3FE00452A8C /* SettingsScreenInteractor.swift in Sources */,
+				E3D60B1A26F4F3F400452A8C /* SettingsScreenPresenter.swift in Sources */,
 				E3D60B1426F4EE5300452A8C /* MainScreenGraph.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
