@@ -12,8 +12,10 @@ protocol ISettingsScreenInteractor: AnyObject {
 
 final class SettingsScreenInteractor: ISettingsScreenInteractor {
     private var presenter: ISettingsScreenPresenter
+    private var userDefaults: IUserDefautsManager
 
-    init(presenter: ISettingsScreenPresenter) {
+    init(presenter: ISettingsScreenPresenter, userDefaults: IUserDefautsManager) {
         self.presenter = presenter
+        self.userDefaults = userDefaults
     }
 }

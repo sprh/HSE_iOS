@@ -16,10 +16,10 @@ final class SettingsScreenGraph {
         view
     }
 
-    init() {
+    init(userDefaults: IUserDefautsManager) {
         view = SettingsScreenVC()
         presenter = SettingsScreenPresenter(viewController: view)
-        interactor = SettingsScreenInteractor(presenter: presenter)
+        interactor = SettingsScreenInteractor(presenter: presenter, userDefaults: userDefaults)
         view.interactor = interactor
     }
 }

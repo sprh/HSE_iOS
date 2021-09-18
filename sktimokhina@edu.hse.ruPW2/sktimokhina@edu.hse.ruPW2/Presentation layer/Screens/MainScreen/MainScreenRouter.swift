@@ -8,7 +8,7 @@
 import UIKit
 
 protocol IMainScreenRouter: AnyObject {
-    func showSettingsScreen()
+    func showSettingsScreen(userDefaults: IUserDefautsManager)
 }
 
 final class MainScreenRouter: IMainScreenRouter {
@@ -18,8 +18,8 @@ final class MainScreenRouter: IMainScreenRouter {
         self.navigationController = navigationController
     }
 
-    func showSettingsScreen() {
-        let graph = SettingsScreenGraph()
+    func showSettingsScreen(userDefaults: IUserDefautsManager) {
+        let graph = SettingsScreenGraph(userDefaults: userDefaults)
         navigationController.present(graph.viewController, animated: true)
     }
 }

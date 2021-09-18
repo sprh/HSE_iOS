@@ -9,9 +9,11 @@ import UIKit
 
 protocol IMainScreenVC: UIViewController {
     var interactor: IMainScreenInteractor! { set get }
+    
+    func shouldShowSettings(userDefaults: IUserDefautsManager)
 }
 
-final class MainScreenVC: UIViewController, IMainScreenVC {
+final class MainScreenVC: UIViewController {
     var interactor: IMainScreenInteractor!
     private var router: IMainScreenRouter
     
@@ -38,6 +40,12 @@ final class MainScreenVC: UIViewController, IMainScreenVC {
     }
 
     @objc func didTapSettingsButton() {
-        router.showSettingsScreen()
+        interactor.didTapSettingsButton()
+    }
+}
+
+extension MainScreenVC: IMainScreenVC {
+    func shouldShowSettings(userDefaults: IUserDefautsManager) {
+        router.showSettingsScreen(userDefaults: userDefaults)
     }
 }

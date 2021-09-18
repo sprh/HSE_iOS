@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let navigationController = UINavigationController()
-        let graph = MainScreenGraph(navigationController: navigationController)
+        let graph = MainScreenGraph(navigationController: navigationController, userDefaults: UserDefaultsManager())
         window = UIWindow()
         window?.rootViewController = navigationController
         navigationController.pushViewController(graph.viewController, animated: true)

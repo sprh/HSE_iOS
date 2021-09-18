@@ -17,11 +17,11 @@ final class MainScreenGraph {
         view
     }
 
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, userDefaults: IUserDefautsManager) {
         router = MainScreenRouter(navigationController: navigationController)
         view = MainScreenVC(router: router)
         presenter = MainScreenPresenter(viewController: view)
-        interactor = MainScreenInteractor(presenter: presenter)
+        interactor = MainScreenInteractor(presenter: presenter, userDefaults: userDefaults)
         view.interactor = interactor
     }
 }

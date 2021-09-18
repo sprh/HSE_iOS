@@ -8,6 +8,7 @@
 import Foundation
 
 protocol IMainScreenPresenter: AnyObject {
+    func shouldShowSettings(userDefaults: IUserDefautsManager)
 }
 
 final class MainScreenPresenter: IMainScreenPresenter {
@@ -15,5 +16,9 @@ final class MainScreenPresenter: IMainScreenPresenter {
 
     init(viewController: IMainScreenVC) {
         self.viewController = viewController
+    }
+
+    func shouldShowSettings(userDefaults: IUserDefautsManager) {
+        viewController.shouldShowSettings(userDefaults: userDefaults)
     }
 }
