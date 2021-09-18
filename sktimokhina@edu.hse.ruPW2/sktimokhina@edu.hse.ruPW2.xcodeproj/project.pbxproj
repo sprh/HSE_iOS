@@ -21,6 +21,7 @@
 		E3D60B2026F4F42400452A8C /* SettingsScreenGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D60B1F26F4F42400452A8C /* SettingsScreenGraph.swift */; };
 		E3D60B2426F5E2AD00452A8C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D60B2326F5E2AD00452A8C /* SettingsView.swift */; };
 		E3D60B2626F5E97E00452A8C /* MainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D60B2526F5E97E00452A8C /* MainButton.swift */; };
+		E3D60B2926F5EC1600452A8C /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D60B2826F5EC1600452A8C /* UserDefaultsManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		E3D60B1F26F4F42400452A8C /* SettingsScreenGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenGraph.swift; sourceTree = "<group>"; };
 		E3D60B2326F5E2AD00452A8C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		E3D60B2526F5E97E00452A8C /* MainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButton.swift; sourceTree = "<group>"; };
+		E3D60B2826F5EC1600452A8C /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 		E341811826F4E9EF00DC38AE /* sktimokhina@edu.hse.ruPW2 */ = {
 			isa = PBXGroup;
 			children = (
+				E3D60B2726F5EC0700452A8C /* Core layer */,
 				E341812D26F4EBCA00DC38AE /* Presentation layer */,
 				E341811926F4E9EF00DC38AE /* AppDelegate.swift */,
 				E341812226F4E9F100DC38AE /* Assets.xcassets */,
@@ -129,6 +132,14 @@
 				E3D60B2526F5E97E00452A8C /* MainButton.swift */,
 			);
 			path = "Custom views";
+			sourceTree = "<group>";
+		};
+		E3D60B2726F5EC0700452A8C /* Core layer */ = {
+			isa = PBXGroup;
+			children = (
+				E3D60B2826F5EC1600452A8C /* UserDefaultsManager.swift */,
+			);
+			path = "Core layer";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,6 +214,7 @@
 				E341811A26F4E9EF00DC38AE /* AppDelegate.swift in Sources */,
 				E3D60B1E26F4F40C00452A8C /* SettingsScreenVC.swift in Sources */,
 				E3D60B1026F4ED5A00452A8C /* MainScreenInteractor.swift in Sources */,
+				E3D60B2926F5EC1600452A8C /* UserDefaultsManager.swift in Sources */,
 				E3D60B2026F4F42400452A8C /* SettingsScreenGraph.swift in Sources */,
 				E3D60B1226F4ED5A00452A8C /* MainScreenRouter.swift in Sources */,
 				E3D60B0F26F4ED5A00452A8C /* MainScreenPresenter.swift in Sources */,
