@@ -20,6 +20,7 @@
 		E3D60B1E26F4F40C00452A8C /* SettingsScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D60B1D26F4F40C00452A8C /* SettingsScreenVC.swift */; };
 		E3D60B2026F4F42400452A8C /* SettingsScreenGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D60B1F26F4F42400452A8C /* SettingsScreenGraph.swift */; };
 		E3D60B2426F5E2AD00452A8C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D60B2326F5E2AD00452A8C /* SettingsView.swift */; };
+		E3D60B2626F5E97E00452A8C /* MainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D60B2526F5E97E00452A8C /* MainButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		E3D60B1D26F4F40C00452A8C /* SettingsScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenVC.swift; sourceTree = "<group>"; };
 		E3D60B1F26F4F42400452A8C /* SettingsScreenGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenGraph.swift; sourceTree = "<group>"; };
 		E3D60B2326F5E2AD00452A8C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		E3D60B2526F5E97E00452A8C /* MainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				E3D60B2326F5E2AD00452A8C /* SettingsView.swift */,
+				E3D60B2526F5E97E00452A8C /* MainButton.swift */,
 			);
 			path = "Custom views";
 			sourceTree = "<group>";
@@ -205,6 +208,7 @@
 				E3D60B0F26F4ED5A00452A8C /* MainScreenPresenter.swift in Sources */,
 				E3D60B1126F4ED5A00452A8C /* MainScreenVC.swift in Sources */,
 				E3D60B1C26F4F3FE00452A8C /* SettingsScreenInteractor.swift in Sources */,
+				E3D60B2626F5E97E00452A8C /* MainButton.swift in Sources */,
 				E3D60B1A26F4F3F400452A8C /* SettingsScreenPresenter.swift in Sources */,
 				E3D60B1426F4EE5300452A8C /* MainScreenGraph.swift in Sources */,
 				E3D60B2426F5E2AD00452A8C /* SettingsView.swift in Sources */,
