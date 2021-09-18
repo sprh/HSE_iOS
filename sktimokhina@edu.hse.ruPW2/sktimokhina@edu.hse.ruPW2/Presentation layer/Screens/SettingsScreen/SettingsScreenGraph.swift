@@ -19,7 +19,8 @@ final class SettingsScreenGraph {
     init(userDefaults: IUserDefautsManager) {
         view = SettingsScreenVC()
         presenter = SettingsScreenPresenter(viewController: view)
-        interactor = SettingsScreenInteractor(presenter: presenter, userDefaults: userDefaults)
+        interactor = SettingsScreenInteractor(presenter: presenter,
+                                              userDefaults: userDefaults)
         view.interactor = interactor
     }
 }

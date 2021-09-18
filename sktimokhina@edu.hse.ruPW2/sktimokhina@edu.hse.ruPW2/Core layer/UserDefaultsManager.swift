@@ -18,22 +18,6 @@ final class UserDefaultsManager: IUserDefautsManager {
         case greenColor = "GreenColor"
         case blueColor = "BlueColor"
         case showLocation = "Location"
-
-        enum `Type` {
-            case bool
-            case string
-        }
-
-        func getType(for key: Keys) -> Type {
-            switch key {
-            case .redColor,
-                 .greenColor,
-                 .blueColor:
-                return Type.string
-            case .showLocation:
-                return Type.bool
-            }
-        }
     }
 
     private let defaults: UserDefaults

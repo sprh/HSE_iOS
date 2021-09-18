@@ -9,6 +9,8 @@ import UIKit
 
 protocol ISettingsScreenVC: UIViewController {
     var interactor: ISettingsScreenInteractor! { get set }
+    func updateSaveButton(red: Double, green: Double, blue: Double)
+    func updateLocationSwitch(isOn: Bool)
 }
 
 final class SettingsScreenVC: UIViewController, ISettingsScreenVC {
@@ -22,16 +24,12 @@ final class SettingsScreenVC: UIViewController, ISettingsScreenVC {
     }()
 
     private var saveButton: UIButton = {
-        let viewModel =
-            MainButton.ViewModel(
-                font: UIFont.preferredFont(forTextStyle: .headline),
-                title: "Save",
-                enabledTextColor: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1),
-                disabledTextColor: #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1))
-        let button = MainButton(viewModel: viewModel)
+        let button = UIButton()
+        button.setTitle("Save", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.titleLabel?.font = UIFont.preferredFont(forTextStyle: .headline)
         button.layer.cornerRadius = 20
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.isEnabled = false
         return button
     }()
 
@@ -39,6 +37,7 @@ final class SettingsScreenVC: UIViewController, ISettingsScreenVC {
         super.viewDidLoad()
         view.backgroundColor = #colorLiteral(red: 1, green: 0.9764078259, blue: 0.8245866895, alpha: 1)
         setupUI()
+        addTargets()
     }
 
     func setupUI() {
@@ -56,5 +55,38 @@ final class SettingsScreenVC: UIViewController, ISettingsScreenVC {
             saveButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
             saveButton.heightAnchor.constraint(equalToConstant: 55)
         ])
+    }
+
+    func addTargets() {
+        saveButton.addTarget(self, action: #selector(didTapSaveButton), for: .touchUpInside)
+        settingsView.redColorSlider.addTarget(self, action: #selector(didUpdateColor(_:)), for: .valueChanged)
+        settingsView.greenColorSlider.addTarget(self, action: #selector(didUpdateColor(_:)), for: .valueChanged)
+        settingsView.blueColorSlider.addTarget(self, action: #selector(didUpdateColor(_:)), for: .valueChanged)
+    }
+
+    func updateSaveButton(isEnabled: Bool) {
+        saveButton.isEnabled = isEnabled
+    }
+
+    func updateLocationSwitch(isOn: Bool) {
+        settingsView.locationSwitch.isOn = isOn
+    }
+
+    func updateSaveButton(red: Double, green: Double, blue: Double) {
+        saveButton.backgroundColor = UIColor(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: 1.0)
+    }
+
+    @objc func didTapSaveButton() {
+    }
+
+    @objc func didUpdateColor(_ sender: ColorSlider) {
+        switch sender.color {
+        case .red:
+            interactor.didUpdate(for: .redColor, newValue: sender.value)
+        case .green:
+            interactor.didUpdate(for: .greenColor, newValue: sender.value)
+        case .blue:
+            interactor.didUpdate(for: .blueColor, newValue: sender.value)
+        }
     }
 }

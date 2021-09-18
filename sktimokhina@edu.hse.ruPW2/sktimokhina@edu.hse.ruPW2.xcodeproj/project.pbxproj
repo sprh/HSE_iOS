@@ -22,6 +22,7 @@
 		E3D60B2426F5E2AD00452A8C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D60B2326F5E2AD00452A8C /* SettingsView.swift */; };
 		E3D60B2626F5E97E00452A8C /* MainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D60B2526F5E97E00452A8C /* MainButton.swift */; };
 		E3D60B2926F5EC1600452A8C /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D60B2826F5EC1600452A8C /* UserDefaultsManager.swift */; };
+		E3D60B2B26F5F63500452A8C /* ColorSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D60B2A26F5F63500452A8C /* ColorSlider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		E3D60B2326F5E2AD00452A8C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		E3D60B2526F5E97E00452A8C /* MainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButton.swift; sourceTree = "<group>"; };
 		E3D60B2826F5EC1600452A8C /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		E3D60B2A26F5F63500452A8C /* ColorSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSlider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 			children = (
 				E3D60B2326F5E2AD00452A8C /* SettingsView.swift */,
 				E3D60B2526F5E97E00452A8C /* MainButton.swift */,
+				E3D60B2A26F5F63500452A8C /* ColorSlider.swift */,
 			);
 			path = "Custom views";
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3D60B2B26F5F63500452A8C /* ColorSlider.swift in Sources */,
 				E341811A26F4E9EF00DC38AE /* AppDelegate.swift in Sources */,
 				E3D60B1E26F4F40C00452A8C /* SettingsScreenVC.swift in Sources */,
 				E3D60B1026F4ED5A00452A8C /* MainScreenInteractor.swift in Sources */,

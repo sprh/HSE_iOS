@@ -16,13 +16,11 @@ final class SettingsView: UIStackView {
         return label
     }
 
-    private func createSlider(with tintColor: UIColor) -> UISlider {
-        let slider = UISlider()
+    private func createSlider(color: ColorSlider.Color) -> ColorSlider {
+        let slider = ColorSlider(frame: .zero, color: color)
         slider.translatesAutoresizingMaskIntoConstraints = false
-        slider.thumbTintColor = tintColor
-        slider.tintColor = tintColor
         slider.minimumValue = 0
-        slider.maximumValue = 255
+        slider.maximumValue = 1
         return slider
     }
 
@@ -32,15 +30,15 @@ final class SettingsView: UIStackView {
         return locationSwitch
     }()
 
-    var redColorSlider: UISlider!
-    var greenColorSlider: UISlider!
-    var blueColorSlider: UISlider!
+    var redColorSlider: ColorSlider!
+    var greenColorSlider: ColorSlider!
+    var blueColorSlider: ColorSlider!
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        redColorSlider = createSlider(with: .red)
-        greenColorSlider = createSlider(with: .green)
-        blueColorSlider = createSlider(with: .blue)
+        redColorSlider = createSlider(color: .red)
+        greenColorSlider = createSlider(color: .green)
+        blueColorSlider = createSlider(color: .blue)
     }
 
     required init(coder: NSCoder) {
