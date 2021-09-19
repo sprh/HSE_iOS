@@ -6,10 +6,11 @@
 //
 
 import UIKit
+import AVKit
 
 protocol IMainScreenVC: UIViewController {
     var interactor: IMainScreenInteractor! { set get }
-    
+
     func shouldShowSettings(userDefaults: IUserDefautsManager)
 }
 

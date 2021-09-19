@@ -26,6 +26,7 @@
 		E3D60B3026F7126600452A8C /* ViewControllerAnimatedTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D60B2F26F7126600452A8C /* ViewControllerAnimatedTransitioning.swift */; };
 		E3D60B3226F713F900452A8C /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D60B3126F713F900452A8C /* PresentationController.swift */; };
 		E3D60B3426F7145A00452A8C /* TransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D60B3326F7145A00452A8C /* TransitioningDelegate.swift */; };
+		E3D60B3626F734EB00452A8C /* TouchForwardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D60B3526F734EB00452A8C /* TouchForwardingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		E3D60B2F26F7126600452A8C /* ViewControllerAnimatedTransitioning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerAnimatedTransitioning.swift; sourceTree = "<group>"; };
 		E3D60B3126F713F900452A8C /* PresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
 		E3D60B3326F7145A00452A8C /* TransitioningDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitioningDelegate.swift; sourceTree = "<group>"; };
+		E3D60B3526F734EB00452A8C /* TouchForwardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchForwardingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +160,7 @@
 				E3D60B2F26F7126600452A8C /* ViewControllerAnimatedTransitioning.swift */,
 				E3D60B3126F713F900452A8C /* PresentationController.swift */,
 				E3D60B3326F7145A00452A8C /* TransitioningDelegate.swift */,
+				E3D60B3526F734EB00452A8C /* TouchForwardingView.swift */,
 			);
 			path = "Custom VC presentation ";
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 				E3D60B1226F4ED5A00452A8C /* MainScreenRouter.swift in Sources */,
 				E3D60B3226F713F900452A8C /* PresentationController.swift in Sources */,
 				E3D60B0F26F4ED5A00452A8C /* MainScreenPresenter.swift in Sources */,
+				E3D60B3626F734EB00452A8C /* TouchForwardingView.swift in Sources */,
 				E3D60B1126F4ED5A00452A8C /* MainScreenVC.swift in Sources */,
 				E3D60B1C26F4F3FE00452A8C /* SettingsScreenInteractor.swift in Sources */,
 				E3D60B2626F5E97E00452A8C /* MainButton.swift in Sources */,

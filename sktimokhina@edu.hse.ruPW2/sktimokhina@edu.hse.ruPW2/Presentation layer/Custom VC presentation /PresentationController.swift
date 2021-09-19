@@ -8,6 +8,9 @@
 import UIKit
 
 final class PresentationController: UIPresentationController {
+    var panGestureAnchorPoint: CGPoint?
+    private var recognizer: UITapGestureRecognizer!
+
     override var frameOfPresentedViewInContainerView: CGRect {
         guard let viewFrame = presentedView?.bounds.size,
               let containerViewFrame = containerView?.frame else { return .zero }
@@ -22,28 +25,23 @@ final class PresentationController: UIPresentationController {
     override func containerViewDidLayoutSubviews() {
         super.containerViewDidLayoutSubviews()
         presentedView?.frame = frameOfPresentedViewInContainerView
-        let recognizer = UITapGestureRecognizer(
+        recognizer = UITapGestureRecognizer(
           target: self,
           action: #selector(handleTap(recognizer:)))
         containerView?.addGestureRecognizer(recognizer)
     }
 
-    override init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?) {
-        super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
-
-        presentedView?.autoresizingMask = [
-            .flexibleTopMargin,
-            .flexibleBottomMargin,
-            .flexibleLeftMargin,
-            .flexibleRightMargin
-        ]
-        presentedView?.layer.cornerRadius = 20
-
-        presentedView?.translatesAutoresizingMaskIntoConstraints = true
-    }
 
     @objc func handleTap(recognizer: UITapGestureRecognizer) {
-      presentingViewController.dismiss(animated: true)
+        let location = recognizer.location(in: containerView)
+        guard let frame = presentedView?.frame, !(frame.minX < location.x &&
+                                                  location.x < frame.maxX &&
+                                                  frame.minY < location.y) else {
+            return
+        }
+
+        presentingViewController.dismiss(animated: true)
+
     }
 
     override func dismissalTransitionWillBegin() {
