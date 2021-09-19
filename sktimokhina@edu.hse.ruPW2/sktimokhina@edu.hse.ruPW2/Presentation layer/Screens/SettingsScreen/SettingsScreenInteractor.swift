@@ -9,6 +9,7 @@ import Foundation
 
 protocol ISettingsScreenInteractor: AnyObject {
     func didUpdate<T>(for key: UserDefaultsManager.Keys, newValue: T)
+    func shouldUpdateView()
 }
 
 final class SettingsScreenInteractor: ISettingsScreenInteractor {
@@ -33,5 +34,12 @@ final class SettingsScreenInteractor: ISettingsScreenInteractor {
             userDefaults.set(for: .showLocation, value: newValue)
         }
         presenter.shouldNotifyObserver()
+    }
+
+    func shouldUpdateView() {
+        presenter.shouldUpdateView(red: userDefaults.get(for: .redColor) ?? 0.0,
+                                   green: userDefaults.get(for: .greenColor) ?? 0.0,
+                                   blue: userDefaults.get(for: .blueColor) ?? 0.0,
+                                   locationShown: userDefaults.get(for: .showLocation) ?? true)
     }
 }

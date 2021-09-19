@@ -9,6 +9,7 @@ import UIKit
 
 protocol ISettingsScreenPresenter: AnyObject {
     func shouldNotifyObserver()
+    func shouldUpdateView(red: Float, green: Float, blue: Float, locationShown: Bool)
 }
 
 final class SettingsScreenPresenter: ISettingsScreenPresenter {
@@ -20,5 +21,9 @@ final class SettingsScreenPresenter: ISettingsScreenPresenter {
 
     func shouldNotifyObserver() {
         viewController.notifyObserver()
+    }
+
+    func shouldUpdateView(red: Float, green: Float, blue: Float, locationShown: Bool) {
+        viewController.shouldUpdateView(red: red, green: green, blue: blue, locationShown: locationShown)
     }
 }

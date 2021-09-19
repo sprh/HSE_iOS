@@ -8,13 +8,13 @@
 import UIKit
 
 protocol ISettingsScreenObserver: AnyObject {
-    func didUpdateSettings()
-}
+    func didUpdateSettings()}
 
 protocol ISettingsScreenVC: UIViewController {
     var interactor: ISettingsScreenInteractor! { get set }
     var observer: ISettingsScreenObserver? { get set }
     func updateLocationSwitch(isOn: Bool)
+    func shouldUpdateView(red: Float, green: Float, blue: Float, locationShown: Bool)
     func notifyObserver()
 }
 
@@ -43,6 +43,7 @@ final class SettingsScreenVC: UIViewController, ISettingsScreenVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = #colorLiteral(red: 1, green: 0.9705604911, blue: 0.7168341279, alpha: 1)
+        interactor.shouldUpdateView()
         setupUI()
         addTargets()
     }
@@ -71,6 +72,7 @@ final class SettingsScreenVC: UIViewController, ISettingsScreenVC {
         settingsView.redColorSlider.addTarget(self, action: #selector(didUpdateColor(_:)), for: .valueChanged)
         settingsView.greenColorSlider.addTarget(self, action: #selector(didUpdateColor(_:)), for: .valueChanged)
         settingsView.blueColorSlider.addTarget(self, action: #selector(didUpdateColor(_:)), for: .valueChanged)
+        settingsView.locationSwitch.addTarget(self, action: #selector(didToggleLocation(_:)), for: .valueChanged)
         closeButton.addTarget(self, action: #selector(didTapCloseButton), for: .touchUpInside)
     }
 
@@ -81,6 +83,14 @@ final class SettingsScreenVC: UIViewController, ISettingsScreenVC {
     func notifyObserver() {
         observer?.didUpdateSettings()
     }
+
+    func shouldUpdateView(red: Float, green: Float, blue: Float, locationShown: Bool) {
+        settingsView.redColorSlider.value = red
+        settingsView.greenColorSlider.value = green
+        settingsView.blueColorSlider.value = blue
+        settingsView.locationSwitch.isOn = locationShown
+    }
+
 
     @objc func didTapCloseButton() {
         dismiss(animated: true)
@@ -95,5 +105,9 @@ final class SettingsScreenVC: UIViewController, ISettingsScreenVC {
         case .blue:
             interactor.didUpdate(for: .blueColor, newValue: sender.value)
         }
+    }
+
+    @objc func didToggleLocation(_ sender: UISwitch) {
+        interactor.didUpdate(for: .showLocation, newValue: sender.isOn)
     }
 }
