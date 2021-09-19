@@ -20,6 +20,7 @@ final class MainScreenVC: UIViewController {
     var interactor: IMainScreenInteractor!
     private var router: IMainScreenRouter
     private var locationManager: CLLocationManager
+    private var audioPlayer: AVAudioPlayer?
 
     private var locationStack: UIStackView = {
         let stack = UIStackView()
@@ -92,6 +93,10 @@ final class MainScreenVC: UIViewController {
     }
 
     @objc func didTapSettingsButton() {
+        if let audioData = NSDataAsset(name: "revelation_phase") {
+            audioPlayer = try? AVAudioPlayer(data: audioData.data)
+            audioPlayer?.play()
+        }
         interactor.didTapSettingsButton()
     }
 }
