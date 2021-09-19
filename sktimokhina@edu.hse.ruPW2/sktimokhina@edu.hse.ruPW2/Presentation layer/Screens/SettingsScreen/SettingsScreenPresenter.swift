@@ -8,6 +8,7 @@
 import UIKit
 
 protocol ISettingsScreenPresenter: AnyObject {
+    func shouldNotifyObserver()
 }
 
 final class SettingsScreenPresenter: ISettingsScreenPresenter {
@@ -15,5 +16,9 @@ final class SettingsScreenPresenter: ISettingsScreenPresenter {
 
     init(viewController: ISettingsScreenVC) {
         self.viewController = viewController
+    }
+
+    func shouldNotifyObserver() {
+        viewController.notifyObserver()
     }
 }

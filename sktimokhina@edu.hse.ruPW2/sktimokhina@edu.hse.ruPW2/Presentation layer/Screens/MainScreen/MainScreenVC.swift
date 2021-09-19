@@ -88,9 +88,13 @@ final class MainScreenVC: UIViewController {
     }
 }
 
-extension MainScreenVC: IMainScreenVC {
+extension MainScreenVC: IMainScreenVC, ISettingsScreenObserver {
+    func didUpdateSettings() {
+        interactor.shouldUpdateView()
+    }
+
     func shouldShowSettings(userDefaults: IUserDefautsManager) {
-        router.showSettingsScreen(userDefaults: userDefaults)
+        router.showSettingsScreen(userDefaults: userDefaults, observer: self)
     }
 
     func shouldUpdateView(red: Float, green: Float, blue: Float, locationShown: Bool) {

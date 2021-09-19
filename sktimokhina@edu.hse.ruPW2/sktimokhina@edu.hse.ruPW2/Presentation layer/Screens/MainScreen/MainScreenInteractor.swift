@@ -28,7 +28,7 @@ final class MainScreenInteractor: IMainScreenInteractor {
     func shouldUpdateView() {
         presenter.shouldUpdateView(red: userDefaults.get(for: .redColor) ?? 0.0,
                                    green: userDefaults.get(for: .greenColor) ?? 0.0,
-                                   blue: userDefaults.get(for: .redColor) ?? 0.0,
+                                   blue: userDefaults.get(for: .blueColor) ?? 0.0,
                                    locationShown: userDefaults.get(for: .showLocation) ?? true)
     }
 }

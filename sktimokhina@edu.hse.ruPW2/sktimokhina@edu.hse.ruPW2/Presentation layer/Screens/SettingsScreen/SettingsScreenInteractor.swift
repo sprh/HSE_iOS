@@ -32,5 +32,6 @@ final class SettingsScreenInteractor: ISettingsScreenInteractor {
         case .showLocation:
             userDefaults.set(for: .showLocation, value: newValue)
         }
+        presenter.shouldNotifyObserver()
     }
 }

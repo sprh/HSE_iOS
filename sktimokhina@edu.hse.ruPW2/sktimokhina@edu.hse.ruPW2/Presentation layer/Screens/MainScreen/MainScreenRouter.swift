@@ -8,7 +8,7 @@
 import UIKit
 
 protocol IMainScreenRouter: AnyObject {
-    func showSettingsScreen(userDefaults: IUserDefautsManager)
+    func showSettingsScreen(userDefaults: IUserDefautsManager, observer: ISettingsScreenObserver)
 }
 
 final class MainScreenRouter: IMainScreenRouter {
@@ -19,8 +19,8 @@ final class MainScreenRouter: IMainScreenRouter {
         self.navigationController = navigationController
     }
 
-    func showSettingsScreen(userDefaults: IUserDefautsManager) {
-        let graph = SettingsScreenGraph(userDefaults: userDefaults)
+    func showSettingsScreen(userDefaults: IUserDefautsManager, observer: ISettingsScreenObserver) {
+        let graph = SettingsScreenGraph(userDefaults: userDefaults, observer: observer)
         let viewController = graph.viewController
         viewController.transitioningDelegate = transitioningDelegate
         viewController.modalTransitionStyle = .crossDissolve

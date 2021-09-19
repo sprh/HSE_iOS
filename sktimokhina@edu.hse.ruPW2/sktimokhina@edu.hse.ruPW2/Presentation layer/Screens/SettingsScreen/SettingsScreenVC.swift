@@ -7,13 +7,20 @@
 
 import UIKit
 
+protocol ISettingsScreenObserver: AnyObject {
+    func didUpdateSettings()
+}
+
 protocol ISettingsScreenVC: UIViewController {
     var interactor: ISettingsScreenInteractor! { get set }
+    var observer: ISettingsScreenObserver? { get set }
     func updateLocationSwitch(isOn: Bool)
+    func notifyObserver()
 }
 
 final class SettingsScreenVC: UIViewController, ISettingsScreenVC {
     var interactor: ISettingsScreenInteractor!
+    weak var observer: ISettingsScreenObserver?
 
     private var settingsView: SettingsView = {
         let stack = SettingsView(frame: .zero)
@@ -69,6 +76,10 @@ final class SettingsScreenVC: UIViewController, ISettingsScreenVC {
 
     func updateLocationSwitch(isOn: Bool) {
         settingsView.locationSwitch.isOn = isOn
+    }
+
+    func notifyObserver() {
+        observer?.didUpdateSettings()
     }
 
     @objc func didTapCloseButton() {
