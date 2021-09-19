@@ -64,13 +64,15 @@ final class SettingsScreenVC: UIViewController, ISettingsScreenVC {
         settingsView.redColorSlider.addTarget(self, action: #selector(didUpdateColor(_:)), for: .valueChanged)
         settingsView.greenColorSlider.addTarget(self, action: #selector(didUpdateColor(_:)), for: .valueChanged)
         settingsView.blueColorSlider.addTarget(self, action: #selector(didUpdateColor(_:)), for: .valueChanged)
+        closeButton.addTarget(self, action: #selector(didTapCloseButton), for: .touchUpInside)
     }
 
     func updateLocationSwitch(isOn: Bool) {
         settingsView.locationSwitch.isOn = isOn
     }
 
-    @objc func didTapSaveButton() {
+    @objc func didTapCloseButton() {
+        dismiss(animated: true)
     }
 
     @objc func didUpdateColor(_ sender: ColorSlider) {

@@ -13,10 +13,10 @@ final class TransitioningDelegate: NSObject, UIViewControllerTransitioningDelega
     }
 
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return ViewControllerAnimatedTransitioning()
+        return ViewControllerAnimatedTransitioning(type: .present)
     }
 
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return ViewControllerAnimatedTransitioning()
+        return ViewControllerAnimatedTransitioning(type: .dismiss)
     }
 }

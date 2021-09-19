@@ -22,6 +22,10 @@ final class PresentationController: UIPresentationController {
     override func containerViewDidLayoutSubviews() {
         super.containerViewDidLayoutSubviews()
         presentedView?.frame = frameOfPresentedViewInContainerView
+        let recognizer = UITapGestureRecognizer(
+          target: self,
+          action: #selector(handleTap(recognizer:)))
+        containerView?.addGestureRecognizer(recognizer)
     }
 
     override init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?) {
@@ -36,5 +40,20 @@ final class PresentationController: UIPresentationController {
         presentedView?.layer.cornerRadius = 20
 
         presentedView?.translatesAutoresizingMaskIntoConstraints = true
+    }
+
+    @objc func handleTap(recognizer: UITapGestureRecognizer) {
+      presentingViewController.dismiss(animated: true)
+    }
+
+    override func dismissalTransitionWillBegin() {
+      guard let coordinator = presentedViewController.transitionCoordinator else {
+        presentedView?.alpha = 0.0
+        return
+      }
+
+      coordinator.animate(alongsideTransition: { _ in
+        self.presentedView?.alpha = 0.0
+      })
     }
 }
