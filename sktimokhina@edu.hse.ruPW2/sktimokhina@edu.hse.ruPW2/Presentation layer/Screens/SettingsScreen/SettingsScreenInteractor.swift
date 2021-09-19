@@ -32,8 +32,5 @@ final class SettingsScreenInteractor: ISettingsScreenInteractor {
         case .showLocation:
             userDefaults.set(for: .showLocation, value: newValue)
         }
-        presenter.updateSaveButton(red: userDefaults.get(for: .redColor) ?? 0,
-                                   green: userDefaults.get(for: .greenColor) ?? 0,
-                                   blue: userDefaults.get(for: .blueColor) ?? 0)
     }
 }

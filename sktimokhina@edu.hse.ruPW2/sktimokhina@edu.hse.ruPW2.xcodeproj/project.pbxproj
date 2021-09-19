@@ -23,6 +23,9 @@
 		E3D60B2626F5E97E00452A8C /* MainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D60B2526F5E97E00452A8C /* MainButton.swift */; };
 		E3D60B2926F5EC1600452A8C /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D60B2826F5EC1600452A8C /* UserDefaultsManager.swift */; };
 		E3D60B2B26F5F63500452A8C /* ColorSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D60B2A26F5F63500452A8C /* ColorSlider.swift */; };
+		E3D60B3026F7126600452A8C /* ViewControllerAnimatedTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D60B2F26F7126600452A8C /* ViewControllerAnimatedTransitioning.swift */; };
+		E3D60B3226F713F900452A8C /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D60B3126F713F900452A8C /* PresentationController.swift */; };
+		E3D60B3426F7145A00452A8C /* TransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D60B3326F7145A00452A8C /* TransitioningDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +47,9 @@
 		E3D60B2526F5E97E00452A8C /* MainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButton.swift; sourceTree = "<group>"; };
 		E3D60B2826F5EC1600452A8C /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		E3D60B2A26F5F63500452A8C /* ColorSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSlider.swift; sourceTree = "<group>"; };
+		E3D60B2F26F7126600452A8C /* ViewControllerAnimatedTransitioning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerAnimatedTransitioning.swift; sourceTree = "<group>"; };
+		E3D60B3126F713F900452A8C /* PresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
+		E3D60B3326F7145A00452A8C /* TransitioningDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitioningDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +95,7 @@
 		E341812D26F4EBCA00DC38AE /* Presentation layer */ = {
 			isa = PBXGroup;
 			children = (
+				E3D60B2E26F7123F00452A8C /* Custom VC presentation  */,
 				E3D60B2226F5E2A000452A8C /* Custom views */,
 				E3D60B2126F5E29700452A8C /* Screens */,
 			);
@@ -143,6 +150,16 @@
 				E3D60B2826F5EC1600452A8C /* UserDefaultsManager.swift */,
 			);
 			path = "Core layer";
+			sourceTree = "<group>";
+		};
+		E3D60B2E26F7123F00452A8C /* Custom VC presentation  */ = {
+			isa = PBXGroup;
+			children = (
+				E3D60B2F26F7126600452A8C /* ViewControllerAnimatedTransitioning.swift */,
+				E3D60B3126F713F900452A8C /* PresentationController.swift */,
+				E3D60B3326F7145A00452A8C /* TransitioningDelegate.swift */,
+			);
+			path = "Custom VC presentation ";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -221,13 +238,16 @@
 				E3D60B2926F5EC1600452A8C /* UserDefaultsManager.swift in Sources */,
 				E3D60B2026F4F42400452A8C /* SettingsScreenGraph.swift in Sources */,
 				E3D60B1226F4ED5A00452A8C /* MainScreenRouter.swift in Sources */,
+				E3D60B3226F713F900452A8C /* PresentationController.swift in Sources */,
 				E3D60B0F26F4ED5A00452A8C /* MainScreenPresenter.swift in Sources */,
 				E3D60B1126F4ED5A00452A8C /* MainScreenVC.swift in Sources */,
 				E3D60B1C26F4F3FE00452A8C /* SettingsScreenInteractor.swift in Sources */,
 				E3D60B2626F5E97E00452A8C /* MainButton.swift in Sources */,
 				E3D60B1A26F4F3F400452A8C /* SettingsScreenPresenter.swift in Sources */,
 				E3D60B1426F4EE5300452A8C /* MainScreenGraph.swift in Sources */,
+				E3D60B3426F7145A00452A8C /* TransitioningDelegate.swift in Sources */,
 				E3D60B2426F5E2AD00452A8C /* SettingsView.swift in Sources */,
+				E3D60B3026F7126600452A8C /* ViewControllerAnimatedTransitioning.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

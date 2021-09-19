@@ -13,6 +13,7 @@ protocol IMainScreenRouter: AnyObject {
 
 final class MainScreenRouter: IMainScreenRouter {
     private var navigationController: UINavigationController
+    private let transitioningDelegate = TransitioningDelegate()
 
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -20,6 +21,10 @@ final class MainScreenRouter: IMainScreenRouter {
 
     func showSettingsScreen(userDefaults: IUserDefautsManager) {
         let graph = SettingsScreenGraph(userDefaults: userDefaults)
-        navigationController.present(graph.viewController, animated: true)
+        let viewController = graph.viewController
+        viewController.transitioningDelegate = transitioningDelegate
+        viewController.modalTransitionStyle = .crossDissolve
+        viewController.modalPresentationStyle = .custom
+        navigationController.present(viewController, animated: true)
     }
 }

@@ -8,7 +8,6 @@
 import UIKit
 
 protocol ISettingsScreenPresenter: AnyObject {
-    func updateSaveButton(red: Double, green: Double, blue: Double)
 }
 
 final class SettingsScreenPresenter: ISettingsScreenPresenter {
@@ -16,9 +15,5 @@ final class SettingsScreenPresenter: ISettingsScreenPresenter {
 
     init(viewController: ISettingsScreenVC) {
         self.viewController = viewController
-    }
-
-    func updateSaveButton(red: Double, green: Double, blue: Double) {
-        viewController.updateSaveButton(red: red, green: green, blue: blue)
     }
 }
