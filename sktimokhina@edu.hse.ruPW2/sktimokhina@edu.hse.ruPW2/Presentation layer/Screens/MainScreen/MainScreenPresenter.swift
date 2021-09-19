@@ -9,6 +9,7 @@ import Foundation
 
 protocol IMainScreenPresenter: AnyObject {
     func shouldShowSettings(userDefaults: IUserDefautsManager)
+    func shouldUpdateView(red: Float, green: Float, blue: Float, locationShown: Bool)
 }
 
 final class MainScreenPresenter: IMainScreenPresenter {
@@ -20,5 +21,9 @@ final class MainScreenPresenter: IMainScreenPresenter {
 
     func shouldShowSettings(userDefaults: IUserDefautsManager) {
         viewController.shouldShowSettings(userDefaults: userDefaults)
+    }
+
+    func shouldUpdateView(red: Float, green: Float, blue: Float, locationShown: Bool) {
+        viewController.shouldUpdateView(red: red, green: green, blue: blue, locationShown: locationShown)
     }
 }

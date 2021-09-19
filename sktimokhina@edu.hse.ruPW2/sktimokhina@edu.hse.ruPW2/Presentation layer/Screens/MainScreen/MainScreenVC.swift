@@ -12,6 +12,7 @@ protocol IMainScreenVC: UIViewController {
     var interactor: IMainScreenInteractor! { set get }
 
     func shouldShowSettings(userDefaults: IUserDefautsManager)
+    func shouldUpdateView(red: Float, green: Float, blue: Float, locationShown: Bool)
 }
 
 final class MainScreenVC: UIViewController {
@@ -29,7 +30,7 @@ final class MainScreenVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = #colorLiteral(red: 1, green: 0.9764078259, blue: 0.8245866895, alpha: 1)
+        interactor.shouldUpdateView()
         setupNavigationController()
     }
 
@@ -48,5 +49,10 @@ final class MainScreenVC: UIViewController {
 extension MainScreenVC: IMainScreenVC {
     func shouldShowSettings(userDefaults: IUserDefautsManager) {
         router.showSettingsScreen(userDefaults: userDefaults)
+    }
+
+    func shouldUpdateView(red: Float, green: Float, blue: Float, locationShown: Bool) {
+        let color = UIColor(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: 1)
+        view.backgroundColor = color
     }
 }

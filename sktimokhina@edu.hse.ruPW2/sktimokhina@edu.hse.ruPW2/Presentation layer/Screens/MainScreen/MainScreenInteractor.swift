@@ -9,6 +9,7 @@ import Foundation
 
 protocol IMainScreenInteractor: AnyObject {
     func didTapSettingsButton()
+    func shouldUpdateView()
 }
 
 final class MainScreenInteractor: IMainScreenInteractor {
@@ -22,5 +23,12 @@ final class MainScreenInteractor: IMainScreenInteractor {
 
     func didTapSettingsButton() {
         presenter.shouldShowSettings(userDefaults: userDefaults)
+    }
+
+    func shouldUpdateView() {
+        presenter.shouldUpdateView(red: userDefaults.get(for: .redColor) ?? 0.0,
+                                   green: userDefaults.get(for: .greenColor) ?? 0.0,
+                                   blue: userDefaults.get(for: .redColor) ?? 0.0,
+                                   locationShown: userDefaults.get(for: .showLocation) ?? true)
     }
 }
