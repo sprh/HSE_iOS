@@ -7,6 +7,7 @@
 
 import UIKit
 import AVKit
+import CoreLocation
 
 protocol IMainScreenVC: UIViewController {
     var interactor: IMainScreenInteractor! { set get }
@@ -18,6 +19,7 @@ protocol IMainScreenVC: UIViewController {
 final class MainScreenVC: UIViewController {
     var interactor: IMainScreenInteractor!
     private var router: IMainScreenRouter
+    private var locationManager: CLLocationManager
 
     private var locationStack: UIStackView = {
         let stack = UIStackView()
@@ -31,6 +33,8 @@ final class MainScreenVC: UIViewController {
         let location = UILabel()
         location.translatesAutoresizingMaskIntoConstraints = false
         location.font = UIFont.preferredFont(forTextStyle: .title1)
+        location.numberOfLines = 0
+        location.textAlignment = .center
         return location
     }()
 
@@ -45,7 +49,9 @@ final class MainScreenVC: UIViewController {
     
     init(router: IMainScreenRouter) {
         self.router = router
+        locationManager = CLLocationManager()
         super.init(nibName: nil, bundle: nil)
+        locationManager.requestWhenInUseAuthorization()
     }
 
     required init?(coder: NSCoder) {
@@ -71,14 +77,16 @@ final class MainScreenVC: UIViewController {
         locationStack.addSubview(location)
         locationStack.addSubview(locationLabel)
         NSLayoutConstraint.activate([
-            locationLabel.leadingAnchor.constraint(equalTo: locationStack.leadingAnchor, constant: 16),
-            locationLabel.trailingAnchor.constraint(equalTo: locationStack.trailingAnchor, constant: -16),
+            locationLabel.leadingAnchor.constraint(equalTo: locationStack.leadingAnchor),
+            locationLabel.trailingAnchor.constraint(equalTo: locationStack.trailingAnchor),
             locationLabel.topAnchor.constraint(equalTo: locationStack.topAnchor, constant: 16),
-            location.bottomAnchor.constraint(equalTo: locationLabel.bottomAnchor, constant: 16),
-            location.centerXAnchor.constraint(equalTo: locationLabel.centerXAnchor),
+            location.topAnchor.constraint(equalTo: locationLabel.bottomAnchor, constant: 16),
+            location.leadingAnchor.constraint(equalTo: locationLabel.leadingAnchor),
+            location.trailingAnchor.constraint(equalTo: locationLabel.trailingAnchor),
             location.bottomAnchor.constraint(equalTo: locationStack.bottomAnchor, constant: -16),
 
-            locationStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            locationStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            locationStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             locationStack.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
     }
@@ -100,5 +108,26 @@ extension MainScreenVC: IMainScreenVC, ISettingsScreenObserver {
     func shouldUpdateView(red: Float, green: Float, blue: Float, locationShown: Bool) {
         let color = UIColor(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: 1)
         view.backgroundColor = color
+        if locationShown, CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy =
+                kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        } else {
+            locationManager.stopUpdatingLocation()
+            location.text = "disabled("
+        }
+    }
+}
+
+extension MainScreenVC: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager,
+                         didUpdateLocations locations: [CLLocation]) {
+        guard let coord: CLLocationCoordinate2D =
+                manager.location?.coordinate else {
+            location.text = "Ops, can't find"
+            return
+        }
+        location.text = "Coordinates: (\(coord.latitude) \(coord.longitude))"
     }
 }
