@@ -22,6 +22,17 @@ final class SettingsScreenVC: UIViewController, ISettingsScreenVC {
         return stack
     }()
 
+    private var closeButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(systemName: "xmark"),
+                        for: .normal)
+        button.tintColor = .black
+        button.imageView?.contentMode = .scaleAspectFit
+        button.imageEdgeInsets = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+        return button
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = #colorLiteral(red: 1, green: 0.9705604911, blue: 0.7168341279, alpha: 1)
@@ -31,16 +42,22 @@ final class SettingsScreenVC: UIViewController, ISettingsScreenVC {
 
     func setupUI() {
         view.addSubview(settingsView)
+        view.addSubview(closeButton)
         settingsView.setupUI()
 
         NSLayoutConstraint.activate([
-            settingsView.topAnchor.constraint(equalTo: view.topAnchor, constant: 32),
+            closeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            closeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 16),
+            settingsView.topAnchor.constraint(equalTo: closeButton.bottomAnchor),
             settingsView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             settingsView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            settingsView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -16)
         ])
 
-        settingsView.layoutIfNeeded()
-        view.bounds.size.height = settingsView.bounds.height
+        view.setNeedsLayout()
+        view.layoutIfNeeded()
+        let fittingSize = view.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+        view.bounds.size.height = fittingSize.height
     }
 
     func addTargets() {
