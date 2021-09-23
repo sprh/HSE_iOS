@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navigationController = UINavigationController()
         let graph = MainScreenGraph(navigationController: navigationController, userDefaults: UserDefaultsManager())
         window = UIWindow()
+        window?.overrideUserInterfaceStyle = .light
         window?.rootViewController = navigationController
         navigationController.pushViewController(graph.viewController, animated: true)
         window?.makeKeyAndVisible()
