@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+struct Alarm {
+    let time: String
+}

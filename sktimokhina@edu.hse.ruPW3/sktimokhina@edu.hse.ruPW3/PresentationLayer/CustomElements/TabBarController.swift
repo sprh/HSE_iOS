@@ -16,15 +16,17 @@ final class TabBarController: UITabBarController {
     private func setup() {
         tabBar.tintColor = .orange
         tabBar.unselectedItemTintColor = .systemOrange
-        tabBar.clipsToBounds = true
-        tabBar.isTranslucent = true
-        tabBar.backgroundImage = UIImage()
-        tabBar.shadowImage = UIImage()
-        tabBar.barTintColor = .clear
-        tabBar.backgroundColor = .clear
+        tabBar.backgroundColor = #colorLiteral(red: 1, green: 0.8220604658, blue: 0.8168862462, alpha: 1)
         addViewControllers()
     }
 
     private func addViewControllers() {
+        viewControllers = [createCollectionVC()]
+    }
+
+    private func createCollectionVC() -> UIViewController {
+        let collectionGraphVC = CollectionGraph().viewController
+        collectionGraphVC.tabBarItem.title = "Collection"
+        return collectionGraphVC
     }
 }

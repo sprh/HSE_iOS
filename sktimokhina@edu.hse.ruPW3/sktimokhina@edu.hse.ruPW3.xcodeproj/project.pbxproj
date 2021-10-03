@@ -8,20 +8,34 @@
 
 /* Begin PBXBuildFile section */
 		E307540C270A33E30054CDF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E307540B270A33E30054CDF1 /* AppDelegate.swift */; };
-		E3075410270A33E30054CDF1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E307540F270A33E30054CDF1 /* ViewController.swift */; };
 		E3075416270A33E30054CDF1 /* sktimokhina_edu_hse_ruPW3.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E3075414270A33E30054CDF1 /* sktimokhina_edu_hse_ruPW3.xcdatamodeld */; };
 		E3075418270A33E90054CDF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3075417270A33E90054CDF1 /* Assets.xcassets */; };
 		E307541B270A33E90054CDF1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3075419270A33E90054CDF1 /* LaunchScreen.storyboard */; };
+		E3075428270A353D0054CDF1 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3075427270A353D0054CDF1 /* TabBarController.swift */; };
+		E307542D270A363F0054CDF1 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E307542C270A363F0054CDF1 /* Alarm.swift */; };
+		E307542F270A366F0054CDF1 /* CollectionWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E307542E270A366F0054CDF1 /* CollectionWorker.swift */; };
+		E3075431270A368D0054CDF1 /* CollectionInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3075430270A368D0054CDF1 /* CollectionInteractor.swift */; };
+		E3075433270A371D0054CDF1 /* CollectionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3075432270A371D0054CDF1 /* CollectionRouter.swift */; };
+		E33BD5C6270A383700D6EA7C /* СollectionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33BD5C5270A383700D6EA7C /* СollectionPresenter.swift */; };
+		E33BD5C8270A38B900D6EA7C /* CollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33BD5C7270A38B900D6EA7C /* CollectionVC.swift */; };
+		E33BD5CA270A394100D6EA7C /* CollectionGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33BD5C9270A394100D6EA7C /* CollectionGraph.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E3075408270A33E30054CDF1 /* sktimokhina@edu.hse.ruPW3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "sktimokhina@edu.hse.ruPW3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E307540B270A33E30054CDF1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E307540F270A33E30054CDF1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E3075415270A33E30054CDF1 /* sktimokhina_edu_hse_ruPW3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = sktimokhina_edu_hse_ruPW3.xcdatamodel; sourceTree = "<group>"; };
 		E3075417270A33E90054CDF1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E307541A270A33E90054CDF1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E307541C270A33E90054CDF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E3075427270A353D0054CDF1 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		E307542C270A363F0054CDF1 /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
+		E307542E270A366F0054CDF1 /* CollectionWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionWorker.swift; sourceTree = "<group>"; };
+		E3075430270A368D0054CDF1 /* CollectionInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionInteractor.swift; sourceTree = "<group>"; };
+		E3075432270A371D0054CDF1 /* CollectionRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionRouter.swift; sourceTree = "<group>"; };
+		E33BD5C5270A383700D6EA7C /* СollectionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "СollectionPresenter.swift"; sourceTree = "<group>"; };
+		E33BD5C7270A38B900D6EA7C /* CollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionVC.swift; sourceTree = "<group>"; };
+		E33BD5C9270A394100D6EA7C /* CollectionGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionGraph.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +68,69 @@
 		E307540A270A33E30054CDF1 /* sktimokhina@edu.hse.ruPW3 */ = {
 			isa = PBXGroup;
 			children = (
+				E307542B270A36360054CDF1 /* Models */,
+				E3075422270A35060054CDF1 /* PresentationLayer */,
 				E307540B270A33E30054CDF1 /* AppDelegate.swift */,
-				E307540F270A33E30054CDF1 /* ViewController.swift */,
 				E3075417270A33E90054CDF1 /* Assets.xcassets */,
 				E3075419270A33E90054CDF1 /* LaunchScreen.storyboard */,
 				E307541C270A33E90054CDF1 /* Info.plist */,
 				E3075414270A33E30054CDF1 /* sktimokhina_edu_hse_ruPW3.xcdatamodeld */,
 			);
 			path = "sktimokhina@edu.hse.ruPW3";
+			sourceTree = "<group>";
+		};
+		E3075422270A35060054CDF1 /* PresentationLayer */ = {
+			isa = PBXGroup;
+			children = (
+				E3075426270A352F0054CDF1 /* CustomElements */,
+				E3075425270A35220054CDF1 /* Collection */,
+				E3075424270A351C0054CDF1 /* TableView */,
+				E3075423270A35180054CDF1 /* Stack */,
+			);
+			path = PresentationLayer;
+			sourceTree = "<group>";
+		};
+		E3075423270A35180054CDF1 /* Stack */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Stack;
+			sourceTree = "<group>";
+		};
+		E3075424270A351C0054CDF1 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
+		E3075425270A35220054CDF1 /* Collection */ = {
+			isa = PBXGroup;
+			children = (
+				E307542E270A366F0054CDF1 /* CollectionWorker.swift */,
+				E3075430270A368D0054CDF1 /* CollectionInteractor.swift */,
+				E3075432270A371D0054CDF1 /* CollectionRouter.swift */,
+				E33BD5C5270A383700D6EA7C /* СollectionPresenter.swift */,
+				E33BD5C7270A38B900D6EA7C /* CollectionVC.swift */,
+				E33BD5C9270A394100D6EA7C /* CollectionGraph.swift */,
+			);
+			path = Collection;
+			sourceTree = "<group>";
+		};
+		E3075426270A352F0054CDF1 /* CustomElements */ = {
+			isa = PBXGroup;
+			children = (
+				E3075427270A353D0054CDF1 /* TabBarController.swift */,
+			);
+			path = CustomElements;
+			sourceTree = "<group>";
+		};
+		E307542B270A36360054CDF1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E307542C270A363F0054CDF1 /* Alarm.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -133,9 +202,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3075428270A353D0054CDF1 /* TabBarController.swift in Sources */,
 				E3075416270A33E30054CDF1 /* sktimokhina_edu_hse_ruPW3.xcdatamodeld in Sources */,
-				E3075410270A33E30054CDF1 /* ViewController.swift in Sources */,
+				E307542F270A366F0054CDF1 /* CollectionWorker.swift in Sources */,
+				E33BD5CA270A394100D6EA7C /* CollectionGraph.swift in Sources */,
+				E3075431270A368D0054CDF1 /* CollectionInteractor.swift in Sources */,
+				E33BD5C8270A38B900D6EA7C /* CollectionVC.swift in Sources */,
 				E307540C270A33E30054CDF1 /* AppDelegate.swift in Sources */,
+				E3075433270A371D0054CDF1 /* CollectionRouter.swift in Sources */,
+				E33BD5C6270A383700D6EA7C /* СollectionPresenter.swift in Sources */,
+				E307542D270A363F0054CDF1 /* Alarm.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
