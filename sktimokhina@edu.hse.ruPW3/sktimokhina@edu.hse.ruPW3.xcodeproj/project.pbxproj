@@ -31,6 +31,7 @@
 		E3A6A029270A3DCB005D2AEA /* StackPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A023270A3DCB005D2AEA /* StackPresenter.swift */; };
 		E3A6A02A270A3DCB005D2AEA /* StackRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A024270A3DCB005D2AEA /* StackRouter.swift */; };
 		E3A6A02B270A3DCB005D2AEA /* StackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A025270A3DCB005D2AEA /* StackVC.swift */; };
+		E3A6A02E270A424B005D2AEA /* ClockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A02D270A424B005D2AEA /* ClockCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		E3A6A023270A3DCB005D2AEA /* StackPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackPresenter.swift; sourceTree = "<group>"; };
 		E3A6A024270A3DCB005D2AEA /* StackRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackRouter.swift; sourceTree = "<group>"; };
 		E3A6A025270A3DCB005D2AEA /* StackVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackVC.swift; sourceTree = "<group>"; };
+		E3A6A02D270A424B005D2AEA /* ClockCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 		E3075425270A35220054CDF1 /* Collection */ = {
 			isa = PBXGroup;
 			children = (
+				E3A6A02C270A4232005D2AEA /* CustomElements */,
 				E307542E270A366F0054CDF1 /* CollectionWorker.swift */,
 				E3075430270A368D0054CDF1 /* CollectionInteractor.swift */,
 				E3075432270A371D0054CDF1 /* CollectionRouter.swift */,
@@ -167,6 +170,14 @@
 				E307542C270A363F0054CDF1 /* Alarm.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		E3A6A02C270A4232005D2AEA /* CustomElements */ = {
+			isa = PBXGroup;
+			children = (
+				E3A6A02D270A424B005D2AEA /* ClockCell.swift */,
+			);
+			path = CustomElements;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -244,6 +255,7 @@
 				E307542F270A366F0054CDF1 /* CollectionWorker.swift in Sources */,
 				E33BD5CA270A394100D6EA7C /* CollectionGraph.swift in Sources */,
 				E3A6A01E270A3CD1005D2AEA /* TableVC.swift in Sources */,
+				E3A6A02E270A424B005D2AEA /* ClockCell.swift in Sources */,
 				E3A6A01A270A3CD1005D2AEA /* TableInteractor.swift in Sources */,
 				E3A6A029270A3DCB005D2AEA /* StackPresenter.swift in Sources */,
 				E3075431270A368D0054CDF1 /* CollectionInteractor.swift in Sources */,
