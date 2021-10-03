@@ -19,6 +19,12 @@
 		E33BD5C6270A383700D6EA7C /* СollectionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33BD5C5270A383700D6EA7C /* СollectionPresenter.swift */; };
 		E33BD5C8270A38B900D6EA7C /* CollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33BD5C7270A38B900D6EA7C /* CollectionVC.swift */; };
 		E33BD5CA270A394100D6EA7C /* CollectionGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33BD5C9270A394100D6EA7C /* CollectionGraph.swift */; };
+		E3A6A01A270A3CD1005D2AEA /* TableInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A014270A3CD1005D2AEA /* TableInteractor.swift */; };
+		E3A6A01B270A3CD1005D2AEA /* TablePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A015270A3CD1005D2AEA /* TablePresenter.swift */; };
+		E3A6A01C270A3CD1005D2AEA /* TableRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A016270A3CD1005D2AEA /* TableRouter.swift */; };
+		E3A6A01D270A3CD1005D2AEA /* TableGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A017270A3CD1005D2AEA /* TableGraph.swift */; };
+		E3A6A01E270A3CD1005D2AEA /* TableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A018270A3CD1005D2AEA /* TableVC.swift */; };
+		E3A6A01F270A3CD1005D2AEA /* TableWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A019270A3CD1005D2AEA /* TableWorker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +42,12 @@
 		E33BD5C5270A383700D6EA7C /* СollectionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "СollectionPresenter.swift"; sourceTree = "<group>"; };
 		E33BD5C7270A38B900D6EA7C /* CollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionVC.swift; sourceTree = "<group>"; };
 		E33BD5C9270A394100D6EA7C /* CollectionGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionGraph.swift; sourceTree = "<group>"; };
+		E3A6A014270A3CD1005D2AEA /* TableInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableInteractor.swift; sourceTree = "<group>"; };
+		E3A6A015270A3CD1005D2AEA /* TablePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TablePresenter.swift; sourceTree = "<group>"; };
+		E3A6A016270A3CD1005D2AEA /* TableRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableRouter.swift; sourceTree = "<group>"; };
+		E3A6A017270A3CD1005D2AEA /* TableGraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableGraph.swift; sourceTree = "<group>"; };
+		E3A6A018270A3CD1005D2AEA /* TableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableVC.swift; sourceTree = "<group>"; };
+		E3A6A019270A3CD1005D2AEA /* TableWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableWorker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +112,12 @@
 		E3075424270A351C0054CDF1 /* TableView */ = {
 			isa = PBXGroup;
 			children = (
+				E3A6A015270A3CD1005D2AEA /* TablePresenter.swift */,
+				E3A6A017270A3CD1005D2AEA /* TableGraph.swift */,
+				E3A6A014270A3CD1005D2AEA /* TableInteractor.swift */,
+				E3A6A016270A3CD1005D2AEA /* TableRouter.swift */,
+				E3A6A018270A3CD1005D2AEA /* TableVC.swift */,
+				E3A6A019270A3CD1005D2AEA /* TableWorker.swift */,
 			);
 			path = TableView;
 			sourceTree = "<group>";
@@ -206,9 +224,15 @@
 				E3075416270A33E30054CDF1 /* sktimokhina_edu_hse_ruPW3.xcdatamodeld in Sources */,
 				E307542F270A366F0054CDF1 /* CollectionWorker.swift in Sources */,
 				E33BD5CA270A394100D6EA7C /* CollectionGraph.swift in Sources */,
+				E3A6A01E270A3CD1005D2AEA /* TableVC.swift in Sources */,
+				E3A6A01A270A3CD1005D2AEA /* TableInteractor.swift in Sources */,
 				E3075431270A368D0054CDF1 /* CollectionInteractor.swift in Sources */,
+				E3A6A01F270A3CD1005D2AEA /* TableWorker.swift in Sources */,
+				E3A6A01B270A3CD1005D2AEA /* TablePresenter.swift in Sources */,
+				E3A6A01C270A3CD1005D2AEA /* TableRouter.swift in Sources */,
 				E33BD5C8270A38B900D6EA7C /* CollectionVC.swift in Sources */,
 				E307540C270A33E30054CDF1 /* AppDelegate.swift in Sources */,
+				E3A6A01D270A3CD1005D2AEA /* TableGraph.swift in Sources */,
 				E3075433270A371D0054CDF1 /* CollectionRouter.swift in Sources */,
 				E33BD5C6270A383700D6EA7C /* СollectionPresenter.swift in Sources */,
 				E307542D270A363F0054CDF1 /* Alarm.swift in Sources */,

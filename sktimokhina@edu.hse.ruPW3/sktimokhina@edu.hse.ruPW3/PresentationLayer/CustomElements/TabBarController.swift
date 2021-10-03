@@ -21,12 +21,18 @@ final class TabBarController: UITabBarController {
     }
 
     private func addViewControllers() {
-        viewControllers = [createCollectionVC()]
+        viewControllers = [createCollectionVC(), createTableVC()]
     }
 
     private func createCollectionVC() -> UIViewController {
-        let collectionGraphVC = CollectionGraph().viewController
-        collectionGraphVC.tabBarItem.title = "Collection"
-        return collectionGraphVC
+        let collectionVC = CollectionGraph().viewController
+        collectionVC.tabBarItem.title = "Collection"
+        return collectionVC
+    }
+
+    private func createTableVC() -> UIViewController {
+        let tableVC = TableGraph().viewController
+        tableVC.tabBarItem.title = "Table"
+        return tableVC
     }
 }
