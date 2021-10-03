@@ -21,7 +21,7 @@ final class TabBarController: UITabBarController {
     }
 
     private func addViewControllers() {
-        viewControllers = [createCollectionVC(), createTableVC()]
+        viewControllers = [createCollectionVC(), createTableVC(), createStackVC()]
     }
 
     private func createCollectionVC() -> UIViewController {
@@ -34,5 +34,11 @@ final class TabBarController: UITabBarController {
         let tableVC = TableGraph().viewController
         tableVC.tabBarItem.title = "Table"
         return tableVC
+    }
+
+    private func createStackVC() -> UIViewController {
+        let stackVC = StackGraph().viewController
+        stackVC.tabBarItem.title = "Table"
+        return stackVC
     }
 }

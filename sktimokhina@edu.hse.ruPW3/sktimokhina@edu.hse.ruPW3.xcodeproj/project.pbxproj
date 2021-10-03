@@ -25,6 +25,12 @@
 		E3A6A01D270A3CD1005D2AEA /* TableGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A017270A3CD1005D2AEA /* TableGraph.swift */; };
 		E3A6A01E270A3CD1005D2AEA /* TableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A018270A3CD1005D2AEA /* TableVC.swift */; };
 		E3A6A01F270A3CD1005D2AEA /* TableWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A019270A3CD1005D2AEA /* TableWorker.swift */; };
+		E3A6A026270A3DCB005D2AEA /* StackInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A020270A3DCB005D2AEA /* StackInteractor.swift */; };
+		E3A6A027270A3DCB005D2AEA /* StackWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A021270A3DCB005D2AEA /* StackWorker.swift */; };
+		E3A6A028270A3DCB005D2AEA /* StackGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A022270A3DCB005D2AEA /* StackGraph.swift */; };
+		E3A6A029270A3DCB005D2AEA /* StackPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A023270A3DCB005D2AEA /* StackPresenter.swift */; };
+		E3A6A02A270A3DCB005D2AEA /* StackRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A024270A3DCB005D2AEA /* StackRouter.swift */; };
+		E3A6A02B270A3DCB005D2AEA /* StackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A025270A3DCB005D2AEA /* StackVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +54,12 @@
 		E3A6A017270A3CD1005D2AEA /* TableGraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableGraph.swift; sourceTree = "<group>"; };
 		E3A6A018270A3CD1005D2AEA /* TableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableVC.swift; sourceTree = "<group>"; };
 		E3A6A019270A3CD1005D2AEA /* TableWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableWorker.swift; sourceTree = "<group>"; };
+		E3A6A020270A3DCB005D2AEA /* StackInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackInteractor.swift; sourceTree = "<group>"; };
+		E3A6A021270A3DCB005D2AEA /* StackWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackWorker.swift; sourceTree = "<group>"; };
+		E3A6A022270A3DCB005D2AEA /* StackGraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackGraph.swift; sourceTree = "<group>"; };
+		E3A6A023270A3DCB005D2AEA /* StackPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackPresenter.swift; sourceTree = "<group>"; };
+		E3A6A024270A3DCB005D2AEA /* StackRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackRouter.swift; sourceTree = "<group>"; };
+		E3A6A025270A3DCB005D2AEA /* StackVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +117,12 @@
 		E3075423270A35180054CDF1 /* Stack */ = {
 			isa = PBXGroup;
 			children = (
+				E3A6A022270A3DCB005D2AEA /* StackGraph.swift */,
+				E3A6A020270A3DCB005D2AEA /* StackInteractor.swift */,
+				E3A6A023270A3DCB005D2AEA /* StackPresenter.swift */,
+				E3A6A024270A3DCB005D2AEA /* StackRouter.swift */,
+				E3A6A025270A3DCB005D2AEA /* StackVC.swift */,
+				E3A6A021270A3DCB005D2AEA /* StackWorker.swift */,
 			);
 			path = Stack;
 			sourceTree = "<group>";
@@ -220,20 +238,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3A6A027270A3DCB005D2AEA /* StackWorker.swift in Sources */,
 				E3075428270A353D0054CDF1 /* TabBarController.swift in Sources */,
 				E3075416270A33E30054CDF1 /* sktimokhina_edu_hse_ruPW3.xcdatamodeld in Sources */,
 				E307542F270A366F0054CDF1 /* CollectionWorker.swift in Sources */,
 				E33BD5CA270A394100D6EA7C /* CollectionGraph.swift in Sources */,
 				E3A6A01E270A3CD1005D2AEA /* TableVC.swift in Sources */,
 				E3A6A01A270A3CD1005D2AEA /* TableInteractor.swift in Sources */,
+				E3A6A029270A3DCB005D2AEA /* StackPresenter.swift in Sources */,
 				E3075431270A368D0054CDF1 /* CollectionInteractor.swift in Sources */,
 				E3A6A01F270A3CD1005D2AEA /* TableWorker.swift in Sources */,
 				E3A6A01B270A3CD1005D2AEA /* TablePresenter.swift in Sources */,
+				E3A6A02B270A3DCB005D2AEA /* StackVC.swift in Sources */,
+				E3A6A02A270A3DCB005D2AEA /* StackRouter.swift in Sources */,
 				E3A6A01C270A3CD1005D2AEA /* TableRouter.swift in Sources */,
 				E33BD5C8270A38B900D6EA7C /* CollectionVC.swift in Sources */,
 				E307540C270A33E30054CDF1 /* AppDelegate.swift in Sources */,
+				E3A6A026270A3DCB005D2AEA /* StackInteractor.swift in Sources */,
 				E3A6A01D270A3CD1005D2AEA /* TableGraph.swift in Sources */,
 				E3075433270A371D0054CDF1 /* CollectionRouter.swift in Sources */,
+				E3A6A028270A3DCB005D2AEA /* StackGraph.swift in Sources */,
 				E33BD5C6270A383700D6EA7C /* СollectionPresenter.swift in Sources */,
 				E307542D270A363F0054CDF1 /* Alarm.swift in Sources */,
 			);
