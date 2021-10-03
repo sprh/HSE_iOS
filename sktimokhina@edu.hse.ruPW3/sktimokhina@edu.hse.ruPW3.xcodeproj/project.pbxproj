@@ -8,9 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E307540C270A33E30054CDF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E307540B270A33E30054CDF1 /* AppDelegate.swift */; };
-		E307540E270A33E30054CDF1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E307540D270A33E30054CDF1 /* SceneDelegate.swift */; };
 		E3075410270A33E30054CDF1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E307540F270A33E30054CDF1 /* ViewController.swift */; };
-		E3075413270A33E30054CDF1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3075411270A33E30054CDF1 /* Main.storyboard */; };
 		E3075416270A33E30054CDF1 /* sktimokhina_edu_hse_ruPW3.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E3075414270A33E30054CDF1 /* sktimokhina_edu_hse_ruPW3.xcdatamodeld */; };
 		E3075418270A33E90054CDF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3075417270A33E90054CDF1 /* Assets.xcassets */; };
 		E307541B270A33E90054CDF1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3075419270A33E90054CDF1 /* LaunchScreen.storyboard */; };
@@ -19,9 +17,7 @@
 /* Begin PBXFileReference section */
 		E3075408270A33E30054CDF1 /* sktimokhina@edu.hse.ruPW3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "sktimokhina@edu.hse.ruPW3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E307540B270A33E30054CDF1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E307540D270A33E30054CDF1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E307540F270A33E30054CDF1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		E3075412270A33E30054CDF1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E3075415270A33E30054CDF1 /* sktimokhina_edu_hse_ruPW3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = sktimokhina_edu_hse_ruPW3.xcdatamodel; sourceTree = "<group>"; };
 		E3075417270A33E90054CDF1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E307541A270A33E90054CDF1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -59,9 +55,7 @@
 			isa = PBXGroup;
 			children = (
 				E307540B270A33E30054CDF1 /* AppDelegate.swift */,
-				E307540D270A33E30054CDF1 /* SceneDelegate.swift */,
 				E307540F270A33E30054CDF1 /* ViewController.swift */,
-				E3075411270A33E30054CDF1 /* Main.storyboard */,
 				E3075417270A33E90054CDF1 /* Assets.xcassets */,
 				E3075419270A33E90054CDF1 /* LaunchScreen.storyboard */,
 				E307541C270A33E90054CDF1 /* Info.plist */,
@@ -129,7 +123,6 @@
 			files = (
 				E307541B270A33E90054CDF1 /* LaunchScreen.storyboard in Resources */,
 				E3075418270A33E90054CDF1 /* Assets.xcassets in Resources */,
-				E3075413270A33E30054CDF1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,21 +136,12 @@
 				E3075416270A33E30054CDF1 /* sktimokhina_edu_hse_ruPW3.xcdatamodeld in Sources */,
 				E3075410270A33E30054CDF1 /* ViewController.swift in Sources */,
 				E307540C270A33E30054CDF1 /* AppDelegate.swift in Sources */,
-				E307540E270A33E30054CDF1 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		E3075411270A33E30054CDF1 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E3075412270A33E30054CDF1 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E3075419270A33E90054CDF1 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
