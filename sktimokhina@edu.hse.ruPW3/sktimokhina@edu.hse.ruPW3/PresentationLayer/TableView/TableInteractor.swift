@@ -12,9 +12,9 @@ protocol ITableInteractor {
 
 final class TableInteractor: ITableInteractor {
     let presenter: ITablePresenter
-    let worker: ITableWorker
+    let worker: ICoreDataWorker
 
-    init(presenter: ITablePresenter, worker: ITableWorker) {
+    init(presenter: ITablePresenter, worker: ICoreDataWorker) {
         self.presenter = presenter
         self.worker = worker
     }

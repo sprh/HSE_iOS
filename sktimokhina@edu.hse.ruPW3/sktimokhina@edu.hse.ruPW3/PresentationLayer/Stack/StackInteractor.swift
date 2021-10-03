@@ -12,9 +12,9 @@ protocol IStackInteractor {
 
 final class StackInteractor: IStackInteractor {
     let presenter: IStackPresenter
-    let worker: IStackWorker
+    let worker: ICoreDataWorker
 
-    init(presenter: IStackPresenter, worker: IStackWorker) {
+    init(presenter: IStackPresenter, worker: ICoreDataWorker) {
         self.presenter = presenter
         self.worker = worker
     }

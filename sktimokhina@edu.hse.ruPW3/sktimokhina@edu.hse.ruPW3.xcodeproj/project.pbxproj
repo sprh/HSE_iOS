@@ -8,12 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		E307540C270A33E30054CDF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E307540B270A33E30054CDF1 /* AppDelegate.swift */; };
-		E3075416270A33E30054CDF1 /* sktimokhina_edu_hse_ruPW3.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E3075414270A33E30054CDF1 /* sktimokhina_edu_hse_ruPW3.xcdatamodeld */; };
+		E3075416270A33E30054CDF1 /* CoreDataAlarms.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E3075414270A33E30054CDF1 /* CoreDataAlarms.xcdatamodeld */; };
 		E3075418270A33E90054CDF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3075417270A33E90054CDF1 /* Assets.xcassets */; };
 		E307541B270A33E90054CDF1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3075419270A33E90054CDF1 /* LaunchScreen.storyboard */; };
 		E3075428270A353D0054CDF1 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3075427270A353D0054CDF1 /* TabBarController.swift */; };
-		E307542D270A363F0054CDF1 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E307542C270A363F0054CDF1 /* Alarm.swift */; };
-		E307542F270A366F0054CDF1 /* CollectionWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E307542E270A366F0054CDF1 /* CollectionWorker.swift */; };
 		E3075431270A368D0054CDF1 /* CollectionInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3075430270A368D0054CDF1 /* CollectionInteractor.swift */; };
 		E3075433270A371D0054CDF1 /* CollectionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3075432270A371D0054CDF1 /* CollectionRouter.swift */; };
 		E33BD5C6270A383700D6EA7C /* СollectionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33BD5C5270A383700D6EA7C /* СollectionPresenter.swift */; };
@@ -24,14 +22,15 @@
 		E3A6A01C270A3CD1005D2AEA /* TableRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A016270A3CD1005D2AEA /* TableRouter.swift */; };
 		E3A6A01D270A3CD1005D2AEA /* TableGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A017270A3CD1005D2AEA /* TableGraph.swift */; };
 		E3A6A01E270A3CD1005D2AEA /* TableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A018270A3CD1005D2AEA /* TableVC.swift */; };
-		E3A6A01F270A3CD1005D2AEA /* TableWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A019270A3CD1005D2AEA /* TableWorker.swift */; };
 		E3A6A026270A3DCB005D2AEA /* StackInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A020270A3DCB005D2AEA /* StackInteractor.swift */; };
-		E3A6A027270A3DCB005D2AEA /* StackWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A021270A3DCB005D2AEA /* StackWorker.swift */; };
 		E3A6A028270A3DCB005D2AEA /* StackGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A022270A3DCB005D2AEA /* StackGraph.swift */; };
 		E3A6A029270A3DCB005D2AEA /* StackPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A023270A3DCB005D2AEA /* StackPresenter.swift */; };
 		E3A6A02A270A3DCB005D2AEA /* StackRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A024270A3DCB005D2AEA /* StackRouter.swift */; };
 		E3A6A02B270A3DCB005D2AEA /* StackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A025270A3DCB005D2AEA /* StackVC.swift */; };
 		E3A6A02E270A424B005D2AEA /* ClockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A02D270A424B005D2AEA /* ClockCell.swift */; };
+		E3A6A031270A48A7005D2AEA /* Alarm+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A02F270A48A7005D2AEA /* Alarm+CoreDataClass.swift */; };
+		E3A6A032270A48A7005D2AEA /* Alarm+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A030270A48A7005D2AEA /* Alarm+CoreDataProperties.swift */; };
+		E3A6A034270A498C005D2AEA /* CoreDataWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A033270A498C005D2AEA /* CoreDataWorker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,8 +41,6 @@
 		E307541A270A33E90054CDF1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E307541C270A33E90054CDF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E3075427270A353D0054CDF1 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		E307542C270A363F0054CDF1 /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
-		E307542E270A366F0054CDF1 /* CollectionWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionWorker.swift; sourceTree = "<group>"; };
 		E3075430270A368D0054CDF1 /* CollectionInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionInteractor.swift; sourceTree = "<group>"; };
 		E3075432270A371D0054CDF1 /* CollectionRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionRouter.swift; sourceTree = "<group>"; };
 		E33BD5C5270A383700D6EA7C /* СollectionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "СollectionPresenter.swift"; sourceTree = "<group>"; };
@@ -54,14 +51,15 @@
 		E3A6A016270A3CD1005D2AEA /* TableRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableRouter.swift; sourceTree = "<group>"; };
 		E3A6A017270A3CD1005D2AEA /* TableGraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableGraph.swift; sourceTree = "<group>"; };
 		E3A6A018270A3CD1005D2AEA /* TableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableVC.swift; sourceTree = "<group>"; };
-		E3A6A019270A3CD1005D2AEA /* TableWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableWorker.swift; sourceTree = "<group>"; };
 		E3A6A020270A3DCB005D2AEA /* StackInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackInteractor.swift; sourceTree = "<group>"; };
-		E3A6A021270A3DCB005D2AEA /* StackWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackWorker.swift; sourceTree = "<group>"; };
 		E3A6A022270A3DCB005D2AEA /* StackGraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackGraph.swift; sourceTree = "<group>"; };
 		E3A6A023270A3DCB005D2AEA /* StackPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackPresenter.swift; sourceTree = "<group>"; };
 		E3A6A024270A3DCB005D2AEA /* StackRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackRouter.swift; sourceTree = "<group>"; };
 		E3A6A025270A3DCB005D2AEA /* StackVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackVC.swift; sourceTree = "<group>"; };
 		E3A6A02D270A424B005D2AEA /* ClockCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockCell.swift; sourceTree = "<group>"; };
+		E3A6A02F270A48A7005D2AEA /* Alarm+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alarm+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E3A6A030270A48A7005D2AEA /* Alarm+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alarm+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E3A6A033270A498C005D2AEA /* CoreDataWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataWorker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +98,7 @@
 				E3075417270A33E90054CDF1 /* Assets.xcassets */,
 				E3075419270A33E90054CDF1 /* LaunchScreen.storyboard */,
 				E307541C270A33E90054CDF1 /* Info.plist */,
-				E3075414270A33E30054CDF1 /* sktimokhina_edu_hse_ruPW3.xcdatamodeld */,
+				E3075414270A33E30054CDF1 /* CoreDataAlarms.xcdatamodeld */,
 			);
 			path = "sktimokhina@edu.hse.ruPW3";
 			sourceTree = "<group>";
@@ -112,6 +110,7 @@
 				E3075425270A35220054CDF1 /* Collection */,
 				E3075424270A351C0054CDF1 /* TableView */,
 				E3075423270A35180054CDF1 /* Stack */,
+				E3A6A033270A498C005D2AEA /* CoreDataWorker.swift */,
 			);
 			path = PresentationLayer;
 			sourceTree = "<group>";
@@ -124,7 +123,6 @@
 				E3A6A023270A3DCB005D2AEA /* StackPresenter.swift */,
 				E3A6A024270A3DCB005D2AEA /* StackRouter.swift */,
 				E3A6A025270A3DCB005D2AEA /* StackVC.swift */,
-				E3A6A021270A3DCB005D2AEA /* StackWorker.swift */,
 			);
 			path = Stack;
 			sourceTree = "<group>";
@@ -137,7 +135,6 @@
 				E3A6A014270A3CD1005D2AEA /* TableInteractor.swift */,
 				E3A6A016270A3CD1005D2AEA /* TableRouter.swift */,
 				E3A6A018270A3CD1005D2AEA /* TableVC.swift */,
-				E3A6A019270A3CD1005D2AEA /* TableWorker.swift */,
 			);
 			path = TableView;
 			sourceTree = "<group>";
@@ -146,7 +143,6 @@
 			isa = PBXGroup;
 			children = (
 				E3A6A02C270A4232005D2AEA /* CustomElements */,
-				E307542E270A366F0054CDF1 /* CollectionWorker.swift */,
 				E3075430270A368D0054CDF1 /* CollectionInteractor.swift */,
 				E3075432270A371D0054CDF1 /* CollectionRouter.swift */,
 				E33BD5C5270A383700D6EA7C /* СollectionPresenter.swift */,
@@ -167,7 +163,8 @@
 		E307542B270A36360054CDF1 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				E307542C270A363F0054CDF1 /* Alarm.swift */,
+				E3A6A02F270A48A7005D2AEA /* Alarm+CoreDataClass.swift */,
+				E3A6A030270A48A7005D2AEA /* Alarm+CoreDataProperties.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -249,29 +246,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E3A6A027270A3DCB005D2AEA /* StackWorker.swift in Sources */,
 				E3075428270A353D0054CDF1 /* TabBarController.swift in Sources */,
-				E3075416270A33E30054CDF1 /* sktimokhina_edu_hse_ruPW3.xcdatamodeld in Sources */,
-				E307542F270A366F0054CDF1 /* CollectionWorker.swift in Sources */,
+				E3075416270A33E30054CDF1 /* CoreDataAlarms.xcdatamodeld in Sources */,
 				E33BD5CA270A394100D6EA7C /* CollectionGraph.swift in Sources */,
 				E3A6A01E270A3CD1005D2AEA /* TableVC.swift in Sources */,
 				E3A6A02E270A424B005D2AEA /* ClockCell.swift in Sources */,
 				E3A6A01A270A3CD1005D2AEA /* TableInteractor.swift in Sources */,
 				E3A6A029270A3DCB005D2AEA /* StackPresenter.swift in Sources */,
 				E3075431270A368D0054CDF1 /* CollectionInteractor.swift in Sources */,
-				E3A6A01F270A3CD1005D2AEA /* TableWorker.swift in Sources */,
 				E3A6A01B270A3CD1005D2AEA /* TablePresenter.swift in Sources */,
 				E3A6A02B270A3DCB005D2AEA /* StackVC.swift in Sources */,
+				E3A6A031270A48A7005D2AEA /* Alarm+CoreDataClass.swift in Sources */,
 				E3A6A02A270A3DCB005D2AEA /* StackRouter.swift in Sources */,
 				E3A6A01C270A3CD1005D2AEA /* TableRouter.swift in Sources */,
+				E3A6A032270A48A7005D2AEA /* Alarm+CoreDataProperties.swift in Sources */,
 				E33BD5C8270A38B900D6EA7C /* CollectionVC.swift in Sources */,
 				E307540C270A33E30054CDF1 /* AppDelegate.swift in Sources */,
 				E3A6A026270A3DCB005D2AEA /* StackInteractor.swift in Sources */,
 				E3A6A01D270A3CD1005D2AEA /* TableGraph.swift in Sources */,
+				E3A6A034270A498C005D2AEA /* CoreDataWorker.swift in Sources */,
 				E3075433270A371D0054CDF1 /* CollectionRouter.swift in Sources */,
 				E3A6A028270A3DCB005D2AEA /* StackGraph.swift in Sources */,
 				E33BD5C6270A383700D6EA7C /* СollectionPresenter.swift in Sources */,
-				E307542D270A363F0054CDF1 /* Alarm.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,13 +463,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		E3075414270A33E30054CDF1 /* sktimokhina_edu_hse_ruPW3.xcdatamodeld */ = {
+		E3075414270A33E30054CDF1 /* CoreDataAlarms.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				E3075415270A33E30054CDF1 /* sktimokhina_edu_hse_ruPW3.xcdatamodel */,
 			);
 			currentVersion = E3075415270A33E30054CDF1 /* sktimokhina_edu_hse_ruPW3.xcdatamodel */;
-			path = sktimokhina_edu_hse_ruPW3.xcdatamodeld;
+			path = CoreDataAlarms.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

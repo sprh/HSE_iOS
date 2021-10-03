@@ -12,9 +12,9 @@ protocol ICollectionInteractor {
 
 final class CollectionInteractor: ICollectionInteractor {
     let presenter: ICollectionPresenter
-    let worker: ICollectionWorker
+    let worker: ICoreDataWorker
 
-    init(presenter: ICollectionPresenter, worker: ICollectionWorker) {
+    init(presenter: ICollectionPresenter, worker: ICoreDataWorker) {
         self.presenter = presenter
         self.worker = worker
     }

@@ -6,21 +6,22 @@
 //
 
 import UIKit
+import CoreData
 
 final class TableGraph {
     private let view: ITableVC
     private let interactor: ITableInteractor
     private var presenter: ITablePresenter
     private let router: ITableRouter
-    private let worker: ITableWorker
+    private let worker: ICoreDataWorker
 
     var viewController: UIViewController {
         view
     }
 
-    init() {
+    init(context: NSManagedObjectContext) {
         presenter = TablePresenter()
-        worker = TableWorker()
+        worker = CoreDataWorker(context: context)
         interactor = TableInteractor(presenter: presenter, worker: worker)
         view = TableVC(interactor: interactor)
         router = TableViewRouter(viewController: view)

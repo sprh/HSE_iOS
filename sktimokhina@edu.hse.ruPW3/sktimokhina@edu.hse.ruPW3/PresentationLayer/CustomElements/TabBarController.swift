@@ -6,10 +6,22 @@
 //
 
 import UIKit
+import CoreData
 
 final class TabBarController: UITabBarController {
+    private let context: NSManagedObjectContext
+
+    init(context: NSManagedObjectContext) {
+        self.context = context
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     lazy var stackVC: UIViewController = {
-        let stackVC = StackGraph().viewController
+        let stackVC = StackGraph(context: context).viewController
         stackVC.tabBarItem.title = "Stack"
         stackVC.tabBarItem.image = UIImage(systemName: "i.circle")
         stackVC.tabBarItem.selectedImage = UIImage(systemName: "i.circle.fill")
@@ -17,7 +29,7 @@ final class TabBarController: UITabBarController {
     }()
 
     lazy var collectionVC: UIViewController = {
-        let collectionVC = CollectionGraph().viewController
+        let collectionVC = CollectionGraph(context: context).viewController
         collectionVC.tabBarItem.title = "Collection"
         collectionVC.tabBarItem.image = UIImage(systemName: "h.circle")
         collectionVC.tabBarItem.selectedImage = UIImage(systemName: "h.circle.fill")
@@ -25,7 +37,7 @@ final class TabBarController: UITabBarController {
     }()
 
     lazy var tableVC: UIViewController = {
-        let tableVC = TableGraph().viewController
+        let tableVC = TableGraph(context: context).viewController
         tableVC.tabBarItem.title = "Table"
         tableVC.tabBarItem.image = UIImage(systemName: "exclamationmark")
         tableVC.tabBarItem.selectedImage = UIImage(systemName: "exclamationmark.3")

@@ -6,21 +6,22 @@
 //
 
 import UIKit
+import CoreData
 
 final class CollectionGraph {
     private let view: ICollectionVC
     private let interactor: ICollectionInteractor
     private var presenter: ICollectionPresenter
     private let router: ICollectionRouter
-    private let worker: ICollectionWorker
+    private let worker: ICoreDataWorker
 
     var viewController: UIViewController {
         view
     }
 
-    init() {
+    init(context: NSManagedObjectContext) {
         presenter = CollectionPresenter()
-        worker = CollectionWorker()
+        worker = CoreDataWorker(context: context)
         interactor = CollectionInteractor(presenter: presenter, worker: worker)
         view = CollectionVC(interactor: interactor)
         router = ColletionViewRouter(viewController: view)
