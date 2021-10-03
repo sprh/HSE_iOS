@@ -8,6 +8,24 @@
 import UIKit
 
 final class TabBarController: UITabBarController {
+    lazy var stackVC: UIViewController = {
+        let stackVC = StackGraph().viewController
+        stackVC.tabBarItem.title = "Stack"
+        return stackVC
+    }()
+
+    lazy var collectionVC: UIViewController = {
+        let collectionVC = CollectionGraph().viewController
+        collectionVC.tabBarItem.title = "Collection"
+        return collectionVC
+    }()
+
+    lazy var tableVC: UIViewController = {
+        let tableVC = TableGraph().viewController
+        tableVC.tabBarItem.title = "Table"
+        return tableVC
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -21,24 +39,6 @@ final class TabBarController: UITabBarController {
     }
 
     private func addViewControllers() {
-        viewControllers = [createCollectionVC(), createTableVC(), createStackVC()]
-    }
-
-    private func createCollectionVC() -> UIViewController {
-        let collectionVC = CollectionGraph().viewController
-        collectionVC.tabBarItem.title = "Collection"
-        return collectionVC
-    }
-
-    private func createTableVC() -> UIViewController {
-        let tableVC = TableGraph().viewController
-        tableVC.tabBarItem.title = "Table"
-        return tableVC
-    }
-
-    private func createStackVC() -> UIViewController {
-        let stackVC = StackGraph().viewController
-        stackVC.tabBarItem.title = "Table"
-        return stackVC
+        viewControllers = [collectionVC, stackVC, tableVC]
     }
 }
