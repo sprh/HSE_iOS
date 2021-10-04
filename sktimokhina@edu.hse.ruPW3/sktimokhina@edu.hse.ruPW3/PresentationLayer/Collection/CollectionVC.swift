@@ -1,5 +1,5 @@
 //
-//  CollectionVC.swift
+//  AlarmsVC.swift
 //  sktimokhina@edu.hse.ruPW3
 //
 //  Created by Софья Тимохина on 03.10.2021.
@@ -7,11 +7,9 @@
 
 import UIKit
 
-protocol ICollectionVC: UIViewController {
-}
-
-final class CollectionVC: UIViewController, ICollectionVC {
-    private let interactor: ICollectionInteractor
+final class CollectionVC: UIViewController, IAlarmsVC {
+    private let interactor: IAlarmsInteractor
+    private let router: IAlarmsRouter
 
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -25,8 +23,9 @@ final class CollectionVC: UIViewController, ICollectionVC {
         return collectionView
     }()
 
-    init(interactor: ICollectionInteractor) {
+    init(interactor: IAlarmsInteractor, router: IAlarmsRouter) {
         self.interactor = interactor
+        self.router = router
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -44,7 +43,6 @@ final class CollectionVC: UIViewController, ICollectionVC {
 
     @objc
     func didTapAddButton() {
-
     }
 }
 

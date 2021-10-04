@@ -1,5 +1,5 @@
 //
-//  TableVC.swift
+//  AlarmsVC.swift
 //  sktimokhina@edu.hse.ruPW3
 //
 //  Created by Софья Тимохина on 03.10.2021.
@@ -7,14 +7,13 @@
 
 import UIKit
 
-protocol ITableVC: UIViewController {
-}
+final class TableVC: UIViewController, IAlarmsVC {
+    private let interactor: IAlarmsInteractor
+    private let router: IAlarmsRouter
 
-final class TableVC: UIViewController, ITableVC {
-    private let interactor: ITableInteractor
-
-    init(interactor: ITableInteractor) {
+    init(interactor: IAlarmsInteractor, router: IAlarmsRouter) {
         self.interactor = interactor
+        self.router = router
         super.init(nibName: nil, bundle: nil)
     }
     

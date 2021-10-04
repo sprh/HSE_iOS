@@ -1,5 +1,5 @@
 //
-//  StackVC.swift
+//  AlarmsVC.swift
 //  sktimokhina@edu.hse.ruPW3
 //
 //  Created by Софья Тимохина on 03.10.2021.
@@ -7,14 +7,13 @@
 
 import UIKit
 
-protocol IStackVC: UIViewController {
-}
+final class StackVC: UIViewController, IAlarmsVC {
+    private let interactor: IAlarmsInteractor
+    private let router: IAlarmsRouter
 
-final class StackVC: UIViewController, IStackVC {
-    private let interactor: IStackInteractor
-
-    init(interactor: IStackInteractor) {
+    init(interactor: IAlarmsInteractor, router: IAlarmsRouter) {
         self.interactor = interactor
+        self.router = router
         super.init(nibName: nil, bundle: nil)
     }
     

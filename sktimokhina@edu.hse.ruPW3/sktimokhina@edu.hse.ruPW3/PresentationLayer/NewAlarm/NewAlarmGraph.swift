@@ -19,9 +19,9 @@ final class NewAlarmGraph {
         view
     }
 
-    init(context: NSManagedObjectContext) {
+    init(worker: ICoreDataWorker) {
         presenter = NewAlarmPresenter()
-        worker = CoreDataWorker(context: context)
+        self.worker = worker
         interactor = NewAlarmInteractor(presenter: presenter, worker: worker)
         view = NewAlarmVC(interactor: interactor)
         router = NewAlarmViewRouter(viewController: view)

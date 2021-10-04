@@ -9,10 +9,10 @@ import UIKit
 import CoreData
 
 final class TabBarController: UITabBarController {
-    private let context: NSManagedObjectContext
+    private let worker: ICoreDataWorker
 
-    init(context: NSManagedObjectContext) {
-        self.context = context
+    init(worker: ICoreDataWorker) {
+        self.worker = worker
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -21,7 +21,7 @@ final class TabBarController: UITabBarController {
     }
     
     lazy var stackVC: UINavigationController = {
-        let stackVC = StackGraph(context: context).viewController
+        let stackVC = AlarmsListGraph(worker: worker, type: .stack).viewController
         stackVC.tabBarItem.title = "Stack"
         stackVC.tabBarItem.image = UIImage(systemName: "i.circle")
         stackVC.tabBarItem.selectedImage = UIImage(systemName: "i.circle.fill")
@@ -29,7 +29,7 @@ final class TabBarController: UITabBarController {
     }()
 
     lazy var collectionVC: UINavigationController = {
-        let collectionVC = CollectionGraph(context: context).viewController
+        let collectionVC = AlarmsListGraph(worker: worker, type: .collection).viewController
         collectionVC.tabBarItem.title = "Collection"
         collectionVC.tabBarItem.image = UIImage(systemName: "h.circle")
         collectionVC.tabBarItem.selectedImage = UIImage(systemName: "h.circle.fill")
@@ -37,7 +37,7 @@ final class TabBarController: UITabBarController {
     }()
 
     lazy var tableVC: UINavigationController = {
-        let tableVC = TableGraph(context: context).viewController
+        let tableVC = AlarmsListGraph(worker: worker, type: .table).viewController
         tableVC.tabBarItem.title = "Table"
         tableVC.tabBarItem.image = UIImage(systemName: "exclamationmark")
         tableVC.tabBarItem.selectedImage = UIImage(systemName: "exclamationmark.3")

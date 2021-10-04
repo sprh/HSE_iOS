@@ -12,20 +12,8 @@
 		E3075418270A33E90054CDF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3075417270A33E90054CDF1 /* Assets.xcassets */; };
 		E307541B270A33E90054CDF1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3075419270A33E90054CDF1 /* LaunchScreen.storyboard */; };
 		E3075428270A353D0054CDF1 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3075427270A353D0054CDF1 /* TabBarController.swift */; };
-		E3075431270A368D0054CDF1 /* CollectionInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3075430270A368D0054CDF1 /* CollectionInteractor.swift */; };
-		E3075433270A371D0054CDF1 /* CollectionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3075432270A371D0054CDF1 /* CollectionRouter.swift */; };
-		E33BD5C6270A383700D6EA7C /* СollectionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33BD5C5270A383700D6EA7C /* СollectionPresenter.swift */; };
 		E33BD5C8270A38B900D6EA7C /* CollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33BD5C7270A38B900D6EA7C /* CollectionVC.swift */; };
-		E33BD5CA270A394100D6EA7C /* CollectionGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33BD5C9270A394100D6EA7C /* CollectionGraph.swift */; };
-		E3A6A01A270A3CD1005D2AEA /* TableInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A014270A3CD1005D2AEA /* TableInteractor.swift */; };
-		E3A6A01B270A3CD1005D2AEA /* TablePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A015270A3CD1005D2AEA /* TablePresenter.swift */; };
-		E3A6A01C270A3CD1005D2AEA /* TableRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A016270A3CD1005D2AEA /* TableRouter.swift */; };
-		E3A6A01D270A3CD1005D2AEA /* TableGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A017270A3CD1005D2AEA /* TableGraph.swift */; };
 		E3A6A01E270A3CD1005D2AEA /* TableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A018270A3CD1005D2AEA /* TableVC.swift */; };
-		E3A6A026270A3DCB005D2AEA /* StackInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A020270A3DCB005D2AEA /* StackInteractor.swift */; };
-		E3A6A028270A3DCB005D2AEA /* StackGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A022270A3DCB005D2AEA /* StackGraph.swift */; };
-		E3A6A029270A3DCB005D2AEA /* StackPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A023270A3DCB005D2AEA /* StackPresenter.swift */; };
-		E3A6A02A270A3DCB005D2AEA /* StackRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A024270A3DCB005D2AEA /* StackRouter.swift */; };
 		E3A6A02B270A3DCB005D2AEA /* StackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A025270A3DCB005D2AEA /* StackVC.swift */; };
 		E3A6A02E270A424B005D2AEA /* ClockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A02D270A424B005D2AEA /* ClockCell.swift */; };
 		E3A6A031270A48A7005D2AEA /* Alarm+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A02F270A48A7005D2AEA /* Alarm+CoreDataClass.swift */; };
@@ -37,6 +25,11 @@
 		E3A6A03E270B882F005D2AEA /* NewAlarmGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A039270B882F005D2AEA /* NewAlarmGraph.swift */; };
 		E3A6A03F270B882F005D2AEA /* NewAlarmVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A03A270B882F005D2AEA /* NewAlarmVC.swift */; };
 		E3A6A042270B8956005D2AEA /* UIViewController+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A041270B8956005D2AEA /* UIViewController+Utils.swift */; };
+		E3A6A045270B9033005D2AEA /* AlarmsListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A044270B9033005D2AEA /* AlarmsListPresenter.swift */; };
+		E3A6A047270B9041005D2AEA /* AlarmsListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A046270B9041005D2AEA /* AlarmsListInteractor.swift */; };
+		E3A6A049270B904D005D2AEA /* AlarmsListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A048270B904D005D2AEA /* AlarmsListRouter.swift */; };
+		E3A6A04B270B9058005D2AEA /* AlarmsListGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A04A270B9058005D2AEA /* AlarmsListGraph.swift */; };
+		E3A6A04D270B9143005D2AEA /* IAlarmsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A04C270B9143005D2AEA /* IAlarmsVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,20 +40,8 @@
 		E307541A270A33E90054CDF1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E307541C270A33E90054CDF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E3075427270A353D0054CDF1 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		E3075430270A368D0054CDF1 /* CollectionInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionInteractor.swift; sourceTree = "<group>"; };
-		E3075432270A371D0054CDF1 /* CollectionRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionRouter.swift; sourceTree = "<group>"; };
-		E33BD5C5270A383700D6EA7C /* СollectionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "СollectionPresenter.swift"; sourceTree = "<group>"; };
 		E33BD5C7270A38B900D6EA7C /* CollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionVC.swift; sourceTree = "<group>"; };
-		E33BD5C9270A394100D6EA7C /* CollectionGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionGraph.swift; sourceTree = "<group>"; };
-		E3A6A014270A3CD1005D2AEA /* TableInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableInteractor.swift; sourceTree = "<group>"; };
-		E3A6A015270A3CD1005D2AEA /* TablePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TablePresenter.swift; sourceTree = "<group>"; };
-		E3A6A016270A3CD1005D2AEA /* TableRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableRouter.swift; sourceTree = "<group>"; };
-		E3A6A017270A3CD1005D2AEA /* TableGraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableGraph.swift; sourceTree = "<group>"; };
 		E3A6A018270A3CD1005D2AEA /* TableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableVC.swift; sourceTree = "<group>"; };
-		E3A6A020270A3DCB005D2AEA /* StackInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackInteractor.swift; sourceTree = "<group>"; };
-		E3A6A022270A3DCB005D2AEA /* StackGraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackGraph.swift; sourceTree = "<group>"; };
-		E3A6A023270A3DCB005D2AEA /* StackPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackPresenter.swift; sourceTree = "<group>"; };
-		E3A6A024270A3DCB005D2AEA /* StackRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackRouter.swift; sourceTree = "<group>"; };
 		E3A6A025270A3DCB005D2AEA /* StackVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackVC.swift; sourceTree = "<group>"; };
 		E3A6A02D270A424B005D2AEA /* ClockCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockCell.swift; sourceTree = "<group>"; };
 		E3A6A02F270A48A7005D2AEA /* Alarm+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alarm+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -72,6 +53,11 @@
 		E3A6A039270B882F005D2AEA /* NewAlarmGraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewAlarmGraph.swift; sourceTree = "<group>"; };
 		E3A6A03A270B882F005D2AEA /* NewAlarmVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewAlarmVC.swift; sourceTree = "<group>"; };
 		E3A6A041270B8956005D2AEA /* UIViewController+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Utils.swift"; sourceTree = "<group>"; };
+		E3A6A044270B9033005D2AEA /* AlarmsListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmsListPresenter.swift; sourceTree = "<group>"; };
+		E3A6A046270B9041005D2AEA /* AlarmsListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmsListInteractor.swift; sourceTree = "<group>"; };
+		E3A6A048270B904D005D2AEA /* AlarmsListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmsListRouter.swift; sourceTree = "<group>"; };
+		E3A6A04A270B9058005D2AEA /* AlarmsListGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmsListGraph.swift; sourceTree = "<group>"; };
+		E3A6A04C270B9143005D2AEA /* IAlarmsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAlarmsVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +105,7 @@
 		E3075422270A35060054CDF1 /* PresentationLayer */ = {
 			isa = PBXGroup;
 			children = (
+				E3A6A043270B901B005D2AEA /* Common */,
 				E3A6A035270B87DA005D2AEA /* NewAlarm */,
 				E3075426270A352F0054CDF1 /* CustomElements */,
 				E3075425270A35220054CDF1 /* Collection */,
@@ -132,10 +119,6 @@
 		E3075423270A35180054CDF1 /* Stack */ = {
 			isa = PBXGroup;
 			children = (
-				E3A6A022270A3DCB005D2AEA /* StackGraph.swift */,
-				E3A6A020270A3DCB005D2AEA /* StackInteractor.swift */,
-				E3A6A023270A3DCB005D2AEA /* StackPresenter.swift */,
-				E3A6A024270A3DCB005D2AEA /* StackRouter.swift */,
 				E3A6A025270A3DCB005D2AEA /* StackVC.swift */,
 			);
 			path = Stack;
@@ -144,10 +127,6 @@
 		E3075424270A351C0054CDF1 /* TableView */ = {
 			isa = PBXGroup;
 			children = (
-				E3A6A015270A3CD1005D2AEA /* TablePresenter.swift */,
-				E3A6A017270A3CD1005D2AEA /* TableGraph.swift */,
-				E3A6A014270A3CD1005D2AEA /* TableInteractor.swift */,
-				E3A6A016270A3CD1005D2AEA /* TableRouter.swift */,
 				E3A6A018270A3CD1005D2AEA /* TableVC.swift */,
 			);
 			path = TableView;
@@ -157,11 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				E3A6A02C270A4232005D2AEA /* CustomElements */,
-				E3075430270A368D0054CDF1 /* CollectionInteractor.swift */,
-				E3075432270A371D0054CDF1 /* CollectionRouter.swift */,
-				E33BD5C5270A383700D6EA7C /* СollectionPresenter.swift */,
 				E33BD5C7270A38B900D6EA7C /* CollectionVC.swift */,
-				E33BD5C9270A394100D6EA7C /* CollectionGraph.swift */,
 			);
 			path = Collection;
 			sourceTree = "<group>";
@@ -209,6 +184,18 @@
 				E3A6A041270B8956005D2AEA /* UIViewController+Utils.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		E3A6A043270B901B005D2AEA /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				E3A6A044270B9033005D2AEA /* AlarmsListPresenter.swift */,
+				E3A6A046270B9041005D2AEA /* AlarmsListInteractor.swift */,
+				E3A6A048270B904D005D2AEA /* AlarmsListRouter.swift */,
+				E3A6A04A270B9058005D2AEA /* AlarmsListGraph.swift */,
+				E3A6A04C270B9143005D2AEA /* IAlarmsVC.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -282,31 +269,24 @@
 			files = (
 				E3075428270A353D0054CDF1 /* TabBarController.swift in Sources */,
 				E3075416270A33E30054CDF1 /* CoreDataAlarms.xcdatamodeld in Sources */,
-				E33BD5CA270A394100D6EA7C /* CollectionGraph.swift in Sources */,
+				E3A6A047270B9041005D2AEA /* AlarmsListInteractor.swift in Sources */,
+				E3A6A045270B9033005D2AEA /* AlarmsListPresenter.swift in Sources */,
 				E3A6A03D270B882F005D2AEA /* NewAlarmPresenter.swift in Sources */,
 				E3A6A01E270A3CD1005D2AEA /* TableVC.swift in Sources */,
 				E3A6A03F270B882F005D2AEA /* NewAlarmVC.swift in Sources */,
 				E3A6A02E270A424B005D2AEA /* ClockCell.swift in Sources */,
-				E3A6A01A270A3CD1005D2AEA /* TableInteractor.swift in Sources */,
-				E3A6A029270A3DCB005D2AEA /* StackPresenter.swift in Sources */,
-				E3075431270A368D0054CDF1 /* CollectionInteractor.swift in Sources */,
-				E3A6A01B270A3CD1005D2AEA /* TablePresenter.swift in Sources */,
+				E3A6A049270B904D005D2AEA /* AlarmsListRouter.swift in Sources */,
 				E3A6A02B270A3DCB005D2AEA /* StackVC.swift in Sources */,
 				E3A6A031270A48A7005D2AEA /* Alarm+CoreDataClass.swift in Sources */,
+				E3A6A04D270B9143005D2AEA /* IAlarmsVC.swift in Sources */,
 				E3A6A03C270B882F005D2AEA /* NewAlarmRouter.swift in Sources */,
-				E3A6A02A270A3DCB005D2AEA /* StackRouter.swift in Sources */,
-				E3A6A01C270A3CD1005D2AEA /* TableRouter.swift in Sources */,
 				E3A6A042270B8956005D2AEA /* UIViewController+Utils.swift in Sources */,
 				E3A6A03B270B882F005D2AEA /* NewAlarmInteractor.swift in Sources */,
 				E3A6A032270A48A7005D2AEA /* Alarm+CoreDataProperties.swift in Sources */,
 				E33BD5C8270A38B900D6EA7C /* CollectionVC.swift in Sources */,
 				E307540C270A33E30054CDF1 /* AppDelegate.swift in Sources */,
-				E3A6A026270A3DCB005D2AEA /* StackInteractor.swift in Sources */,
-				E3A6A01D270A3CD1005D2AEA /* TableGraph.swift in Sources */,
 				E3A6A034270A498C005D2AEA /* CoreDataWorker.swift in Sources */,
-				E3075433270A371D0054CDF1 /* CollectionRouter.swift in Sources */,
-				E3A6A028270A3DCB005D2AEA /* StackGraph.swift in Sources */,
-				E33BD5C6270A383700D6EA7C /* СollectionPresenter.swift in Sources */,
+				E3A6A04B270B9058005D2AEA /* AlarmsListGraph.swift in Sources */,
 				E3A6A03E270B882F005D2AEA /* NewAlarmGraph.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
