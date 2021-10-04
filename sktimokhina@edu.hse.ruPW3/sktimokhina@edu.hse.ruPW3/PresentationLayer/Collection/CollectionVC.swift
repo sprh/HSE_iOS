@@ -8,8 +8,8 @@
 import UIKit
 
 final class CollectionVC: UIViewController, IAlarmsVC {
-    private let interactor: IAlarmsInteractor
-    private let router: IAlarmsRouter
+    let interactor: IAlarmsInteractor
+    let router: IAlarmsRouter
 
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -37,12 +37,16 @@ final class CollectionVC: UIViewController, IAlarmsVC {
         super.viewDidLoad()
         view.backgroundColor = .white
         view.addSubview(collectionView)
-        let addButton = UIBarButtonItem(image: UIImage(systemName: ""), style: .plain, target: self, action: #selector(didTapAddButton))
+        let addButton = UIBarButtonItem(image: UIImage(systemName: "plus.circle.fill"),
+                                        style: .done,
+                                        target: self,
+                                        action: #selector(didTapAddButton))
         createAlarmHeader(addButton, "Collection")
     }
 
     @objc
     func didTapAddButton() {
+        interactor.didTapNewAlarm()
     }
 }
 

@@ -10,6 +10,7 @@ import Foundation
 import Foundation
 
 protocol IAlarmsInteractor {
+    func didTapNewAlarm()
 }
 
 final class AlarmsInteractor: IAlarmsInteractor {
@@ -19,5 +20,9 @@ final class AlarmsInteractor: IAlarmsInteractor {
     init(presenter: IAlarmsPresenter, worker: ICoreDataWorker) {
         self.presenter = presenter
         self.worker = worker
+    }
+
+    func didTapNewAlarm() {
+        presenter.shouldShowNewAlarm(with: worker)
     }
 }

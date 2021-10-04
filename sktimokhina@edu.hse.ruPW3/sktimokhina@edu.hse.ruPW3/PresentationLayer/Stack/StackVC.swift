@@ -8,8 +8,8 @@
 import UIKit
 
 final class StackVC: UIViewController, IAlarmsVC {
-    private let interactor: IAlarmsInteractor
-    private let router: IAlarmsRouter
+    let interactor: IAlarmsInteractor
+    let router: IAlarmsRouter
 
     init(interactor: IAlarmsInteractor, router: IAlarmsRouter) {
         self.interactor = interactor
@@ -24,12 +24,14 @@ final class StackVC: UIViewController, IAlarmsVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .yellow
-        let addButton = UIBarButtonItem(image: UIImage(systemName: ""), style: .plain, target: self, action: #selector(didTapAddButton))
+        let addButton = UIBarButtonItem(image: UIImage(systemName: ""),
+                                        style: .plain,
+                                        target: self,
+                                        action: #selector(didTapAddButton))
         createAlarmHeader(addButton, "Stack")
     }
 
     @objc func didTapAddButton() {
-
+        interactor.didTapNewAlarm()
     }
-    
 }

@@ -12,6 +12,6 @@ extension UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         self.title = title
         navigationController?.navigationBar.tintColor = .black
-        navigationController?.navigationItem.rightBarButtonItem = button
+        navigationItem.rightBarButtonItem = button
     }
 }
