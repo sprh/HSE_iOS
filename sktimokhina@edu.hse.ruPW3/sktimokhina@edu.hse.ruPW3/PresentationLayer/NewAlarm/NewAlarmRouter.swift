@@ -8,12 +8,9 @@
 import Foundation
 
 protocol INewAlarmRouter {
+    var viewController: INewAlarmVC? { get set }
 }
 
 final class NewAlarmViewRouter: INewAlarmRouter {
     weak var viewController: INewAlarmVC?
-
-    init(viewController: INewAlarmVC) {
-        self.viewController = viewController
-    }
 }

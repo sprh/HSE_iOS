@@ -12,9 +12,11 @@ protocol INewAlarmVC: UIViewController {
 
 final class NewAlarmVC: UIViewController, INewAlarmVC {
     private let interactor: INewAlarmInteractor
+    private let router: INewAlarmRouter
 
-    init(interactor: INewAlarmInteractor) {
+    init(interactor: INewAlarmInteractor, router: INewAlarmRouter) {
         self.interactor = interactor
+        self.router = router
         super.init(nibName: nil, bundle: nil)
     }
     
