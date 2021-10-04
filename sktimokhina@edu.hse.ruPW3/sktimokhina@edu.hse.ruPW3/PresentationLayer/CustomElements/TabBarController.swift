@@ -20,28 +20,28 @@ final class TabBarController: UITabBarController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    lazy var stackVC: UIViewController = {
+    lazy var stackVC: UINavigationController = {
         let stackVC = StackGraph(context: context).viewController
         stackVC.tabBarItem.title = "Stack"
         stackVC.tabBarItem.image = UIImage(systemName: "i.circle")
         stackVC.tabBarItem.selectedImage = UIImage(systemName: "i.circle.fill")
-        return stackVC
+        return UINavigationController(rootViewController: stackVC)
     }()
 
-    lazy var collectionVC: UIViewController = {
+    lazy var collectionVC: UINavigationController = {
         let collectionVC = CollectionGraph(context: context).viewController
         collectionVC.tabBarItem.title = "Collection"
         collectionVC.tabBarItem.image = UIImage(systemName: "h.circle")
         collectionVC.tabBarItem.selectedImage = UIImage(systemName: "h.circle.fill")
-        return collectionVC
+        return UINavigationController(rootViewController: collectionVC)
     }()
 
-    lazy var tableVC: UIViewController = {
+    lazy var tableVC: UINavigationController = {
         let tableVC = TableGraph(context: context).viewController
         tableVC.tabBarItem.title = "Table"
         tableVC.tabBarItem.image = UIImage(systemName: "exclamationmark")
         tableVC.tabBarItem.selectedImage = UIImage(systemName: "exclamationmark.3")
-        return tableVC
+        return UINavigationController(rootViewController: tableVC)
     }()
 
     override func viewDidLoad() {
