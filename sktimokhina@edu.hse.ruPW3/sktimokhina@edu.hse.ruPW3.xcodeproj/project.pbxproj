@@ -36,6 +36,7 @@
 		E3A6A03D270B882F005D2AEA /* NewAlarmPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A038270B882F005D2AEA /* NewAlarmPresenter.swift */; };
 		E3A6A03E270B882F005D2AEA /* NewAlarmGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A039270B882F005D2AEA /* NewAlarmGraph.swift */; };
 		E3A6A03F270B882F005D2AEA /* NewAlarmVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A03A270B882F005D2AEA /* NewAlarmVC.swift */; };
+		E3A6A042270B8956005D2AEA /* UIViewController+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A041270B8956005D2AEA /* UIViewController+Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,7 @@
 		E3A6A038270B882F005D2AEA /* NewAlarmPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewAlarmPresenter.swift; sourceTree = "<group>"; };
 		E3A6A039270B882F005D2AEA /* NewAlarmGraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewAlarmGraph.swift; sourceTree = "<group>"; };
 		E3A6A03A270B882F005D2AEA /* NewAlarmVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewAlarmVC.swift; sourceTree = "<group>"; };
+		E3A6A041270B8956005D2AEA /* UIViewController+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Utils.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 		E307540A270A33E30054CDF1 /* sktimokhina@edu.hse.ruPW3 */ = {
 			isa = PBXGroup;
 			children = (
+				E3A6A040270B8949005D2AEA /* Utils */,
 				E307542B270A36360054CDF1 /* Models */,
 				E3075422270A35060054CDF1 /* PresentationLayer */,
 				E307540B270A33E30054CDF1 /* AppDelegate.swift */,
@@ -200,6 +203,14 @@
 			path = NewAlarm;
 			sourceTree = "<group>";
 		};
+		E3A6A040270B8949005D2AEA /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				E3A6A041270B8956005D2AEA /* UIViewController+Utils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -285,6 +296,7 @@
 				E3A6A03C270B882F005D2AEA /* NewAlarmRouter.swift in Sources */,
 				E3A6A02A270A3DCB005D2AEA /* StackRouter.swift in Sources */,
 				E3A6A01C270A3CD1005D2AEA /* TableRouter.swift in Sources */,
+				E3A6A042270B8956005D2AEA /* UIViewController+Utils.swift in Sources */,
 				E3A6A03B270B882F005D2AEA /* NewAlarmInteractor.swift in Sources */,
 				E3A6A032270A48A7005D2AEA /* Alarm+CoreDataProperties.swift in Sources */,
 				E33BD5C8270A38B900D6EA7C /* CollectionVC.swift in Sources */,

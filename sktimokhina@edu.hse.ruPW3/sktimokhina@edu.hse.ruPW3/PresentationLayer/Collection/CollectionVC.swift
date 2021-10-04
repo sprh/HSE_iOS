@@ -38,6 +38,13 @@ final class CollectionVC: UIViewController, ICollectionVC {
         super.viewDidLoad()
         view.backgroundColor = .white
         view.addSubview(collectionView)
+        let addButton = UIBarButtonItem(image: UIImage(systemName: ""), style: .plain, target: self, action: #selector(didTapAddButton))
+        createAlarmHeader(addButton, "Collection")
+    }
+
+    @objc
+    func didTapAddButton() {
+
     }
 }
 

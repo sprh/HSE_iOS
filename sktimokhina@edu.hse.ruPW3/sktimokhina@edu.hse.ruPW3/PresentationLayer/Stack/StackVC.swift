@@ -25,6 +25,12 @@ final class StackVC: UIViewController, IStackVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .yellow
+        let addButton = UIBarButtonItem(image: UIImage(systemName: ""), style: .plain, target: self, action: #selector(didTapAddButton))
+        createAlarmHeader(addButton, "Stack")
+    }
+
+    @objc func didTapAddButton() {
+
     }
     
 }
