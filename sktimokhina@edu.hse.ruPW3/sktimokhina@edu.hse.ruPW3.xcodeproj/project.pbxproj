@@ -29,7 +29,7 @@
 		E3A6A047270B9041005D2AEA /* AlarmsListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A046270B9041005D2AEA /* AlarmsListInteractor.swift */; };
 		E3A6A049270B904D005D2AEA /* AlarmsListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A048270B904D005D2AEA /* AlarmsListRouter.swift */; };
 		E3A6A04B270B9058005D2AEA /* AlarmsListGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A04A270B9058005D2AEA /* AlarmsListGraph.swift */; };
-		E3A6A04D270B9143005D2AEA /* IAlarmsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A04C270B9143005D2AEA /* IAlarmsVC.swift */; };
+		E3A6A04D270B9143005D2AEA /* IAlarmsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A04C270B9143005D2AEA /* IAlarmsListVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,7 +57,7 @@
 		E3A6A046270B9041005D2AEA /* AlarmsListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmsListInteractor.swift; sourceTree = "<group>"; };
 		E3A6A048270B904D005D2AEA /* AlarmsListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmsListRouter.swift; sourceTree = "<group>"; };
 		E3A6A04A270B9058005D2AEA /* AlarmsListGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmsListGraph.swift; sourceTree = "<group>"; };
-		E3A6A04C270B9143005D2AEA /* IAlarmsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAlarmsVC.swift; sourceTree = "<group>"; };
+		E3A6A04C270B9143005D2AEA /* IAlarmsListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAlarmsListVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,7 +193,7 @@
 				E3A6A046270B9041005D2AEA /* AlarmsListInteractor.swift */,
 				E3A6A048270B904D005D2AEA /* AlarmsListRouter.swift */,
 				E3A6A04A270B9058005D2AEA /* AlarmsListGraph.swift */,
-				E3A6A04C270B9143005D2AEA /* IAlarmsVC.swift */,
+				E3A6A04C270B9143005D2AEA /* IAlarmsListVC.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -278,7 +278,7 @@
 				E3A6A049270B904D005D2AEA /* AlarmsListRouter.swift in Sources */,
 				E3A6A02B270A3DCB005D2AEA /* StackVC.swift in Sources */,
 				E3A6A031270A48A7005D2AEA /* Alarm+CoreDataClass.swift in Sources */,
-				E3A6A04D270B9143005D2AEA /* IAlarmsVC.swift in Sources */,
+				E3A6A04D270B9143005D2AEA /* IAlarmsListVC.swift in Sources */,
 				E3A6A03C270B882F005D2AEA /* NewAlarmRouter.swift in Sources */,
 				E3A6A042270B8956005D2AEA /* UIViewController+Utils.swift in Sources */,
 				E3A6A03B270B882F005D2AEA /* NewAlarmInteractor.swift in Sources */,

@@ -9,14 +9,14 @@ import Foundation
 
 import Foundation
 
-protocol IAlarmsPresenter {
-    var viewController: IAlarmsVC? { get set }
+protocol IAlarmsListPresenter {
+    var viewController: IAlarmsListVC? { get set }
 
     func shouldShowNewAlarm(with worker: ICoreDataWorker)
 }
 
-final class AlarmsPresenter: IAlarmsPresenter {
-    weak var viewController: IAlarmsVC?
+final class AlarmsListPresenter: IAlarmsListPresenter {
+    weak var viewController: IAlarmsListVC?
 
     func shouldShowNewAlarm(with worker: ICoreDataWorker) {
         viewController?.shouldShowNewAlarm(with: worker)

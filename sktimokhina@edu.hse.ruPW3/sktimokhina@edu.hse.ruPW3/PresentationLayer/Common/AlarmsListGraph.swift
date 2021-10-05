@@ -14,20 +14,20 @@ final class AlarmsListGraph {
         case stack
     }
 
-    private let view: IAlarmsVC
-    private let interactor: IAlarmsInteractor
-    private var presenter: IAlarmsPresenter
-    private var router: IAlarmsRouter
+    private let view: IAlarmsListVC
+    private let interactor: IAlarmsListInteractor
+    private var presenter: IAlarmsListPresenter
+    private var router: IAlarmsListRouter
     private let worker: ICoreDataWorker
     var viewController: UIViewController {
         view
     }
 
     init(worker: ICoreDataWorker, type: Type) {
-        presenter = AlarmsPresenter()
+        presenter = AlarmsListPresenter()
         self.worker = worker
-        interactor = AlarmsInteractor(presenter: presenter, worker: worker)
-        router = AlarmsViewRouter()
+        interactor = AlarmsListInteractor(presenter: presenter, worker: worker)
+        router = AlarmsListViewRouter()
         switch type {
         case .table:
             view = TableVC(interactor: interactor, router: router)

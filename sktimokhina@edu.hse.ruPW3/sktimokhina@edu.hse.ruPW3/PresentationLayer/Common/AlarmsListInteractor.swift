@@ -9,15 +9,15 @@ import Foundation
 
 import Foundation
 
-protocol IAlarmsInteractor {
+protocol IAlarmsListInteractor {
     func didTapNewAlarm()
 }
 
-final class AlarmsInteractor: IAlarmsInteractor {
-    let presenter: IAlarmsPresenter
+final class AlarmsListInteractor: IAlarmsListInteractor {
+    let presenter: IAlarmsListPresenter
     let worker: ICoreDataWorker
 
-    init(presenter: IAlarmsPresenter, worker: ICoreDataWorker) {
+    init(presenter: IAlarmsListPresenter, worker: ICoreDataWorker) {
         self.presenter = presenter
         self.worker = worker
     }

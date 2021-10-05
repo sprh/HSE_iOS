@@ -7,14 +7,14 @@
 
 import Foundation
 
-protocol IAlarmsRouter {
-    var viewController: IAlarmsVC? { get set }
+protocol IAlarmsListRouter {
+    var viewController: IAlarmsListVC? { get set }
 
     func shouldShowNewAlarm(with worker: ICoreDataWorker)
 }
 
-final class AlarmsViewRouter: IAlarmsRouter {
-    weak var viewController: IAlarmsVC?
+final class AlarmsListViewRouter: IAlarmsListRouter {
+    weak var viewController: IAlarmsListVC?
 
     func shouldShowNewAlarm(with worker: ICoreDataWorker) {
         let graph = NewAlarmGraph(worker: worker)

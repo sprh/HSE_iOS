@@ -1,5 +1,5 @@
 //
-//  AlarmsVC.swift
+//  AlarmsListVC.swift
 //  sktimokhina@edu.hse.ruPW3
 //
 //  Created by Софья Тимохина on 03.10.2021.
@@ -7,11 +7,11 @@
 
 import UIKit
 
-final class TableVC: UIViewController, IAlarmsVC {
-    let interactor: IAlarmsInteractor
-    let router: IAlarmsRouter
+final class TableVC: UIViewController, IAlarmsListVC {
+    let interactor: IAlarmsListInteractor
+    let router: IAlarmsListRouter
 
-    init(interactor: IAlarmsInteractor, router: IAlarmsRouter) {
+    init(interactor: IAlarmsListInteractor, router: IAlarmsListRouter) {
         self.interactor = interactor
         self.router = router
         super.init(nibName: nil, bundle: nil)

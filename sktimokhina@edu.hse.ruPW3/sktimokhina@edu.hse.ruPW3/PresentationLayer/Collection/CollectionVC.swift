@@ -1,5 +1,5 @@
 //
-//  AlarmsVC.swift
+//  AlarmsListVC.swift
 //  sktimokhina@edu.hse.ruPW3
 //
 //  Created by Софья Тимохина on 03.10.2021.
@@ -7,9 +7,9 @@
 
 import UIKit
 
-final class CollectionVC: UIViewController, IAlarmsVC {
-    let interactor: IAlarmsInteractor
-    let router: IAlarmsRouter
+final class CollectionVC: UIViewController, IAlarmsListVC {
+    let interactor: IAlarmsListInteractor
+    let router: IAlarmsListRouter
 
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -23,7 +23,7 @@ final class CollectionVC: UIViewController, IAlarmsVC {
         return collectionView
     }()
 
-    init(interactor: IAlarmsInteractor, router: IAlarmsRouter) {
+    init(interactor: IAlarmsListInteractor, router: IAlarmsListRouter) {
         self.interactor = interactor
         self.router = router
         super.init(nibName: nil, bundle: nil)
