@@ -32,6 +32,7 @@ final class NewAlarmVC: UIViewController, INewAlarmVC {
         textView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         textView.font = .systemFont(ofSize: 18)
         textView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)
+        textView.becomeFirstResponder()
         return textView
     }()
 
@@ -52,7 +53,7 @@ final class NewAlarmVC: UIViewController, INewAlarmVC {
         textView.layer.cornerRadius = 16
         textView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         textView.font = .systemFont(ofSize: 18)
-        textView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)
+        textView.becomeFirstResponder()
         return textView
     }()
 
@@ -108,7 +109,15 @@ final class NewAlarmVC: UIViewController, INewAlarmVC {
         setup()
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        setScrollViewContentSize()
+    }
+
     func setup() {
+        keyboardWillShow(scrollView)
+        keyboardWillHide(scrollView)
+        hideKeyboardWhenTappedAround()
         scrollView.addSubview(titleLabel)
         scrollView.addSubview(titleTextView)
         scrollView.addSubview(descriptionLabel)
@@ -143,5 +152,9 @@ final class NewAlarmVC: UIViewController, INewAlarmVC {
         ])
 
     }
-    
+
+    func setScrollViewContentSize() {
+        scrollView.contentSize.height = scrollView.convert(saveButton.frame.origin, to: scrollView).y +
+            UIViewController.safeAreaHeight() * 2
+    }
 }
