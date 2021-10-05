@@ -85,6 +85,13 @@ final class NewAlarmVC: UIViewController, INewAlarmVC {
         return onSwitch
     }()
 
+    lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.isScrollEnabled = true
+        return scrollView
+    }()
+
     init(interactor: INewAlarmInteractor, router: INewAlarmRouter) {
         self.interactor = interactor
         self.router = router
@@ -102,33 +109,39 @@ final class NewAlarmVC: UIViewController, INewAlarmVC {
     }
 
     func setup() {
-        view.addSubview(titleLabel)
-        view.addSubview(titleTextView)
-        view.addSubview(descriptionLabel)
-        view.addSubview(descriptionTextView)
-        view.addSubview(saveButton)
-        view.addSubview(onSwitch)
-        view.addSubview(onLabel)
+        scrollView.addSubview(titleLabel)
+        scrollView.addSubview(titleTextView)
+        scrollView.addSubview(descriptionLabel)
+        scrollView.addSubview(descriptionTextView)
+        scrollView.addSubview(saveButton)
+        scrollView.addSubview(onSwitch)
+        scrollView.addSubview(onLabel)
+        view.addSubview(scrollView)
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 16),
-            titleTextView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollView.bottomAnchor.constraint(greaterThanOrEqualTo: view.bottomAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            titleLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 16),
+            titleTextView.leadingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.leadingAnchor, constant: 16),
             titleTextView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
-            titleTextView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            titleTextView.trailingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            descriptionLabel.leadingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.leadingAnchor, constant: 16),
             descriptionLabel.topAnchor.constraint(equalTo: titleTextView.bottomAnchor, constant: 16),
-            descriptionTextView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            descriptionTextView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            descriptionTextView.leadingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            descriptionTextView.trailingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.trailingAnchor, constant: -16),
             descriptionTextView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 16),
-            onLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            onLabel.leadingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.leadingAnchor, constant: 16),
             onLabel.topAnchor.constraint(equalTo: descriptionTextView.bottomAnchor, constant: 16),
-            onSwitch.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            onSwitch.trailingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.trailingAnchor, constant: -16),
             onSwitch.centerYAnchor.constraint(equalTo: onLabel.centerYAnchor),
-            saveButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            saveButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            saveButton.leadingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            saveButton.trailingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.trailingAnchor, constant: -16),
             saveButton.topAnchor.constraint(equalTo: onSwitch.bottomAnchor, constant: 16),
             saveButton.heightAnchor.constraint(equalToConstant: 55),
         ])
+
     }
     
 }
