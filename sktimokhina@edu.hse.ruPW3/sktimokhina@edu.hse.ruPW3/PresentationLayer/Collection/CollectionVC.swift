@@ -8,14 +8,13 @@
 import UIKit
 
 final class CollectionVC: UIViewController, IAlarmsListVC {
-
     let interactor: IAlarmsListInteractor
     let router: IAlarmsListRouter
 
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let width = UIScreen.main.bounds.size.width
-        layout.estimatedItemSize = CGSize(width: width, height: 10)
+        layout.estimatedItemSize = CGSize(width: width - 32, height: 10)
         let collectionView = UICollectionView(frame: view.frame, collectionViewLayout: layout)
         collectionView.register(AlarmCell.self, forCellWithReuseIdentifier: "\(AlarmCell.self)")
         collectionView.delegate = self
@@ -60,8 +59,20 @@ final class CollectionVC: UIViewController, IAlarmsListVC {
     func showError() {
 
     }
+}
 
-    func didUpdateAlarm(with id: ObjectIdentifier) {
+extension CollectionVC: IAlarmUpdaterObserver {
+    func didAddItem() {
+        interactor.prefetch { [weak self] in
+            guard let self = self else { return }
+            self.collectionView.performBatchUpdates({
+                let index = IndexPath(row: self.collectionView.numberOfItems(inSection: 0), section: 0)
+                self.collectionView.reloadItems(at: [index])
+            })
+        }
+    }
+
+    func didUpdateItem(with id: ObjectIdentifier) {
         guard let cell = collectionView.visibleCells.first(where: {$0 is AlarmCell && ($0 as? AlarmCell)?.id == id}),
               let index = collectionView.indexPath(for: cell) else {
             return
@@ -70,9 +81,7 @@ final class CollectionVC: UIViewController, IAlarmsListVC {
             collectionView.reloadItems(at: [index])
         })
     }
-}
 
-extension CollectionVC: IAlarmCellObserver {
     func didToggleIsOn(id: ObjectIdentifier, isOn: Bool) {
         interactor.update(id: id, isOn: isOn)
     }
@@ -91,5 +100,12 @@ extension CollectionVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
         let alarm = interactor.getAlarmAt(index: indexPath.row)
         cell.setup(with: alarm, observer: self)
         return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? AlarmCell else {
+            return
+        }
+        interactor.didTapOpenAlarm(id: cell.id)
     }
 }

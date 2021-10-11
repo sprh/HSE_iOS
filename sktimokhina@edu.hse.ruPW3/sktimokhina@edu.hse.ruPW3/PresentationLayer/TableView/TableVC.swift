@@ -8,7 +8,6 @@
 import UIKit
 
 final class TableVC: UIViewController, IAlarmsListVC {
-
     let interactor: IAlarmsListInteractor
     let router: IAlarmsListRouter
 
@@ -43,7 +42,18 @@ final class TableVC: UIViewController, IAlarmsListVC {
     func showError() {
         
     }
+
+    func didToggleIsOn(id: ObjectIdentifier, isOn: Bool) {
+
+    }
+    
     func didUpdateAlarm(with id: ObjectIdentifier) {
         
+    }
+    
+    func didAddItem() {
+    }
+
+    func didUpdateItem(with id: ObjectIdentifier) {
     }
 }

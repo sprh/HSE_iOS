@@ -13,6 +13,7 @@
 		E307541B270A33E90054CDF1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3075419270A33E90054CDF1 /* LaunchScreen.storyboard */; };
 		E3075428270A353D0054CDF1 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3075427270A353D0054CDF1 /* TabBarController.swift */; };
 		E33BD5C8270A38B900D6EA7C /* CollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33BD5C7270A38B900D6EA7C /* CollectionVC.swift */; };
+		E36E76B72714CF3200BE566D /* AlarmUpdateObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36E76B62714CF3200BE566D /* AlarmUpdateObserver.swift */; };
 		E3A6A01E270A3CD1005D2AEA /* TableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A018270A3CD1005D2AEA /* TableVC.swift */; };
 		E3A6A02B270A3DCB005D2AEA /* StackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A025270A3DCB005D2AEA /* StackVC.swift */; };
 		E3A6A02E270A424B005D2AEA /* AlarmCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A02D270A424B005D2AEA /* AlarmCell.swift */; };
@@ -30,7 +31,6 @@
 		E3A6A049270B904D005D2AEA /* AlarmsListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A048270B904D005D2AEA /* AlarmsListRouter.swift */; };
 		E3A6A04B270B9058005D2AEA /* AlarmsListGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A04A270B9058005D2AEA /* AlarmsListGraph.swift */; };
 		E3A6A04D270B9143005D2AEA /* IAlarmsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A04C270B9143005D2AEA /* IAlarmsListVC.swift */; };
-		E3A6A04F270C4E51005D2AEA /* MainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A04E270C4E51005D2AEA /* MainButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +42,7 @@
 		E307541C270A33E90054CDF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E3075427270A353D0054CDF1 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		E33BD5C7270A38B900D6EA7C /* CollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionVC.swift; sourceTree = "<group>"; };
+		E36E76B62714CF3200BE566D /* AlarmUpdateObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmUpdateObserver.swift; sourceTree = "<group>"; };
 		E3A6A018270A3CD1005D2AEA /* TableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableVC.swift; sourceTree = "<group>"; };
 		E3A6A025270A3DCB005D2AEA /* StackVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackVC.swift; sourceTree = "<group>"; };
 		E3A6A02D270A424B005D2AEA /* AlarmCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCell.swift; sourceTree = "<group>"; };
@@ -59,7 +60,6 @@
 		E3A6A048270B904D005D2AEA /* AlarmsListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmsListRouter.swift; sourceTree = "<group>"; };
 		E3A6A04A270B9058005D2AEA /* AlarmsListGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmsListGraph.swift; sourceTree = "<group>"; };
 		E3A6A04C270B9143005D2AEA /* IAlarmsListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAlarmsListVC.swift; sourceTree = "<group>"; };
-		E3A6A04E270C4E51005D2AEA /* MainButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,7 +145,6 @@
 		E3075426270A352F0054CDF1 /* CustomElements */ = {
 			isa = PBXGroup;
 			children = (
-				E3A6A04E270C4E51005D2AEA /* MainButton.swift */,
 				E3075427270A353D0054CDF1 /* TabBarController.swift */,
 			);
 			path = CustomElements;
@@ -197,6 +196,7 @@
 				E3A6A048270B904D005D2AEA /* AlarmsListRouter.swift */,
 				E3A6A04A270B9058005D2AEA /* AlarmsListGraph.swift */,
 				E3A6A04C270B9143005D2AEA /* IAlarmsListVC.swift */,
+				E36E76B62714CF3200BE566D /* AlarmUpdateObserver.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -283,12 +283,12 @@
 				E3A6A031270A48A7005D2AEA /* Alarm+CoreDataClass.swift in Sources */,
 				E3A6A04D270B9143005D2AEA /* IAlarmsListVC.swift in Sources */,
 				E3A6A03C270B882F005D2AEA /* NewAlarmRouter.swift in Sources */,
+				E36E76B72714CF3200BE566D /* AlarmUpdateObserver.swift in Sources */,
 				E3A6A042270B8956005D2AEA /* UIViewController+Utils.swift in Sources */,
 				E3A6A03B270B882F005D2AEA /* NewAlarmInteractor.swift in Sources */,
 				E3A6A032270A48A7005D2AEA /* Alarm+CoreDataProperties.swift in Sources */,
 				E33BD5C8270A38B900D6EA7C /* CollectionVC.swift in Sources */,
 				E307540C270A33E30054CDF1 /* AppDelegate.swift in Sources */,
-				E3A6A04F270C4E51005D2AEA /* MainButton.swift in Sources */,
 				E3A6A034270A498C005D2AEA /* CoreDataWorker.swift in Sources */,
 				E3A6A04B270B9058005D2AEA /* AlarmsListGraph.swift in Sources */,
 				E3A6A03E270B882F005D2AEA /* NewAlarmGraph.swift in Sources */,

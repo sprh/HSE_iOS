@@ -11,6 +11,7 @@ protocol IAlarmsListRouter {
     var viewController: IAlarmsListVC? { get set }
 
     func shouldShowNewAlarm(with worker: ICoreDataWorker)
+    func shouldShowNewAlarm(with worker: ICoreDataWorker, alarm: Alarm, observer: IAlarmUpdaterObserver)
 }
 
 final class AlarmsListViewRouter: IAlarmsListRouter {
@@ -18,6 +19,14 @@ final class AlarmsListViewRouter: IAlarmsListRouter {
 
     func shouldShowNewAlarm(with worker: ICoreDataWorker) {
         let graph = NewAlarmGraph(worker: worker)
+        viewController?.navigationController?.present(graph.viewController,
+                                                      animated: true)
+    }
+
+    func shouldShowNewAlarm(with worker: ICoreDataWorker,
+                            alarm: Alarm,
+                            observer: IAlarmUpdaterObserver) {
+        let graph = NewAlarmGraph(worker: worker, alarm: alarm, observer: observer)
         viewController?.navigationController?.present(graph.viewController,
                                                       animated: true)
     }

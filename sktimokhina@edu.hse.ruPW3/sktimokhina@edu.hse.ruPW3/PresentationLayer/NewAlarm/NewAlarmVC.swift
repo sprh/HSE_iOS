@@ -10,6 +10,7 @@ import UIKit
 protocol INewAlarmVC: UIViewController {
     func shouldShowError()
     func shouldClose()
+    func update(description: String, time: Date, isOn: Bool)
 }
 
 final class NewAlarmVC: UIViewController, INewAlarmVC {
@@ -56,11 +57,9 @@ final class NewAlarmVC: UIViewController, INewAlarmVC {
     }()
 
     lazy var saveButton: UIButton = {
-        let model = MainButton.ViewModel(font: UIFont.preferredFont(forTextStyle: .body),
-                                         title: "Save",
-                                         enabledTextColor: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1),
-                                         disabledTextColor: #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1))
-        let button = MainButton(frame: .zero, viewModel: model)
+        let button = UIButton()
+        button.setTitle("Save", for: .normal)
+        button.setTitleColor(.black, for: .normal)
         button.backgroundColor = #colorLiteral(red: 1, green: 0.9705604911, blue: 0.7168341279, alpha: 1)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.cornerRadius = 20
@@ -105,6 +104,7 @@ final class NewAlarmVC: UIViewController, INewAlarmVC {
         super.viewDidLoad()
         view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         setup()
+        interactor.updateIfNeeded()
     }
 
     override func viewDidLayoutSubviews() {
@@ -171,5 +171,11 @@ final class NewAlarmVC: UIViewController, INewAlarmVC {
 
     func shouldClose() {
         dismiss(animated: true)
+    }
+
+    func update(description: String, time: Date, isOn: Bool) {
+        descriptionTextView.text = description
+        date.date = time
+        onSwitch.isOn = isOn
     }
 }

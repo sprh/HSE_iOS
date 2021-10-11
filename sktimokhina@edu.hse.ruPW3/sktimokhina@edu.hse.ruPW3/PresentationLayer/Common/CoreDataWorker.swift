@@ -11,6 +11,7 @@ protocol ICoreDataWorker {
     func didTapSaveButton(time: Date, descriptionText: String, isOn: Bool) throws
     func loadAll() throws -> [Alarm]
     func update(alarm: Alarm, isOn: Bool) throws
+    func update(alarm: Alarm, time: Date, descriptionText: String, isOn: Bool) throws
 }
 
 final class CoreDataWorker: ICoreDataWorker {
@@ -31,6 +32,13 @@ final class CoreDataWorker: ICoreDataWorker {
 
     func update(alarm: Alarm, isOn: Bool) throws {
         alarm.on = isOn
+        try context.save()
+    }
+
+    func update(alarm: Alarm, time: Date, descriptionText: String, isOn: Bool) throws {
+        alarm.on = isOn
+        alarm.descriptionText = descriptionText
+        alarm.time = time
         try context.save()
     }
 

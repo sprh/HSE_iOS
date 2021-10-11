@@ -19,10 +19,10 @@ final class NewAlarmGraph {
         view
     }
 
-    init(worker: ICoreDataWorker) {
+    init(worker: ICoreDataWorker, alarm: Alarm? = nil, observer: IAlarmUpdaterObserver? = nil) {
         presenter = NewAlarmPresenter()
         self.worker = worker
-        interactor = NewAlarmInteractor(presenter: presenter, worker: worker)
+        interactor = NewAlarmInteractor(presenter: presenter, worker: worker, alarm: alarm, observer: observer)
         router = NewAlarmViewRouter()
         view = NewAlarmVC(interactor: interactor, router: router)
         presenter.viewController = view

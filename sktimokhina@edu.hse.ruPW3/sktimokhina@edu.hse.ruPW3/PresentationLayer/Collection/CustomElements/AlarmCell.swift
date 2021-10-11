@@ -7,13 +7,9 @@
 
 import UIKit
 
-protocol IAlarmCellObserver: AnyObject {
-    func didToggleIsOn(id: ObjectIdentifier, isOn: Bool)
-}
-
 final class AlarmCell: UICollectionViewCell {
     var id: ObjectIdentifier!
-    weak var observer: IAlarmCellObserver?
+    weak var observer: IAlarmUpdaterObserver?
     lazy var onSwitch: UISwitch = {
         let onSwitch = UISwitch()
         onSwitch.translatesAutoresizingMaskIntoConstraints = false
@@ -38,13 +34,7 @@ final class AlarmCell: UICollectionViewCell {
         return label
     }()
 
-    lazy var width: NSLayoutConstraint = {
-        let width = contentView.widthAnchor.constraint(equalToConstant: bounds.size.width)
-        width.isActive = true
-        return width
-    }()
-
-    func setup(with alarm: Alarm?, observer: IAlarmCellObserver?) {
+    func setup(with alarm: Alarm?, observer: IAlarmUpdaterObserver?) {
         guard let alarm = alarm else { return }
         id = alarm.id
         self.observer = observer
@@ -73,10 +63,5 @@ final class AlarmCell: UICollectionViewCell {
     @objc
     private func didToggleIsOn() {
         observer?.didToggleIsOn(id: id, isOn: onSwitch.isOn)
-    }
-
-    override func systemLayoutSizeFitting(_ targetSize: CGSize, withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority, verticalFittingPriority: UILayoutPriority) -> CGSize {
-        width.constant = bounds.size.width
-        return contentView.systemLayoutSizeFitting(CGSize(width: targetSize.width, height: 1))
     }
 }

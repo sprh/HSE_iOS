@@ -12,6 +12,7 @@ protocol INewAlarmPresenter {
 
     func shouldShowError()
     func shouldClose()
+    func update(description: String, time: Date, isOn: Bool)
 }
 
 final class NewAlarmPresenter: INewAlarmPresenter {
@@ -23,5 +24,9 @@ final class NewAlarmPresenter: INewAlarmPresenter {
 
     func shouldShowError() {
         viewController?.shouldShowError()
+    }
+
+    func update(description: String, time: Date, isOn: Bool) {
+        viewController?.update(description: description, time: time, isOn: isOn)
     }
 }

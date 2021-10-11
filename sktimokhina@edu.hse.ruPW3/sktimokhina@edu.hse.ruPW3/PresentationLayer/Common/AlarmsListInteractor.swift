@@ -16,6 +16,9 @@ protocol IAlarmsListInteractor {
     var alarmsCount: Int { get }
     func getAlarmAt(index: Int) -> Alarm?
     func update(id: ObjectIdentifier, isOn: Bool)
+    func getAlarm(with id: ObjectIdentifier) -> Alarm?
+    func didTapOpenAlarm(id: ObjectIdentifier)
+    func prefetch(completion: @escaping () -> ())
 }
 
 final class AlarmsListInteractor: IAlarmsListInteractor {
@@ -45,6 +48,16 @@ final class AlarmsListInteractor: IAlarmsListInteractor {
         }
     }
 
+    func prefetch(completion: @escaping () -> ()) {
+        do {
+            // мне было лень что-то нормальное делать
+            self.alarms = try worker.loadAll()
+            completion()
+        } catch {
+            presenter.showError()
+        }
+    }
+
     func getAlarmAt(index: Int) -> Alarm? {
         return (alarms?.count ?? 0) - 1 > index ? alarms![index] : nil
     }
@@ -57,5 +70,16 @@ final class AlarmsListInteractor: IAlarmsListInteractor {
         } catch {
             presenter.showError()
         }
+    }
+
+    func getAlarm(with id: ObjectIdentifier) -> Alarm? {
+        return alarms?.first(where: {$0.id == id})
+    }
+
+    func didTapOpenAlarm(id: ObjectIdentifier) {
+        guard let alarm = alarms?.first(where: {$0.id == id}) else {
+            return
+        }
+        presenter.shouldShowNewAlarm(with: worker, alarm: alarm)
     }
 }

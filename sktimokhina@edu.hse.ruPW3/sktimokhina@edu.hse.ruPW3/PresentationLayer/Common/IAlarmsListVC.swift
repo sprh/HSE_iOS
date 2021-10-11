@@ -7,18 +7,23 @@
 
 import UIKit
 
-protocol IAlarmsListVC: UIViewController {
+protocol IAlarmsListVC: UIViewController, IAlarmUpdaterObserver {
     var interactor: IAlarmsListInteractor { get }
     var router: IAlarmsListRouter { get }
     func shouldShowNewAlarm(with worker: ICoreDataWorker)
+    func shouldShowNewAlarm(with worker: ICoreDataWorker, alarm: Alarm)
 
     func setAlarms()
     func showError()
-    func didUpdateAlarm(with id: ObjectIdentifier)
+    func didUpdateItem(with id: ObjectIdentifier)
 }
 
 extension IAlarmsListVC {
     func shouldShowNewAlarm(with worker: ICoreDataWorker) {
         router.shouldShowNewAlarm(with: worker)
+    }
+
+    func shouldShowNewAlarm(with worker: ICoreDataWorker, alarm: Alarm) {
+        router.shouldShowNewAlarm(with: worker, alarm: alarm, observer: self)
     }
 }

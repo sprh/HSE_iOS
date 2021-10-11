@@ -8,7 +8,6 @@
 import UIKit
 
 final class StackVC: UIViewController, IAlarmsListVC {
-
     let interactor: IAlarmsListInteractor
     let router: IAlarmsListRouter
 
@@ -44,7 +43,18 @@ final class StackVC: UIViewController, IAlarmsListVC {
         
     }
 
+    func didToggleIsOn(id: ObjectIdentifier, isOn: Bool) {
+    }
+
+
+
     @objc func didTapAddButton() {
         interactor.didTapNewAlarm()
+    }
+
+    func didAddItem() {
+    }
+
+    func didUpdateItem(with id: ObjectIdentifier) {
     }
 }
