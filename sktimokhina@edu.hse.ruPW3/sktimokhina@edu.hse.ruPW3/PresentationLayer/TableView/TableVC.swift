@@ -8,6 +8,7 @@
 import UIKit
 
 final class TableVC: UIViewController, IAlarmsListVC {
+
     let interactor: IAlarmsListInteractor
     let router: IAlarmsListRouter
 
@@ -33,5 +34,16 @@ final class TableVC: UIViewController, IAlarmsListVC {
 
     @objc func didTapAddButton() {
         interactor.didTapNewAlarm()
+    }
+
+    func setAlarms() {
+
+    }
+
+    func showError() {
+        
+    }
+    func didUpdateAlarm(with id: ObjectIdentifier) {
+        
     }
 }

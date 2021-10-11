@@ -11,5 +11,4 @@ import CoreData
 
 @objc(Alarm)
 public class Alarm: NSManagedObject {
-
 }

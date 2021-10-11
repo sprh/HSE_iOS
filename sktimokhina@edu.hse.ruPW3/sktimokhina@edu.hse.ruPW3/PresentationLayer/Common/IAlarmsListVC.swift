@@ -11,6 +11,10 @@ protocol IAlarmsListVC: UIViewController {
     var interactor: IAlarmsListInteractor { get }
     var router: IAlarmsListRouter { get }
     func shouldShowNewAlarm(with worker: ICoreDataWorker)
+
+    func setAlarms()
+    func showError()
+    func didUpdateAlarm(with id: ObjectIdentifier)
 }
 
 extension IAlarmsListVC {

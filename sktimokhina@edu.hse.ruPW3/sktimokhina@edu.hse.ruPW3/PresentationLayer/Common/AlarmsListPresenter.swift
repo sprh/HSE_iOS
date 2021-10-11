@@ -13,6 +13,9 @@ protocol IAlarmsListPresenter {
     var viewController: IAlarmsListVC? { get set }
 
     func shouldShowNewAlarm(with worker: ICoreDataWorker)
+    func setAlarms()
+    func showError()
+    func didUpdateAlarm(with id: ObjectIdentifier)
 }
 
 final class AlarmsListPresenter: IAlarmsListPresenter {
@@ -20,5 +23,17 @@ final class AlarmsListPresenter: IAlarmsListPresenter {
 
     func shouldShowNewAlarm(with worker: ICoreDataWorker) {
         viewController?.shouldShowNewAlarm(with: worker)
+    }
+
+    func setAlarms() {
+        viewController?.setAlarms()
+    }
+
+    func showError() {
+        viewController?.showError()
+    }
+
+    func didUpdateAlarm(with id: ObjectIdentifier) {
+        
     }
 }

@@ -8,31 +8,30 @@
 import UIKit
 
 protocol INewAlarmVC: UIViewController {
+    func shouldShowError()
+    func shouldClose()
 }
 
 final class NewAlarmVC: UIViewController, INewAlarmVC {
     private let interactor: INewAlarmInteractor
     private let router: INewAlarmRouter
 
-    lazy var titleLabel: UILabel = {
+    lazy var dateLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Title"
+        label.text = "Time"
         label.font = .systemFont(ofSize: 22)
         return label
     }()
 
-    lazy var titleTextView: UITextView = {
-        let textView = UITextView()
-        textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.backgroundColor = .red
-        textView.autoresizingMask = .flexibleBottomMargin
-        textView.isScrollEnabled = false
-        textView.layer.cornerRadius = 16
-        textView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        textView.font = .systemFont(ofSize: 18)
-        textView.becomeFirstResponder()
-        return textView
+    lazy var date: UIDatePicker = {
+        let datePicker = UIDatePicker()
+        datePicker.translatesAutoresizingMaskIntoConstraints = false
+        datePicker.layer.cornerRadius = 16
+        datePicker.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        datePicker.datePickerMode = .time
+        datePicker.preferredDatePickerStyle = .inline
+        return datePicker
     }()
 
     lazy var descriptionLabel: UILabel = {
@@ -64,8 +63,8 @@ final class NewAlarmVC: UIViewController, INewAlarmVC {
         let button = MainButton(frame: .zero, viewModel: model)
         button.backgroundColor = #colorLiteral(red: 1, green: 0.9705604911, blue: 0.7168341279, alpha: 1)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.isEnabled = false
         button.layer.cornerRadius = 20
+        button.addTarget(self, action: #selector(didTapSaveButton), for: .touchUpInside)
         return button
     }()
 
@@ -117,8 +116,8 @@ final class NewAlarmVC: UIViewController, INewAlarmVC {
         keyboardWillShow(scrollView)
         keyboardWillHide(scrollView)
         hideKeyboardWhenTappedAround()
-        scrollView.addSubview(titleLabel)
-        scrollView.addSubview(titleTextView)
+        scrollView.addSubview(dateLabel)
+        scrollView.addSubview(date)
         scrollView.addSubview(descriptionLabel)
         scrollView.addSubview(descriptionTextView)
         scrollView.addSubview(saveButton)
@@ -130,13 +129,13 @@ final class NewAlarmVC: UIViewController, INewAlarmVC {
             scrollView.topAnchor.constraint(equalTo: view.topAnchor),
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             scrollView.bottomAnchor.constraint(greaterThanOrEqualTo: view.bottomAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            titleLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 16),
-            titleTextView.leadingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            titleTextView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
-            titleTextView.trailingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            dateLabel.leadingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            dateLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 16),
+            dateLabel.leadingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            date.trailingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            date.centerYAnchor.constraint(equalTo: dateLabel.centerYAnchor),
             descriptionLabel.leadingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            descriptionLabel.topAnchor.constraint(equalTo: titleTextView.bottomAnchor, constant: 16),
+            descriptionLabel.topAnchor.constraint(equalTo: date.bottomAnchor, constant: 16),
             descriptionTextView.leadingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.leadingAnchor, constant: 16),
             descriptionTextView.trailingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.trailingAnchor, constant: -16),
             descriptionTextView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 16),
@@ -156,11 +155,21 @@ final class NewAlarmVC: UIViewController, INewAlarmVC {
         scrollView.contentSize.height = scrollView.convert(saveButton.frame.origin, to: scrollView).y +
             UIViewController.safeAreaHeight()
     }
-    
-}
 
-extension NewAlarmVC: UITextViewDelegate {
-    @objc func textDidChangeNotification() {
-        setScrollViewContentSize()
+    @objc
+    func didTapSaveButton() {
+        var date = date.date
+        if (date < Date()) {
+            date = Calendar.current.date(byAdding: .day, value: 1, to: date) ?? Date()
+        }
+        interactor.didTapSaveButton(time: date, descriptionText: descriptionTextView.text, isOn: onSwitch.isOn)
+    }
+
+    func shouldShowError() {
+        router.showError()
+    }
+
+    func shouldClose() {
+        dismiss(animated: true)
     }
 }

@@ -11,11 +11,21 @@ import Foundation
 
 protocol IAlarmsListInteractor {
     func didTapNewAlarm()
+    func load()
+
+    var alarmsCount: Int { get }
+    func getAlarmAt(index: Int) -> Alarm?
+    func update(id: ObjectIdentifier, isOn: Bool)
 }
 
 final class AlarmsListInteractor: IAlarmsListInteractor {
     let presenter: IAlarmsListPresenter
     let worker: ICoreDataWorker
+    private var alarms: [Alarm]?
+
+    var alarmsCount: Int {
+        alarms?.count ?? 0
+    }
 
     init(presenter: IAlarmsListPresenter, worker: ICoreDataWorker) {
         self.presenter = presenter
@@ -24,5 +34,28 @@ final class AlarmsListInteractor: IAlarmsListInteractor {
 
     func didTapNewAlarm() {
         presenter.shouldShowNewAlarm(with: worker)
+    }
+
+    func load() {
+        do {
+            self.alarms = try worker.loadAll()
+            presenter.setAlarms()
+        } catch {
+            presenter.showError()
+        }
+    }
+
+    func getAlarmAt(index: Int) -> Alarm? {
+        return (alarms?.count ?? 0) - 1 > index ? alarms![index] : nil
+    }
+
+    func update(id: ObjectIdentifier, isOn: Bool) {
+        guard let alarm = alarms?.first(where: {$0.id == id}) else { return }
+        do {
+            try worker.update(alarm: alarm, isOn: isOn)
+            presenter.didUpdateAlarm(with: id)
+        } catch {
+            presenter.showError()
+        }
     }
 }

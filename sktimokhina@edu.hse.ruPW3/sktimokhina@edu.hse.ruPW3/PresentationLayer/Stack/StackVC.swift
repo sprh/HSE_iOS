@@ -8,6 +8,7 @@
 import UIKit
 
 final class StackVC: UIViewController, IAlarmsListVC {
+
     let interactor: IAlarmsListInteractor
     let router: IAlarmsListRouter
 
@@ -29,6 +30,18 @@ final class StackVC: UIViewController, IAlarmsListVC {
                                         target: self,
                                         action: #selector(didTapAddButton))
         createAlarmHeader(addButton, "Stack")
+    }
+
+    func setAlarms() {
+
+    }
+
+    func showError() {
+        
+    }
+
+    func didUpdateAlarm(with id: ObjectIdentifier) {
+        
     }
 
     @objc func didTapAddButton() {
