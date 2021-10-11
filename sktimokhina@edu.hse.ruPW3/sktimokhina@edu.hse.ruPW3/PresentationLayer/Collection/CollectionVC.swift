@@ -16,7 +16,7 @@ final class CollectionVC: UIViewController, IAlarmsListVC {
         let width = UIScreen.main.bounds.size.width
         layout.estimatedItemSize = CGSize(width: width - 32, height: 10)
         let collectionView = UICollectionView(frame: view.frame, collectionViewLayout: layout)
-        collectionView.register(AlarmCell.self, forCellWithReuseIdentifier: "\(AlarmCell.self)")
+        collectionView.register(AlarmCollectionViewCell.self, forCellWithReuseIdentifier: "\(AlarmCollectionViewCell.self)")
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.backgroundColor = .clear
@@ -37,14 +37,18 @@ final class CollectionVC: UIViewController, IAlarmsListVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        interactor.load()
         view.backgroundColor = .white
-        view.addSubview(collectionView)
         let addButton = UIBarButtonItem(image: UIImage(systemName: "plus.circle.fill"),
                                         style: .done,
                                         target: self,
                                         action: #selector(didTapAddButton))
         createAlarmHeader(addButton, "Collection")
+        view.addSubview(collectionView)
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        interactor.load()
     }
 
     @objc
@@ -73,7 +77,7 @@ extension CollectionVC: IAlarmUpdaterObserver {
     }
 
     func didUpdateItem(with id: ObjectIdentifier) {
-        guard let cell = collectionView.visibleCells.first(where: {$0 is AlarmCell && ($0 as? AlarmCell)?.id == id}),
+        guard let cell = collectionView.visibleCells.first(where: {$0 is AlarmCollectionViewCell && ($0 as? AlarmCollectionViewCell)?.id == id}),
               let index = collectionView.indexPath(for: cell) else {
             return
         }
@@ -94,7 +98,7 @@ extension CollectionVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(AlarmCell.self)", for: indexPath) as? AlarmCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(AlarmCollectionViewCell.self)", for: indexPath) as? AlarmCollectionViewCell else {
             return UICollectionViewCell()
         }
         let alarm = interactor.getAlarmAt(index: indexPath.row)
@@ -103,7 +107,7 @@ extension CollectionVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? AlarmCell else {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? AlarmCollectionViewCell else {
             return
         }
         interactor.didTapOpenAlarm(id: cell.id)

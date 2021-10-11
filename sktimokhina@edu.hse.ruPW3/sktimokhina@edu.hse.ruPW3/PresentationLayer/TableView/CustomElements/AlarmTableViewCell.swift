@@ -1,5 +1,5 @@
 //
-//  AlarmCell.swift
+//  AlarmTableViewCell.swift
 //  sktimokhina@edu.hse.ruPW3
 //
 //  Created by Софья Тимохина on 03.10.2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class AlarmCell: UICollectionViewCell {
+final class AlarmTableViewCell: UITableViewCell {
     var id: ObjectIdentifier!
     weak var observer: IAlarmUpdaterObserver?
     lazy var onSwitch: UISwitch = {

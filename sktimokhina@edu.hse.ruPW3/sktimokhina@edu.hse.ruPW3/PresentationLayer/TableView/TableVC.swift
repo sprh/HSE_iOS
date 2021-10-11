@@ -11,6 +11,18 @@ final class TableVC: UIViewController, IAlarmsListVC {
     let interactor: IAlarmsListInteractor
     let router: IAlarmsListRouter
 
+    lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: view.frame, style: .insetGrouped)
+        tableView.register(AlarmTableViewCell.self, forCellReuseIdentifier: "\(AlarmTableViewCell.self)")
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.layer.masksToBounds = true
+        tableView.isScrollEnabled = true
+        tableView.delaysContentTouches = true
+        tableView.canCancelContentTouches = true
+        return tableView
+    }()
+
     init(interactor: IAlarmsListInteractor, router: IAlarmsListRouter) {
         self.interactor = interactor
         self.router = router
@@ -29,6 +41,12 @@ final class TableVC: UIViewController, IAlarmsListVC {
                                         target: self,
                                         action: #selector(didTapAddButton))
         createAlarmHeader(addButton, "Table")
+        view.addSubview(tableView)
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        interactor.load()
     }
 
     @objc func didTapAddButton() {
@@ -55,5 +73,28 @@ final class TableVC: UIViewController, IAlarmsListVC {
     }
 
     func didUpdateItem(with id: ObjectIdentifier) {
+    }
+}
+
+extension TableVC: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return interactor.alarmsCount
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(AlarmTableViewCell.self)", for: indexPath) as? AlarmTableViewCell else {
+            return UITableViewCell()
+        }
+        let alarm = interactor.getAlarmAt(index: indexPath.row)
+        cell.setup(with: alarm, observer: self)
+        cell.selectionStyle = .none
+        return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? AlarmTableViewCell else {
+            return
+        }
+        interactor.didTapOpenAlarm(id: cell.id)
     }
 }
