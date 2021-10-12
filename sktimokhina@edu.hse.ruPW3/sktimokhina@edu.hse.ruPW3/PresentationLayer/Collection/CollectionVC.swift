@@ -50,6 +50,7 @@ final class CollectionVC: UIViewController, IAlarmsListVC {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         createAlarmHeader(addButton, "Collection")
         interactor.load()
     }
@@ -64,7 +65,7 @@ final class CollectionVC: UIViewController, IAlarmsListVC {
     }
 
     func showError() {
-
+        router.showError()
     }
 }
 

@@ -48,6 +48,7 @@ final class TableVC: UIViewController, IAlarmsListVC {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         createAlarmHeader(addButton, "Table")
         interactor.load()
     }
@@ -61,7 +62,7 @@ final class TableVC: UIViewController, IAlarmsListVC {
     }
 
     func showError() {
-        
+        router.showError()
     }
 }
 

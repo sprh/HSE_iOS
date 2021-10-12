@@ -5,13 +5,14 @@
 //  Created by Софья Тимохина on 04.10.2021.
 //
 
-import Foundation
+import UIKit
 
 protocol IAlarmsListRouter {
     var viewController: IAlarmsListVC? { get set }
 
     func shouldShowNewAlarm(with worker: ICoreDataWorker)
     func shouldShowNewAlarm(with worker: ICoreDataWorker, alarm: Alarm, observer: IAlarmUpdaterObserver)
+    func showError()
 }
 
 final class AlarmsListViewRouter: IAlarmsListRouter {
@@ -29,6 +30,12 @@ final class AlarmsListViewRouter: IAlarmsListRouter {
         let graph = NewAlarmGraph(worker: worker, alarm: alarm, observer: observer)
         viewController?.navigationController?.present(graph.viewController,
                                                       animated: true)
+    }
+
+    func showError() {
+        let alert = UIAlertController(title: "Error", message: "Ops, something went wrong(", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default))
+        viewController?.present(alert, animated: true)
     }
 }
 
