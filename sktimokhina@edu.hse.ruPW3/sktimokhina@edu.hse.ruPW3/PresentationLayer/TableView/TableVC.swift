@@ -57,24 +57,37 @@ final class TableVC: UIViewController, IAlarmsListVC {
     }
 
     func setAlarms() {
+        tableView.reloadData()
     }
 
     func showError() {
         
     }
+}
 
+extension TableVC: IAlarmUpdaterObserver {
     func didToggleIsOn(id: ObjectIdentifier, isOn: Bool) {
-
-    }
-    
-    func didUpdateAlarm(with id: ObjectIdentifier) {
-        
-    }
-    
-    func didAddItem() {
+        interactor.update(id: id, isOn: isOn)
     }
 
     func didUpdateItem(with id: ObjectIdentifier) {
+        guard let cell = tableView.visibleCells.first(where: {$0 is AlarmTableViewCell && ($0 as? AlarmTableViewCell)?.id == id}),
+              let index = tableView.indexPath(for: cell) else {
+            return
+        }
+        tableView.performBatchUpdates({
+            tableView.reloadRows(at: [index], with: .none)
+        })
+    }
+
+    func didAddItem() {
+        interactor.prefetch { [weak self] in
+            guard let self = self else { return }
+            self.tableView.performBatchUpdates({
+                let index = IndexPath(row: self.tableView.numberOfRows(inSection: 0), section: 0)
+                self.tableView.reloadRows(at: [index], with: .none)
+            })
+        }
     }
 }
 

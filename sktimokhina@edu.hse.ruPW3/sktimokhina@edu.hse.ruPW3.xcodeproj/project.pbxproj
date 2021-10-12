@@ -109,9 +109,9 @@
 		E3075422270A35060054CDF1 /* PresentationLayer */ = {
 			isa = PBXGroup;
 			children = (
+				E3075426270A352F0054CDF1 /* CustomElements */,
 				E3A6A043270B901B005D2AEA /* Common */,
 				E3A6A035270B87DA005D2AEA /* NewAlarm */,
-				E3075426270A352F0054CDF1 /* CustomElements */,
 				E3075425270A35220054CDF1 /* Collection */,
 				E3075424270A351C0054CDF1 /* TableView */,
 				E3075423270A35180054CDF1 /* Stack */,
