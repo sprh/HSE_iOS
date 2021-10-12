@@ -87,22 +87,25 @@ final class StackVC: UIViewController, IAlarmsListVC {
         router.showError()
     }
 
-    func didUpdateAlarm(with id: ObjectIdentifier) {
-        
-    }
-
-    func didToggleIsOn(id: ObjectIdentifier, isOn: Bool) {
-    }
-
-
 
     @objc func didTapAddButton() {
         interactor.didTapNewAlarm()
     }
+}
+
+extension StackVC: IAlarmUpdaterObserver {
+    func didToggleIsOn(id: ObjectIdentifier, isOn: Bool) {
+        interactor.update(id: id, isOn: isOn)
+    }
 
     func didAddItem() {
+        interactor.prefetch { [weak self] in
+            self?.setAlarms()
+        }
     }
 
     func didUpdateItem(with id: ObjectIdentifier) {
+        guard let view = stackView.subviews.first(where: { $0 is StackAlarmItem && ($0 as? StackAlarmItem)?.id == id}) as? StackAlarmItem else { return }
+        view.update(with: interactor.getAlarm(with: id))
     }
 }

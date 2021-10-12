@@ -66,6 +66,17 @@ final class StackAlarmItem: UIView {
         ])
     }
 
+    func update(with alarm: Alarm?) {
+        guard let alarm = alarm else { return }
+        id = alarm.id
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "hh:mm"
+        dateFormatter.string(from: alarm.time)
+        timeLabel.text = dateFormatter.string(from: alarm.time)
+        onSwitch.isOn = alarm.on
+        descriptionText.text = alarm.descriptionText
+    }
+
     @objc
     private func didToggleIsOn() {
         observer?.didToggleIsOn(id: id, isOn: onSwitch.isOn)
