@@ -54,7 +54,7 @@ final class AlarmCollectionViewCell: UICollectionViewCell {
             descriptionText.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             timeLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             timeLabel.topAnchor.constraint(equalTo: descriptionText.bottomAnchor, constant: 8),
-            timeLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 8),
+            timeLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
             onSwitch.centerYAnchor.constraint(equalTo: timeLabel.centerYAnchor),
             onSwitch.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
         ])

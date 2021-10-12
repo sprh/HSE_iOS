@@ -43,7 +43,8 @@ final class CoreDataWorker: ICoreDataWorker {
     }
 
     func loadAll() throws -> [Alarm] {
-        let alarms = try context.fetch(Alarm.fetchRequest()) as [Alarm]
+        var alarms = try context.fetch(Alarm.fetchRequest()) as [Alarm]
+        alarms.sort(by: { $0.time < $1.time })
         return alarms
     }
 }

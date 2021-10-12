@@ -11,10 +11,17 @@ final class CollectionVC: UIViewController, IAlarmsListVC {
     let interactor: IAlarmsListInteractor
     let router: IAlarmsListRouter
 
+    lazy var addButton: UIBarButtonItem = {
+        return UIBarButtonItem(image: UIImage(systemName: "plus.circle.fill"),
+                               style: .done,
+                               target: self,
+                               action: #selector(didTapAddButton))
+    }()
+
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let width = UIScreen.main.bounds.size.width
-        layout.estimatedItemSize = CGSize(width: width - 32, height: 10)
+        layout.estimatedItemSize = CGSize(width: width - 32, height: 50)
         let collectionView = UICollectionView(frame: view.frame, collectionViewLayout: layout)
         collectionView.register(AlarmCollectionViewCell.self, forCellWithReuseIdentifier: "\(AlarmCollectionViewCell.self)")
         collectionView.delegate = self
@@ -22,6 +29,7 @@ final class CollectionVC: UIViewController, IAlarmsListVC {
         collectionView.backgroundColor = .clear
         collectionView.alwaysBounceVertical = true
         collectionView.contentInsetAdjustmentBehavior = .always
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 16, right: 0)
         return collectionView
     }()
 
@@ -38,16 +46,11 @@ final class CollectionVC: UIViewController, IAlarmsListVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        let addButton = UIBarButtonItem(image: UIImage(systemName: "plus.circle.fill"),
-                                        style: .done,
-                                        target: self,
-                                        action: #selector(didTapAddButton))
-        createAlarmHeader(addButton, "Collection")
         view.addSubview(collectionView)
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+        createAlarmHeader(addButton, "Collection")
         interactor.load()
     }
 

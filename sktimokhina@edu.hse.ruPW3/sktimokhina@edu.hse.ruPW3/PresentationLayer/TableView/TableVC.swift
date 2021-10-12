@@ -11,6 +11,13 @@ final class TableVC: UIViewController, IAlarmsListVC {
     let interactor: IAlarmsListInteractor
     let router: IAlarmsListRouter
 
+    lazy var addButton: UIBarButtonItem = {
+        return UIBarButtonItem(image: UIImage(systemName: "plus.circle.fill"),
+                               style: .done,
+                               target: self,
+                               action: #selector(didTapAddButton))
+    }()
+
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: view.frame, style: .insetGrouped)
         tableView.register(AlarmTableViewCell.self, forCellReuseIdentifier: "\(AlarmTableViewCell.self)")
@@ -20,6 +27,8 @@ final class TableVC: UIViewController, IAlarmsListVC {
         tableView.isScrollEnabled = true
         tableView.delaysContentTouches = true
         tableView.canCancelContentTouches = true
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 16, right: 0)
         return tableView
     }()
 
@@ -35,17 +44,11 @@ final class TableVC: UIViewController, IAlarmsListVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .yellow
-        let addButton = UIBarButtonItem(image: UIImage(systemName: "plus.circle.fill"),
-                                        style: .plain,
-                                        target: self,
-                                        action: #selector(didTapAddButton))
-        createAlarmHeader(addButton, "Table")
         view.addSubview(tableView)
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+        createAlarmHeader(addButton, "Table")
         interactor.load()
     }
 
@@ -54,7 +57,6 @@ final class TableVC: UIViewController, IAlarmsListVC {
     }
 
     func setAlarms() {
-
     }
 
     func showError() {
