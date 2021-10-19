@@ -14,9 +14,8 @@ final class NodeDetailView: UIView {
         textView.autoresizingMask = .flexibleBottomMargin
         textView.isScrollEnabled = false
         textView.layer.cornerRadius = 16
-        textView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         textView.font = .systemFont(ofSize: 18)
-        textView.backgroundColor = .red
+        textView.backgroundColor = #colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1)
         textView.becomeFirstResponder()
         return textView
     }()
@@ -40,9 +39,9 @@ final class NodeDetailView: UIView {
     var deadlineSwitch = UISwitch()
     var segmentedControl: UISegmentedControl = {
         let segmentedControl = UISegmentedControl(items: ["low", "basic", "important"])
-//        segmentedControl.setImage(.lowImportance, forSegmentAt: 0)
-//        segmentedControl.setTitle("non", forSegmentAt: 1)
-//        segmentedControl.setImage(.highImportance, forSegmentAt: 2)
+        segmentedControl.setImage(.lowImportance, forSegmentAt: 0)
+        segmentedControl.setTitle("non", forSegmentAt: 1)
+        segmentedControl.setImage(.highImportance, forSegmentAt: 2)
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         segmentedControl.selectedSegmentIndex = 1
         return segmentedControl
@@ -104,7 +103,8 @@ final class NodeDetailView: UIView {
             labelImportance.topAnchor.constraint(equalTo: importanceAndDateStack.topAnchor, constant: 17),
             segmentedControl.trailingAnchor.constraint(equalTo: importanceAndDateStack.trailingAnchor, constant: -12),
             segmentedControl.topAnchor.constraint(equalTo: importanceAndDateStack.topAnchor, constant: 10),
-            segmentedControl.bottomAnchor.constraint(equalTo: importanceAndDateStack.bottomAnchor, constant: 16)
+            segmentedControl.bottomAnchor.constraint(equalTo: importanceAndDateStack.bottomAnchor, constant: 16),
+            segmentedControl.heightAnchor.constraint(equalToConstant: 40),
         ])
     }
 
@@ -142,7 +142,6 @@ final class NodeDetailView: UIView {
         ])
     }
     func setScrollViewContentSize() {
-        scrollView.contentSize.height = scrollView.convert(descriptionTextView.frame.origin, to: scrollView).y +
-            100
+        scrollView.contentSize.height = scrollView.convert(deleteButton.frame.origin, to: scrollView).y + UIView.safeAreaHeight()
     }
 }

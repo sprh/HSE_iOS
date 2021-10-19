@@ -30,6 +30,11 @@ final class NodeDetailVC: UIViewController, INodeDetailVC {
         fatalError("init(coder:) has not been implemented")
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        nodeDetailView.setScrollViewContentSize()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = #colorLiteral(red: 1, green: 0.8220604658, blue: 0.8168862462, alpha: 1)
