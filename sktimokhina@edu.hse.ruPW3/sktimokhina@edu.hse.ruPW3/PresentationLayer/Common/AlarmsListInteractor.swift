@@ -28,7 +28,7 @@ final class AlarmsListInteractor: IAlarmsListInteractor {
     private var alarms: [Alarm]?
 
     var alarmsCount: Int {
-        return alarms?.count ?? 0
+        return (alarms?.count ?? 1) - 1
     }
 
     init(presenter: IAlarmsListPresenter, worker: ICoreDataWorker) {

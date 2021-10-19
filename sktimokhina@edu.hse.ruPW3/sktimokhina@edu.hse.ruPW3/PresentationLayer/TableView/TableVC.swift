@@ -99,7 +99,7 @@ extension TableVC: IAlarmUpdaterObserver {
 
 extension TableVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return interactor.alarmsCount - 1
+        return interactor.alarmsCount
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
