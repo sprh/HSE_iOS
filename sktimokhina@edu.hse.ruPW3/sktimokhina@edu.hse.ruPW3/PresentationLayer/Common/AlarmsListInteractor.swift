@@ -28,7 +28,7 @@ final class AlarmsListInteractor: IAlarmsListInteractor {
     private var alarms: [Alarm]?
 
     var alarmsCount: Int {
-        return (alarms?.count ?? 1) - 1
+        return alarms?.count ?? 0
     }
 
     init(presenter: IAlarmsListPresenter, worker: ICoreDataWorker) {
@@ -59,7 +59,7 @@ final class AlarmsListInteractor: IAlarmsListInteractor {
     }
 
     func getAlarmAt(index: Int) -> Alarm? {
-        return (alarms?.count ?? 0) - 1 > index ? alarms![index] : nil
+        return alarms?.count ?? 0 > index ? alarms![index] : nil
     }
 
     func update(id: ObjectIdentifier, isOn: Bool) {
