@@ -10,7 +10,7 @@ import UIKit
 protocol IAlarmsListRouter {
     var viewController: IAlarmsListVC? { get set }
 
-    func shouldShowNewAlarm(with worker: ICoreDataWorker)
+    func shouldShowNewAlarm(with worker: ICoreDataWorker, observer: IAlarmUpdaterObserver)
     func shouldShowNewAlarm(with worker: ICoreDataWorker, alarm: Alarm, observer: IAlarmUpdaterObserver)
     func showError()
 }
@@ -18,8 +18,9 @@ protocol IAlarmsListRouter {
 final class AlarmsListViewRouter: IAlarmsListRouter {
     weak var viewController: IAlarmsListVC?
 
-    func shouldShowNewAlarm(with worker: ICoreDataWorker) {
-        let graph = NewAlarmGraph(worker: worker)
+    func shouldShowNewAlarm(with worker: ICoreDataWorker,
+                            observer: IAlarmUpdaterObserver) {
+        let graph = NewAlarmGraph(worker: worker, observer: observer)
         viewController?.navigationController?.present(graph.viewController,
                                                       animated: true)
     }

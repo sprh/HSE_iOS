@@ -19,7 +19,7 @@ final class TableVC: UIViewController, IAlarmsListVC {
     }()
 
     lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: view.frame, style: .insetGrouped)
+        let tableView = UITableView(frame: view.frame, style: .grouped)
         tableView.register(AlarmTableViewCell.self, forCellReuseIdentifier: "\(AlarmTableViewCell.self)")
         tableView.delegate = self
         tableView.dataSource = self
@@ -85,8 +85,7 @@ extension TableVC: IAlarmUpdaterObserver {
         interactor.prefetch { [weak self] in
             guard let self = self else { return }
             self.tableView.performBatchUpdates({
-                let index = IndexPath(row: self.tableView.numberOfRows(inSection: 0), section: 0)
-                self.tableView.reloadRows(at: [index], with: .none)
+                self.tableView.reloadSections([0], with: .none)
             })
         }
     }

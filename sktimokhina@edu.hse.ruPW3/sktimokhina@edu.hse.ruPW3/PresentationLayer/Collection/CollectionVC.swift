@@ -73,10 +73,7 @@ extension CollectionVC: IAlarmUpdaterObserver {
     func didAddItem() {
         interactor.prefetch { [weak self] in
             guard let self = self else { return }
-            self.collectionView.performBatchUpdates({
-                let index = IndexPath(row: self.collectionView.numberOfItems(inSection: 0), section: 0)
-                self.collectionView.reloadItems(at: [index])
-            })
+            self.collectionView.reloadSections([0])
         }
     }
 

@@ -20,7 +20,7 @@ protocol IAlarmsListVC: UIViewController, IAlarmUpdaterObserver {
 
 extension IAlarmsListVC {
     func shouldShowNewAlarm(with worker: ICoreDataWorker) {
-        router.shouldShowNewAlarm(with: worker)
+        router.shouldShowNewAlarm(with: worker, observer: self)
     }
 
     func shouldShowNewAlarm(with worker: ICoreDataWorker, alarm: Alarm) {
