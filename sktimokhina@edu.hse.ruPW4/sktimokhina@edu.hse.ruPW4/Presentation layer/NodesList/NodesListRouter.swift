@@ -9,8 +9,15 @@ import UIKit
 
 protocol INodesListRouter {
     var viewController: INodesListVC? { get set }
+
+    func shouldShowDetailScreen()
 }
 
 final class NodesListViewRouter: INodesListRouter {
     weak var viewController: INodesListVC?
+
+    func shouldShowDetailScreen() {
+        let viewController = NodeDetailGraph().viewController
+        self.viewController?.navigationController?.pushViewController(viewController, animated: true)
+    }
 }

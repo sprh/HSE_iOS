@@ -42,6 +42,15 @@ final class NodesListVC: UIViewController, INodesListVC {
         return collectionView
     }()
 
+    lazy var addButton: UIBarButtonItem = {
+        let addButton = UIBarButtonItem(image: UIImage(systemName: "plus.circle"),
+                               style: .done,
+                               target: self,
+                               action: #selector(didTapAddButton))
+        addButton.tintColor = #colorLiteral(red: 0.7025571465, green: 0.5774805546, blue: 0.5798863173, alpha: 1)
+        return addButton
+    }()
+
     init(interactor: INodesListInteractor, router: INodesListRouter) {
         self.interactor = interactor
         self.router = router
@@ -57,11 +66,17 @@ final class NodesListVC: UIViewController, INodesListVC {
         view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "Nodes"
+        navigationItem.rightBarButtonItem = addButton
         setup()
     }
 
     func setup() {
         view.addSubview(collectionView)
+    }
+
+    @objc
+    func didTapAddButton() {
+        router.shouldShowDetailScreen()
     }
 }
 

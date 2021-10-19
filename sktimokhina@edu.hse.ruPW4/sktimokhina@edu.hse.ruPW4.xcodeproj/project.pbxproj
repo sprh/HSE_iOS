@@ -17,6 +17,11 @@
 		E3E64ECE271EF20800B81118 /* NodesListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E64ECD271EF20800B81118 /* NodesListVC.swift */; };
 		E3E64ED0271EF23F00B81118 /* NodesListGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E64ECF271EF23F00B81118 /* NodesListGraph.swift */; };
 		E3E64ED3271EF3CD00B81118 /* NodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E64ED2271EF3CD00B81118 /* NodeCell.swift */; };
+		E3E64EDA271EFE1E00B81118 /* NodeDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E64ED5271EFE1E00B81118 /* NodeDetailVC.swift */; };
+		E3E64EDB271EFE1E00B81118 /* NodeDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E64ED6271EFE1E00B81118 /* NodeDetailPresenter.swift */; };
+		E3E64EDC271EFE1E00B81118 /* NodeDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E64ED7271EFE1E00B81118 /* NodeDetailRouter.swift */; };
+		E3E64EDD271EFE1E00B81118 /* NodeDetailGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E64ED8271EFE1E00B81118 /* NodeDetailGraph.swift */; };
+		E3E64EDE271EFE1E00B81118 /* NodeDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E64ED9271EFE1E00B81118 /* NodeDetailInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +37,11 @@
 		E3E64ECD271EF20800B81118 /* NodesListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodesListVC.swift; sourceTree = "<group>"; };
 		E3E64ECF271EF23F00B81118 /* NodesListGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodesListGraph.swift; sourceTree = "<group>"; };
 		E3E64ED2271EF3CD00B81118 /* NodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeCell.swift; sourceTree = "<group>"; };
+		E3E64ED5271EFE1E00B81118 /* NodeDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeDetailVC.swift; sourceTree = "<group>"; };
+		E3E64ED6271EFE1E00B81118 /* NodeDetailPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeDetailPresenter.swift; sourceTree = "<group>"; };
+		E3E64ED7271EFE1E00B81118 /* NodeDetailRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeDetailRouter.swift; sourceTree = "<group>"; };
+		E3E64ED8271EFE1E00B81118 /* NodeDetailGraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeDetailGraph.swift; sourceTree = "<group>"; };
+		E3E64ED9271EFE1E00B81118 /* NodeDetailInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeDetailInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +87,7 @@
 		E3E64EBA271EF11400B81118 /* Presentation layer */ = {
 			isa = PBXGroup;
 			children = (
+				E3E64ED4271EFDE700B81118 /* NodeDetail */,
 				E3E64EC6271EF18200B81118 /* NodesList */,
 			);
 			path = "Presentation layer";
@@ -101,6 +112,18 @@
 				E3E64ED2271EF3CD00B81118 /* NodeCell.swift */,
 			);
 			path = "Cutom elements";
+			sourceTree = "<group>";
+		};
+		E3E64ED4271EFDE700B81118 /* NodeDetail */ = {
+			isa = PBXGroup;
+			children = (
+				E3E64ED8271EFE1E00B81118 /* NodeDetailGraph.swift */,
+				E3E64ED9271EFE1E00B81118 /* NodeDetailInteractor.swift */,
+				E3E64ED6271EFE1E00B81118 /* NodeDetailPresenter.swift */,
+				E3E64ED7271EFE1E00B81118 /* NodeDetailRouter.swift */,
+				E3E64ED5271EFE1E00B81118 /* NodeDetailVC.swift */,
+			);
+			path = NodeDetail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -172,13 +195,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3E64EDB271EFE1E00B81118 /* NodeDetailPresenter.swift in Sources */,
 				E3E64ECE271EF20800B81118 /* NodesListVC.swift in Sources */,
 				E3E64ECC271EF1EB00B81118 /* NodesListPresenter.swift in Sources */,
 				E3E64EAE271EEDBC00B81118 /* sktimokhina_edu_hse_ruPW4.xcdatamodeld in Sources */,
+				E3E64EDC271EFE1E00B81118 /* NodeDetailRouter.swift in Sources */,
+				E3E64EDE271EFE1E00B81118 /* NodeDetailInteractor.swift in Sources */,
+				E3E64EDA271EFE1E00B81118 /* NodeDetailVC.swift in Sources */,
 				E3E64EA4271EEDBC00B81118 /* AppDelegate.swift in Sources */,
 				E3E64EC8271EF19100B81118 /* NodesListRouter.swift in Sources */,
 				E3E64ECA271EF1B500B81118 /* NodesListInteractor.swift in Sources */,
 				E3E64ED0271EF23F00B81118 /* NodesListGraph.swift in Sources */,
+				E3E64EDD271EFE1E00B81118 /* NodeDetailGraph.swift in Sources */,
 				E3E64ED3271EF3CD00B81118 /* NodeCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
