@@ -67,6 +67,12 @@ final class TableVC: UIViewController, IAlarmsListVC {
 }
 
 extension TableVC: IAlarmUpdaterObserver {
+    func didDeleteItem() {
+        interactor.prefetch { [weak self] in
+            self?.tableView.reloadData()
+        }
+    }
+
     func didToggleIsOn(id: ObjectIdentifier, isOn: Bool) {
         interactor.update(id: id, isOn: isOn)
     }
@@ -93,7 +99,7 @@ extension TableVC: IAlarmUpdaterObserver {
 
 extension TableVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return interactor.alarmsCount
+        return interactor.alarmsCount - 1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -111,5 +117,17 @@ extension TableVC: UITableViewDataSource, UITableViewDelegate {
             return
         }
         interactor.didTapOpenAlarm(id: cell.id)
+    }
+
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let trashAction =
+            UIContextualAction(style: .normal, title: "Delete",
+                               handler: {[weak self] (_: UIContextualAction, _: UIView, success: (Bool) -> Void) in
+                                guard let cell = tableView.cellForRow(at: indexPath) as? AlarmTableViewCell else { success(false); return }
+                                self?.interactor.delete(id: cell.id)  {tableView.reloadData()}
+                               })
+        trashAction.image = UIImage(systemName: "trash")
+        trashAction.backgroundColor = .red
+        return UISwipeActionsConfiguration(actions: [trashAction])
     }
 }

@@ -74,9 +74,10 @@ final class StackVC: UIViewController, IAlarmsListVC {
         stackView.subviews.forEach({ $0.removeFromSuperview()})
         scrollView.contentSize.height = 0
         for i in 0..<interactor.alarmsCount {
-            let alarm = interactor.getAlarmAt(index: i)
+            guard let alarm = interactor.getAlarmAt(index: i) else { return }
             let alarmView = StackAlarmItem()
             alarmView.setup(with: alarm, observer: self)
+            alarmView.addTarget(self, action: #selector(onTapAlarm(_:)), for: .touchUpInside)
             let systemLayoutSizeFitting = alarmView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
             scrollView.contentSize.height += systemLayoutSizeFitting.height + 10
             stackView.addArrangedSubview(alarmView)
@@ -87,6 +88,11 @@ final class StackVC: UIViewController, IAlarmsListVC {
         router.showError()
     }
 
+    @objc
+    func onTapAlarm(_ sender: StackAlarmItem) {
+        interactor.didTapOpenAlarm(id: sender.id)
+    }
+
 
     @objc func didTapAddButton() {
         interactor.didTapNewAlarm()
@@ -94,6 +100,12 @@ final class StackVC: UIViewController, IAlarmsListVC {
 }
 
 extension StackVC: IAlarmUpdaterObserver {
+    func didDeleteItem() {
+        interactor.prefetch { [weak self] in
+            self?.setAlarms()
+        }
+    }
+
     func didToggleIsOn(id: ObjectIdentifier, isOn: Bool) {
         interactor.update(id: id, isOn: isOn)
     }

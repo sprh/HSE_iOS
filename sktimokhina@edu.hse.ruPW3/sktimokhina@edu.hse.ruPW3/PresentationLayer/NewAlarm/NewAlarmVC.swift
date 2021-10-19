@@ -90,6 +90,17 @@ final class NewAlarmVC: UIViewController, INewAlarmVC {
         return scrollView
     }()
 
+    lazy var deleteButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Delete", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.backgroundColor = #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.layer.cornerRadius = 20
+        button.addTarget(self, action: #selector(didTapDeleteButton), for: .touchUpInside)
+        return button
+    }()
+
     init(interactor: INewAlarmInteractor, router: INewAlarmRouter) {
         self.interactor = interactor
         self.router = router
@@ -148,6 +159,15 @@ final class NewAlarmVC: UIViewController, INewAlarmVC {
             saveButton.topAnchor.constraint(equalTo: onSwitch.bottomAnchor, constant: 16),
             saveButton.heightAnchor.constraint(equalToConstant: 55),
         ])
+        if (interactor.shouldShowDeleteButton) {
+            scrollView.addSubview(deleteButton)
+            NSLayoutConstraint.activate([
+                deleteButton.leadingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+                deleteButton.trailingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+                deleteButton.topAnchor.constraint(equalTo: saveButton.bottomAnchor, constant: 16),
+                deleteButton.heightAnchor.constraint(equalToConstant: 55),
+            ])
+        }
 
     }
 
@@ -163,6 +183,11 @@ final class NewAlarmVC: UIViewController, INewAlarmVC {
             date = Calendar.current.date(byAdding: .day, value: 1, to: date) ?? Date()
         }
         interactor.didTapSaveButton(time: date, descriptionText: descriptionTextView.text, isOn: onSwitch.isOn)
+    }
+
+    @objc
+    func didTapDeleteButton() {
+        interactor.didTapDeleteButton()
     }
 
     func shouldShowError() {

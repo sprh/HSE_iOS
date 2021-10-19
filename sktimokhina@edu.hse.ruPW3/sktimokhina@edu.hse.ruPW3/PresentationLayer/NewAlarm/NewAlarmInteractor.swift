@@ -10,6 +10,8 @@ import Foundation
 protocol INewAlarmInteractor {
     func didTapSaveButton(time: Date, descriptionText: String, isOn: Bool)
     func updateIfNeeded()
+    func didTapDeleteButton()
+    var shouldShowDeleteButton: Bool { get }
 }
 
 final class NewAlarmInteractor: INewAlarmInteractor {
@@ -17,6 +19,10 @@ final class NewAlarmInteractor: INewAlarmInteractor {
     let worker: ICoreDataWorker
     let alarm: Alarm?
     weak var observer: IAlarmUpdaterObserver?
+
+    var shouldShowDeleteButton: Bool {
+        alarm != nil
+    }
 
     init(presenter: INewAlarmPresenter, worker: ICoreDataWorker, alarm: Alarm?, observer: IAlarmUpdaterObserver?) {
         self.presenter = presenter
@@ -35,6 +41,18 @@ final class NewAlarmInteractor: INewAlarmInteractor {
                 observer?.didAddItem()
             }
             presenter.shouldClose()
+        } catch {
+            presenter.shouldShowError()
+        }
+    }
+
+    func didTapDeleteButton() {
+        do {
+            if (alarm != nil) {
+                try worker.deleteItem(alarm: alarm!)
+                observer?.didDeleteItem()
+                presenter.shouldClose()
+            }
         } catch {
             presenter.shouldShowError()
         }

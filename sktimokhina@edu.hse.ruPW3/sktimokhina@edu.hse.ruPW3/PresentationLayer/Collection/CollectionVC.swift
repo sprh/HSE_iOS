@@ -18,10 +18,31 @@ final class CollectionVC: UIViewController, IAlarmsListVC {
                                action: #selector(didTapAddButton))
     }()
 
+    lazy var collectionViewListConfiguration: UICollectionLayoutListConfiguration = {
+        var listConfig = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
+        listConfig.trailingSwipeActionsConfigurationProvider = { [weak self] indexPath in
+            guard let self = self else { return nil }
+            let actionHandler: UIContextualAction.Handler = { action, view, completion in
+                guard let cell = self.collectionView.cellForItem(at: indexPath) as? AlarmCollectionViewCell else {
+                    return
+                }
+                self.interactor.delete(id: cell.id) { [weak self] in
+                    self?.collectionView.reloadData()
+                    completion(true)
+                }
+            }
+
+            let action = UIContextualAction(style: .normal, title: "Delete", handler: actionHandler)
+            action.image = UIImage(systemName: "trash")
+            action.backgroundColor = #colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1)
+            return UISwipeActionsConfiguration(actions: [action])
+        }
+        return listConfig
+    }()
+
     lazy var collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
+        let layout = UICollectionViewCompositionalLayout.list(using: collectionViewListConfiguration)
         let width = UIScreen.main.bounds.size.width
-        layout.estimatedItemSize = CGSize(width: width - 32, height: 50)
         let collectionView = UICollectionView(frame: view.frame, collectionViewLayout: layout)
         collectionView.register(AlarmCollectionViewCell.self, forCellWithReuseIdentifier: "\(AlarmCollectionViewCell.self)")
         collectionView.delegate = self
@@ -70,10 +91,16 @@ final class CollectionVC: UIViewController, IAlarmsListVC {
 }
 
 extension CollectionVC: IAlarmUpdaterObserver {
+    func didDeleteItem() {
+        interactor.prefetch { [weak self] in
+            self?.collectionView.reloadData()
+        }
+    }
+
     func didAddItem() {
         interactor.prefetch { [weak self] in
             guard let self = self else { return }
-            self.collectionView.reloadSections([0])
+            self.collectionView.reloadData()
         }
     }
 
@@ -95,7 +122,7 @@ extension CollectionVC: IAlarmUpdaterObserver {
 
 extension CollectionVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return interactor.alarmsCount
+        return interactor.alarmsCount - 1
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -113,4 +140,5 @@ extension CollectionVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
         }
         interactor.didTapOpenAlarm(id: cell.id)
     }
+
 }

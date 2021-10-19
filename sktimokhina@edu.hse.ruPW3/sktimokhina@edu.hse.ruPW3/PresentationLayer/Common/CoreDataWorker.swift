@@ -12,6 +12,7 @@ protocol ICoreDataWorker {
     func loadAll() throws -> [Alarm]
     func update(alarm: Alarm, isOn: Bool) throws
     func update(alarm: Alarm, time: Date, descriptionText: String, isOn: Bool) throws
+    func deleteItem(alarm: Alarm) throws
 }
 
 final class CoreDataWorker: ICoreDataWorker {
@@ -43,8 +44,16 @@ final class CoreDataWorker: ICoreDataWorker {
     }
 
     func loadAll() throws -> [Alarm] {
-        var alarms = try context.fetch(Alarm.fetchRequest()) as [Alarm]
+        var request = NSFetchRequest<NSFetchRequestResult>()
+        request = Alarm.fetchRequest()
+        request.returnsObjectsAsFaults = false
+        var alarms = try context.fetch(request) as! [Alarm]
         alarms.sort(by: { $0.time < $1.time })
         return alarms
+    }
+
+    func deleteItem(alarm: Alarm) throws {
+        context.delete(alarm);
+        try context.save()
     }
 }

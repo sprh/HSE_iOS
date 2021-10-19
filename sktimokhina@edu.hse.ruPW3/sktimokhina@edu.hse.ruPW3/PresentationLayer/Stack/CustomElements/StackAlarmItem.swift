@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class StackAlarmItem: UIView {
+final class StackAlarmItem: UIButton {
     var id: ObjectIdentifier!
     weak var observer: IAlarmUpdaterObserver?
     lazy var onSwitch: UISwitch = {
@@ -82,4 +82,3 @@ final class StackAlarmItem: UIView {
         observer?.didToggleIsOn(id: id, isOn: onSwitch.isOn)
     }
 }
-

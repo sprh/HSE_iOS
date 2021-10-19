@@ -19,6 +19,7 @@ protocol IAlarmsListInteractor {
     func getAlarm(with id: ObjectIdentifier) -> Alarm?
     func didTapOpenAlarm(id: ObjectIdentifier)
     func prefetch(completion: @escaping () -> ())
+    func delete(id: ObjectIdentifier, completion: @escaping () -> ())
 }
 
 final class AlarmsListInteractor: IAlarmsListInteractor {
@@ -27,7 +28,7 @@ final class AlarmsListInteractor: IAlarmsListInteractor {
     private var alarms: [Alarm]?
 
     var alarmsCount: Int {
-        alarms?.count ?? 0
+        return alarms?.count ?? 0
     }
 
     init(presenter: IAlarmsListPresenter, worker: ICoreDataWorker) {
@@ -50,7 +51,6 @@ final class AlarmsListInteractor: IAlarmsListInteractor {
 
     func prefetch(completion: @escaping () -> ()) {
         do {
-            // мне было лень что-то нормальное делать
             self.alarms = try worker.loadAll()
             completion()
         } catch {
@@ -67,6 +67,17 @@ final class AlarmsListInteractor: IAlarmsListInteractor {
         do {
             try worker.update(alarm: alarm, isOn: isOn)
             presenter.didUpdateAlarm(with: id)
+        } catch {
+            presenter.showError()
+        }
+    }
+
+    func delete(id: ObjectIdentifier, completion: @escaping () -> ()) {
+        guard let alarm = alarms?.first(where: {$0.id == id}) else { return }
+        do {
+            try worker.deleteItem(alarm: alarm)
+            alarms?.removeAll(where: {$0.id == id})
+            completion()
         } catch {
             presenter.showError()
         }

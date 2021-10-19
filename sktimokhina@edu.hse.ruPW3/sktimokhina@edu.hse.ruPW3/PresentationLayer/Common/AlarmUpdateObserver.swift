@@ -9,4 +9,5 @@ protocol IAlarmUpdaterObserver: AnyObject {
     func didToggleIsOn(id: ObjectIdentifier, isOn: Bool)
     func didAddItem()
     func didUpdateItem(with id: ObjectIdentifier)
+    func didDeleteItem()
 }
