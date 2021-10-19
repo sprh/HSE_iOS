@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E3A95E12271F46FE0053AA76 /* NodeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A95E11271F46FE0053AA76 /* NodeDetailView.swift */; };
+		E3A95E15271F504D0053AA76 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A95E14271F504D0053AA76 /* UIView+Utils.swift */; };
 		E3E64EA4271EEDBC00B81118 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E64EA3271EEDBC00B81118 /* AppDelegate.swift */; };
 		E3E64EAE271EEDBC00B81118 /* sktimokhina_edu_hse_ruPW4.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E3E64EAC271EEDBC00B81118 /* sktimokhina_edu_hse_ruPW4.xcdatamodeld */; };
 		E3E64EB0271EEDC200B81118 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3E64EAF271EEDC200B81118 /* Assets.xcassets */; };
@@ -25,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E3A95E11271F46FE0053AA76 /* NodeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeDetailView.swift; sourceTree = "<group>"; };
+		E3A95E14271F504D0053AA76 /* UIView+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
 		E3E64EA0271EEDBC00B81118 /* sktimokhina@edu.hse.ruPW4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "sktimokhina@edu.hse.ruPW4.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3E64EA3271EEDBC00B81118 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3E64EAD271EEDBC00B81118 /* sktimokhina_edu_hse_ruPW4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = sktimokhina_edu_hse_ruPW4.xcdatamodel; sourceTree = "<group>"; };
@@ -55,6 +59,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E3A95E13271F504D0053AA76 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				E3A95E14271F504D0053AA76 /* UIView+Utils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		E3E64E97271EEDBC00B81118 = {
 			isa = PBXGroup;
 			children = (
@@ -74,6 +86,7 @@
 		E3E64EA2271EEDBC00B81118 /* sktimokhina@edu.hse.ruPW4 */ = {
 			isa = PBXGroup;
 			children = (
+				E3A95E13271F504D0053AA76 /* Utils */,
 				E3E64EBA271EF11400B81118 /* Presentation layer */,
 				E3E64EA3271EEDBC00B81118 /* AppDelegate.swift */,
 				E3E64EAF271EEDC200B81118 /* Assets.xcassets */,
@@ -122,6 +135,7 @@
 				E3E64ED6271EFE1E00B81118 /* NodeDetailPresenter.swift */,
 				E3E64ED7271EFE1E00B81118 /* NodeDetailRouter.swift */,
 				E3E64ED5271EFE1E00B81118 /* NodeDetailVC.swift */,
+				E3A95E11271F46FE0053AA76 /* NodeDetailView.swift */,
 			);
 			path = NodeDetail;
 			sourceTree = "<group>";
@@ -198,6 +212,7 @@
 				E3E64EDB271EFE1E00B81118 /* NodeDetailPresenter.swift in Sources */,
 				E3E64ECE271EF20800B81118 /* NodesListVC.swift in Sources */,
 				E3E64ECC271EF1EB00B81118 /* NodesListPresenter.swift in Sources */,
+				E3A95E12271F46FE0053AA76 /* NodeDetailView.swift in Sources */,
 				E3E64EAE271EEDBC00B81118 /* sktimokhina_edu_hse_ruPW4.xcdatamodeld in Sources */,
 				E3E64EDC271EFE1E00B81118 /* NodeDetailRouter.swift in Sources */,
 				E3E64EDE271EFE1E00B81118 /* NodeDetailInteractor.swift in Sources */,
@@ -208,6 +223,7 @@
 				E3E64ED0271EF23F00B81118 /* NodesListGraph.swift in Sources */,
 				E3E64EDD271EFE1E00B81118 /* NodeDetailGraph.swift in Sources */,
 				E3E64ED3271EF3CD00B81118 /* NodeCell.swift in Sources */,
+				E3A95E15271F504D0053AA76 /* UIView+Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
