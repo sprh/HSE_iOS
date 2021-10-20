@@ -15,7 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let graph = NodesListGraph()
+        let worker = CoreDataWorker(context: persistentContainer.viewContext)
+        let graph = NodesListGraph(worker: worker)
         window?.rootViewController = UINavigationController(rootViewController: graph.viewController)
         window?.makeKeyAndVisible()
         return true
@@ -44,6 +45,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
 }
 

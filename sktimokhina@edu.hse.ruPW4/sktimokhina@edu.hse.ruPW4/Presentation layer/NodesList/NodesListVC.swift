@@ -8,6 +8,8 @@
 import UIKit
 
 protocol INodesListVC: UIViewController {
+    func shouldReloadItems()
+    func shouldShowError(text: String)
 }
 
 final class NodesListVC: UIViewController, INodesListVC {
@@ -44,11 +46,19 @@ final class NodesListVC: UIViewController, INodesListVC {
 
     lazy var addButton: UIBarButtonItem = {
         let addButton = UIBarButtonItem(image: UIImage(systemName: "plus.circle"),
-                               style: .done,
-                               target: self,
-                               action: #selector(didTapAddButton))
+                                        style: .done,
+                                        target: self,
+                                        action: #selector(didTapAddButton))
         addButton.tintColor = #colorLiteral(red: 0.7025571465, green: 0.5774805546, blue: 0.5798863173, alpha: 1)
         return addButton
+    }()
+
+    lazy var emptyLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Ops, I can't find any nodes"
+        label.font = UIFont.preferredFont(forTextStyle: .title1)
+        return label
     }()
 
     init(interactor: INodesListInteractor, router: INodesListRouter) {
@@ -63,6 +73,7 @@ final class NodesListVC: UIViewController, INodesListVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        interactor.load()
         view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "Nodes"
@@ -72,18 +83,32 @@ final class NodesListVC: UIViewController, INodesListVC {
 
     func setup() {
         view.addSubview(collectionView)
+        view.addSubview(emptyLabel)
+        NSLayoutConstraint.activate([
+            emptyLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            emptyLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+        ])
     }
 
     @objc
     func didTapAddButton() {
-        router.shouldShowDetailScreen()
+        router.shouldShowDetailScreen(worker: interactor.coreDataWorker, observer: self)
+    }
+
+    func shouldReloadItems() {
+        collectionView.reloadData()
+    }
+
+    func shouldShowError(text: String) {
+        router.showError(text: text)
     }
 }
 
 
 extension NodesListVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        emptyLabel.isHidden = interactor.nodesCount != 0
+        return interactor.nodesCount
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -95,9 +120,9 @@ extension NodesListVC: UICollectionViewDelegate, UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-//        guard let cell = collectionView.cellForItem(at: indexPath) as? NodeCell else {
-//            return nil
-//        }
+        //        guard let cell = collectionView.cellForItem(at: indexPath) as? NodeCell else {
+        //            return nil
+        //        }
         let context = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { (action) -> UIMenu? in
 
             let delete = UIAction(title: "Delete", image: UIImage(systemName: "trash"), identifier: nil, discoverabilityTitle: nil,attributes: .destructive, state: .off) { (_) in
@@ -114,5 +139,11 @@ extension NodesListVC: UICollectionViewDelegate, UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 20
+    }
+}
+
+extension NodesListVC: INodeDetailViewObserver {
+    func didAddItem() {
+        interactor.load()
     }
 }

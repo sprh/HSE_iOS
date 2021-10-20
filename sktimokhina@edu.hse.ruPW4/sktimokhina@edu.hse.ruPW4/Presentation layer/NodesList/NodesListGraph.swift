@@ -18,9 +18,9 @@ final class NodesListGraph {
         view
     }
 
-    init() {
+    init(worker: ICoreDataWorker) {
         presenter = NodesListPresenter()
-        interactor = NodesListInteractor(presenter: presenter)
+        interactor = NodesListInteractor(presenter: presenter, worker: worker)
         router = NodesListViewRouter()
         view = NodesListVC(interactor: interactor, router: router)
         presenter.viewController = view

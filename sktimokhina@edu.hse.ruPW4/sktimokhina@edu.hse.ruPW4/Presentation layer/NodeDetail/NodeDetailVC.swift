@@ -8,6 +8,8 @@
 import UIKit
 
 protocol INodeDetailVC: UIViewController {
+    func shouldShowError(message: String)
+    func shouldClose()
 }
 
 final class NodeDetailVC: UIViewController, INodeDetailVC {
@@ -37,6 +39,10 @@ final class NodeDetailVC: UIViewController, INodeDetailVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setup()
+    }
+
+    private func setup() {
         view.backgroundColor = #colorLiteral(red: 1, green: 0.8220604658, blue: 0.8168862462, alpha: 1)
         view.addSubview(nodeDetailView)
         NSLayoutConstraint.activate([
@@ -45,5 +51,27 @@ final class NodeDetailVC: UIViewController, INodeDetailVC {
             nodeDetailView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             nodeDetailView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
+        nodeDetailView.saveButton.addTarget(self, action: #selector(didTapAddButton), for: .touchUpInside)
+        nodeDetailView.titleTextView.delegate = self
+        nodeDetailView.descriptionTextView.delegate = self
+    }
+
+    @objc
+    func didTapAddButton() {
+        interactor.saveNode(title: nodeDetailView.titleTextView.text, description: nodeDetailView.descriptionTextView.text, importance: Int32(nodeDetailView.segmentedControl.selectedSegmentIndex))
+    }
+
+    func shouldShowError(message: String) {
+        router.showError(message: message)
+    }
+
+    func shouldClose() {
+        navigationController?.popViewController(animated: true)
+    }
+}
+
+extension NodeDetailVC: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        nodeDetailView.saveButton.isEnabled = !nodeDetailView.titleTextView.text.isEmpty && !nodeDetailView.descriptionTextView.text.isEmpty
     }
 }

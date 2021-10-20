@@ -8,6 +8,31 @@
 import UIKit
 
 final class NodeDetailView: UIView {
+    lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Title"
+        label.font = UIFont.preferredFont(forTextStyle: .body)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    lazy var titleTextView: UITextView = {
+        let textView = UITextView()
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.autoresizingMask = .flexibleBottomMargin
+        textView.isScrollEnabled = false
+        textView.layer.cornerRadius = 16
+        textView.font = .systemFont(ofSize: 18)
+        textView.backgroundColor = #colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1)
+        textView.becomeFirstResponder()
+        return textView
+    }()
+    lazy var descriprionLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Description"
+        label.font = UIFont.preferredFont(forTextStyle: .body)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
     lazy var descriptionTextView: UITextView = {
         let textView = UITextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
@@ -62,6 +87,7 @@ final class NodeDetailView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = #colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1)
         button.layer.cornerRadius = 16
+        button.isEnabled = false
         return button
     }()
 
@@ -85,7 +111,7 @@ final class NodeDetailView: UIView {
         super.init(coder: coder)
     }
 
-    func setup() {
+    private func setup() {
         keyboardWillShow(scrollView)
         keyboardWillHide(scrollView)
         hideKeyboardWhenTappedAround()
@@ -113,6 +139,9 @@ final class NodeDetailView: UIView {
         scrollView.addSubview(importanceAndDateStack)
         scrollView.addSubview(saveButton)
         scrollView.addSubview(deleteButton)
+        scrollView.addSubview(titleLabel)
+        scrollView.addSubview(titleTextView)
+        scrollView.addSubview(descriprionLabel)
         addSubview(scrollView)
         NSLayoutConstraint.activate([
             scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -120,9 +149,21 @@ final class NodeDetailView: UIView {
             scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
             scrollView.bottomAnchor.constraint(greaterThanOrEqualTo: bottomAnchor),
 
+            titleLabel.leadingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            titleLabel.trailingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            titleLabel.topAnchor.constraint(equalTo: scrollView.topAnchor),
+
+            titleTextView.leadingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            titleTextView.trailingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            titleTextView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
+
+            descriprionLabel.leadingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            descriprionLabel.trailingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            descriprionLabel.topAnchor.constraint(equalTo: titleTextView.bottomAnchor, constant: 16),
+
             descriptionTextView.leadingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.leadingAnchor, constant: 16),
             descriptionTextView.trailingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            descriptionTextView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            descriptionTextView.topAnchor.constraint(equalTo: descriprionLabel.bottomAnchor, constant: 16),
 
             importanceAndDateStack.topAnchor.constraint(equalTo: descriptionTextView.bottomAnchor, constant: 16),
             importanceAndDateStack.leadingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.leadingAnchor, constant: 16),
@@ -141,6 +182,7 @@ final class NodeDetailView: UIView {
             deleteButton.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
         ])
     }
+
     func setScrollViewContentSize() {
         scrollView.contentSize.height = scrollView.convert(deleteButton.frame.origin, to: scrollView).y + UIView.safeAreaHeight()
     }

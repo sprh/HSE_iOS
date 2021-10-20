@@ -18,9 +18,9 @@ final class NodeDetailGraph {
         view
     }
 
-    init() {
+    init(worker: ICoreDataWorker, observer: INodeDetailViewObserver?) {
         presenter = NodeDetailPresenter()
-        interactor = NodeDetailInteractor(presenter: presenter)
+        interactor = NodeDetailInteractor(presenter: presenter, worker: worker, observer: observer)
         router = NodeDetailViewRouter()
         view = NodeDetailVC(interactor: interactor, router: router)
         presenter.viewController = view
