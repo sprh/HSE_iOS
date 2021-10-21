@@ -11,6 +11,10 @@ protocol ICoreDataWorker {
     func loadAll(parentNote: Note?) throws -> [Note]
     func save(title: String, description: String, importance: Int32, parentNote: Note?) throws
     func delete(note: Note) throws
+    func update(note: Note,
+                title: String,
+                description: String,
+                status: Int32) throws
 }
 
 final class CoreDataWorker: ICoreDataWorker {
@@ -47,6 +51,16 @@ final class CoreDataWorker: ICoreDataWorker {
 
     func delete(note: Note) throws {
         context.delete(note)
+        try context.save()
+    }
+
+    func update(note: Note,
+                title: String,
+                description: String,
+                status: Int32) throws {
+        note.title = title
+        note.descriptionText = description
+        note.status = status
         try context.save()
     }
 }

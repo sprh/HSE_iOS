@@ -14,8 +14,9 @@ protocol INotesListInteractor {
     var parentNote: Note? { get set }
     var coreDataWorker: ICoreDataWorker { get }
     var parentNoteTitle: String? { get }
+    var shouldShowEditButton: Bool { get }
+    
     func load()
-
     func getNote(at index: Int) -> Note?
     func getNote(with id: ObjectIdentifier) -> Note?
     func deleteNote(id: ObjectIdentifier)
@@ -39,6 +40,11 @@ final class NotesListInteractor: INotesListInteractor {
     var parentNoteTitle: String? {
         parentNote?.title
     }
+
+    var shouldShowEditButton: Bool {
+        parentNote != nil
+    }
+
     func getNote(at index: Int) -> Note? {
         return index < notes.count ? notes[index] : nil
     }

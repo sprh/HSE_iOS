@@ -12,6 +12,8 @@ protocol ICreateNotePresenter {
 
     func shouldShowError(message: String)
     func shouldClose()
+    func update(description: String, title: String, status: Int)
+
 }
 
 final class CreateNotePresenter: ICreateNotePresenter {
@@ -23,5 +25,9 @@ final class CreateNotePresenter: ICreateNotePresenter {
 
     func shouldShowError(message: String) {
         viewController?.shouldShowError(message: message)
+    }
+
+    func update(description: String, title: String, status: Int) {
+        viewController?.update(description: description, title: title, status: status)
     }
 }

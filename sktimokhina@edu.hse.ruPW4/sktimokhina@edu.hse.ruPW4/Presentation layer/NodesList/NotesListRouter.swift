@@ -13,6 +13,9 @@ protocol INotesListRouter {
     func shouldShowDetailScreen(worker: ICoreDataWorker,
                                 observer: ICreateNoteViewObserver?,
                                 parentNote: Note?)
+    func shouldShowDetailScreen(worker: ICoreDataWorker,
+                                observer: ICreateNoteViewObserver?,
+                                noteToEdit: Note)
     func showError(text: String)
     func openNoteListScreen(worker: ICoreDataWorker, parentNote: Note)
 }
@@ -23,7 +26,20 @@ final class NotesListRouter: INotesListRouter {
     func shouldShowDetailScreen(worker: ICoreDataWorker,
                                 observer: ICreateNoteViewObserver?,
                                 parentNote: Note?) {
-        let viewController = CreateNoteGraph(worker: worker, observer: observer, parentNote: parentNote).viewController
+        let viewController = CreateNoteGraph(worker: worker,
+                                             observer: observer,
+                                             parentNote: parentNote,
+                                             noteToEdit: nil).viewController
+        self.viewController?.navigationController?.pushViewController(viewController, animated: true)
+    }
+
+    func shouldShowDetailScreen(worker: ICoreDataWorker,
+                                observer: ICreateNoteViewObserver?,
+                                noteToEdit: Note) {
+        let viewController = CreateNoteGraph(worker: worker,
+                                             observer: observer,
+                                             parentNote: nil,
+                                             noteToEdit: noteToEdit).viewController
         self.viewController?.navigationController?.pushViewController(viewController, animated: true)
     }
 

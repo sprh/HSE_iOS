@@ -56,12 +56,28 @@ final class NotesListVC: UIViewController, INotesListVC {
         return addButton
     }()
 
+    lazy var editButton: UIBarButtonItem = {
+        let editButton = UIBarButtonItem(image: UIImage(systemName: "pencil"),
+                                        style: .done,
+                                        target: self,
+                                        action: #selector(didTapEditButton))
+        editButton.tintColor = #colorLiteral(red: 0.7025571465, green: 0.5774805546, blue: 0.5798863173, alpha: 1)
+        return editButton
+    }()
+
     lazy var emptyLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Ops, I can't find any notes"
         label.font = UIFont.preferredFont(forTextStyle: .title1)
         return label
+    }()
+
+    lazy var rightBarButtonItems: [UIBarButtonItem] = {
+        if (interactor.shouldShowEditButton) {
+            return [editButton, addButton];
+        }
+        return [addButton]
     }()
 
     init(interactor: INotesListInteractor, router: INotesListRouter) {
@@ -74,13 +90,16 @@ final class NotesListVC: UIViewController, INotesListVC {
         fatalError("init(coder:) has not been implemented")
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        interactor.load()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        interactor.load()
         view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = interactor.parentNoteTitle ?? "All notes"
-        navigationItem.rightBarButtonItem = addButton
+        navigationItem.rightBarButtonItems = rightBarButtonItems
         setup()
     }
 
@@ -106,6 +125,13 @@ final class NotesListVC: UIViewController, INotesListVC {
 
     func shouldShowError(text: String) {
         router.showError(text: text)
+    }
+
+    @objc func didTapEditButton() {
+        guard let noteToEdit = interactor.parentNote else { return }
+        router.shouldShowDetailScreen(worker: interactor.coreDataWorker,
+                                      observer: self,
+                                      noteToEdit: noteToEdit)
     }
 }
 
@@ -154,6 +180,12 @@ extension NotesListVC: UICollectionViewDelegate, UICollectionViewDataSource {
 }
 
 extension NotesListVC: ICreateNoteViewObserver {
+    func didUpdateItem() {
+        if (interactor.shouldShowEditButton) {
+            self.title = interactor.parentNoteTitle
+        }
+    }
+
     func didAddItem() {
         interactor.load()
     }

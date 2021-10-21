@@ -10,6 +10,8 @@ import UIKit
 protocol ICreateNoteVC: UIViewController {
     func shouldShowError(message: String)
     func shouldClose()
+    func update(description: String, title: String, status: Int)
+
 }
 
 final class CreateNoteVC: UIViewController, ICreateNoteVC {
@@ -19,12 +21,13 @@ final class CreateNoteVC: UIViewController, ICreateNoteVC {
     private let doneButtonEnabledColor = #colorLiteral(red: 0.7895931005, green: 0.3977047205, blue: 0.5209977627, alpha: 1)
     private let doneButtonDisabledColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
 
-    lazy var doneButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Done", for: .normal)
-        button.addTarget(self, action: #selector(didTapAddButton), for: .touchUpInside)
+    lazy var doneButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(title: "Done",
+                                     style: .done,
+                                     target: self,
+                                     action: #selector(didTapAddButton))
         button.isEnabled = false
-        button.setTitleColor(doneButtonDisabledColor, for: .normal)
+        button.tintColor = doneButtonDisabledColor
         return button
     }()
     lazy var createNoteView: CreateNoteView = {
@@ -46,11 +49,12 @@ final class CreateNoteVC: UIViewController, ICreateNoteVC {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         createNoteView.setScrollViewContentSize()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: doneButton)
+        navigationItem.rightBarButtonItem = doneButton
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        interactor.updateIfNeeded()
         setup()
     }
 
@@ -79,11 +83,17 @@ final class CreateNoteVC: UIViewController, ICreateNoteVC {
     func shouldClose() {
         navigationController?.popViewController(animated: true)
     }
+
+    func update(description: String, title: String, status: Int) {
+        createNoteView.titleTextView.text = title
+        createNoteView.descriptionTextView.text = description
+        createNoteView.segmentedControl.selectedSegmentIndex = status
+    }
 }
 
 extension CreateNoteVC: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         doneButton.isEnabled = !createNoteView.titleTextView.text.isEmpty && !createNoteView.descriptionTextView.text.isEmpty
-        doneButton.setTitleColor(doneButton.isEnabled ? doneButtonEnabledColor : doneButtonDisabledColor, for: .normal)
+        doneButton.tintColor = doneButton.isEnabled ? doneButtonEnabledColor : doneButtonDisabledColor
     }
 }
