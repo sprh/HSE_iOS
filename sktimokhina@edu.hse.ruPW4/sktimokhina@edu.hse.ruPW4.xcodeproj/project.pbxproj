@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		E3A95E12271F46FE0053AA76 /* CreateNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A95E11271F46FE0053AA76 /* CreateNoteView.swift */; };
 		E3A95E15271F504D0053AA76 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A95E14271F504D0053AA76 /* UIView+Utils.swift */; };
-		E3A95E17271F517E0053AA76 /* UIImage+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A95E16271F517E0053AA76 /* UIImage+Utils.swift */; };
 		E3A95E2C271F541B0053AA76 /* CoreDataWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A95E2B271F541B0053AA76 /* CoreDataWorker.swift */; };
 		E3E64EA4271EEDBC00B81118 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E64EA3271EEDBC00B81118 /* AppDelegate.swift */; };
 		E3E64EAE271EEDBC00B81118 /* sktimokhina_edu_hse_ruPW4.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E3E64EAC271EEDBC00B81118 /* sktimokhina_edu_hse_ruPW4.xcdatamodeld */; };
@@ -33,7 +32,6 @@
 /* Begin PBXFileReference section */
 		E3A95E11271F46FE0053AA76 /* CreateNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNoteView.swift; sourceTree = "<group>"; };
 		E3A95E14271F504D0053AA76 /* UIView+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
-		E3A95E16271F517E0053AA76 /* UIImage+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Utils.swift"; sourceTree = "<group>"; };
 		E3A95E2B271F541B0053AA76 /* CoreDataWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataWorker.swift; sourceTree = "<group>"; };
 		E3E64EA0271EEDBC00B81118 /* sktimokhina@edu.hse.ruPW4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "sktimokhina@edu.hse.ruPW4.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3E64EA3271EEDBC00B81118 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -71,7 +69,6 @@
 			isa = PBXGroup;
 			children = (
 				E3A95E14271F504D0053AA76 /* UIView+Utils.swift */,
-				E3A95E16271F517E0053AA76 /* UIImage+Utils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -258,7 +255,6 @@
 				E3E64EA4271EEDBC00B81118 /* AppDelegate.swift in Sources */,
 				E3E64EC8271EF19100B81118 /* NotesListRouter.swift in Sources */,
 				E3E64ECA271EF1B500B81118 /* NotesListInteractor.swift in Sources */,
-				E3A95E17271F517E0053AA76 /* UIImage+Utils.swift in Sources */,
 				E3FD2A842721F8B2000D6ABB /* Note+CoreDataClass.swift in Sources */,
 				E3E64ED0271EF23F00B81118 /* NotesListGraph.swift in Sources */,
 				E3E64EDD271EFE1E00B81118 /* CreateNoteGraph.swift in Sources */,

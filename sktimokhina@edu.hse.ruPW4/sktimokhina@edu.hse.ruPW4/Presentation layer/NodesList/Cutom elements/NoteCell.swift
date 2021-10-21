@@ -40,11 +40,6 @@ final class NoteCell: UICollectionViewCell {
         self.id = note.id
         titleLabel.text = note.title
         descriptionLabel.text = note.descriptionText
-        if note.status == 1 {
-            statusImage.image = .lowStatus
-        } else if note.status == 2 {
-            statusImage.image = .highStatus
-        }
         backgroundColor = #colorLiteral(red: 1, green: 0.8220604658, blue: 0.8168862462, alpha: 1)
         contentView.addSubview(titleLabel)
         contentView.addSubview(descriptionLabel)

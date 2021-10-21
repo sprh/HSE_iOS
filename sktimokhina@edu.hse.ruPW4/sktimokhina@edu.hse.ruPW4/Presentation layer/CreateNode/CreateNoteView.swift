@@ -63,10 +63,7 @@ final class CreateNoteView: UIView {
 
     var deadlineSwitch = UISwitch()
     var segmentedControl: UISegmentedControl = {
-        let segmentedControl = UISegmentedControl(items: ["low", "basic", "important"])
-        segmentedControl.setImage(.lowStatus, forSegmentAt: 0)
-        segmentedControl.setTitle("non", forSegmentAt: 1)
-        segmentedControl.setImage(.highStatus, forSegmentAt: 2)
+        let segmentedControl = UISegmentedControl(items: ["done", "waiting", "new", "other"])
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         segmentedControl.selectedSegmentIndex = 1
         return segmentedControl
