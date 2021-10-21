@@ -29,7 +29,7 @@ final class NoteCell: UICollectionViewCell {
         return label
     }()
 
-    lazy var importanceImage: UIImageView = {
+    lazy var statusImage: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
         image.layer.cornerRadius = 20
@@ -41,27 +41,27 @@ final class NoteCell: UICollectionViewCell {
         titleLabel.text = note.title
         descriptionLabel.text = note.descriptionText
         if note.status == 1 {
-            importanceImage.image = .lowImportance
+            statusImage.image = .lowStatus
         } else if note.status == 2 {
-            importanceImage.image = .highImportance
+            statusImage.image = .highStatus
         }
         backgroundColor = #colorLiteral(red: 1, green: 0.8220604658, blue: 0.8168862462, alpha: 1)
         contentView.addSubview(titleLabel)
         contentView.addSubview(descriptionLabel)
-        contentView.addSubview(importanceImage)
+        contentView.addSubview(statusImage)
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
-            titleLabel.trailingAnchor.constraint(equalTo: importanceImage.leadingAnchor, constant: -8),
+            titleLabel.trailingAnchor.constraint(equalTo: statusImage.leadingAnchor, constant: -8),
 
             descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            titleLabel.trailingAnchor.constraint(equalTo: importanceImage.leadingAnchor, constant: -8),            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
+            titleLabel.trailingAnchor.constraint(equalTo: statusImage.leadingAnchor, constant: -8),            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
             descriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
 
-            importanceImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            importanceImage.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            importanceImage.heightAnchor.constraint(equalToConstant: 15),
-            importanceImage.widthAnchor.constraint(equalToConstant: 15),
+            statusImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            statusImage.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            statusImage.heightAnchor.constraint(equalToConstant: 15),
+            statusImage.widthAnchor.constraint(equalToConstant: 15),
         ])
     }
 }

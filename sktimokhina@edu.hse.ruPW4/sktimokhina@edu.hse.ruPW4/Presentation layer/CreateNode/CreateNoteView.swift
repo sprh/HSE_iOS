@@ -45,7 +45,7 @@ final class CreateNoteView: UIView {
         return textView
     }()
 
-    lazy var importanceAndDateStack: UIStackView = {
+    lazy var statusAndDateStack: UIStackView = {
         let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.layer.cornerRadius = 16
@@ -53,9 +53,9 @@ final class CreateNoteView: UIView {
         return stack
     }()
 
-    lazy var labelImportance: UILabel = {
+    lazy var labelStatus: UILabel = {
         let label = UILabel()
-        label.text = "Importance"
+        label.text = "Status"
         label.font = UIFont.preferredFont(forTextStyle: .body)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -64,9 +64,9 @@ final class CreateNoteView: UIView {
     var deadlineSwitch = UISwitch()
     var segmentedControl: UISegmentedControl = {
         let segmentedControl = UISegmentedControl(items: ["low", "basic", "important"])
-        segmentedControl.setImage(.lowImportance, forSegmentAt: 0)
+        segmentedControl.setImage(.lowStatus, forSegmentAt: 0)
         segmentedControl.setTitle("non", forSegmentAt: 1)
-        segmentedControl.setImage(.highImportance, forSegmentAt: 2)
+        segmentedControl.setImage(.highStatus, forSegmentAt: 2)
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         segmentedControl.selectedSegmentIndex = 1
         return segmentedControl
@@ -97,27 +97,27 @@ final class CreateNoteView: UIView {
         keyboardWillHide(scrollView)
         hideKeyboardWhenTappedAround()
 
-        setupImportanceAndDateStack()
+        setupStatusAndDateStack()
         setupScrollview()
     }
 
-    private func setupImportanceAndDateStack() {
-        importanceAndDateStack.addSubview(labelImportance)
-        importanceAndDateStack.addSubview(segmentedControl)
-        importanceAndDateStack.addSubview(labelImportance)
+    private func setupStatusAndDateStack() {
+        statusAndDateStack.addSubview(labelStatus)
+        statusAndDateStack.addSubview(segmentedControl)
+        statusAndDateStack.addSubview(labelStatus)
         NSLayoutConstraint.activate([
-            labelImportance.leadingAnchor.constraint(equalTo: importanceAndDateStack.leadingAnchor, constant: 16),
-            labelImportance.topAnchor.constraint(equalTo: importanceAndDateStack.topAnchor, constant: 17),
-            segmentedControl.trailingAnchor.constraint(equalTo: importanceAndDateStack.trailingAnchor, constant: -12),
-            segmentedControl.topAnchor.constraint(equalTo: importanceAndDateStack.topAnchor, constant: 10),
-            segmentedControl.bottomAnchor.constraint(equalTo: importanceAndDateStack.bottomAnchor, constant: 16),
+            labelStatus.leadingAnchor.constraint(equalTo: statusAndDateStack.leadingAnchor, constant: 16),
+            labelStatus.topAnchor.constraint(equalTo: statusAndDateStack.topAnchor, constant: 17),
+            segmentedControl.trailingAnchor.constraint(equalTo: statusAndDateStack.trailingAnchor, constant: -12),
+            segmentedControl.topAnchor.constraint(equalTo: statusAndDateStack.topAnchor, constant: 10),
+            segmentedControl.bottomAnchor.constraint(equalTo: statusAndDateStack.bottomAnchor, constant: 16),
             segmentedControl.heightAnchor.constraint(equalToConstant: 40),
         ])
     }
 
     private func setupScrollview() {
         scrollView.addSubview(descriptionTextView)
-        scrollView.addSubview(importanceAndDateStack)
+        scrollView.addSubview(statusAndDateStack)
         scrollView.addSubview(titleLabel)
         scrollView.addSubview(titleTextView)
         scrollView.addSubview(descriprionLabel)
@@ -144,13 +144,13 @@ final class CreateNoteView: UIView {
             descriptionTextView.trailingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.trailingAnchor, constant: -16),
             descriptionTextView.topAnchor.constraint(equalTo: descriprionLabel.bottomAnchor, constant: 16),
 
-            importanceAndDateStack.topAnchor.constraint(equalTo: descriptionTextView.bottomAnchor, constant: 16),
-            importanceAndDateStack.leadingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            importanceAndDateStack.trailingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            statusAndDateStack.topAnchor.constraint(equalTo: descriptionTextView.bottomAnchor, constant: 16),
+            statusAndDateStack.leadingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            statusAndDateStack.trailingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.trailingAnchor, constant: -16),
         ])
     }
 
     func setScrollViewContentSize() {
-        scrollView.contentSize.height = scrollView.convert(importanceAndDateStack.frame.origin, to: scrollView).y + UIView.safeAreaHeight()
+        scrollView.contentSize.height = scrollView.convert(statusAndDateStack.frame.origin, to: scrollView).y + UIView.safeAreaHeight()
     }
 }

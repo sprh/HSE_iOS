@@ -8,11 +8,11 @@
 import UIKit
 
 extension UIImage {
-    static var highImportance: UIImage {
-        UIImage(named: "high_importance")!
+    static var highStatus: UIImage {
+        UIImage(named: "high_status")!
     }
 
-    static var lowImportance: UIImage {
-        UIImage(named: "low_importance")!
+    static var lowStatus: UIImage {
+        UIImage(named: "low_status")!
     }
 }

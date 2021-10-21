@@ -9,7 +9,7 @@ import CoreData
 
 protocol ICoreDataWorker {
     func loadAll(parentNote: Note?) throws -> [Note]
-    func save(title: String, description: String, importance: Int32, parentNote: Note?) throws
+    func save(title: String, description: String, status: Int32, parentNote: Note?) throws
     func delete(note: Note) throws
     func update(note: Note,
                 title: String,
@@ -39,12 +39,12 @@ final class CoreDataWorker: ICoreDataWorker {
         return notes
     }
 
-    func save(title: String, description: String, importance: Int32, parentNote: Note?) throws {
+    func save(title: String, description: String, status: Int32, parentNote: Note?) throws {
         let note = Note(context: context)
         note.parentNote = parentNote
         note.title = title
         note.descriptionText = description
-        note.status = importance
+        note.status = status
         context.insert(note)
         try context.save()
     }

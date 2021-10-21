@@ -73,7 +73,7 @@ final class CreateNoteVC: UIViewController, ICreateNoteVC {
 
     @objc
     func didTapAddButton() {
-        interactor.saveNote(title: createNoteView.titleTextView.text, description: createNoteView.descriptionTextView.text, importance: Int32(createNoteView.segmentedControl.selectedSegmentIndex))
+        interactor.saveNote(title: createNoteView.titleTextView.text, description: createNoteView.descriptionTextView.text, status: Int32(createNoteView.segmentedControl.selectedSegmentIndex))
     }
 
     func shouldShowError(message: String) {

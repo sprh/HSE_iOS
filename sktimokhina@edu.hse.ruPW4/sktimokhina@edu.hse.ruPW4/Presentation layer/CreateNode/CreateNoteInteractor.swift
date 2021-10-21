@@ -15,7 +15,7 @@ protocol ICreateNoteViewObserver: AnyObject {
 }
 
 protocol ICreateNoteInteractor {
-    func saveNote(title: String, description: String, importance: Int32)
+    func saveNote(title: String, description: String, status: Int32)
     func updateIfNeeded()
 }
 
@@ -38,13 +38,13 @@ final class CreateNoteInteractor: ICreateNoteInteractor {
         self.noteToEdit = noteToEdit
     }
 
-    func saveNote(title: String, description: String, importance: Int32) {
+    func saveNote(title: String, description: String, status: Int32) {
         do {
             if (noteToEdit != nil && noteToEdit != nil) {
-                try worker.update(note: noteToEdit!, title: title, description: description, status: importance)
+                try worker.update(note: noteToEdit!, title: title, description: description, status: status)
                 observer?.didUpdateItem()
             } else {
-                try worker.save(title: title, description: description, importance: importance, parentNote: parentNote)
+                try worker.save(title: title, description: description, status: status, parentNote: parentNote)
                 observer?.didAddItem()
             }
             presenter.shouldClose()
