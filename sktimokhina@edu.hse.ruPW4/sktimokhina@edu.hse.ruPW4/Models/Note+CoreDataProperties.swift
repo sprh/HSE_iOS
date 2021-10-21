@@ -16,9 +16,10 @@ extension Note {
         return NSFetchRequest<Note>(entityName: "Note")
     }
 
-    @NSManaged public var descriptionText: String?
-    @NSManaged public var title: String?
+    @NSManaged public var descriptionText: String
     @NSManaged public var status: Int32
+    @NSManaged public var title: String
+    @NSManaged public var parentNote: Note?
 
 }
 

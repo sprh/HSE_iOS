@@ -11,16 +11,20 @@ import Foundation
 
 protocol INotesListInteractor {
     var notesCount: Int { get }
+    var parentNote: Note? { get set }
     var coreDataWorker: ICoreDataWorker { get }
+    var parentNoteTitle: String? { get }
     func load()
 
-    func getNoteAt(index: Int) -> Note?
+    func getNote(at index: Int) -> Note?
+    func getNote(with id: ObjectIdentifier) -> Note?
     func deleteNote(id: ObjectIdentifier)
 }
 
 final class NotesListInteractor: INotesListInteractor {
     let presenter: INotesListPresenter
     private let worker: ICoreDataWorker
+    var parentNote: Note?
 
     private var notes: [Note] = []
 
@@ -32,18 +36,26 @@ final class NotesListInteractor: INotesListInteractor {
         notes.count
     }
 
-    func getNoteAt(index: Int) -> Note? {
+    var parentNoteTitle: String? {
+        parentNote?.title
+    }
+    func getNote(at index: Int) -> Note? {
         return index < notes.count ? notes[index] : nil
     }
 
-    init(presenter: INotesListPresenter, worker: ICoreDataWorker) {
+    func getNote(with id: ObjectIdentifier) -> Note? {
+        return notes.first(where: { $0.id == id })
+    }
+
+    init(presenter: INotesListPresenter, worker: ICoreDataWorker, parentNote: Note?) {
         self.presenter = presenter
         self.worker = worker
+        self.parentNote = parentNote
     }
 
     func load() {
         do {
-            notes = try worker.loadAll()
+            notes = try worker.loadAll(parentNote: parentNote)
             presenter.shouldReloadItems()
         } catch (let e) {
             presenter.shouldShowError(text: e.localizedDescription)

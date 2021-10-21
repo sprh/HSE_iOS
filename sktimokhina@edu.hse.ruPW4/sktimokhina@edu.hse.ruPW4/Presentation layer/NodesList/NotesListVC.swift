@@ -79,7 +79,7 @@ final class NotesListVC: UIViewController, INotesListVC {
         interactor.load()
         view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.title = "Notes"
+        navigationItem.title = interactor.parentNoteTitle ?? "All notes"
         navigationItem.rightBarButtonItem = addButton
         setup()
     }
@@ -95,7 +95,9 @@ final class NotesListVC: UIViewController, INotesListVC {
 
     @objc
     func didTapAddButton() {
-        router.shouldShowDetailScreen(worker: interactor.coreDataWorker, observer: self)
+        router.shouldShowDetailScreen(worker: interactor.coreDataWorker,
+                                      observer: self,
+                                      parentNote: interactor.parentNote)
     }
 
     func shouldReloadItems() {
@@ -116,7 +118,7 @@ extension NotesListVC: UICollectionViewDelegate, UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(NoteCell.self)", for: indexPath) as? NoteCell,
-              let note = interactor.getNoteAt(index: indexPath.row) else {
+              let note = interactor.getNote(at: indexPath.row) else {
                   return UICollectionViewCell()
               }
         cell.setup(with: note)
@@ -141,6 +143,13 @@ extension NotesListVC: UICollectionViewDelegate, UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 20
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? NoteCell,
+              let note = interactor.getNote(with: cell.id) else { return }
+        router.openNoteListScreen(worker: interactor.coreDataWorker, parentNote: note)
+
     }
 }
 

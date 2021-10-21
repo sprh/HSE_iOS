@@ -8,8 +8,8 @@
 import CoreData
 
 protocol ICoreDataWorker {
-    func loadAll() throws -> [Note]
-    func save(title: String, description: String, importance: Int32) throws
+    func loadAll(parentNote: Note?) throws -> [Note]
+    func save(title: String, description: String, importance: Int32, parentNote: Note?) throws
     func delete(note: Note) throws
 }
 
@@ -20,16 +20,24 @@ final class CoreDataWorker: ICoreDataWorker {
         self.context = context
     }
 
-    func loadAll() throws -> [Note] {
+    func loadAll(parentNote: Note?) throws -> [Note] {
         var request = NSFetchRequest<NSFetchRequestResult>()
         request = Note.fetchRequest()
+        if (parentNote == nil) {
+            request.predicate = NSPredicate(format: "parentNote == nil");
+        } else {
+            let predicate1 = NSPredicate(format: "parentNote != nil")
+            let predicate2 = NSPredicate(format: "parentNote == %@", parentNote!)
+            request.predicate = NSCompoundPredicate.init(type: .and, subpredicates: [predicate1,predicate2])
+        }
         request.returnsObjectsAsFaults = false
         let notes = try context.fetch(request) as! [Note]
         return notes
     }
 
-    func save(title: String, description: String, importance: Int32) throws {
+    func save(title: String, description: String, importance: Int32, parentNote: Note?) throws {
         let note = Note(context: context)
+        note.parentNote = parentNote
         note.title = title
         note.descriptionText = description
         note.status = importance

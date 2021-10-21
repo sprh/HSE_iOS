@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let worker = CoreDataWorker(context: persistentContainer.viewContext)
-        let graph = NotesListGraph(worker: worker)
+        let graph = NotesListGraph(worker: worker, parentNote: nil)
         window?.rootViewController = UINavigationController(rootViewController: graph.viewController)
         window?.makeKeyAndVisible()
         return true

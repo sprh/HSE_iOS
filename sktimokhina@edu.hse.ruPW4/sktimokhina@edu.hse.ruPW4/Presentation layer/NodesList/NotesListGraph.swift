@@ -18,10 +18,10 @@ final class NotesListGraph {
         view
     }
 
-    init(worker: ICoreDataWorker) {
+    init(worker: ICoreDataWorker, parentNote: Note?) {
         presenter = NotesListPresenter()
-        interactor = NotesListInteractor(presenter: presenter, worker: worker)
-        router = NotesListViewRouter()
+        interactor = NotesListInteractor(presenter: presenter, worker: worker, parentNote: parentNote)
+        router = NotesListRouter()
         view = NotesListVC(interactor: interactor, router: router)
         presenter.viewController = view
         router.viewController = view

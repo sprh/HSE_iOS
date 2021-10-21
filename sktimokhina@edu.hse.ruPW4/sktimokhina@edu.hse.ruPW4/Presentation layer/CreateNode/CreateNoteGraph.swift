@@ -18,9 +18,12 @@ final class CreateNoteGraph {
         view
     }
 
-    init(worker: ICoreDataWorker, observer: ICreateNoteViewObserver?) {
+    init(worker: ICoreDataWorker, observer: ICreateNoteViewObserver?, parentNote: Note?) {
         presenter = CreateNotePresenter()
-        interactor = CreateNoteInteractor(presenter: presenter, worker: worker, observer: observer)
+        interactor = CreateNoteInteractor(presenter: presenter,
+                                          worker: worker,
+                                          observer: observer,
+                                          parentNote: parentNote)
         router = CreateNoteViewRouter()
         view = CreateNoteVC(interactor: interactor, router: router)
         presenter.viewController = view

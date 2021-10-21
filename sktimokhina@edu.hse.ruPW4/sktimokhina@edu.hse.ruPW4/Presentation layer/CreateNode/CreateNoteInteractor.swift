@@ -18,19 +18,24 @@ protocol ICreateNoteInteractor {
 }
 
 final class CreateNoteInteractor: ICreateNoteInteractor {
-    let presenter: ICreateNotePresenter
-    let worker: ICoreDataWorker
+    private let presenter: ICreateNotePresenter
+    private let worker: ICoreDataWorker
+    private let parentNote: Note?
     weak var observer: ICreateNoteViewObserver?
 
-    init(presenter: ICreateNotePresenter, worker: ICoreDataWorker, observer: ICreateNoteViewObserver?) {
+    init(presenter: ICreateNotePresenter,
+         worker: ICoreDataWorker,
+         observer: ICreateNoteViewObserver?,
+         parentNote: Note?) {
         self.presenter = presenter
         self.observer = observer
         self.worker = worker
+        self.parentNote = parentNote
     }
 
     func saveNote(title: String, description: String, importance: Int32) {
         do {
-            try worker.save(title: title, description: description, importance: importance)
+            try worker.save(title: title, description: description, importance: importance, parentNote: parentNote)
             observer?.didAddItem()
             presenter.shouldClose()
         } catch (let e) {

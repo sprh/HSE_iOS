@@ -10,15 +10,20 @@ import UIKit
 protocol INotesListRouter {
     var viewController: INotesListVC? { get set }
 
-    func shouldShowDetailScreen(worker: ICoreDataWorker, observer: ICreateNoteViewObserver?)
+    func shouldShowDetailScreen(worker: ICoreDataWorker,
+                                observer: ICreateNoteViewObserver?,
+                                parentNote: Note?)
     func showError(text: String)
+    func openNoteListScreen(worker: ICoreDataWorker, parentNote: Note)
 }
 
-final class NotesListViewRouter: INotesListRouter {
+final class NotesListRouter: INotesListRouter {
     weak var viewController: INotesListVC?
 
-    func shouldShowDetailScreen(worker: ICoreDataWorker, observer: ICreateNoteViewObserver?) {
-        let viewController = CreateNoteGraph(worker: worker, observer: observer).viewController
+    func shouldShowDetailScreen(worker: ICoreDataWorker,
+                                observer: ICreateNoteViewObserver?,
+                                parentNote: Note?) {
+        let viewController = CreateNoteGraph(worker: worker, observer: observer, parentNote: parentNote).viewController
         self.viewController?.navigationController?.pushViewController(viewController, animated: true)
     }
 
@@ -26,5 +31,10 @@ final class NotesListViewRouter: INotesListRouter {
         let alert = UIAlertController(title: "Error(", message: text, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default))
         viewController?.present(alert, animated: true)
+    }
+
+    func openNoteListScreen(worker: ICoreDataWorker, parentNote: Note) {
+        let viewController = NotesListGraph(worker: worker, parentNote: parentNote).viewController
+        self.viewController?.navigationController?.pushViewController(viewController, animated: true)
     }
 }
