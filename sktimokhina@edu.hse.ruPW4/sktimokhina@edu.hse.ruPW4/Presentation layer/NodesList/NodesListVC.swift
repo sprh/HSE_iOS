@@ -21,7 +21,10 @@ final class NodesListVC: UIViewController, INodesListVC {
         listConfig.trailingSwipeActionsConfigurationProvider = { [weak self] indexPath in
             guard let self = self else { return nil }
             let actionHandler: UIContextualAction.Handler = { action, view, completion in
-                completion(true)
+                guard let cell = self.collectionView.cellForItem(at: indexPath) as? NodeCell else {
+                    return
+                }
+                self.interactor.deleteNode(id: cell.id)
             }
             let action = UIContextualAction(style: .normal, title: "Delete", handler: actionHandler)
             action.image = UIImage(systemName: "trash")
@@ -114,19 +117,20 @@ extension NodesListVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(NodeCell.self)", for: indexPath) as? NodeCell,
               let node = interactor.getNodeAt(index: indexPath.row) else {
-            return UICollectionViewCell()
-        }
+                  return UICollectionViewCell()
+              }
         cell.setup(with: node)
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-                guard let cell = collectionView.cellForItem(at: indexPath) as? NodeCell else {
-                    return nil
-                }
+        guard let cell = collectionView.cellForItem(at: indexPath) as? NodeCell else {
+            return nil
+        }
         let context = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { (action) -> UIMenu? in
 
             let delete = UIAction(title: "Delete", image: UIImage(systemName: "trash"), identifier: nil, discoverabilityTitle: nil,attributes: .destructive, state: .off) { [weak self] _ in
+                self?.interactor.deleteNode(id: cell.id)
             }
 
             return UIMenu(title: "Options", image: nil, identifier: nil, options: UIMenu.Options.displayInline, children: [delete])

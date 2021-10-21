@@ -15,6 +15,7 @@ protocol INodesListInteractor {
     func load()
 
     func getNodeAt(index: Int) -> Node?
+    func deleteNode(id: ObjectIdentifier)
 }
 
 final class NodesListInteractor: INodesListInteractor {
@@ -53,6 +54,7 @@ final class NodesListInteractor: INodesListInteractor {
         guard let node = nodes.first(where: { $0.id == id }) else { return }
         do {
             try worker.delete(node: node)
+            nodes.removeAll(where: { $0.id == id })
             presenter.shouldReloadItems()
         } catch (let e) {
             presenter.shouldShowError(text: e.localizedDescription)
