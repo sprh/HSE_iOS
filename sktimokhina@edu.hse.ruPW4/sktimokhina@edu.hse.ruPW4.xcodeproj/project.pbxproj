@@ -11,7 +11,7 @@
 		E3A95E15271F504D0053AA76 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A95E14271F504D0053AA76 /* UIView+Utils.swift */; };
 		E3A95E2C271F541B0053AA76 /* CoreDataWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A95E2B271F541B0053AA76 /* CoreDataWorker.swift */; };
 		E3E64EA4271EEDBC00B81118 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E64EA3271EEDBC00B81118 /* AppDelegate.swift */; };
-		E3E64EAE271EEDBC00B81118 /* sktimokhina_edu_hse_ruPW4.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E3E64EAC271EEDBC00B81118 /* sktimokhina_edu_hse_ruPW4.xcdatamodeld */; };
+		E3E64EAE271EEDBC00B81118 /* Notes_first_version.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E3E64EAC271EEDBC00B81118 /* Notes_first_version.xcdatamodeld */; };
 		E3E64EB0271EEDC200B81118 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3E64EAF271EEDC200B81118 /* Assets.xcassets */; };
 		E3E64EB3271EEDC200B81118 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3E64EB1271EEDC200B81118 /* LaunchScreen.storyboard */; };
 		E3E64EC8271EF19100B81118 /* NotesListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E64EC7271EF19100B81118 /* NotesListRouter.swift */; };
@@ -115,7 +115,7 @@
 				E3E64EAF271EEDC200B81118 /* Assets.xcassets */,
 				E3E64EB1271EEDC200B81118 /* LaunchScreen.storyboard */,
 				E3E64EB4271EEDC200B81118 /* Info.plist */,
-				E3E64EAC271EEDBC00B81118 /* sktimokhina_edu_hse_ruPW4.xcdatamodeld */,
+				E3E64EAC271EEDBC00B81118 /* Notes_first_version.xcdatamodeld */,
 			);
 			path = "sktimokhina@edu.hse.ruPW4";
 			sourceTree = "<group>";
@@ -247,7 +247,7 @@
 				E3A95E2C271F541B0053AA76 /* CoreDataWorker.swift in Sources */,
 				E3E64ECC271EF1EB00B81118 /* NotesListPresenter.swift in Sources */,
 				E3A95E12271F46FE0053AA76 /* CreateNoteView.swift in Sources */,
-				E3E64EAE271EEDBC00B81118 /* sktimokhina_edu_hse_ruPW4.xcdatamodeld in Sources */,
+				E3E64EAE271EEDBC00B81118 /* Notes_first_version.xcdatamodeld in Sources */,
 				E3E64EDC271EFE1E00B81118 /* CreateNoteRouter.swift in Sources */,
 				E3E64EDE271EFE1E00B81118 /* CreateNoteInteractor.swift in Sources */,
 				E3E64EDA271EFE1E00B81118 /* CreateNoteVC.swift in Sources */,
@@ -455,13 +455,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		E3E64EAC271EEDBC00B81118 /* sktimokhina_edu_hse_ruPW4.xcdatamodeld */ = {
+		E3E64EAC271EEDBC00B81118 /* Notes_first_version.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				E3E64EAD271EEDBC00B81118 /* sktimokhina_edu_hse_ruPW4.xcdatamodel */,
 			);
 			currentVersion = E3E64EAD271EEDBC00B81118 /* sktimokhina_edu_hse_ruPW4.xcdatamodel */;
-			path = sktimokhina_edu_hse_ruPW4.xcdatamodeld;
+			path = Notes_first_version.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
