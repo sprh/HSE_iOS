@@ -10,6 +10,7 @@ import CoreData
 protocol ICoreDataWorker {
     func loadAll() throws -> [Node]
     func save(title: String, description: String, importance: Int32) throws
+    func delete(node: Node) throws
 }
 
 final class CoreDataWorker: ICoreDataWorker {
@@ -33,6 +34,11 @@ final class CoreDataWorker: ICoreDataWorker {
         node.descriptionText = description
         node.status = importance
         context.insert(node)
+        try context.save()
+    }
+
+    func delete(node: Node) throws {
+        context.delete(node)
         try context.save()
     }
 }

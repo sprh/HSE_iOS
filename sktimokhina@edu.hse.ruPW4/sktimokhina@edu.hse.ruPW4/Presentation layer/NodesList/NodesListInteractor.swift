@@ -48,4 +48,14 @@ final class NodesListInteractor: INodesListInteractor {
             presenter.shouldShowError(text: e.localizedDescription)
         }
     }
+
+    func deleteNode(id: ObjectIdentifier) {
+        guard let node = nodes.first(where: { $0.id == id }) else { return }
+        do {
+            try worker.delete(node: node)
+            presenter.shouldReloadItems()
+        } catch (let e) {
+            presenter.shouldShowError(text: e.localizedDescription)
+        }
+    }
 }

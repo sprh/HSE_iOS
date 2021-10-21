@@ -16,6 +16,17 @@ final class CreateNodeVC: UIViewController, ICreateNodeVC {
     private let interactor: ICreateNodeInteractor
     private let router: ICreateNodeRouter
 
+    private let doneButtonEnabledColor = #colorLiteral(red: 0.7895931005, green: 0.3977047205, blue: 0.5209977627, alpha: 1)
+    private let doneButtonDisabledColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+
+    lazy var doneButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Done", for: .normal)
+        button.addTarget(self, action: #selector(didTapAddButton), for: .touchUpInside)
+        button.isEnabled = false
+        button.setTitleColor(doneButtonDisabledColor, for: .normal)
+        return button
+    }()
     lazy var createNodeView: CreateNodeView = {
         let view = CreateNodeView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -35,6 +46,7 @@ final class CreateNodeVC: UIViewController, ICreateNodeVC {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         createNodeView.setScrollViewContentSize()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: doneButton)
     }
 
     override func viewDidLoad() {
@@ -51,7 +63,6 @@ final class CreateNodeVC: UIViewController, ICreateNodeVC {
             createNodeView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             createNodeView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
-        createNodeView.saveButton.addTarget(self, action: #selector(didTapAddButton), for: .touchUpInside)
         createNodeView.titleTextView.delegate = self
         createNodeView.descriptionTextView.delegate = self
     }
@@ -72,6 +83,7 @@ final class CreateNodeVC: UIViewController, ICreateNodeVC {
 
 extension CreateNodeVC: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
-        createNodeView.saveButton.isEnabled = !createNodeView.titleTextView.text.isEmpty && !createNodeView.descriptionTextView.text.isEmpty
+        doneButton.isEnabled = !createNodeView.titleTextView.text.isEmpty && !createNodeView.descriptionTextView.text.isEmpty
+        doneButton.setTitleColor(doneButton.isEnabled ? doneButtonEnabledColor : doneButtonDisabledColor, for: .normal)
     }
 }

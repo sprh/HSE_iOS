@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E3A95E12271F46FE0053AA76 /* NodeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A95E11271F46FE0053AA76 /* NodeDetailView.swift */; };
+		E3A95E12271F46FE0053AA76 /* CreateNodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A95E11271F46FE0053AA76 /* CreateNodeView.swift */; };
 		E3A95E15271F504D0053AA76 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A95E14271F504D0053AA76 /* UIView+Utils.swift */; };
 		E3A95E17271F517E0053AA76 /* UIImage+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A95E16271F517E0053AA76 /* UIImage+Utils.swift */; };
 		E3A95E2C271F541B0053AA76 /* CoreDataWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A95E2B271F541B0053AA76 /* CoreDataWorker.swift */; };
@@ -23,15 +23,15 @@
 		E3E64ECE271EF20800B81118 /* NodesListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E64ECD271EF20800B81118 /* NodesListVC.swift */; };
 		E3E64ED0271EF23F00B81118 /* NodesListGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E64ECF271EF23F00B81118 /* NodesListGraph.swift */; };
 		E3E64ED3271EF3CD00B81118 /* NodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E64ED2271EF3CD00B81118 /* NodeCell.swift */; };
-		E3E64EDA271EFE1E00B81118 /* NodeDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E64ED5271EFE1E00B81118 /* NodeDetailVC.swift */; };
-		E3E64EDB271EFE1E00B81118 /* NodeDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E64ED6271EFE1E00B81118 /* NodeDetailPresenter.swift */; };
-		E3E64EDC271EFE1E00B81118 /* NodeDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E64ED7271EFE1E00B81118 /* NodeDetailRouter.swift */; };
-		E3E64EDD271EFE1E00B81118 /* NodeDetailGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E64ED8271EFE1E00B81118 /* NodeDetailGraph.swift */; };
-		E3E64EDE271EFE1E00B81118 /* NodeDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E64ED9271EFE1E00B81118 /* NodeDetailInteractor.swift */; };
+		E3E64EDA271EFE1E00B81118 /* CreateNodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E64ED5271EFE1E00B81118 /* CreateNodeVC.swift */; };
+		E3E64EDB271EFE1E00B81118 /* CreateNodePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E64ED6271EFE1E00B81118 /* CreateNodePresenter.swift */; };
+		E3E64EDC271EFE1E00B81118 /* CreateNodeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E64ED7271EFE1E00B81118 /* CreateNodeRouter.swift */; };
+		E3E64EDD271EFE1E00B81118 /* CreateNodeGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E64ED8271EFE1E00B81118 /* CreateNodeGraph.swift */; };
+		E3E64EDE271EFE1E00B81118 /* CreateNodeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E64ED9271EFE1E00B81118 /* CreateNodeInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E3A95E11271F46FE0053AA76 /* NodeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeDetailView.swift; sourceTree = "<group>"; };
+		E3A95E11271F46FE0053AA76 /* CreateNodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNodeView.swift; sourceTree = "<group>"; };
 		E3A95E14271F504D0053AA76 /* UIView+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
 		E3A95E16271F517E0053AA76 /* UIImage+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Utils.swift"; sourceTree = "<group>"; };
 		E3A95E2B271F541B0053AA76 /* CoreDataWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataWorker.swift; sourceTree = "<group>"; };
@@ -49,11 +49,11 @@
 		E3E64ECD271EF20800B81118 /* NodesListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodesListVC.swift; sourceTree = "<group>"; };
 		E3E64ECF271EF23F00B81118 /* NodesListGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodesListGraph.swift; sourceTree = "<group>"; };
 		E3E64ED2271EF3CD00B81118 /* NodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeCell.swift; sourceTree = "<group>"; };
-		E3E64ED5271EFE1E00B81118 /* NodeDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeDetailVC.swift; sourceTree = "<group>"; };
-		E3E64ED6271EFE1E00B81118 /* NodeDetailPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeDetailPresenter.swift; sourceTree = "<group>"; };
-		E3E64ED7271EFE1E00B81118 /* NodeDetailRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeDetailRouter.swift; sourceTree = "<group>"; };
-		E3E64ED8271EFE1E00B81118 /* NodeDetailGraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeDetailGraph.swift; sourceTree = "<group>"; };
-		E3E64ED9271EFE1E00B81118 /* NodeDetailInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeDetailInteractor.swift; sourceTree = "<group>"; };
+		E3E64ED5271EFE1E00B81118 /* CreateNodeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNodeVC.swift; sourceTree = "<group>"; };
+		E3E64ED6271EFE1E00B81118 /* CreateNodePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNodePresenter.swift; sourceTree = "<group>"; };
+		E3E64ED7271EFE1E00B81118 /* CreateNodeRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNodeRouter.swift; sourceTree = "<group>"; };
+		E3E64ED8271EFE1E00B81118 /* CreateNodeGraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNodeGraph.swift; sourceTree = "<group>"; };
+		E3E64ED9271EFE1E00B81118 /* CreateNodeInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNodeInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,7 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				E3A95E2A271F540C0053AA76 /* Common */,
-				E3E64ED4271EFDE700B81118 /* NodeDetail */,
+				E3E64ED4271EFDE700B81118 /* CreateNode */,
 				E3E64EC6271EF18200B81118 /* NodesList */,
 			);
 			path = "Presentation layer";
@@ -155,17 +155,17 @@
 			path = "Cutom elements";
 			sourceTree = "<group>";
 		};
-		E3E64ED4271EFDE700B81118 /* NodeDetail */ = {
+		E3E64ED4271EFDE700B81118 /* CreateNode */ = {
 			isa = PBXGroup;
 			children = (
-				E3E64ED8271EFE1E00B81118 /* NodeDetailGraph.swift */,
-				E3E64ED9271EFE1E00B81118 /* NodeDetailInteractor.swift */,
-				E3E64ED6271EFE1E00B81118 /* NodeDetailPresenter.swift */,
-				E3E64ED7271EFE1E00B81118 /* NodeDetailRouter.swift */,
-				E3E64ED5271EFE1E00B81118 /* NodeDetailVC.swift */,
-				E3A95E11271F46FE0053AA76 /* NodeDetailView.swift */,
+				E3E64ED8271EFE1E00B81118 /* CreateNodeGraph.swift */,
+				E3E64ED9271EFE1E00B81118 /* CreateNodeInteractor.swift */,
+				E3E64ED6271EFE1E00B81118 /* CreateNodePresenter.swift */,
+				E3E64ED7271EFE1E00B81118 /* CreateNodeRouter.swift */,
+				E3E64ED5271EFE1E00B81118 /* CreateNodeVC.swift */,
+				E3A95E11271F46FE0053AA76 /* CreateNodeView.swift */,
 			);
-			path = NodeDetail;
+			path = CreateNode;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,23 +237,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E3E64EDB271EFE1E00B81118 /* NodeDetailPresenter.swift in Sources */,
+				E3E64EDB271EFE1E00B81118 /* CreateNodePresenter.swift in Sources */,
 				E3E64ECE271EF20800B81118 /* NodesListVC.swift in Sources */,
 				E3A95E2C271F541B0053AA76 /* CoreDataWorker.swift in Sources */,
 				E3D655F5271F5C2A00B2112D /* Node+CoreDataClass.swift in Sources */,
 				E3E64ECC271EF1EB00B81118 /* NodesListPresenter.swift in Sources */,
-				E3A95E12271F46FE0053AA76 /* NodeDetailView.swift in Sources */,
+				E3A95E12271F46FE0053AA76 /* CreateNodeView.swift in Sources */,
 				E3E64EAE271EEDBC00B81118 /* sktimokhina_edu_hse_ruPW4.xcdatamodeld in Sources */,
-				E3E64EDC271EFE1E00B81118 /* NodeDetailRouter.swift in Sources */,
-				E3E64EDE271EFE1E00B81118 /* NodeDetailInteractor.swift in Sources */,
-				E3E64EDA271EFE1E00B81118 /* NodeDetailVC.swift in Sources */,
+				E3E64EDC271EFE1E00B81118 /* CreateNodeRouter.swift in Sources */,
+				E3E64EDE271EFE1E00B81118 /* CreateNodeInteractor.swift in Sources */,
+				E3E64EDA271EFE1E00B81118 /* CreateNodeVC.swift in Sources */,
 				E3E64EA4271EEDBC00B81118 /* AppDelegate.swift in Sources */,
 				E3E64EC8271EF19100B81118 /* NodesListRouter.swift in Sources */,
 				E3D655F4271F5C2A00B2112D /* Node+CoreDataProperties.swift in Sources */,
 				E3E64ECA271EF1B500B81118 /* NodesListInteractor.swift in Sources */,
 				E3A95E17271F517E0053AA76 /* UIImage+Utils.swift in Sources */,
 				E3E64ED0271EF23F00B81118 /* NodesListGraph.swift in Sources */,
-				E3E64EDD271EFE1E00B81118 /* NodeDetailGraph.swift in Sources */,
+				E3E64EDD271EFE1E00B81118 /* CreateNodeGraph.swift in Sources */,
 				E3E64ED3271EF3CD00B81118 /* NodeCell.swift in Sources */,
 				E3A95E15271F504D0053AA76 /* UIView+Utils.swift in Sources */,
 			);

@@ -8,11 +8,14 @@
 import UIKit
 
 final class NodeCell: UICollectionViewCell {
+    var id: ObjectIdentifier!
+
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.preferredFont(forTextStyle: .title1)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Title"
+        label.numberOfLines = 0
         return label
     }()
 
@@ -22,21 +25,43 @@ final class NodeCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         label.text = "Description"
+        label.numberOfLines = 0
         return label
     }()
 
-    func setup() {
+    lazy var importanceImage: UIImageView = {
+        let image = UIImageView()
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.layer.cornerRadius = 20
+        return image
+    }()
+
+    func setup(with node: Node) {
+        self.id = node.id
+        titleLabel.text = node.title
+        descriptionLabel.text = node.descriptionText
+        if node.status == 1 {
+            importanceImage.image = .lowImportance
+        } else if node.status == 2 {
+            importanceImage.image = .highImportance
+        }
         backgroundColor = #colorLiteral(red: 1, green: 0.8220604658, blue: 0.8168862462, alpha: 1)
         contentView.addSubview(titleLabel)
         contentView.addSubview(descriptionLabel)
+        contentView.addSubview(importanceImage)
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
+            titleLabel.trailingAnchor.constraint(equalTo: importanceImage.leadingAnchor, constant: -8),
 
             descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
+            titleLabel.trailingAnchor.constraint(equalTo: importanceImage.leadingAnchor, constant: -8),            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
             descriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
+
+            importanceImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            importanceImage.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            importanceImage.heightAnchor.constraint(equalToConstant: 15),
+            importanceImage.widthAnchor.constraint(equalToConstant: 15),
         ])
     }
 }
