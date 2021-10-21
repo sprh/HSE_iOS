@@ -1,5 +1,5 @@
 //
-//  NodeDetailRouter.swift
+//  CreateNodeRouter.swift
 //  sktimokhina@edu.hse.ruPW4
 //
 //  Created by Софья Тимохина on 19.10.2021.
@@ -7,14 +7,14 @@
 
 import UIKit
 
-protocol INodeDetailRouter {
-    var viewController: INodeDetailVC? { get set }
+protocol ICreateNodeRouter {
+    var viewController: ICreateNodeVC? { get set }
 
     func showError(message: String)
 }
 
-final class NodeDetailViewRouter: INodeDetailRouter {
-    weak var viewController: INodeDetailVC?
+final class CreateNodeViewRouter: ICreateNodeRouter {
+    weak var viewController: ICreateNodeVC?
 
     func showError(message: String) {
         let alert = UIAlertController(title: "Ops, can't save", message: message, preferredStyle: .alert)

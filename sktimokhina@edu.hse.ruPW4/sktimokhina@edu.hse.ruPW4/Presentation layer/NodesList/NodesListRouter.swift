@@ -10,15 +10,15 @@ import UIKit
 protocol INodesListRouter {
     var viewController: INodesListVC? { get set }
 
-    func shouldShowDetailScreen(worker: ICoreDataWorker, observer: INodeDetailViewObserver?)
+    func shouldShowDetailScreen(worker: ICoreDataWorker, observer: ICreateNodeViewObserver?)
     func showError(text: String)
 }
 
 final class NodesListViewRouter: INodesListRouter {
     weak var viewController: INodesListVC?
 
-    func shouldShowDetailScreen(worker: ICoreDataWorker, observer: INodeDetailViewObserver?) {
-        let viewController = NodeDetailGraph(worker: worker, observer: observer).viewController
+    func shouldShowDetailScreen(worker: ICoreDataWorker, observer: ICreateNodeViewObserver?) {
+        let viewController = CreateNodeGraph(worker: worker, observer: observer).viewController
         self.viewController?.navigationController?.pushViewController(viewController, animated: true)
     }
 

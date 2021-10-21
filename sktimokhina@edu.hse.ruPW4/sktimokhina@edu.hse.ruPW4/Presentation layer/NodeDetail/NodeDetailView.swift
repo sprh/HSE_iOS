@@ -1,5 +1,5 @@
 //
-//  NodeDetailView.swift
+//  CreateNodeView.swift
 //  sktimokhina@edu.hse.ruPW4
 //
 //  Created by Софья Тимохина on 19.10.2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class NodeDetailView: UIView {
+final class CreateNodeView: UIView {
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Title"

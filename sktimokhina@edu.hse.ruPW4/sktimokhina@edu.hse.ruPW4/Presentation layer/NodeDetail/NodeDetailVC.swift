@@ -1,5 +1,5 @@
 //
-//  NodeDetailVC.swift
+//  CreateNodeVC.swift
 //  sktimokhina@edu.hse.ruPW4
 //
 //  Created by Софья Тимохина on 19.10.2021.
@@ -7,22 +7,22 @@
 
 import UIKit
 
-protocol INodeDetailVC: UIViewController {
+protocol ICreateNodeVC: UIViewController {
     func shouldShowError(message: String)
     func shouldClose()
 }
 
-final class NodeDetailVC: UIViewController, INodeDetailVC {
-    private let interactor: INodeDetailInteractor
-    private let router: INodeDetailRouter
+final class CreateNodeVC: UIViewController, ICreateNodeVC {
+    private let interactor: ICreateNodeInteractor
+    private let router: ICreateNodeRouter
 
-    lazy var nodeDetailView: NodeDetailView = {
-        let view = NodeDetailView()
+    lazy var createNodeView: CreateNodeView = {
+        let view = CreateNodeView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
-    init(interactor: INodeDetailInteractor, router: INodeDetailRouter) {
+    init(interactor: ICreateNodeInteractor, router: ICreateNodeRouter) {
         self.interactor = interactor
         self.router = router
         super.init(nibName: nil, bundle: nil)
@@ -34,7 +34,7 @@ final class NodeDetailVC: UIViewController, INodeDetailVC {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        nodeDetailView.setScrollViewContentSize()
+        createNodeView.setScrollViewContentSize()
     }
 
     override func viewDidLoad() {
@@ -44,21 +44,21 @@ final class NodeDetailVC: UIViewController, INodeDetailVC {
 
     private func setup() {
         view.backgroundColor = #colorLiteral(red: 1, green: 0.8220604658, blue: 0.8168862462, alpha: 1)
-        view.addSubview(nodeDetailView)
+        view.addSubview(createNodeView)
         NSLayoutConstraint.activate([
-            nodeDetailView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            nodeDetailView.topAnchor.constraint(equalTo: view.topAnchor),
-            nodeDetailView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            nodeDetailView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            createNodeView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            createNodeView.topAnchor.constraint(equalTo: view.topAnchor),
+            createNodeView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            createNodeView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
-        nodeDetailView.saveButton.addTarget(self, action: #selector(didTapAddButton), for: .touchUpInside)
-        nodeDetailView.titleTextView.delegate = self
-        nodeDetailView.descriptionTextView.delegate = self
+        createNodeView.saveButton.addTarget(self, action: #selector(didTapAddButton), for: .touchUpInside)
+        createNodeView.titleTextView.delegate = self
+        createNodeView.descriptionTextView.delegate = self
     }
 
     @objc
     func didTapAddButton() {
-        interactor.saveNode(title: nodeDetailView.titleTextView.text, description: nodeDetailView.descriptionTextView.text, importance: Int32(nodeDetailView.segmentedControl.selectedSegmentIndex))
+        interactor.saveNode(title: createNodeView.titleTextView.text, description: createNodeView.descriptionTextView.text, importance: Int32(createNodeView.segmentedControl.selectedSegmentIndex))
     }
 
     func shouldShowError(message: String) {
@@ -70,8 +70,8 @@ final class NodeDetailVC: UIViewController, INodeDetailVC {
     }
 }
 
-extension NodeDetailVC: UITextViewDelegate {
+extension CreateNodeVC: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
-        nodeDetailView.saveButton.isEnabled = !nodeDetailView.titleTextView.text.isEmpty && !nodeDetailView.descriptionTextView.text.isEmpty
+        createNodeView.saveButton.isEnabled = !createNodeView.titleTextView.text.isEmpty && !createNodeView.descriptionTextView.text.isEmpty
     }
 }

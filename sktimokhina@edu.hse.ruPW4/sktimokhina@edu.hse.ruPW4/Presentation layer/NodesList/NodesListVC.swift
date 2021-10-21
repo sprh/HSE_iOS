@@ -142,7 +142,7 @@ extension NodesListVC: UICollectionViewDelegate, UICollectionViewDataSource {
     }
 }
 
-extension NodesListVC: INodeDetailViewObserver {
+extension NodesListVC: ICreateNodeViewObserver {
     func didAddItem() {
         interactor.load()
     }
