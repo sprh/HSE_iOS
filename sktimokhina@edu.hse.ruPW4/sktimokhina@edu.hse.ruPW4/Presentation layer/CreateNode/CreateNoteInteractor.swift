@@ -1,5 +1,5 @@
 //
-//  CreateNodeInteractor.swift
+//  CreateNoteInteractor.swift
 //  sktimokhina@edu.hse.ruPW4
 //
 //  Created by Софья Тимохина on 19.10.2021.
@@ -9,26 +9,26 @@ import Foundation
 
 import Foundation
 
-protocol ICreateNodeViewObserver: AnyObject {
+protocol ICreateNoteViewObserver: AnyObject {
     func didAddItem()
 }
 
-protocol ICreateNodeInteractor {
-    func saveNode(title: String, description: String, importance: Int32)
+protocol ICreateNoteInteractor {
+    func saveNote(title: String, description: String, importance: Int32)
 }
 
-final class CreateNodeInteractor: ICreateNodeInteractor {
-    let presenter: ICreateNodePresenter
+final class CreateNoteInteractor: ICreateNoteInteractor {
+    let presenter: ICreateNotePresenter
     let worker: ICoreDataWorker
-    weak var observer: ICreateNodeViewObserver?
+    weak var observer: ICreateNoteViewObserver?
 
-    init(presenter: ICreateNodePresenter, worker: ICoreDataWorker, observer: ICreateNodeViewObserver?) {
+    init(presenter: ICreateNotePresenter, worker: ICoreDataWorker, observer: ICreateNoteViewObserver?) {
         self.presenter = presenter
         self.observer = observer
         self.worker = worker
     }
 
-    func saveNode(title: String, description: String, importance: Int32) {
+    func saveNote(title: String, description: String, importance: Int32) {
         do {
             try worker.save(title: title, description: description, importance: importance)
             observer?.didAddItem()

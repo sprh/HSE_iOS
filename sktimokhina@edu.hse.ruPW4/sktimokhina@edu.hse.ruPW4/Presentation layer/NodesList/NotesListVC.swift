@@ -1,5 +1,5 @@
 //
-//  NodesListVC.swift
+//  NotesListVC.swift
 //  sktimokhina@edu.hse.ruPW4
 //
 //  Created by Софья Тимохина on 19.10.2021.
@@ -7,24 +7,24 @@
 
 import UIKit
 
-protocol INodesListVC: UIViewController {
+protocol INotesListVC: UIViewController {
     func shouldReloadItems()
     func shouldShowError(text: String)
 }
 
-final class NodesListVC: UIViewController, INodesListVC {
-    private let interactor: INodesListInteractor
-    private let router: INodesListRouter
+final class NotesListVC: UIViewController, INotesListVC {
+    private let interactor: INotesListInteractor
+    private let router: INotesListRouter
 
     lazy var collectionViewListConfiguration: UICollectionLayoutListConfiguration = {
         var listConfig = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
         listConfig.trailingSwipeActionsConfigurationProvider = { [weak self] indexPath in
             guard let self = self else { return nil }
             let actionHandler: UIContextualAction.Handler = { action, view, completion in
-                guard let cell = self.collectionView.cellForItem(at: indexPath) as? NodeCell else {
+                guard let cell = self.collectionView.cellForItem(at: indexPath) as? NoteCell else {
                     return
                 }
-                self.interactor.deleteNode(id: cell.id)
+                self.interactor.deleteNote(id: cell.id)
             }
             let action = UIContextualAction(style: .normal, title: "Delete", handler: actionHandler)
             action.image = UIImage(systemName: "trash")
@@ -43,7 +43,7 @@ final class NodesListVC: UIViewController, INodesListVC {
         collectionView.backgroundColor = view.backgroundColor
         collectionView.alwaysBounceVertical = true
         collectionView.contentInsetAdjustmentBehavior = .always
-        collectionView.register(NodeCell.self, forCellWithReuseIdentifier: "\(NodeCell.self)")
+        collectionView.register(NoteCell.self, forCellWithReuseIdentifier: "\(NoteCell.self)")
         return collectionView
     }()
 
@@ -59,12 +59,12 @@ final class NodesListVC: UIViewController, INodesListVC {
     lazy var emptyLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Ops, I can't find any nodes"
+        label.text = "Ops, I can't find any notes"
         label.font = UIFont.preferredFont(forTextStyle: .title1)
         return label
     }()
 
-    init(interactor: INodesListInteractor, router: INodesListRouter) {
+    init(interactor: INotesListInteractor, router: INotesListRouter) {
         self.interactor = interactor
         self.router = router
         super.init(nibName: nil, bundle: nil)
@@ -79,7 +79,7 @@ final class NodesListVC: UIViewController, INodesListVC {
         interactor.load()
         view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.title = "Nodes"
+        navigationItem.title = "Notes"
         navigationItem.rightBarButtonItem = addButton
         setup()
     }
@@ -108,29 +108,29 @@ final class NodesListVC: UIViewController, INodesListVC {
 }
 
 
-extension NodesListVC: UICollectionViewDelegate, UICollectionViewDataSource {
+extension NotesListVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        emptyLabel.isHidden = interactor.nodesCount != 0
-        return interactor.nodesCount
+        emptyLabel.isHidden = interactor.notesCount != 0
+        return interactor.notesCount
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(NodeCell.self)", for: indexPath) as? NodeCell,
-              let node = interactor.getNodeAt(index: indexPath.row) else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(NoteCell.self)", for: indexPath) as? NoteCell,
+              let note = interactor.getNoteAt(index: indexPath.row) else {
                   return UICollectionViewCell()
               }
-        cell.setup(with: node)
+        cell.setup(with: note)
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? NodeCell else {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? NoteCell else {
             return nil
         }
         let context = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { (action) -> UIMenu? in
 
             let delete = UIAction(title: "Delete", image: UIImage(systemName: "trash"), identifier: nil, discoverabilityTitle: nil,attributes: .destructive, state: .off) { [weak self] _ in
-                self?.interactor.deleteNode(id: cell.id)
+                self?.interactor.deleteNote(id: cell.id)
             }
 
             return UIMenu(title: "Options", image: nil, identifier: nil, options: UIMenu.Options.displayInline, children: [delete])
@@ -144,7 +144,7 @@ extension NodesListVC: UICollectionViewDelegate, UICollectionViewDataSource {
     }
 }
 
-extension NodesListVC: ICreateNodeViewObserver {
+extension NotesListVC: ICreateNoteViewObserver {
     func didAddItem() {
         interactor.load()
     }

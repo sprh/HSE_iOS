@@ -1,5 +1,5 @@
 //
-//  NodesListRouter.swift
+//  NotesListRouter.swift
 //  sktimokhina@edu.hse.ruPW4
 //
 //  Created by Софья Тимохина on 19.10.2021.
@@ -7,18 +7,18 @@
 
 import UIKit
 
-protocol INodesListRouter {
-    var viewController: INodesListVC? { get set }
+protocol INotesListRouter {
+    var viewController: INotesListVC? { get set }
 
-    func shouldShowDetailScreen(worker: ICoreDataWorker, observer: ICreateNodeViewObserver?)
+    func shouldShowDetailScreen(worker: ICoreDataWorker, observer: ICreateNoteViewObserver?)
     func showError(text: String)
 }
 
-final class NodesListViewRouter: INodesListRouter {
-    weak var viewController: INodesListVC?
+final class NotesListViewRouter: INotesListRouter {
+    weak var viewController: INotesListVC?
 
-    func shouldShowDetailScreen(worker: ICoreDataWorker, observer: ICreateNodeViewObserver?) {
-        let viewController = CreateNodeGraph(worker: worker, observer: observer).viewController
+    func shouldShowDetailScreen(worker: ICoreDataWorker, observer: ICreateNoteViewObserver?) {
+        let viewController = CreateNoteGraph(worker: worker, observer: observer).viewController
         self.viewController?.navigationController?.pushViewController(viewController, animated: true)
     }
 

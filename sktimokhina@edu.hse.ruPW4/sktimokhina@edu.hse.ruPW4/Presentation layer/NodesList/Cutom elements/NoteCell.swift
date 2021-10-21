@@ -1,5 +1,5 @@
 //
-//  NodeCell.swift
+//  NoteCell.swift
 //  sktimokhina@edu.hse.ruPW4
 //
 //  Created by Софья Тимохина on 19.10.2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class NodeCell: UICollectionViewCell {
+final class NoteCell: UICollectionViewCell {
     var id: ObjectIdentifier!
 
     lazy var titleLabel: UILabel = {
@@ -36,13 +36,13 @@ final class NodeCell: UICollectionViewCell {
         return image
     }()
 
-    func setup(with node: Node) {
-        self.id = node.id
-        titleLabel.text = node.title
-        descriptionLabel.text = node.descriptionText
-        if node.status == 1 {
+    func setup(with note: Note) {
+        self.id = note.id
+        titleLabel.text = note.title
+        descriptionLabel.text = note.descriptionText
+        if note.status == 1 {
             importanceImage.image = .lowImportance
-        } else if node.status == 2 {
+        } else if note.status == 2 {
             importanceImage.image = .highImportance
         }
         backgroundColor = #colorLiteral(red: 1, green: 0.8220604658, blue: 0.8168862462, alpha: 1)

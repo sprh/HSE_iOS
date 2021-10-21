@@ -8,9 +8,9 @@
 import CoreData
 
 protocol ICoreDataWorker {
-    func loadAll() throws -> [Node]
+    func loadAll() throws -> [Note]
     func save(title: String, description: String, importance: Int32) throws
-    func delete(node: Node) throws
+    func delete(note: Note) throws
 }
 
 final class CoreDataWorker: ICoreDataWorker {
@@ -20,25 +20,25 @@ final class CoreDataWorker: ICoreDataWorker {
         self.context = context
     }
 
-    func loadAll() throws -> [Node] {
+    func loadAll() throws -> [Note] {
         var request = NSFetchRequest<NSFetchRequestResult>()
-        request = Node.fetchRequest()
+        request = Note.fetchRequest()
         request.returnsObjectsAsFaults = false
-        let nodes = try context.fetch(request) as! [Node]
-        return nodes
+        let notes = try context.fetch(request) as! [Note]
+        return notes
     }
 
     func save(title: String, description: String, importance: Int32) throws {
-        let node = Node(context: context)
-        node.title = title
-        node.descriptionText = description
-        node.status = importance
-        context.insert(node)
+        let note = Note(context: context)
+        note.title = title
+        note.descriptionText = description
+        note.status = importance
+        context.insert(note)
         try context.save()
     }
 
-    func delete(node: Node) throws {
-        context.delete(node)
+    func delete(note: Note) throws {
+        context.delete(note)
         try context.save()
     }
 }

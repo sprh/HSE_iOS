@@ -1,5 +1,5 @@
 //
-//  CreateNodeVC.swift
+//  CreateNoteVC.swift
 //  sktimokhina@edu.hse.ruPW4
 //
 //  Created by Софья Тимохина on 19.10.2021.
@@ -7,14 +7,14 @@
 
 import UIKit
 
-protocol ICreateNodeVC: UIViewController {
+protocol ICreateNoteVC: UIViewController {
     func shouldShowError(message: String)
     func shouldClose()
 }
 
-final class CreateNodeVC: UIViewController, ICreateNodeVC {
-    private let interactor: ICreateNodeInteractor
-    private let router: ICreateNodeRouter
+final class CreateNoteVC: UIViewController, ICreateNoteVC {
+    private let interactor: ICreateNoteInteractor
+    private let router: ICreateNoteRouter
 
     private let doneButtonEnabledColor = #colorLiteral(red: 0.7895931005, green: 0.3977047205, blue: 0.5209977627, alpha: 1)
     private let doneButtonDisabledColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
@@ -27,13 +27,13 @@ final class CreateNodeVC: UIViewController, ICreateNodeVC {
         button.setTitleColor(doneButtonDisabledColor, for: .normal)
         return button
     }()
-    lazy var createNodeView: CreateNodeView = {
-        let view = CreateNodeView()
+    lazy var createNoteView: CreateNoteView = {
+        let view = CreateNoteView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
-    init(interactor: ICreateNodeInteractor, router: ICreateNodeRouter) {
+    init(interactor: ICreateNoteInteractor, router: ICreateNoteRouter) {
         self.interactor = interactor
         self.router = router
         super.init(nibName: nil, bundle: nil)
@@ -45,7 +45,7 @@ final class CreateNodeVC: UIViewController, ICreateNodeVC {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        createNodeView.setScrollViewContentSize()
+        createNoteView.setScrollViewContentSize()
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: doneButton)
     }
 
@@ -56,20 +56,20 @@ final class CreateNodeVC: UIViewController, ICreateNodeVC {
 
     private func setup() {
         view.backgroundColor = #colorLiteral(red: 1, green: 0.8220604658, blue: 0.8168862462, alpha: 1)
-        view.addSubview(createNodeView)
+        view.addSubview(createNoteView)
         NSLayoutConstraint.activate([
-            createNodeView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            createNodeView.topAnchor.constraint(equalTo: view.topAnchor),
-            createNodeView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            createNodeView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            createNoteView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            createNoteView.topAnchor.constraint(equalTo: view.topAnchor),
+            createNoteView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            createNoteView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
-        createNodeView.titleTextView.delegate = self
-        createNodeView.descriptionTextView.delegate = self
+        createNoteView.titleTextView.delegate = self
+        createNoteView.descriptionTextView.delegate = self
     }
 
     @objc
     func didTapAddButton() {
-        interactor.saveNode(title: createNodeView.titleTextView.text, description: createNodeView.descriptionTextView.text, importance: Int32(createNodeView.segmentedControl.selectedSegmentIndex))
+        interactor.saveNote(title: createNoteView.titleTextView.text, description: createNoteView.descriptionTextView.text, importance: Int32(createNoteView.segmentedControl.selectedSegmentIndex))
     }
 
     func shouldShowError(message: String) {
@@ -81,9 +81,9 @@ final class CreateNodeVC: UIViewController, ICreateNodeVC {
     }
 }
 
-extension CreateNodeVC: UITextViewDelegate {
+extension CreateNoteVC: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
-        doneButton.isEnabled = !createNodeView.titleTextView.text.isEmpty && !createNodeView.descriptionTextView.text.isEmpty
+        doneButton.isEnabled = !createNoteView.titleTextView.text.isEmpty && !createNoteView.descriptionTextView.text.isEmpty
         doneButton.setTitleColor(doneButton.isEnabled ? doneButtonEnabledColor : doneButtonDisabledColor, for: .normal)
     }
 }

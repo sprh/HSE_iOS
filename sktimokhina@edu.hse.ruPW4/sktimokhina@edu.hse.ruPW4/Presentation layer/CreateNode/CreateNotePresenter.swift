@@ -1,5 +1,5 @@
 //
-//  CreateNodePresenter.swift
+//  CreateNotePresenter.swift
 //  sktimokhina@edu.hse.ruPW4
 //
 //  Created by Софья Тимохина on 19.10.2021.
@@ -7,15 +7,15 @@
 
 import Foundation
 
-protocol ICreateNodePresenter {
-    var viewController: ICreateNodeVC? { get set }
+protocol ICreateNotePresenter {
+    var viewController: ICreateNoteVC? { get set }
 
     func shouldShowError(message: String)
     func shouldClose()
 }
 
-final class CreateNodePresenter: ICreateNodePresenter {
-    weak var viewController: ICreateNodeVC?
+final class CreateNotePresenter: ICreateNotePresenter {
+    weak var viewController: ICreateNoteVC?
 
     func shouldClose() {
         viewController?.shouldClose()

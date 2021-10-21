@@ -7,53 +7,53 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E3A95E12271F46FE0053AA76 /* CreateNodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A95E11271F46FE0053AA76 /* CreateNodeView.swift */; };
+		E3A95E12271F46FE0053AA76 /* CreateNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A95E11271F46FE0053AA76 /* CreateNoteView.swift */; };
 		E3A95E15271F504D0053AA76 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A95E14271F504D0053AA76 /* UIView+Utils.swift */; };
 		E3A95E17271F517E0053AA76 /* UIImage+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A95E16271F517E0053AA76 /* UIImage+Utils.swift */; };
 		E3A95E2C271F541B0053AA76 /* CoreDataWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A95E2B271F541B0053AA76 /* CoreDataWorker.swift */; };
-		E3D655F4271F5C2A00B2112D /* Node+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D655F2271F5C2A00B2112D /* Node+CoreDataProperties.swift */; };
-		E3D655F5271F5C2A00B2112D /* Node+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D655F3271F5C2A00B2112D /* Node+CoreDataClass.swift */; };
 		E3E64EA4271EEDBC00B81118 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E64EA3271EEDBC00B81118 /* AppDelegate.swift */; };
 		E3E64EAE271EEDBC00B81118 /* sktimokhina_edu_hse_ruPW4.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E3E64EAC271EEDBC00B81118 /* sktimokhina_edu_hse_ruPW4.xcdatamodeld */; };
 		E3E64EB0271EEDC200B81118 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3E64EAF271EEDC200B81118 /* Assets.xcassets */; };
 		E3E64EB3271EEDC200B81118 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3E64EB1271EEDC200B81118 /* LaunchScreen.storyboard */; };
-		E3E64EC8271EF19100B81118 /* NodesListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E64EC7271EF19100B81118 /* NodesListRouter.swift */; };
-		E3E64ECA271EF1B500B81118 /* NodesListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E64EC9271EF1B500B81118 /* NodesListInteractor.swift */; };
-		E3E64ECC271EF1EB00B81118 /* NodesListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E64ECB271EF1EB00B81118 /* NodesListPresenter.swift */; };
-		E3E64ECE271EF20800B81118 /* NodesListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E64ECD271EF20800B81118 /* NodesListVC.swift */; };
-		E3E64ED0271EF23F00B81118 /* NodesListGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E64ECF271EF23F00B81118 /* NodesListGraph.swift */; };
-		E3E64ED3271EF3CD00B81118 /* NodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E64ED2271EF3CD00B81118 /* NodeCell.swift */; };
-		E3E64EDA271EFE1E00B81118 /* CreateNodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E64ED5271EFE1E00B81118 /* CreateNodeVC.swift */; };
-		E3E64EDB271EFE1E00B81118 /* CreateNodePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E64ED6271EFE1E00B81118 /* CreateNodePresenter.swift */; };
-		E3E64EDC271EFE1E00B81118 /* CreateNodeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E64ED7271EFE1E00B81118 /* CreateNodeRouter.swift */; };
-		E3E64EDD271EFE1E00B81118 /* CreateNodeGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E64ED8271EFE1E00B81118 /* CreateNodeGraph.swift */; };
-		E3E64EDE271EFE1E00B81118 /* CreateNodeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E64ED9271EFE1E00B81118 /* CreateNodeInteractor.swift */; };
+		E3E64EC8271EF19100B81118 /* NotesListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E64EC7271EF19100B81118 /* NotesListRouter.swift */; };
+		E3E64ECA271EF1B500B81118 /* NotesListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E64EC9271EF1B500B81118 /* NotesListInteractor.swift */; };
+		E3E64ECC271EF1EB00B81118 /* NotesListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E64ECB271EF1EB00B81118 /* NotesListPresenter.swift */; };
+		E3E64ECE271EF20800B81118 /* NotesListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E64ECD271EF20800B81118 /* NotesListVC.swift */; };
+		E3E64ED0271EF23F00B81118 /* NotesListGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E64ECF271EF23F00B81118 /* NotesListGraph.swift */; };
+		E3E64ED3271EF3CD00B81118 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E64ED2271EF3CD00B81118 /* NoteCell.swift */; };
+		E3E64EDA271EFE1E00B81118 /* CreateNoteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E64ED5271EFE1E00B81118 /* CreateNoteVC.swift */; };
+		E3E64EDB271EFE1E00B81118 /* CreateNotePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E64ED6271EFE1E00B81118 /* CreateNotePresenter.swift */; };
+		E3E64EDC271EFE1E00B81118 /* CreateNoteRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E64ED7271EFE1E00B81118 /* CreateNoteRouter.swift */; };
+		E3E64EDD271EFE1E00B81118 /* CreateNoteGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E64ED8271EFE1E00B81118 /* CreateNoteGraph.swift */; };
+		E3E64EDE271EFE1E00B81118 /* CreateNoteInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E64ED9271EFE1E00B81118 /* CreateNoteInteractor.swift */; };
+		E3FD2A782721F419000D6ABB /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FD2A762721F419000D6ABB /* Note+CoreDataProperties.swift */; };
+		E3FD2A792721F419000D6ABB /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FD2A772721F419000D6ABB /* Note+CoreDataClass.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E3A95E11271F46FE0053AA76 /* CreateNodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNodeView.swift; sourceTree = "<group>"; };
+		E3A95E11271F46FE0053AA76 /* CreateNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNoteView.swift; sourceTree = "<group>"; };
 		E3A95E14271F504D0053AA76 /* UIView+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
 		E3A95E16271F517E0053AA76 /* UIImage+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Utils.swift"; sourceTree = "<group>"; };
 		E3A95E2B271F541B0053AA76 /* CoreDataWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataWorker.swift; sourceTree = "<group>"; };
-		E3D655F2271F5C2A00B2112D /* Node+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Node+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		E3D655F3271F5C2A00B2112D /* Node+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Node+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E3E64EA0271EEDBC00B81118 /* sktimokhina@edu.hse.ruPW4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "sktimokhina@edu.hse.ruPW4.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3E64EA3271EEDBC00B81118 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3E64EAD271EEDBC00B81118 /* sktimokhina_edu_hse_ruPW4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = sktimokhina_edu_hse_ruPW4.xcdatamodel; sourceTree = "<group>"; };
 		E3E64EAF271EEDC200B81118 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E3E64EB2271EEDC200B81118 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E3E64EB4271EEDC200B81118 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E3E64EC7271EF19100B81118 /* NodesListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodesListRouter.swift; sourceTree = "<group>"; };
-		E3E64EC9271EF1B500B81118 /* NodesListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodesListInteractor.swift; sourceTree = "<group>"; };
-		E3E64ECB271EF1EB00B81118 /* NodesListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodesListPresenter.swift; sourceTree = "<group>"; };
-		E3E64ECD271EF20800B81118 /* NodesListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodesListVC.swift; sourceTree = "<group>"; };
-		E3E64ECF271EF23F00B81118 /* NodesListGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodesListGraph.swift; sourceTree = "<group>"; };
-		E3E64ED2271EF3CD00B81118 /* NodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeCell.swift; sourceTree = "<group>"; };
-		E3E64ED5271EFE1E00B81118 /* CreateNodeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNodeVC.swift; sourceTree = "<group>"; };
-		E3E64ED6271EFE1E00B81118 /* CreateNodePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNodePresenter.swift; sourceTree = "<group>"; };
-		E3E64ED7271EFE1E00B81118 /* CreateNodeRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNodeRouter.swift; sourceTree = "<group>"; };
-		E3E64ED8271EFE1E00B81118 /* CreateNodeGraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNodeGraph.swift; sourceTree = "<group>"; };
-		E3E64ED9271EFE1E00B81118 /* CreateNodeInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNodeInteractor.swift; sourceTree = "<group>"; };
+		E3E64EC7271EF19100B81118 /* NotesListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListRouter.swift; sourceTree = "<group>"; };
+		E3E64EC9271EF1B500B81118 /* NotesListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListInteractor.swift; sourceTree = "<group>"; };
+		E3E64ECB271EF1EB00B81118 /* NotesListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListPresenter.swift; sourceTree = "<group>"; };
+		E3E64ECD271EF20800B81118 /* NotesListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListVC.swift; sourceTree = "<group>"; };
+		E3E64ECF271EF23F00B81118 /* NotesListGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListGraph.swift; sourceTree = "<group>"; };
+		E3E64ED2271EF3CD00B81118 /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
+		E3E64ED5271EFE1E00B81118 /* CreateNoteVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNoteVC.swift; sourceTree = "<group>"; };
+		E3E64ED6271EFE1E00B81118 /* CreateNotePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNotePresenter.swift; sourceTree = "<group>"; };
+		E3E64ED7271EFE1E00B81118 /* CreateNoteRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNoteRouter.swift; sourceTree = "<group>"; };
+		E3E64ED8271EFE1E00B81118 /* CreateNoteGraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNoteGraph.swift; sourceTree = "<group>"; };
+		E3E64ED9271EFE1E00B81118 /* CreateNoteInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNoteInteractor.swift; sourceTree = "<group>"; };
+		E3FD2A762721F419000D6ABB /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E3FD2A772721F419000D6ABB /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataClass.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,8 +87,8 @@
 		E3A95E3A271F5AAD0053AA76 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				E3D655F2271F5C2A00B2112D /* Node+CoreDataProperties.swift */,
-				E3D655F3271F5C2A00B2112D /* Node+CoreDataClass.swift */,
+				E3FD2A762721F419000D6ABB /* Note+CoreDataProperties.swift */,
+				E3FD2A772721F419000D6ABB /* Note+CoreDataClass.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -138,11 +138,11 @@
 			isa = PBXGroup;
 			children = (
 				E3E64ED1271EF3C200B81118 /* Cutom elements */,
-				E3E64EC7271EF19100B81118 /* NodesListRouter.swift */,
-				E3E64EC9271EF1B500B81118 /* NodesListInteractor.swift */,
-				E3E64ECB271EF1EB00B81118 /* NodesListPresenter.swift */,
-				E3E64ECD271EF20800B81118 /* NodesListVC.swift */,
-				E3E64ECF271EF23F00B81118 /* NodesListGraph.swift */,
+				E3E64EC7271EF19100B81118 /* NotesListRouter.swift */,
+				E3E64EC9271EF1B500B81118 /* NotesListInteractor.swift */,
+				E3E64ECB271EF1EB00B81118 /* NotesListPresenter.swift */,
+				E3E64ECD271EF20800B81118 /* NotesListVC.swift */,
+				E3E64ECF271EF23F00B81118 /* NotesListGraph.swift */,
 			);
 			path = NodesList;
 			sourceTree = "<group>";
@@ -150,7 +150,7 @@
 		E3E64ED1271EF3C200B81118 /* Cutom elements */ = {
 			isa = PBXGroup;
 			children = (
-				E3E64ED2271EF3CD00B81118 /* NodeCell.swift */,
+				E3E64ED2271EF3CD00B81118 /* NoteCell.swift */,
 			);
 			path = "Cutom elements";
 			sourceTree = "<group>";
@@ -158,12 +158,12 @@
 		E3E64ED4271EFDE700B81118 /* CreateNode */ = {
 			isa = PBXGroup;
 			children = (
-				E3E64ED8271EFE1E00B81118 /* CreateNodeGraph.swift */,
-				E3E64ED9271EFE1E00B81118 /* CreateNodeInteractor.swift */,
-				E3E64ED6271EFE1E00B81118 /* CreateNodePresenter.swift */,
-				E3E64ED7271EFE1E00B81118 /* CreateNodeRouter.swift */,
-				E3E64ED5271EFE1E00B81118 /* CreateNodeVC.swift */,
-				E3A95E11271F46FE0053AA76 /* CreateNodeView.swift */,
+				E3E64ED8271EFE1E00B81118 /* CreateNoteGraph.swift */,
+				E3E64ED9271EFE1E00B81118 /* CreateNoteInteractor.swift */,
+				E3E64ED6271EFE1E00B81118 /* CreateNotePresenter.swift */,
+				E3E64ED7271EFE1E00B81118 /* CreateNoteRouter.swift */,
+				E3E64ED5271EFE1E00B81118 /* CreateNoteVC.swift */,
+				E3A95E11271F46FE0053AA76 /* CreateNoteView.swift */,
 			);
 			path = CreateNode;
 			sourceTree = "<group>";
@@ -237,24 +237,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E3E64EDB271EFE1E00B81118 /* CreateNodePresenter.swift in Sources */,
-				E3E64ECE271EF20800B81118 /* NodesListVC.swift in Sources */,
+				E3E64EDB271EFE1E00B81118 /* CreateNotePresenter.swift in Sources */,
+				E3E64ECE271EF20800B81118 /* NotesListVC.swift in Sources */,
 				E3A95E2C271F541B0053AA76 /* CoreDataWorker.swift in Sources */,
-				E3D655F5271F5C2A00B2112D /* Node+CoreDataClass.swift in Sources */,
-				E3E64ECC271EF1EB00B81118 /* NodesListPresenter.swift in Sources */,
-				E3A95E12271F46FE0053AA76 /* CreateNodeView.swift in Sources */,
+				E3E64ECC271EF1EB00B81118 /* NotesListPresenter.swift in Sources */,
+				E3A95E12271F46FE0053AA76 /* CreateNoteView.swift in Sources */,
 				E3E64EAE271EEDBC00B81118 /* sktimokhina_edu_hse_ruPW4.xcdatamodeld in Sources */,
-				E3E64EDC271EFE1E00B81118 /* CreateNodeRouter.swift in Sources */,
-				E3E64EDE271EFE1E00B81118 /* CreateNodeInteractor.swift in Sources */,
-				E3E64EDA271EFE1E00B81118 /* CreateNodeVC.swift in Sources */,
+				E3E64EDC271EFE1E00B81118 /* CreateNoteRouter.swift in Sources */,
+				E3E64EDE271EFE1E00B81118 /* CreateNoteInteractor.swift in Sources */,
+				E3E64EDA271EFE1E00B81118 /* CreateNoteVC.swift in Sources */,
+				E3FD2A782721F419000D6ABB /* Note+CoreDataProperties.swift in Sources */,
 				E3E64EA4271EEDBC00B81118 /* AppDelegate.swift in Sources */,
-				E3E64EC8271EF19100B81118 /* NodesListRouter.swift in Sources */,
-				E3D655F4271F5C2A00B2112D /* Node+CoreDataProperties.swift in Sources */,
-				E3E64ECA271EF1B500B81118 /* NodesListInteractor.swift in Sources */,
+				E3E64EC8271EF19100B81118 /* NotesListRouter.swift in Sources */,
+				E3E64ECA271EF1B500B81118 /* NotesListInteractor.swift in Sources */,
 				E3A95E17271F517E0053AA76 /* UIImage+Utils.swift in Sources */,
-				E3E64ED0271EF23F00B81118 /* NodesListGraph.swift in Sources */,
-				E3E64EDD271EFE1E00B81118 /* CreateNodeGraph.swift in Sources */,
-				E3E64ED3271EF3CD00B81118 /* NodeCell.swift in Sources */,
+				E3FD2A792721F419000D6ABB /* Note+CoreDataClass.swift in Sources */,
+				E3E64ED0271EF23F00B81118 /* NotesListGraph.swift in Sources */,
+				E3E64EDD271EFE1E00B81118 /* CreateNoteGraph.swift in Sources */,
+				E3E64ED3271EF3CD00B81118 /* NoteCell.swift in Sources */,
 				E3A95E15271F504D0053AA76 /* UIView+Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
