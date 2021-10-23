@@ -2,7 +2,7 @@
 //  Note+CoreDataProperties.swift
 //  sktimokhina@edu.hse.ruPW4
 //
-//  Created by Софья Тимохина on 21.10.2021.
+//  Created by Софья Тимохина on 22.10.2021.
 //
 //
 
@@ -17,9 +17,9 @@ extension Note {
     }
 
     @NSManaged public var descriptionText: String
-    @NSManaged public var status: Int32
     @NSManaged public var title: String
     @NSManaged public var parentNote: Note?
+    @NSManaged public var status: Status
 
 }
 

@@ -57,6 +57,6 @@ final class CreateNoteInteractor: ICreateNoteInteractor {
         guard let noteToEdit = noteToEdit else {
             return
         }
-        presenter.update(description: noteToEdit.descriptionText, title: noteToEdit.title, status: Int(noteToEdit.status))
+        presenter.update(description: noteToEdit.descriptionText, title: noteToEdit.title, status: Int(noteToEdit.status.status))
     }
 }

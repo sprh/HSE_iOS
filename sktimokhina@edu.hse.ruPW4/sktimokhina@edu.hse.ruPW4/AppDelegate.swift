@@ -23,10 +23,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "Notes_first_version")
+        let container = NSPersistentContainer(name: "Notes")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
+            } else {
+                let destination = NSPersistentStoreDescription()
+                destination.shouldMigrateStoreAutomatically = false
+                destination.shouldInferMappingModelAutomatically = true
+                container.persistentStoreDescriptions = [destination]
             }
         })
         return container

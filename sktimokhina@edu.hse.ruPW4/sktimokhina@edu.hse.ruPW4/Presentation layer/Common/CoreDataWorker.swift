@@ -41,10 +41,12 @@ final class CoreDataWorker: ICoreDataWorker {
 
     func save(title: String, description: String, status: Int32, parentNote: Note?) throws {
         let note = Note(context: context)
+        let noteStatus = Status(context: context)
+        noteStatus.status = status
         note.parentNote = parentNote
         note.title = title
         note.descriptionText = description
-        note.status = status
+        note.status = noteStatus
         context.insert(note)
         try context.save()
     }
@@ -58,9 +60,11 @@ final class CoreDataWorker: ICoreDataWorker {
                 title: String,
                 description: String,
                 status: Int32) throws {
+        let noteStatus = Status(context: context)
+        noteStatus.status = status
         note.title = title
         note.descriptionText = description
-        note.status = status
+        note.status = noteStatus
         try context.save()
     }
 }
