@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E3A50794272DB1F900AE8DD2 /* NotesMappingModel.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = E3A50793272DB1F900AE8DD2 /* NotesMappingModel.xcmappingmodel */; };
 		E3A95E12271F46FE0053AA76 /* CreateNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A95E11271F46FE0053AA76 /* CreateNoteView.swift */; };
 		E3A95E15271F504D0053AA76 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A95E14271F504D0053AA76 /* UIView+Utils.swift */; };
 		E3A95E2C271F541B0053AA76 /* CoreDataWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A95E2B271F541B0053AA76 /* CoreDataWorker.swift */; };
+		E3C0635E272DA3410008A5BE /* Migration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C0635D272DA3410008A5BE /* Migration.swift */; };
 		E3E64EA4271EEDBC00B81118 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E64EA3271EEDBC00B81118 /* AppDelegate.swift */; };
 		E3E64EAE271EEDBC00B81118 /* Notes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E3E64EAC271EEDBC00B81118 /* Notes.xcdatamodeld */; };
 		E3E64EB0271EEDC200B81118 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3E64EAF271EEDC200B81118 /* Assets.xcassets */; };
@@ -29,14 +31,15 @@
 		E3FD2AAA27221B60000D6ABB /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FD2AA627221B60000D6ABB /* Note+CoreDataProperties.swift */; };
 		E3FD2AAB27221B60000D6ABB /* Status+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FD2AA727221B60000D6ABB /* Status+CoreDataClass.swift */; };
 		E3FD2AAC27221B60000D6ABB /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FD2AA827221B60000D6ABB /* Note+CoreDataClass.swift */; };
-		E3FD2AB027221DAB000D6ABB /* Model.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = E3FD2AAF27221DAB000D6ABB /* Model.xcmappingmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E3A50793272DB1F900AE8DD2 /* NotesMappingModel.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = NotesMappingModel.xcmappingmodel; sourceTree = "<group>"; };
 		E3A95E11271F46FE0053AA76 /* CreateNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNoteView.swift; sourceTree = "<group>"; };
 		E3A95E14271F504D0053AA76 /* UIView+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
 		E3A95E2B271F541B0053AA76 /* CoreDataWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataWorker.swift; sourceTree = "<group>"; };
-		E3E64EA0271EEDBC00B81118 /* sktimokhina@edu.hse.ruPW4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "sktimokhina@edu.hse.ruPW4.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3C0635D272DA3410008A5BE /* Migration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Migration.swift; sourceTree = "<group>"; };
+		E3E64EA0271EEDBC00B81118 /* sktimokhina.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sktimokhina.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3E64EA3271EEDBC00B81118 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3E64EAD271EEDBC00B81118 /* sktimokhina_edu_hse_ruPW4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = sktimokhina_edu_hse_ruPW4.xcdatamodel; sourceTree = "<group>"; };
 		E3E64EAF271EEDC200B81118 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -58,7 +61,6 @@
 		E3FD2AA627221B60000D6ABB /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E3FD2AA727221B60000D6ABB /* Status+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Status+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E3FD2AA827221B60000D6ABB /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataClass.swift"; sourceTree = "<group>"; };
-		E3FD2AAF27221DAB000D6ABB /* Model.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = Model.xcmappingmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,7 +112,7 @@
 		E3E64EA1271EEDBC00B81118 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E3E64EA0271EEDBC00B81118 /* sktimokhina@edu.hse.ruPW4.app */,
+				E3E64EA0271EEDBC00B81118 /* sktimokhina.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -177,8 +179,9 @@
 		E3FD2AB12722B5DC000D6ABB /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				E3C0635D272DA3410008A5BE /* Migration.swift */,
 				E3E64EAC271EEDBC00B81118 /* Notes.xcdatamodeld */,
-				E3FD2AAF27221DAB000D6ABB /* Model.xcmappingmodel */,
+				E3A50793272DB1F900AE8DD2 /* NotesMappingModel.xcmappingmodel */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -186,9 +189,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E3E64E9F271EEDBC00B81118 /* sktimokhina@edu.hse.ruPW4 */ = {
+		E3E64E9F271EEDBC00B81118 /* sktimokhina */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E3E64EB7271EEDC200B81118 /* Build configuration list for PBXNativeTarget "sktimokhina@edu.hse.ruPW4" */;
+			buildConfigurationList = E3E64EB7271EEDC200B81118 /* Build configuration list for PBXNativeTarget "sktimokhina" */;
 			buildPhases = (
 				E3E64E9C271EEDBC00B81118 /* Sources */,
 				E3E64E9D271EEDBC00B81118 /* Frameworks */,
@@ -198,9 +201,9 @@
 			);
 			dependencies = (
 			);
-			name = "sktimokhina@edu.hse.ruPW4";
+			name = sktimokhina;
 			productName = "sktimokhina@edu.hse.ruPW4";
-			productReference = E3E64EA0271EEDBC00B81118 /* sktimokhina@edu.hse.ruPW4.app */;
+			productReference = E3E64EA0271EEDBC00B81118 /* sktimokhina.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -230,7 +233,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E3E64E9F271EEDBC00B81118 /* sktimokhina@edu.hse.ruPW4 */,
+				E3E64E9F271EEDBC00B81118 /* sktimokhina */,
 			);
 		};
 /* End PBXProject section */
@@ -252,6 +255,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3A50794272DB1F900AE8DD2 /* NotesMappingModel.xcmappingmodel in Sources */,
 				E3E64EDB271EFE1E00B81118 /* CreateNotePresenter.swift in Sources */,
 				E3E64ECE271EF20800B81118 /* NotesListVC.swift in Sources */,
 				E3A95E2C271F541B0053AA76 /* CoreDataWorker.swift in Sources */,
@@ -272,7 +276,7 @@
 				E3E64ED3271EF3CD00B81118 /* NoteCell.swift in Sources */,
 				E3FD2AAC27221B60000D6ABB /* Note+CoreDataClass.swift in Sources */,
 				E3A95E15271F504D0053AA76 /* UIView+Utils.swift in Sources */,
-				E3FD2AB027221DAB000D6ABB /* Model.xcmappingmodel in Sources */,
+				E3C0635E272DA3410008A5BE /* Migration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,7 +460,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E3E64EB7271EEDC200B81118 /* Build configuration list for PBXNativeTarget "sktimokhina@edu.hse.ruPW4" */ = {
+		E3E64EB7271EEDC200B81118 /* Build configuration list for PBXNativeTarget "sktimokhina" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E3E64EB8271EEDC200B81118 /* Debug */,
