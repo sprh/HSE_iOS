@@ -5,15 +5,15 @@
 //  Created by Софья Тимохина on 09.11.2021.
 //
 
-import UIKit
-
 struct Article: Codable {
     let title: String
-    let description: String
-    let imageUrl: String?
+    let articleDescription: String
+    let url: String
+    let imageUrl: String
 
-//    enum CodingKeys: String, CodingKey {
-//        case title = "title"
-//        case description: String
-//    }
+    enum CodingKeys: String, CodingKey {
+        case title, url
+        case articleDescription = "description"
+        case imageUrl = "urlToImage"
+    }
 }
