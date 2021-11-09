@@ -5,7 +5,7 @@
 //  Created by Софья Тимохина on 08.11.2021.
 //
 
-import Foundation
+import UIKit
 
 final class ArticlesListGraph {
     private let view: IArticlesListVC
