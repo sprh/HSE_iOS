@@ -22,7 +22,7 @@ enum NetworkError: Error {
 
 final class NetworkService: INetworkService {
     private let queue = DispatchQueue(label: "NetworkQueue", attributes: [.concurrent])
-    private let basePath: String = "https://newsapi.org/v2/top-headlines?language=ru"
+    private let basePath: String = "https://newsapi.org/v2/everything?qInTitle=ios&"
     private let apiKey: String = "74db4d150c784f08a864330c81d209f3"
 
     private var page = 0
@@ -36,6 +36,7 @@ final class NetworkService: INetworkService {
     }()
 
     func createUrlRequest(path: String) -> URLRequest? {
+        print(path)
         guard let url = URL(string: path) else {
             return nil
         }
@@ -43,7 +44,7 @@ final class NetworkService: INetworkService {
     }
 
     func load(completion: @escaping (Result<[Article], Error>) -> Void) {
-        if (loading) {
+        if loading {
             return
         }
 
@@ -68,6 +69,7 @@ final class NetworkService: INetworkService {
                           }
                           return
                       }
+                self?.page += 1
                 DispatchQueue.main.async {
                     completion(.success(articles))
                 }

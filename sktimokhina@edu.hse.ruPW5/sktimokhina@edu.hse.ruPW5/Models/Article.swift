@@ -9,7 +9,7 @@ struct Article: Codable {
     let title: String
     let articleDescription: String
     let url: String
-    let imageUrl: String
+    let imageUrl: String?
 
     enum CodingKeys: String, CodingKey {
         case title, url

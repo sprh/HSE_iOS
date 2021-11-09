@@ -86,7 +86,7 @@ extension ArticlesListVC: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if (indexPath.section == tableView.numberOfSections - 3) {
+        if indexPath.section == tableView.numberOfSections - 3 {
             interactor.load()
         }
     }

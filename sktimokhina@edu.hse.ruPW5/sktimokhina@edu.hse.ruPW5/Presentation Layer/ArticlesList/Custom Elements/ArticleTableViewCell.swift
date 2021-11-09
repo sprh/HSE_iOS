@@ -27,6 +27,13 @@ final class ArticleTableViewCell: UITableViewCell {
         return label
     }()
 
+    lazy var image: UIImageView = {
+        let image = UIImageView()
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.contentMode = .scaleAspectFit
+        return image
+    }()
+
     func setup(article: Article) {
         selectionStyle = .none
         backgroundColor = .subviewBackground
@@ -41,11 +48,23 @@ final class ArticleTableViewCell: UITableViewCell {
             title.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             title.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             title.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
-            
+
             desctiptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             desctiptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            desctiptionLabel.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 16),
-            desctiptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16)
+            desctiptionLabel.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 16)
         ])
+
+        if let imageUrl = article.imageUrl {
+            contentView.addSubview(image)
+            NSLayoutConstraint.activate([
+                image.topAnchor.constraint(equalTo: desctiptionLabel.bottomAnchor, constant: 16),
+                image.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
+                image.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: -16),
+                image.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+                image.heightAnchor.constraint(equalToConstant: 200)
+            ])
+        } else {
+            desctiptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16).isActive = true
+        }
     }
 }

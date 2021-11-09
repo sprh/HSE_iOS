@@ -42,7 +42,7 @@ final class ArticleManager: IArticleManager {
     }
 
     func get(at index: Int) -> Article? {
-        if (articlesCount <= index) {
+        if articlesCount <= index {
             return nil
         }
         return items[index]
