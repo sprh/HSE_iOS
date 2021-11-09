@@ -13,7 +13,7 @@ protocol IArticleManager {
 
     func add(articles: [Article])
     func get(at index: Int) -> Article?
-    func load()
+    func load(completion: @escaping (Result<Void, Error>) -> Void)
 }
 
 final class ArticleManager: IArticleManager {
@@ -48,9 +48,15 @@ final class ArticleManager: IArticleManager {
         return items[index]
     }
 
-    func load() {
+    func load(completion: @escaping (Result<Void, Error>) -> Void) {
         networkService.load { [weak self] result in
-            print(result)
+            switch (result) {
+            case let .success(articles):
+                self?.add(articles: articles)
+                completion(.success(()))
+            case let .failure(error):
+                completion(.failure(error))
+            }
         }
     }
 }

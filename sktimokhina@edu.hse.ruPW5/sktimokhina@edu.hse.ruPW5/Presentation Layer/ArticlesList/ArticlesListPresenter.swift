@@ -10,8 +10,13 @@ import Foundation
 protocol IArticlesListPresenter: AnyObject {
     var viewController: IArticlesListVC? { get set }
 
+    func updateArticlesList()
 }
 
 final class ArticlesListPresenter: IArticlesListPresenter {
     weak var viewController: IArticlesListVC?
+
+    func updateArticlesList() {
+        viewController?.updateArticlesList()
+    }
 }

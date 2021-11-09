@@ -33,6 +33,14 @@ final class ArticlesListInterator: IArticlesListInteractor {
     }
 
     func load() {
-        articlesManager.load()
+        articlesManager.load { [weak self] result in
+            switch result {
+            case .success():
+                self?.presenter.updateArticlesList()
+            case .failure(_):
+                // TODO: show error
+                break
+            }
+        }
     }
 }

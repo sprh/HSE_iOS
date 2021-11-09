@@ -8,7 +8,7 @@
 import UIKit
 
 protocol IArticlesListVC: UIViewController {
-
+    func updateArticlesList()
 }
 
 final class ArticlesListVC: UIViewController, IArticlesListVC {
@@ -52,6 +52,10 @@ final class ArticlesListVC: UIViewController, IArticlesListVC {
     private func setup() {
         view.addSubview(tableView)
     }
+
+    func updateArticlesList() {
+        tableView.reloadData()
+    }
 }
 
 extension ArticlesListVC: UITableViewDelegate, UITableViewDataSource {
@@ -78,5 +82,11 @@ extension ArticlesListVC: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return UIView()
+    }
+
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if (indexPath.section == tableView.numberOfSections - 3) {
+            interactor.load()
+        }
     }
 }

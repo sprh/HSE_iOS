@@ -55,18 +55,26 @@ final class NetworkService: INetworkService {
         let task = self.session.dataTask(with: urlRequest) { [weak self] data, response, error in
             self?.loading = false
             if let error = error {
-                completion(.failure(error))
+                DispatchQueue.main.async {
+                    completion(.failure(error))
+                }
             } else if let data = data {
                 guard let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String : Any],
                       let articlesJson = json["articles"],
                       let articlesData = try? JSONSerialization.data(withJSONObject: articlesJson, options: .prettyPrinted),
                       let articles = try? JSONDecoder().decode([Article].self, from: articlesData) else {
-                          completion(.failure(NetworkError.incorrectData))
+                          DispatchQueue.main.async {
+                              completion(.failure(NetworkError.incorrectData))
+                          }
                           return
                       }
-                print(articles)
+                DispatchQueue.main.async {
+                    completion(.success(articles))
+                }
             } else {
-                completion(.failure(NetworkError.unknownError))
+                DispatchQueue.main.async {
+                    completion(.failure(NetworkError.unknownError))
+                }
             }
         }
         queue.async {
