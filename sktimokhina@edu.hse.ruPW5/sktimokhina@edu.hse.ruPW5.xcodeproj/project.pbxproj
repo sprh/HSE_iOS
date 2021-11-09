@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E381273D273A945B0065E25A /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E381273C273A945A0065E25A /* ArticleTableViewCell.swift */; };
+		E3812740273A9A360065E25A /* UIColor+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = E381273F273A9A360065E25A /* UIColor+Util.swift */; };
 		E3F6128027395E27004D4DEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F6127F27395E27004D4DEB /* AppDelegate.swift */; };
 		E3F6128427395E27004D4DEB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F6128327395E27004D4DEB /* ViewController.swift */; };
 		E3F6128927395E2F004D4DEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3F6128827395E2F004D4DEB /* Assets.xcassets */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		E381273C273A945A0065E25A /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
+		E381273F273A9A360065E25A /* UIColor+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Util.swift"; sourceTree = "<group>"; };
 		E3F6127C27395E27004D4DEB /* sktimokhina@edu.hse.ruPW5.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "sktimokhina@edu.hse.ruPW5.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3F6127F27395E27004D4DEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3F6128327395E27004D4DEB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -53,6 +55,14 @@
 			path = "Custom Elements";
 			sourceTree = "<group>";
 		};
+		E381273E273A9A220065E25A /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				E381273F273A9A360065E25A /* UIColor+Util.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		E3F6127327395E27004D4DEB = {
 			isa = PBXGroup;
 			children = (
@@ -72,6 +82,7 @@
 		E3F6127E27395E27004D4DEB /* sktimokhina@edu.hse.ruPW5 */ = {
 			isa = PBXGroup;
 			children = (
+				E381273E273A9A220065E25A /* Utils */,
 				E3F6129327395F69004D4DEB /* Presentation Layer */,
 				E3F6127F27395E27004D4DEB /* AppDelegate.swift */,
 				E3F6128327395E27004D4DEB /* ViewController.swift */,
@@ -175,6 +186,7 @@
 			files = (
 				E3F6128427395E27004D4DEB /* ViewController.swift in Sources */,
 				E3F6129827395FF3004D4DEB /* ArticlesListInterator.swift in Sources */,
+				E3812740273A9A360065E25A /* UIColor+Util.swift in Sources */,
 				E3F6128027395E27004D4DEB /* AppDelegate.swift in Sources */,
 				E3F6129627395FB8004D4DEB /* ArticlesListVC.swift in Sources */,
 				E381273D273A945B0065E25A /* ArticleTableViewCell.swift in Sources */,

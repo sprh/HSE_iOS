@@ -44,7 +44,7 @@ final class ArticlesListVC: UIViewController, IArticlesListVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
+        view.backgroundColor = .background
         setup()
     }
 

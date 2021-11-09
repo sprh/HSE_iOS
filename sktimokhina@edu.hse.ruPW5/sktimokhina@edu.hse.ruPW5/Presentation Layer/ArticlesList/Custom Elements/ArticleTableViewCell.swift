@@ -18,12 +18,18 @@ final class ArticleTableViewCell: UITableViewCell {
 
     func setup() {
         selectionStyle = .none
+        backgroundColor = .subviewBackground
+        layer.cornerRadius = 16
+        clipsToBounds = true
+
         contentView.addSubview(title)
         NSLayoutConstraint.activate([
-            title.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            title.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            title.topAnchor.constraint(equalTo: contentView.topAnchor),
-            title.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            title.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            title.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            title.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
+            title.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16)
         ])
+
+        layoutSubviews()
     }
 }
