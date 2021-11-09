@@ -13,6 +13,7 @@
 		E3D0316A273A9CEA00C03AC6 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D03169273A9CEA00C03AC6 /* Article.swift */; };
 		E3D0316C273A9FE400C03AC6 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D0316B273A9FE400C03AC6 /* NetworkService.swift */; };
 		E3D0316E273AA78000C03AC6 /* ArticleNetworkingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D0316D273AA78000C03AC6 /* ArticleNetworkingModel.swift */; };
+		E3D03170273ACE5D00C03AC6 /* UIFont+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D0316F273ACE5D00C03AC6 /* UIFont+Util.swift */; };
 		E3F6128027395E27004D4DEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F6127F27395E27004D4DEB /* AppDelegate.swift */; };
 		E3F6128427395E27004D4DEB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F6128327395E27004D4DEB /* ViewController.swift */; };
 		E3F6128927395E2F004D4DEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3F6128827395E2F004D4DEB /* Assets.xcassets */; };
@@ -31,6 +32,7 @@
 		E3D03169273A9CEA00C03AC6 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		E3D0316B273A9FE400C03AC6 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		E3D0316D273AA78000C03AC6 /* ArticleNetworkingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleNetworkingModel.swift; sourceTree = "<group>"; };
+		E3D0316F273ACE5D00C03AC6 /* UIFont+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Util.swift"; sourceTree = "<group>"; };
 		E3F6127C27395E27004D4DEB /* sktimokhina@edu.hse.ruPW5.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "sktimokhina@edu.hse.ruPW5.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3F6127F27395E27004D4DEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3F6128327395E27004D4DEB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				E381273F273A9A360065E25A /* UIColor+Util.swift */,
+				E3D0316F273ACE5D00C03AC6 /* UIFont+Util.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 				E3F6129A2739601F004D4DEB /* ArticlesListPresenter.swift in Sources */,
 				E3F6129C273960FF004D4DEB /* ArticlesListRouter.swift in Sources */,
 				E3D0316C273A9FE400C03AC6 /* NetworkService.swift in Sources */,
+				E3D03170273ACE5D00C03AC6 /* UIFont+Util.swift in Sources */,
 				E3F6129E27396169004D4DEB /* ArticlesListGraph.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

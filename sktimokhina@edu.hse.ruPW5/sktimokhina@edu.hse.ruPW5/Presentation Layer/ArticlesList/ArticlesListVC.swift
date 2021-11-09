@@ -69,10 +69,11 @@ extension ArticlesListVC: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(ArticleTableViewCell.self)",
-                                                       for: indexPath) as? ArticleTableViewCell else {
+                                                       for: indexPath) as? ArticleTableViewCell,
+              let article = interactor.getArticle(at: indexPath.section) else {
             return UITableViewCell()
         }
-        cell.setup()
+        cell.setup(article: article)
         return cell
     }
 
