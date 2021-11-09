@@ -46,6 +46,7 @@ final class ArticlesListVC: UIViewController, IArticlesListVC {
         super.viewDidLoad()
         view.backgroundColor = .background
         setup()
+        interactor.load()
     }
 
     private func setup() {
@@ -59,7 +60,7 @@ extension ArticlesListVC: UITableViewDelegate, UITableViewDataSource {
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 100
+        return interactor.articlesCount
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

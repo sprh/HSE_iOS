@@ -13,6 +13,7 @@ final class ArticleTableViewCell: UITableViewCell {
         label.font = .preferredFont(forTextStyle: .body)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Text"
+        label.textColor = .text
         return label
     }()
 
@@ -29,7 +30,5 @@ final class ArticleTableViewCell: UITableViewCell {
             title.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
             title.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16)
         ])
-
-        layoutSubviews()
     }
 }
