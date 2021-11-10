@@ -115,4 +115,24 @@ extension ArticlesListVC: UITableViewDelegate, UITableViewDataSource {
             interactor.load()
         }
     }
+
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        if !(tableView.cellForRow(at: indexPath) is ArticleTableViewCell) { return nil}
+        let doneAction = UIContextualAction(style: .normal, title: "Share",
+        handler: {[weak self] (_: UIContextualAction, _: UIView, success: (Bool) -> Void) in
+            guard let url = self?.interactor.getArticle(at: indexPath.section)?.url,
+                  let urlToShare = URL(string: url) else {
+                      return
+                  }
+            let title = "Share this new!"
+            let activityViewController = UIActivityViewController(
+                activityItems: [title, urlToShare],
+                applicationActivities: nil)
+            activityViewController.popoverPresentationController?.sourceView = self?.view
+            self?.present(activityViewController,animated: true,completion: nil)
+        })
+        doneAction.image = .articlePlaceholder
+        doneAction.backgroundColor = .green
+        return UISwipeActionsConfiguration(actions: [doneAction])
+    }
 }
