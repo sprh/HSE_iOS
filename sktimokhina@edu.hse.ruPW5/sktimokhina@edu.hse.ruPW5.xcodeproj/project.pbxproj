@@ -8,15 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		E381273D273A945B0065E25A /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E381273C273A945A0065E25A /* ArticleTableViewCell.swift */; };
-		E3812740273A9A360065E25A /* UIColor+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = E381273F273A9A360065E25A /* UIColor+Util.swift */; };
+		E3812740273A9A360065E25A /* UIColor+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E381273F273A9A360065E25A /* UIColor+Utils.swift */; };
 		E3B6A5EB273BD8D100598E5B /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B6A5EA273BD8D100598E5B /* ImageLoader.swift */; };
-		E3B6A5ED273BE15300598E5B /* UIImage+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B6A5EC273BE15300598E5B /* UIImage+Util.swift */; };
+		E3B6A5ED273BE15300598E5B /* UIImage+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B6A5EC273BE15300598E5B /* UIImage+Utils.swift */; };
 		E3B6A5F0273BE8F100598E5B /* ArticleWebViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B6A5EF273BE8F100598E5B /* ArticleWebViewVC.swift */; };
 		E3B6A5F5273C00FF00598E5B /* UIImageView+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B6A5F4273C00FF00598E5B /* UIImageView+Util.swift */; };
 		E3D03167273A9CD100C03AC6 /* ArticleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D03166273A9CD100C03AC6 /* ArticleManager.swift */; };
 		E3D0316A273A9CEA00C03AC6 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D03169273A9CEA00C03AC6 /* Article.swift */; };
 		E3D0316C273A9FE400C03AC6 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D0316B273A9FE400C03AC6 /* NetworkService.swift */; };
-		E3D03170273ACE5D00C03AC6 /* UIFont+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D0316F273ACE5D00C03AC6 /* UIFont+Util.swift */; };
+		E3D03170273ACE5D00C03AC6 /* UIFont+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D0316F273ACE5D00C03AC6 /* UIFont+Utils.swift */; };
 		E3F6128027395E27004D4DEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F6127F27395E27004D4DEB /* AppDelegate.swift */; };
 		E3F6128927395E2F004D4DEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3F6128827395E2F004D4DEB /* Assets.xcassets */; };
 		E3F6128C27395E2F004D4DEB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3F6128A27395E2F004D4DEB /* LaunchScreen.storyboard */; };
@@ -29,15 +29,15 @@
 
 /* Begin PBXFileReference section */
 		E381273C273A945A0065E25A /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
-		E381273F273A9A360065E25A /* UIColor+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Util.swift"; sourceTree = "<group>"; };
+		E381273F273A9A360065E25A /* UIColor+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Utils.swift"; sourceTree = "<group>"; };
 		E3B6A5EA273BD8D100598E5B /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
-		E3B6A5EC273BE15300598E5B /* UIImage+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Util.swift"; sourceTree = "<group>"; };
+		E3B6A5EC273BE15300598E5B /* UIImage+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Utils.swift"; sourceTree = "<group>"; };
 		E3B6A5EF273BE8F100598E5B /* ArticleWebViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleWebViewVC.swift; sourceTree = "<group>"; };
 		E3B6A5F4273C00FF00598E5B /* UIImageView+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Util.swift"; sourceTree = "<group>"; };
 		E3D03166273A9CD100C03AC6 /* ArticleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleManager.swift; sourceTree = "<group>"; };
 		E3D03169273A9CEA00C03AC6 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		E3D0316B273A9FE400C03AC6 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
-		E3D0316F273ACE5D00C03AC6 /* UIFont+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Util.swift"; sourceTree = "<group>"; };
+		E3D0316F273ACE5D00C03AC6 /* UIFont+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Utils.swift"; sourceTree = "<group>"; };
 		E3F6127C27395E27004D4DEB /* sktimokhina@edu.hse.ruPW5.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "sktimokhina@edu.hse.ruPW5.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3F6127F27395E27004D4DEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3F6128827395E2F004D4DEB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -72,9 +72,9 @@
 		E381273E273A9A220065E25A /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				E381273F273A9A360065E25A /* UIColor+Util.swift */,
-				E3D0316F273ACE5D00C03AC6 /* UIFont+Util.swift */,
-				E3B6A5EC273BE15300598E5B /* UIImage+Util.swift */,
+				E381273F273A9A360065E25A /* UIColor+Utils.swift */,
+				E3D0316F273ACE5D00C03AC6 /* UIFont+Utils.swift */,
+				E3B6A5EC273BE15300598E5B /* UIImage+Utils.swift */,
 				E3B6A5F4273C00FF00598E5B /* UIImageView+Util.swift */,
 			);
 			path = Utils;
@@ -233,7 +233,7 @@
 				E3D0316A273A9CEA00C03AC6 /* Article.swift in Sources */,
 				E3F6129827395FF3004D4DEB /* ArticlesListInterator.swift in Sources */,
 				E3D03167273A9CD100C03AC6 /* ArticleManager.swift in Sources */,
-				E3812740273A9A360065E25A /* UIColor+Util.swift in Sources */,
+				E3812740273A9A360065E25A /* UIColor+Utils.swift in Sources */,
 				E3F6128027395E27004D4DEB /* AppDelegate.swift in Sources */,
 				E3B6A5F5273C00FF00598E5B /* UIImageView+Util.swift in Sources */,
 				E3B6A5F0273BE8F100598E5B /* ArticleWebViewVC.swift in Sources */,
@@ -241,9 +241,9 @@
 				E381273D273A945B0065E25A /* ArticleTableViewCell.swift in Sources */,
 				E3F6129A2739601F004D4DEB /* ArticlesListPresenter.swift in Sources */,
 				E3F6129C273960FF004D4DEB /* ArticlesListRouter.swift in Sources */,
-				E3B6A5ED273BE15300598E5B /* UIImage+Util.swift in Sources */,
+				E3B6A5ED273BE15300598E5B /* UIImage+Utils.swift in Sources */,
 				E3D0316C273A9FE400C03AC6 /* NetworkService.swift in Sources */,
-				E3D03170273ACE5D00C03AC6 /* UIFont+Util.swift in Sources */,
+				E3D03170273ACE5D00C03AC6 /* UIFont+Utils.swift in Sources */,
 				E3F6129E27396169004D4DEB /* ArticlesListGraph.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

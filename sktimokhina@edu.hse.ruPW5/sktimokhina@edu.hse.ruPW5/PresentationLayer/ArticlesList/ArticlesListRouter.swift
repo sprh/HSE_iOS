@@ -9,8 +9,12 @@ import Foundation
 
 protocol IArticlesListRouter: AnyObject {
     var viewController: IArticlesListVC? { get set }
+
+    func showError(title: String)
 }
 
 final class ArticlesListRouter: IArticlesListRouter {
     weak var viewController: IArticlesListVC?
+
+    func showError(title: String)
 }

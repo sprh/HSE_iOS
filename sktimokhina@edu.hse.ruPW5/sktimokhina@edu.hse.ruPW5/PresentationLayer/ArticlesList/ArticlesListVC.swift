@@ -52,14 +52,17 @@ final class ArticlesListVC: UIViewController, IArticlesListVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .background
-        navigationItem.rightBarButtonItem = loadingIndicator
-        spinner.startAnimating()
         setup()
         interactor.load()
     }
 
     private func setup() {
+        view.backgroundColor = .background
+        navigationItem.rightBarButtonItem = loadingIndicator
+        spinner.startAnimating()
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.barTintColor = .background
+        title = "Articles"
         view.addSubview(tableView)
     }
 
@@ -137,7 +140,7 @@ extension ArticlesListVC: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         if !(tableView.cellForRow(at: indexPath) is ArticleTableViewCell) { return nil}
-        let doneAction = UIContextualAction(style: .normal, title: "Share",
+        let shareAction = UIContextualAction(style: .normal, title: "Share",
         handler: {[weak self] (_: UIContextualAction, _: UIView, success: (Bool) -> Void) in
             guard let url = self?.interactor.getArticle(at: indexPath.section)?.url,
                   let urlToShare = URL(string: url) else {
@@ -150,8 +153,8 @@ extension ArticlesListVC: UITableViewDelegate, UITableViewDataSource {
             activityViewController.popoverPresentationController?.sourceView = self?.view
             self?.present(activityViewController, animated: true)
         })
-        doneAction.image = .articlePlaceholder
-        doneAction.backgroundColor = .green
-        return UISwipeActionsConfiguration(actions: [doneAction])
+        shareAction.image = .share
+        shareAction.backgroundColor = .background
+        return UISwipeActionsConfiguration(actions: [shareAction])
     }
 }

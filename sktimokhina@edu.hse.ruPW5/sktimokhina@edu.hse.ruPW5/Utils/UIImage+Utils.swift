@@ -11,4 +11,8 @@ extension UIImage {
     static var articlePlaceholder: UIImage {
         UIImage(named: "articlePlaceholderImage")!
     }
+
+    static var share: UIImage {
+        UIImage(named: "shareImage")!
+    }
 }

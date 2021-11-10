@@ -46,28 +46,37 @@ final class ArticleTableViewCell: UITableViewCell {
 
     func setupUI() {
         selectionStyle = .none
-        backgroundColor = .subviewBackground
-        layer.cornerRadius = 16
         clipsToBounds = true
+        backgroundColor = .clear
 
-        contentView.addSubview(title)
-        contentView.addSubview(desctiptionLabel)
-        contentView.addSubview(image)
+        let stack = UIStackView()
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.addSubview(title)
+        stack.addSubview(desctiptionLabel)
+        stack.addSubview(image)
+        stack.backgroundColor = .subviewBackground
+        stack.layer.cornerRadius = 16
+        contentView.addSubview(stack)
 
         NSLayoutConstraint.activate([
-            title.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            title.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            title.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
+            title.leadingAnchor.constraint(equalTo: stack.leadingAnchor, constant: 16),
+            title.trailingAnchor.constraint(equalTo: stack.trailingAnchor, constant: -16),
+            title.topAnchor.constraint(equalTo: stack.topAnchor, constant: 16),
 
-            desctiptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            desctiptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            desctiptionLabel.leadingAnchor.constraint(equalTo: stack.leadingAnchor, constant: 16),
+            desctiptionLabel.trailingAnchor.constraint(equalTo: stack.trailingAnchor, constant: -16),
             desctiptionLabel.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 16),
 
             image.topAnchor.constraint(equalTo: desctiptionLabel.bottomAnchor, constant: 16),
-            image.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
-            image.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            image.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            image.heightAnchor.constraint(equalToConstant: 200)
+            image.bottomAnchor.constraint(equalTo: stack.bottomAnchor, constant: -16),
+            image.leadingAnchor.constraint(equalTo: stack.leadingAnchor, constant: 16),
+            image.trailingAnchor.constraint(equalTo: stack.trailingAnchor, constant: -16),
+            image.heightAnchor.constraint(equalToConstant: 200),
+
+            stack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            stack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            stack.topAnchor.constraint(equalTo: contentView.topAnchor),
+            stack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
         ])
     }
 
