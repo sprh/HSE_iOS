@@ -100,12 +100,10 @@ extension ArticlesListVC: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let article = interactor.getArticle(at: indexPath.section),
-              let url = URL(string: article.url) else {
-                  return
-              }
-        let articleView = ArticleWebViewVC(url: url)
-        navigationController?.present(articleView, animated: true)
+        guard let article = interactor.getArticle(at: indexPath.section) else {
+            return
+        }
+        router.showArticleWebView(url: article.url)
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -150,7 +148,7 @@ extension ArticlesListVC: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         if !(tableView.cellForRow(at: indexPath) is ArticleTableViewCell) { return nil}
-        let shareAction = UIContextualAction(style: .normal, title: "Share",
+        let shareAction = UIContextualAction(style: .normal, title: "",
         handler: {[weak self] (_: UIContextualAction, _: UIView, success: (Bool) -> Void) in
             guard let url = self?.interactor.getArticle(at: indexPath.section)?.url,
                   let urlToShare = URL(string: url) else {

@@ -11,9 +11,18 @@ protocol IArticlesListRouter: AnyObject {
     var viewController: IArticlesListVC? { get set }
 
     func showError(message: String)
+    func showArticleWebView(url: String)
 }
 
 final class ArticlesListRouter: IArticlesListRouter {
+    func showArticleWebView(url: String) {
+        guard let url = URL(string: url) else {
+            return
+        }
+        let articleView = ArticleWebViewVC(url: url)
+        viewController?.navigationController?.present(articleView, animated: true)
+    }
+
     weak var viewController: IArticlesListVC?
 
     func showError(message: String) {
