@@ -64,7 +64,9 @@ final class ArticlesListVC: UIViewController, IArticlesListVC {
     }
 
     func updateArticlesList() {
-        tableView.reloadData()
+        tableView.performBatchUpdates {
+            tableView.insertSections(IndexSet(tableView.numberOfSections..<interactor.articlesCount), with: .automatic)
+        }
         spinner.stopAnimating()
     }
 
