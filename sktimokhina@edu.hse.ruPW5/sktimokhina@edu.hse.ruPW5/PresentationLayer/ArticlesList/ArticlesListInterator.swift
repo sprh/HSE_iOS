@@ -64,8 +64,8 @@ final class ArticlesListInterator: IArticlesListInteractor {
             switch result {
             case .success():
                 self?.presenter.updateArticlesList()
-            case .failure(_):
-                // TODO: show error
+            case let .failure(error):
+                self?.presenter.showError(message: error.localizedDescription)
                 break
             }
         }

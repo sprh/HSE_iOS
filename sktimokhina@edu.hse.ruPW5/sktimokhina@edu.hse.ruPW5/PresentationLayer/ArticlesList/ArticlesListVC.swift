@@ -10,6 +10,8 @@ import UIKit
 protocol IArticlesListVC: UIViewController {
     func updateArticlesList()
     func updateCell(at index: Int)
+    func loadArticles()
+    func showError(message: String)
 }
 
 final class ArticlesListVC: UIViewController, IArticlesListVC {
@@ -33,7 +35,7 @@ final class ArticlesListVC: UIViewController, IArticlesListVC {
         tableView.frame = CGRect(x: 16,
                                  y: 0,
                                  width: view.frame.width - 32,
-                                 height: view.frame.height - 16)
+                                 height: view.frame.height)
         tableView.backgroundColor = .clear
         tableView.delegate = self
         tableView.dataSource = self
@@ -53,7 +55,7 @@ final class ArticlesListVC: UIViewController, IArticlesListVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        interactor.load()
+        loadArticles()
     }
 
     private func setup() {
@@ -77,6 +79,14 @@ final class ArticlesListVC: UIViewController, IArticlesListVC {
         tableView.performBatchUpdates {
             tableView.reloadSections([index], with: .automatic)
         }
+    }
+
+    func loadArticles() {
+        interactor.load()
+    }
+
+    func showError(message: String) {
+        router.showError(message: message)
     }
 }
 

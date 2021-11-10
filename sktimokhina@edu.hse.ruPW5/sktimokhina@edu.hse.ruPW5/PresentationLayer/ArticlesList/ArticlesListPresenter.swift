@@ -12,6 +12,7 @@ protocol IArticlesListPresenter: AnyObject {
 
     func updateArticlesList()
     func updateCell(at index: Int)
+    func showError(message: String)
 }
 
 final class ArticlesListPresenter: IArticlesListPresenter {
@@ -23,5 +24,9 @@ final class ArticlesListPresenter: IArticlesListPresenter {
 
     func updateCell(at index: Int) {
         viewController?.updateCell(at: index)
+    }
+
+    func showError(message: String) {
+        viewController?.showError(message: message)
     }
 }
