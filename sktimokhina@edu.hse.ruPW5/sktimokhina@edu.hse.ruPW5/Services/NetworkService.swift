@@ -26,6 +26,7 @@ final class NetworkService: INetworkService {
     private let apiKey: String = "74db4d150c784f08a864330c81d209f3"
 
     private var page = 0
+    private let pageSize = 14
     var loading: Bool = false
     var hasNext: Bool = true
 
@@ -36,7 +37,6 @@ final class NetworkService: INetworkService {
     }()
 
     func createUrlRequest(path: String) -> URLRequest? {
-        print(path)
         guard let url = URL(string: path) else {
             return nil
         }
@@ -49,7 +49,7 @@ final class NetworkService: INetworkService {
         }
 
         loading = true
-        guard let urlRequest = createUrlRequest(path: "\(basePath)&pageSize=14&page=\(page+1)&apiKey=\(apiKey)") else {
+        guard let urlRequest = createUrlRequest(path: "\(basePath)&pageSize=\(pageSize)&page=\(page+1)&apiKey=\(apiKey)") else {
             completion(.failure(NetworkError.incorrectUrl))
             return
         }
@@ -70,6 +70,7 @@ final class NetworkService: INetworkService {
                           return
                       }
                 self?.page += 1
+                self?.hasNext = articles.count == self?.pageSize
                 DispatchQueue.main.async {
                     completion(.success(articles))
                 }

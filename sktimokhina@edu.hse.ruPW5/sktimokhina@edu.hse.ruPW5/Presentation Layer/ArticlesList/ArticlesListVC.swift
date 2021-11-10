@@ -9,12 +9,20 @@ import UIKit
 
 protocol IArticlesListVC: UIViewController {
     func updateArticlesList()
+    func updateCell(at index: Int)
 }
 
 final class ArticlesListVC: UIViewController, IArticlesListVC {
     private let interactor: IArticlesListInteractor
     private let router: IArticlesListRouter
 
+    let spinner = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height:40))
+    lazy var loadingIndicator: UIBarButtonItem = {
+        let button = UIBarButtonItem()
+        button.customView = spinner
+        button.isEnabled = false
+        return button
+    }()
     lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.layer.masksToBounds = true
@@ -45,6 +53,8 @@ final class ArticlesListVC: UIViewController, IArticlesListVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .background
+        navigationItem.rightBarButtonItem = loadingIndicator
+        spinner.startAnimating()
         setup()
         interactor.load()
     }
@@ -55,6 +65,13 @@ final class ArticlesListVC: UIViewController, IArticlesListVC {
 
     func updateArticlesList() {
         tableView.reloadData()
+        spinner.stopAnimating()
+    }
+
+    func updateCell(at index: Int) {
+        tableView.performBatchUpdates {
+            tableView.reloadSections([index], with: .automatic)
+        }
     }
 }
 
@@ -71,9 +88,13 @@ extension ArticlesListVC: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(ArticleTableViewCell.self)",
                                                        for: indexPath) as? ArticleTableViewCell,
               let article = interactor.getArticle(at: indexPath.section) else {
-            return UITableViewCell()
-        }
-        cell.setup(article: article)
+                  return UITableViewCell()
+              }
+        let image = article.imageUrl == nil ?nil :
+        interactor.getImage(for: article.imageUrl!, at: indexPath.section)
+        cell.setup(articleTitle: article.title,
+                   articleDescription: article.articleDescription,
+                   articleImage: image)
         return cell
     }
 
@@ -86,7 +107,9 @@ extension ArticlesListVC: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.section == tableView.numberOfSections - 3 {
+        if indexPath.section >= tableView.numberOfSections - 3 &&
+            interactor.hasNext {
+            spinner.startAnimating()
             interactor.load()
         }
     }

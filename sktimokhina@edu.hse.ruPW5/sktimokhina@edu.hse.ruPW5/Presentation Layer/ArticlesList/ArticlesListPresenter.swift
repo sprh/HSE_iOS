@@ -11,6 +11,7 @@ protocol IArticlesListPresenter: AnyObject {
     var viewController: IArticlesListVC? { get set }
 
     func updateArticlesList()
+    func updateCell(at index: Int)
 }
 
 final class ArticlesListPresenter: IArticlesListPresenter {
@@ -18,5 +19,9 @@ final class ArticlesListPresenter: IArticlesListPresenter {
 
     func updateArticlesList() {
         viewController?.updateArticlesList()
+    }
+
+    func updateCell(at index: Int) {
+        viewController?.updateCell(at: index)
     }
 }

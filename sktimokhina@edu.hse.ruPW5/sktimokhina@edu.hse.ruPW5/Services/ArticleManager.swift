@@ -14,11 +14,21 @@ protocol IArticleManager {
     func add(articles: [Article])
     func get(at index: Int) -> Article?
     func load(completion: @escaping (Result<Void, Error>) -> Void)
+
+    var loading: Bool { get }
+    var hasNext: Bool { get }
 }
 
 final class ArticleManager: IArticleManager {
     private let networkService: INetworkService
     private var items: [Article]
+
+    var loading: Bool {
+        networkService.loading
+    }
+    var hasNext: Bool {
+        networkService.hasNext
+    }
 
     init(networkService: INetworkService) {
         self.networkService = networkService

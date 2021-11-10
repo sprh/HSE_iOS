@@ -34,13 +34,15 @@ final class ArticleTableViewCell: UITableViewCell {
         return image
     }()
 
-    func setup(article: Article) {
+    func setup(articleTitle: String,
+               articleDescription: String,
+               articleImage: UIImage?) {
         selectionStyle = .none
         backgroundColor = .subviewBackground
         layer.cornerRadius = 16
         clipsToBounds = true
-        title.text = article.title
-        desctiptionLabel.text = article.articleDescription
+        title.text = articleTitle
+        desctiptionLabel.text = articleDescription
 
         contentView.addSubview(title)
         contentView.addSubview(desctiptionLabel)
@@ -54,8 +56,9 @@ final class ArticleTableViewCell: UITableViewCell {
             desctiptionLabel.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 16)
         ])
 
-        if let imageUrl = article.imageUrl {
+        if articleImage != nil {
             contentView.addSubview(image)
+            image.image = articleImage
             NSLayoutConstraint.activate([
                 image.topAnchor.constraint(equalTo: desctiptionLabel.bottomAnchor, constant: 16),
                 image.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),

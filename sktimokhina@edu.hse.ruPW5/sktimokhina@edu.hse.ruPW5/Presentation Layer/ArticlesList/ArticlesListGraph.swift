@@ -14,6 +14,7 @@ final class ArticlesListGraph {
     private var router: IArticlesListRouter
     private let articlesManager: IArticleManager
     private let networkService: INetworkService
+    private let imageLoader: IImageLoader
 
     var viewController: UIViewController {
         view
@@ -23,9 +24,11 @@ final class ArticlesListGraph {
         presenter = ArticlesListPresenter()
         router = ArticlesListRouter()
         networkService = NetworkService()
+        imageLoader = ImageLoader()
         articlesManager = ArticleManager(networkService: networkService)
         interactor = ArticlesListInterator(presenter: presenter,
-                                           articlesManager: articlesManager)
+                                           articlesManager: articlesManager,
+                                           imageLoader: imageLoader)
         view = ArticlesListVC(interator: interactor, router: router)
         router.viewController = view
         presenter.viewController = view
