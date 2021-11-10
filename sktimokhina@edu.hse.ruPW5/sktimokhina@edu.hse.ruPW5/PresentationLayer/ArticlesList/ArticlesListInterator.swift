@@ -13,7 +13,7 @@ protocol IArticlesListInteractor: AnyObject {
 
     func getArticle(at index: Int) -> Article?
     func load()
-    func getImage(for url: String, at index: Int) -> UIImage
+    func getImage(for url: String, at index: Int) -> UIImage?
     var hasNext: Bool { get }
 }
 
@@ -42,13 +42,13 @@ final class ArticlesListInterator: IArticlesListInteractor {
         return articlesManager.get(at: index)
     }
 
-    func getImage(for url: String, at index: Int) -> UIImage {
+    func getImage(for url: String, at index: Int) -> UIImage? {
         if let image = imageLoader.getImage(path: url) {
             return image
         }
         loadImage(for: url,
                   at: index)
-        return UIImage.articlePlaceholder
+        return nil
     }
 
     func loadImage(for url: String, at index: Int) {

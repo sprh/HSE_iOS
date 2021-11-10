@@ -9,14 +9,18 @@ import UIKit
 
 extension UIColor {
     static var background: UIColor {
-        return UIColor(named: "backgroundColor")!
+        UIColor(named: "backgroundColor")!
     }
 
     static var subviewBackground: UIColor {
-        return UIColor(named: "subviewBackgroundColor")!
+        UIColor(named: "subviewBackgroundColor")!
     }
 
     static var text: UIColor {
         return UIColor(named: "textColor")!
+    }
+
+    static var loadingImageBackground: UIColor {
+        UIColor(named: "loadingImageBackgroundColor")!
     }
 }

@@ -101,11 +101,21 @@ extension ArticlesListVC: UITableViewDelegate, UITableViewDataSource {
               let article = interactor.getArticle(at: indexPath.section) else {
                   return UITableViewCell()
               }
-        let image = article.imageUrl == nil ?nil :
-        interactor.getImage(for: article.imageUrl!, at: indexPath.section)
+        var image: UIImage = UIImage.articlePlaceholder
+        var shouldShowShimmer: Bool = false
+        if let imageUrl = article.imageUrl {
+            let loadedImage = interactor.getImage(for: imageUrl, at: indexPath.section)
+            image = loadedImage ?? UIImage()
+            shouldShowShimmer = loadedImage == nil
+        }
         cell.setup(articleTitle: article.title,
-                   articleDescription: article.articleDescription,
-                   articleImage: image)
+               articleDescription: article.articleDescription,
+               articleImage: image)
+        if (shouldShowShimmer) {
+            cell.showShimmer()
+        } else {
+            cell.hideShimmer()
+        }
         return cell
     }
 
