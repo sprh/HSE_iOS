@@ -48,7 +48,7 @@ final class ArticlesListInterator: IArticlesListInteractor {
         }
         loadImage(for: url,
                   at: index)
-        return UIImage()
+        return UIImage.articlePlaceholder
     }
 
     func loadImage(for url: String, at index: Int) {
