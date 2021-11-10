@@ -86,6 +86,15 @@ extension ArticlesListVC: UITableViewDelegate, UITableViewDataSource {
         return interactor.articlesCount
     }
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let article = interactor.getArticle(at: indexPath.section),
+              let url = URL(string: article.url) else {
+                  return
+              }
+        let articleView = ArticleWebViewVC(url: url)
+        navigationController?.present(articleView, animated: true)
+    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(ArticleTableViewCell.self)",
                                                        for: indexPath) as? ArticleTableViewCell,
@@ -124,12 +133,12 @@ extension ArticlesListVC: UITableViewDelegate, UITableViewDataSource {
                   let urlToShare = URL(string: url) else {
                       return
                   }
-            let title = "Share this new!"
+            let title = "Share it!"
             let activityViewController = UIActivityViewController(
                 activityItems: [title, urlToShare],
                 applicationActivities: nil)
             activityViewController.popoverPresentationController?.sourceView = self?.view
-            self?.present(activityViewController,animated: true,completion: nil)
+            self?.present(activityViewController, animated: true)
         })
         doneAction.image = .articlePlaceholder
         doneAction.backgroundColor = .green
