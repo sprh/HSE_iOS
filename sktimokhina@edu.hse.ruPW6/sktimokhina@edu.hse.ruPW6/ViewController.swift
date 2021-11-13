@@ -9,7 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
     lazy var frameworkButton: UIButton = {
-        let button = createButton(for: "Framework")
+        let button = createButton(for: "Log (framework)")
         button.addTarget(self,
                          action: #selector(onTapFramework),
                          for: .touchUpInside)
@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     }()
 
     lazy var packageButton: UIButton = {
-        let button = createButton(for: "Package")
+        let button = createButton(for: "Log (package)")
         button.addTarget(self,
                          action: #selector(onTapPachage),
                          for: .touchUpInside)
@@ -25,7 +25,7 @@ class ViewController: UIViewController {
     }()
 
     lazy var podButton: UIButton = {
-        let button = createButton(for: "Framework")
+        let button = createButton(for: "Log (pod)")
         button.addTarget(self,
                          action: #selector(onTapPod),
                          for: .touchUpInside)
@@ -33,7 +33,7 @@ class ViewController: UIViewController {
     }()
 
     lazy var carthageButton: UIButton = {
-        let button = createButton(for: "Carthage")
+        let button = createButton(for: "Lon (carthage)")
         button.addTarget(self,
                          action: #selector(onTapCarthage),
                          for: .touchUpInside)
@@ -60,6 +60,7 @@ class ViewController: UIViewController {
     }
 
     private func setup() {
+        view.backgroundColor = #colorLiteral(red: 1, green: 0.9960667491, blue: 0.9126277566, alpha: 1)
         let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(stack)
