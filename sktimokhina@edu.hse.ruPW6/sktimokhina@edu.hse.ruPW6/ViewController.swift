@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MyLogger1
 
 class ViewController: UIViewController {
     lazy var frameworkButton: UIButton = {
@@ -71,6 +72,8 @@ class ViewController: UIViewController {
         NSLayoutConstraint.activate([
             stack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             stack.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            stack.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            stack.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 
             frameworkButton.centerXAnchor.constraint(equalTo: stack.centerXAnchor),
             frameworkButton.heightAnchor.constraint(equalToConstant: 55),
@@ -96,7 +99,7 @@ class ViewController: UIViewController {
 
     @objc
     func onTapFramework() {
-
+        MyLogger1.log("Did tap framework button!")
     }
 
     @objc
@@ -112,6 +115,18 @@ class ViewController: UIViewController {
     @objc
     func onTapCarthage() {
 
+    }
+
+    @objc func onPress(_ selector: UIButton) {
+        UIView.animate(withDuration: 0.1, animations: {
+            selector.transform = CGAffineTransform.init(scaleX: 0.9, y: 0.9)
+            selector.alpha = 0.8
+        }, completion: {finished in
+            if finished {
+                selector.transform = CGAffineTransform.init(scaleX: 1, y: 1)
+                selector.alpha = 1
+            }
+        })
     }
 }
 

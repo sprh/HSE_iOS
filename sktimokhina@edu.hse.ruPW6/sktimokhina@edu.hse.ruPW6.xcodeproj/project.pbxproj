@@ -11,7 +11,34 @@
 		E3970288273FAA4300663A3F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3970287273FAA4300663A3F /* ViewController.swift */; };
 		E397028D273FAA4700663A3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E397028C273FAA4700663A3F /* Assets.xcassets */; };
 		E3970290273FAA4700663A3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E397028E273FAA4700663A3F /* LaunchScreen.storyboard */; };
+		E3970335273FB93400663A3F /* MyLogger1.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3970330273FB93400663A3F /* MyLogger1.swift */; };
+		E3970337273FB94000663A3F /* MyLogger1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3970334273FB93400663A3F /* MyLogger1.framework */; };
+		E3970338273FB94000663A3F /* MyLogger1.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E3970334273FB93400663A3F /* MyLogger1.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E3970333273FB93400663A3F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E397032C273FB93400663A3F /* MyLogger1.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E397031F273FB90200663A3F;
+			remoteInfo = MyLogger1;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E3970339273FB94000663A3F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E3970338273FB94000663A3F /* MyLogger1.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		E3970280273FAA4300663A3F /* sktimokhina@edu.hse.ruPW6.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "sktimokhina@edu.hse.ruPW6.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -20,6 +47,9 @@
 		E397028C273FAA4700663A3F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E397028F273FAA4700663A3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E3970291273FAA4700663A3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E397032C273FB93400663A3F /* MyLogger1.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = MyLogger1.xcodeproj; sourceTree = "<group>"; };
+		E3970330273FB93400663A3F /* MyLogger1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyLogger1.swift; sourceTree = "<group>"; };
+		E3970331273FB93400663A3F /* MyLogger1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLogger1.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3970337273FB94000663A3F /* MyLogger1.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -36,8 +67,10 @@
 		E3970277273FAA4300663A3F = {
 			isa = PBXGroup;
 			children = (
+				E397032B273FB93400663A3F /* MyLogger1 */,
 				E3970282273FAA4300663A3F /* sktimokhina@edu.hse.ruPW6 */,
 				E3970281273FAA4300663A3F /* Products */,
+				E3970336273FB94000663A3F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -61,6 +94,39 @@
 			path = "sktimokhina@edu.hse.ruPW6";
 			sourceTree = "<group>";
 		};
+		E397032B273FB93400663A3F /* MyLogger1 */ = {
+			isa = PBXGroup;
+			children = (
+				E397032C273FB93400663A3F /* MyLogger1.xcodeproj */,
+				E397032F273FB93400663A3F /* MyLogger1 */,
+			);
+			path = MyLogger1;
+			sourceTree = "<group>";
+		};
+		E397032D273FB93400663A3F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E3970334273FB93400663A3F /* MyLogger1.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E397032F273FB93400663A3F /* MyLogger1 */ = {
+			isa = PBXGroup;
+			children = (
+				E3970330273FB93400663A3F /* MyLogger1.swift */,
+				E3970331273FB93400663A3F /* MyLogger1.h */,
+			);
+			path = MyLogger1;
+			sourceTree = "<group>";
+		};
+		E3970336273FB94000663A3F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,6 +137,7 @@
 				E397027C273FAA4300663A3F /* Sources */,
 				E397027D273FAA4300663A3F /* Frameworks */,
 				E397027E273FAA4300663A3F /* Resources */,
+				E3970339273FB94000663A3F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -107,12 +174,28 @@
 			mainGroup = E3970277273FAA4300663A3F;
 			productRefGroup = E3970281273FAA4300663A3F /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = E397032D273FB93400663A3F /* Products */;
+					ProjectRef = E397032C273FB93400663A3F /* MyLogger1.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				E397027F273FAA4300663A3F /* sktimokhina@edu.hse.ruPW6 */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		E3970334273FB93400663A3F /* MyLogger1.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MyLogger1.framework;
+			remoteRef = E3970333273FB93400663A3F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		E397027E273FAA4300663A3F /* Resources */ = {
@@ -131,6 +214,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3970335273FB93400663A3F /* MyLogger1.swift in Sources */,
 				E3970288273FAA4300663A3F /* ViewController.swift in Sources */,
 				E3970284273FAA4300663A3F /* AppDelegate.swift in Sources */,
 			);
