@@ -7,6 +7,8 @@
 
 import UIKit
 import MyLogger1
+import MyLogger2
+import MyLogger3
 
 class ViewController: UIViewController {
     lazy var frameworkButton: UIButton = {
@@ -20,7 +22,7 @@ class ViewController: UIViewController {
     lazy var packageButton: UIButton = {
         let button = createButton(for: "Log (package)")
         button.addTarget(self,
-                         action: #selector(onTapPachage),
+                         action: #selector(onTapPackage),
                          for: .touchUpInside)
         return button
     }()
@@ -99,17 +101,17 @@ class ViewController: UIViewController {
 
     @objc
     func onTapFramework() {
-        MyLogger1.log("Did tap framework button!")
+        MyLogger1.log("Did tap a framework button!")
     }
 
     @objc
-    func onTapPachage() {
-
+    func onTapPackage() {
+        MyLogger2.log("Did tap a package button!")
     }
 
     @objc
     func onTapPod() {
-
+        MyLogger3.log("Did tap a pod button!")
     }
 
     @objc
