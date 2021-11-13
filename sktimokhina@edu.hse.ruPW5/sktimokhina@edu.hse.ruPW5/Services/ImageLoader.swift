@@ -14,6 +14,7 @@ protocol IImageLoader {
 
 final class ImageLoader: IImageLoader {
     let imageCache = NSCache<NSString, UIImage>()
+
     private let queue = DispatchQueue(label: "ImageLoader", attributes: [.concurrent])
 
     func loadImage(path: String, completion: @escaping (UIImage?) -> Void) {
