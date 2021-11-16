@@ -9,6 +9,7 @@ import UIKit
 import MyLogger1
 import MyLogger2
 import MyLogger3
+import MyLogger4
 
 class ViewController: UIViewController {
     lazy var frameworkButton: UIButton = {
@@ -116,7 +117,7 @@ class ViewController: UIViewController {
 
     @objc
     func onTapCarthage() {
-
+        MyLogger4.log("Did tap a carthage button!")
     }
 
     @objc func onPress(_ selector: UIButton) {
