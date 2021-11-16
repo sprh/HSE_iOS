@@ -1,0 +1,16 @@
+PODS:
+  - MyLogger3 (0.1.0)
+
+DEPENDENCIES:
+  - MyLogger3 (from `../`)
+
+EXTERNAL SOURCES:
+  MyLogger3:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  MyLogger3: ee3e7113fed9fd6bdd0152e5801e05fe79492b36
+
+PODFILE CHECKSUM: ffadc71971cba6b6310a7551ef0689b430d6d81c
+
+COCOAPODS: 1.11.2
