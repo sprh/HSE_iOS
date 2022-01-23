@@ -128,7 +128,7 @@ final class MapKitScreenVC: UIViewController, IMapKitScreenVC {
 
     @objc
     func onTapClear() {
-        // TODO: update
+        mapView.mapWindow.map.mapObjects.clear()
         fromTextField.text = ""
         toTextField.text = ""
     }
