@@ -32,6 +32,7 @@ final class MapKitScreenVC: UIViewController, IMapKitScreenVC {
         textField.placeholder = "From"
         textField.becomeFirstResponder()
         textField.borderStyle = .roundedRect
+        textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         return textField
     }()
 
@@ -41,7 +42,40 @@ final class MapKitScreenVC: UIViewController, IMapKitScreenVC {
         textField.backgroundColor = .lightGray
         textField.placeholder = "To"
         textField.borderStyle = .roundedRect
+        textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         return textField
+    }()
+
+    private var clearButton: UIButton = {
+        let buttonViewModel = MainButton.ViewModel(font: .preferredFont(forTextStyle: .body),
+                                                   title: "Clear",
+                                                   enabledBackgroundColor: .systemYellow,
+                                                   disabledBackgroundColor: .gray,
+                                                   enabledTextColor: .black,
+                                                   disabledTextColor: .black)
+        let button = MainButton(viewModel: buttonViewModel)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.titleLabel?.adjustsFontForContentSizeCategory = true
+        button.isEnabled = false
+        button.layer.cornerRadius = 10
+        button.addTarget(self, action: #selector(onTapClear), for: .touchUpInside)
+        return button
+    }()
+
+    private var goButton: UIButton = {
+        let buttonViewModel = MainButton.ViewModel(font: .preferredFont(forTextStyle: .body),
+                                                   title: "Go",
+                                                   enabledBackgroundColor: .systemOrange,
+                                                   disabledBackgroundColor: .gray,
+                                                   enabledTextColor: .black,
+                                                   disabledTextColor: .black)
+        let button = MainButton(viewModel: buttonViewModel)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.titleLabel?.adjustsFontForContentSizeCategory = true
+        button.isEnabled = false
+        button.layer.cornerRadius = 10
+        button.addTarget(self, action: #selector(onTapGo), for: .touchUpInside)
+        return button
     }()
 
     init(interator: IMapKitScreenInteractor) {
@@ -63,6 +97,8 @@ final class MapKitScreenVC: UIViewController, IMapKitScreenVC {
         view.addSubview(mapView)
         view.addSubview(fromTextField)
         view.addSubview(toTextField)
+        view.addSubview(clearButton)
+        view.addSubview(goButton)
 
         NSLayoutConstraint.activate([
             fromTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -74,7 +110,35 @@ final class MapKitScreenVC: UIViewController, IMapKitScreenVC {
             toTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             toTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             toTextField.heightAnchor.constraint(equalToConstant: 30),
+
+            goButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            goButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            goButton.trailingAnchor.constraint(equalTo: view.centerXAnchor, constant: -16),
+            goButton.heightAnchor.constraint(equalToConstant: 30),
+
+            clearButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            clearButton.leadingAnchor.constraint(equalTo: view.centerXAnchor, constant: 16),
+            clearButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            clearButton.heightAnchor.constraint(equalToConstant: 30),
         ])
+    }
+
+    @objc
+    func onTapClear() {
+        // TODO: update
+        fromTextField.text = ""
+        toTextField.text = ""
+    }
+
+    @objc
+    func onTapGo() {
+
+    }
+
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        goButton.isEnabled = !(fromTextField.text?.isEmpty ?? true) && !(toTextField.text?.isEmpty ?? true)
+        // TODO: update
+        clearButton.isEnabled = !(fromTextField.text?.isEmpty ?? true) || !(toTextField.text?.isEmpty ?? true)
     }
 }
 
