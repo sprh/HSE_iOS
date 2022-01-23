@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import YandexMapKit
 
 protocol IMapKitScreenVC: UIViewController {
 
@@ -13,6 +14,16 @@ protocol IMapKitScreenVC: UIViewController {
 
 final class MapKitScreenVC: UIViewController, IMapKitScreenVC {
     private let interactor: IMapKitScreenInteractor
+
+    lazy var mapView: YMKMapView = {
+        let mapView = YMKMapView()
+        mapView.frame = view.frame
+        let mapKit = YMKMapKit.sharedInstance()
+        let userLocationLayer = mapKit.createUserLocationLayer(with: mapView.mapWindow)
+        userLocationLayer.setVisibleWithOn(true)
+        userLocationLayer.isHeadingEnabled = true
+        return mapView
+    }()
 
     init(interator: IMapKitScreenInteractor) {
         self.interactor = interator
@@ -25,6 +36,13 @@ final class MapKitScreenVC: UIViewController, IMapKitScreenVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
+
+        view.addSubview(mapView)
+
+
+        mapView.mapWindow.map.move(
+            with: YMKCameraPosition.init(target: YMKPoint(latitude: 55.751574, longitude: 37.573856), zoom: 15, azimuth: 0, tilt: 0),
+            animationType: YMKAnimation(type: YMKAnimationType.smooth, duration: 5),
+            cameraCallback: nil)
     }
 }
