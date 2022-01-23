@@ -15,6 +15,7 @@
 		E3B3FAB5279D9A1400B2C836 /* MapKitScreenInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B3FAB4279D9A1400B2C836 /* MapKitScreenInteractor.swift */; };
 		E3B3FAB7279D9A1F00B2C836 /* MapKitScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B3FAB6279D9A1F00B2C836 /* MapKitScreenPresenter.swift */; };
 		E3B3FAB9279D9A2800B2C836 /* MapKitScreenGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B3FAB8279D9A2800B2C836 /* MapKitScreenGraph.swift */; };
+		E3B3FABC279DAE3500B2C836 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B3FABB279DAE3500B2C836 /* UIView+Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		E3B3FAB4279D9A1400B2C836 /* MapKitScreenInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitScreenInteractor.swift; sourceTree = "<group>"; };
 		E3B3FAB6279D9A1F00B2C836 /* MapKitScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitScreenPresenter.swift; sourceTree = "<group>"; };
 		E3B3FAB8279D9A2800B2C836 /* MapKitScreenGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitScreenGraph.swift; sourceTree = "<group>"; };
+		E3B3FABB279DAE3500B2C836 /* UIView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 		E3B3FA9B279D995B00B2C836 /* sktimokhinaPW7 */ = {
 			isa = PBXGroup;
 			children = (
+				E3B3FABA279DAE2400B2C836 /* Utils */,
 				E3B3FAB0279D999400B2C836 /* PresentationLayer */,
 				E3B3FA9C279D995B00B2C836 /* AppDelegate.swift */,
 				E3B3FAA5279D996100B2C836 /* Assets.xcassets */,
@@ -108,6 +111,14 @@
 				E3B3FAB8279D9A2800B2C836 /* MapKitScreenGraph.swift */,
 			);
 			path = MapKitScreen;
+			sourceTree = "<group>";
+		};
+		E3B3FABA279DAE2400B2C836 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				E3B3FABB279DAE3500B2C836 /* UIView+Utils.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,6 +239,7 @@
 				E3B3FAB5279D9A1400B2C836 /* MapKitScreenInteractor.swift in Sources */,
 				E3B3FAB9279D9A2800B2C836 /* MapKitScreenGraph.swift in Sources */,
 				E3B3FAB3279D99F400B2C836 /* MapKitScreenVC.swift in Sources */,
+				E3B3FABC279DAE3500B2C836 /* UIView+Utils.swift in Sources */,
 				E3B3FA9D279D995B00B2C836 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -25,6 +25,25 @@ final class MapKitScreenVC: UIViewController, IMapKitScreenVC {
         return mapView
     }()
 
+    lazy var fromTextField: UITextField = {
+        let textField = UITextField()
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.backgroundColor = .lightGray
+        textField.placeholder = "From"
+        textField.becomeFirstResponder()
+        textField.borderStyle = .roundedRect
+        return textField
+    }()
+
+    lazy var toTextField: UITextField = {
+        let textField = UITextField()
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.backgroundColor = .lightGray
+        textField.placeholder = "To"
+        textField.borderStyle = .roundedRect
+        return textField
+    }()
+
     init(interator: IMapKitScreenInteractor) {
         self.interactor = interator
         super.init(nibName: nil, bundle: nil)
@@ -36,7 +55,26 @@ final class MapKitScreenVC: UIViewController, IMapKitScreenVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.hideKeyboardWhenTappedAround()
+        setup()
+    }
+
+    func setup() {
         view.addSubview(mapView)
+        view.addSubview(fromTextField)
+        view.addSubview(toTextField)
+
+        NSLayoutConstraint.activate([
+            fromTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            fromTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            fromTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            fromTextField.heightAnchor.constraint(equalToConstant: 30),
+
+            toTextField.topAnchor.constraint(equalTo: fromTextField.bottomAnchor, constant: 16),
+            toTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            toTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            toTextField.heightAnchor.constraint(equalToConstant: 30),
+        ])
     }
 }
 
