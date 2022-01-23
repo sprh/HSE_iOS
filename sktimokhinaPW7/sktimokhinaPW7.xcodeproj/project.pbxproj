@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		627959EAE5EBA3C11AE800B7 /* Pods_sktimokhinaPW7.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C3EDB39244706F1EC991CF6 /* Pods_sktimokhinaPW7.framework */; };
 		E3B3FA9D279D995B00B2C836 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B3FA9C279D995B00B2C836 /* AppDelegate.swift */; };
 		E3B3FAA6279D996100B2C836 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3B3FAA5279D996100B2C836 /* Assets.xcassets */; };
 		E3B3FAA9279D996100B2C836 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3B3FAA7279D996100B2C836 /* LaunchScreen.storyboard */; };
@@ -17,6 +18,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3DF42A5C88AC5DA71A9707AB /* Pods-sktimokhinaPW7.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sktimokhinaPW7.debug.xcconfig"; path = "Target Support Files/Pods-sktimokhinaPW7/Pods-sktimokhinaPW7.debug.xcconfig"; sourceTree = "<group>"; };
+		8C3EDB39244706F1EC991CF6 /* Pods_sktimokhinaPW7.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_sktimokhinaPW7.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF392274CDB010528389E0BE /* Pods-sktimokhinaPW7.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sktimokhinaPW7.release.xcconfig"; path = "Target Support Files/Pods-sktimokhinaPW7/Pods-sktimokhinaPW7.release.xcconfig"; sourceTree = "<group>"; };
 		E3B3FA99279D995B00B2C836 /* sktimokhinaPW7.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sktimokhinaPW7.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3B3FA9C279D995B00B2C836 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3B3FAA5279D996100B2C836 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -33,17 +37,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				627959EAE5EBA3C11AE800B7 /* Pods_sktimokhinaPW7.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		70BCA4686911CB6AFE292B97 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3DF42A5C88AC5DA71A9707AB /* Pods-sktimokhinaPW7.debug.xcconfig */,
+				BF392274CDB010528389E0BE /* Pods-sktimokhinaPW7.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		DDB0391B50E5148E217F12E8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8C3EDB39244706F1EC991CF6 /* Pods_sktimokhinaPW7.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E3B3FA90279D995B00B2C836 = {
 			isa = PBXGroup;
 			children = (
 				E3B3FA9B279D995B00B2C836 /* sktimokhinaPW7 */,
 				E3B3FA9A279D995B00B2C836 /* Products */,
+				70BCA4686911CB6AFE292B97 /* Pods */,
+				DDB0391B50E5148E217F12E8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -93,9 +118,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E3B3FAAD279D996100B2C836 /* Build configuration list for PBXNativeTarget "sktimokhinaPW7" */;
 			buildPhases = (
+				66EFAD021DB5D1997DEABC97 /* [CP] Check Pods Manifest.lock */,
 				E3B3FA95279D995B00B2C836 /* Sources */,
 				E3B3FA96279D995B00B2C836 /* Frameworks */,
 				E3B3FA97279D995B00B2C836 /* Resources */,
+				0BBF44F0EAA2BDB638DD76E3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -150,6 +177,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0BBF44F0EAA2BDB638DD76E3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-sktimokhinaPW7/Pods-sktimokhinaPW7-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-sktimokhinaPW7/Pods-sktimokhinaPW7-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-sktimokhinaPW7/Pods-sktimokhinaPW7-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		66EFAD021DB5D1997DEABC97 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-sktimokhinaPW7-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E3B3FA95279D995B00B2C836 /* Sources */ = {
@@ -296,6 +365,7 @@
 		};
 		E3B3FAAE279D996100B2C836 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3DF42A5C88AC5DA71A9707AB /* Pods-sktimokhinaPW7.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -324,6 +394,7 @@
 		};
 		E3B3FAAF279D996100B2C836 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BF392274CDB010528389E0BE /* Pods-sktimokhinaPW7.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
