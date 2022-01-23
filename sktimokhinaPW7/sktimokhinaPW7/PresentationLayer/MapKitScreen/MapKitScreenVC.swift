@@ -9,11 +9,14 @@ import UIKit
 import YandexMapsMobile
 
 protocol IMapKitScreenVC: UIViewController {
-
+    func onGetRouteError(error: String)
+    func onGetRoute(route: Route)
 }
 
 final class MapKitScreenVC: UIViewController, IMapKitScreenVC {
     private let interactor: IMapKitScreenInteractor
+    var drivingSession: YMKDrivingSession?
+
 
     lazy var mapView: YMKMapView = {
         let mapView = YMKMapView()
@@ -132,13 +135,72 @@ final class MapKitScreenVC: UIViewController, IMapKitScreenVC {
 
     @objc
     func onTapGo() {
-
+        guard let from = fromTextField.text,
+              let to = toTextField.text,
+              from != to else {
+                  showError(errorMessage: "One of routes is nil or routes are the same")
+                  return
+              }
+        interactor.getRoute(from: from, to: to)
     }
 
     @objc func textFieldDidChange(_ textField: UITextField) {
         goButton.isEnabled = !(fromTextField.text?.isEmpty ?? true) && !(toTextField.text?.isEmpty ?? true)
         // TODO: update
         clearButton.isEnabled = !(fromTextField.text?.isEmpty ?? true) || !(toTextField.text?.isEmpty ?? true)
+    }
+
+    func onGetRouteError(error: String) {
+        showError(errorMessage: error)
+    }
+
+    func onGetRoute(route: Route) {
+        let requestPoints : [YMKRequestPoint] = [
+            YMKRequestPoint(point: route.from, type: .waypoint, pointContext: nil),
+            YMKRequestPoint(point: route.to, type: .waypoint, pointContext: nil),
+            ]
+
+        let responseHandler = {(routesResponse: [YMKDrivingRoute]?, error: Error?) -> Void in
+            if let routes = routesResponse {
+                self.onRoutesReceived(routes)
+            } else {
+                self.onRoutesError(error!)
+            }
+        }
+
+        let drivingRouter = YMKDirections.sharedInstance().createDrivingRouter()
+        drivingSession = drivingRouter.requestRoutes(
+            with: requestPoints,
+            drivingOptions: YMKDrivingDrivingOptions(),
+            vehicleOptions: YMKDrivingVehicleOptions(),
+            routeHandler: responseHandler)
+    }
+
+    func onRoutesReceived(_ routes: [YMKDrivingRoute]) {
+        let mapObjects = mapView.mapWindow.map.mapObjects
+        guard let firstRoute = routes.first else {
+            showError(errorMessage: "Ops, can't find routes")
+            return
+        }
+        mapObjects.addPolyline(with: firstRoute.geometry)
+    }
+
+    func onRoutesError(_ error: Error) {
+        let routingError = (error as NSError).userInfo[YRTUnderlyingErrorKey] as! YRTError
+        var errorMessage = "Unknown error"
+        if routingError.isKind(of: YRTNetworkError.self) {
+            errorMessage = "Network error"
+        } else if routingError.isKind(of: YRTRemoteError.self) {
+            errorMessage = "Remote server error"
+        }
+        showError(errorMessage: errorMessage)
+    }
+
+    func showError(errorMessage: String) {
+        let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+
+        present(alert, animated: true, completion: nil)
     }
 }
 
