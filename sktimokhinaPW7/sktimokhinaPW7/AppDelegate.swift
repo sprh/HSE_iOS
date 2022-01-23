@@ -6,14 +6,15 @@
 //
 
 import UIKit
-import YandexMapKit
+import YandexMapsMobile
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        YMKMapKit.setApiKey("66dd1c61-dc87-48cb-807b-c560e6dc582b")
+        YMKMapKit.setApiKey("6254c4a4-c951-457d-a9b5-3953ff6351ce")
+        YMKMapKit.initialize()
         window = UIWindow()
 
         let graph = MapKitScreenGraph()

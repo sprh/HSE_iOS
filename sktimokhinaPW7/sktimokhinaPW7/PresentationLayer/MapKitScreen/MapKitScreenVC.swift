@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import YandexMapKit
+import YandexMapsMobile
 
 protocol IMapKitScreenVC: UIViewController {
 
@@ -36,13 +36,25 @@ final class MapKitScreenVC: UIViewController, IMapKitScreenVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         view.addSubview(mapView)
-
-
-        mapView.mapWindow.map.move(
-            with: YMKCameraPosition.init(target: YMKPoint(latitude: 55.751574, longitude: 37.573856), zoom: 15, azimuth: 0, tilt: 0),
-            animationType: YMKAnimation(type: YMKAnimationType.smooth, duration: 5),
-            cameraCallback: nil)
     }
 }
+
+//extension MapKitScreenVC: YMKLocationDelegate {
+//    func onLocationUpdated(with location: YMKLocation) {
+//        print(location)
+//        let lat = location.position.latitude
+//        let lon = location.position.longitude
+//        mapView.mapWindow.map.move(
+//            with: YMKCameraPosition.init(target: YMKPoint(latitude: lat, longitude: lon),
+//                                         zoom: 5,
+//                                         azimuth: 0,
+//                                         tilt: 0),
+//            animationType: YMKAnimation(type: YMKAnimationType.smooth, duration: 5),
+//            cameraCallback: nil)
+//    }
+//
+//    func onLocationStatusUpdated(with status: YMKLocationStatus) {
+//        print(status)
+//    }
+//}
