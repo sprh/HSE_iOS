@@ -10,18 +10,20 @@ import YandexMapsMobile
 
 
 protocol IMapKitScreenInteractor {
-    func getRoute(from: String, to: String)
+    func getRoute(from: String, to: String, of type: RouteType)
 }
 
 final class MapKitScreenInteractor: IMapKitScreenInteractor {
     private let presenter: IMapKitScreenPresenter
     private let queue = DispatchQueue(label: "MapKitScreenInteractor")
+    private let entity: MapKitScreenEntity
 
-    init(presenter: IMapKitScreenPresenter) {
+    init(presenter: IMapKitScreenPresenter, entity: MapKitScreenEntity) {
         self.presenter = presenter
+        self.entity = entity
     }
 
-    func getRoute(from: String, to: String) {
+    func getRoute(from: String, to: String, of type: RouteType) {
         var start: YMKPoint?
         var end: YMKPoint?
         let group = DispatchGroup()
@@ -52,9 +54,65 @@ final class MapKitScreenInteractor: IMapKitScreenInteractor {
             DispatchQueue.main.async { [weak self] in
                 if let start = start,
                    let end = end {
-                    self?.presenter.onGetRoute(route: Route(from: start, to: end))
+                    let route = Route(from: start, to: end)
+                    self?.getSession(for: route, of: type)
                 }
             }
+        }
+    }
+
+    private func getSession(for route: Route,
+                            of type: RouteType) {
+        let requestPoints : [YMKRequestPoint] = [
+            YMKRequestPoint(point: route.from, type: .waypoint, pointContext: nil),
+            YMKRequestPoint(point: route.to, type: .waypoint, pointContext: nil),
+        ]
+        switch type {
+        case .car:
+            let responseHandler = {[weak self] (routesResponse: [YMKDrivingRoute]?, error: Error?) -> Void in
+                if let routes = routesResponse,
+                   let firstRoute = routes.first {
+                    self?.presenter.onGetRoute(routePoints: route, route: firstRoute)
+                } else {
+                    self?.presenter.onGetRouteError(error: error?.localizedDescription ?? "Ops, can't find routes")
+                }
+            }
+            let router = YMKDirections.sharedInstance().createDrivingRouter()
+            entity.drivingSession = router.requestRoutes(
+                with: requestPoints,
+                drivingOptions: YMKDrivingDrivingOptions(),
+                vehicleOptions: YMKDrivingVehicleOptions(),
+                routeHandler: responseHandler
+            )
+        case .bycycle:
+            let responseHandler = {[weak self] (routesResponse: [YMKBicycleRoute]?, error: Error?) -> Void in
+                if let routes = routesResponse,
+                   let firstRoute = routes.first {
+                    self?.presenter.onGetRoute(routePoints: route, route: firstRoute)
+                } else {
+                    self?.presenter.onGetRouteError(error: error?.localizedDescription ?? "Ops, can't find routes")
+                }
+            }
+            let router = YMKTransport.sharedInstance().createBicycleRouter()
+            entity.bicycleSession = router.requestRoutes(
+                with: requestPoints,
+                routeListener: responseHandler
+            )
+        case .masstransit:
+            let responseHandler = {[weak self] (routesResponse: [YMKMasstransitRoute]?, error: Error?) -> Void in
+                if let routes = routesResponse,
+                   let firstRoute = routes.first {
+                    self?.presenter.onGetRoute(routePoints: route, route: firstRoute)
+                } else {
+                    self?.presenter.onGetRouteError(error: error?.localizedDescription ?? "Ops, can't find routes")
+                }
+            }
+            let router = YMKTransport.sharedInstance().createPedestrianRouter()
+            entity.masstransitSession =  router.requestRoutes(
+                with: requestPoints,
+                timeOptions: YMKTimeOptions(),
+                routeHandler: responseHandler
+            )
         }
     }
 

@@ -18,6 +18,8 @@
 		E3B3FABC279DAE3500B2C836 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B3FABB279DAE3500B2C836 /* UIView+Utils.swift */; };
 		E3B3FABF279DAEE000B2C836 /* MainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B3FABE279DAEE000B2C836 /* MainButton.swift */; };
 		E3B3FAC2279DB34600B2C836 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B3FAC1279DB34600B2C836 /* Route.swift */; };
+		E3B3FAC427A1DFA100B2C836 /* RouteType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B3FAC327A1DFA100B2C836 /* RouteType.swift */; };
+		E3B3FAC627A1E00B00B2C836 /* MapKitScreenEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B3FAC527A1E00B00B2C836 /* MapKitScreenEntity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		E3B3FABB279DAE3500B2C836 /* UIView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
 		E3B3FABE279DAEE000B2C836 /* MainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButton.swift; sourceTree = "<group>"; };
 		E3B3FAC1279DB34600B2C836 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		E3B3FAC327A1DFA100B2C836 /* RouteType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteType.swift; sourceTree = "<group>"; };
+		E3B3FAC527A1E00B00B2C836 /* MapKitScreenEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitScreenEntity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +119,7 @@
 				E3B3FAB4279D9A1400B2C836 /* MapKitScreenInteractor.swift */,
 				E3B3FAB6279D9A1F00B2C836 /* MapKitScreenPresenter.swift */,
 				E3B3FAB8279D9A2800B2C836 /* MapKitScreenGraph.swift */,
+				E3B3FAC527A1E00B00B2C836 /* MapKitScreenEntity.swift */,
 			);
 			path = MapKitScreen;
 			sourceTree = "<group>";
@@ -139,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				E3B3FAC1279DB34600B2C836 /* Route.swift */,
+				E3B3FAC327A1DFA100B2C836 /* RouteType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -258,12 +264,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3B3FAB7279D9A1F00B2C836 /* MapKitScreenPresenter.swift in Sources */,
+				E3B3FAC427A1DFA100B2C836 /* RouteType.swift in Sources */,
 				E3B3FAB5279D9A1400B2C836 /* MapKitScreenInteractor.swift in Sources */,
 				E3B3FABF279DAEE000B2C836 /* MainButton.swift in Sources */,
 				E3B3FAB9279D9A2800B2C836 /* MapKitScreenGraph.swift in Sources */,
 				E3B3FAB3279D99F400B2C836 /* MapKitScreenVC.swift in Sources */,
 				E3B3FAC2279DB34600B2C836 /* Route.swift in Sources */,
 				E3B3FABC279DAE3500B2C836 /* UIView+Utils.swift in Sources */,
+				E3B3FAC627A1E00B00B2C836 /* MapKitScreenEntity.swift in Sources */,
 				E3B3FA9D279D995B00B2C836 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

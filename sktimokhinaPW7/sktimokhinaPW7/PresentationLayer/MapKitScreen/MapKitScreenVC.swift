@@ -10,7 +10,9 @@ import YandexMapsMobile
 
 protocol IMapKitScreenVC: UIViewController {
     func onGetRouteError(error: String)
-    func onGetRoute(route: Route)
+    func onGetRoute(routePoints: Route, route: YMKDrivingRoute)
+    func onGetRoute(routePoints: Route, route: YMKBicycleRoute)
+    func onGetRoute(routePoints: Route, route: YMKMasstransitRoute)
 }
 
 final class MapKitScreenVC: UIViewController, IMapKitScreenVC {
@@ -146,7 +148,7 @@ final class MapKitScreenVC: UIViewController, IMapKitScreenVC {
                   showError(errorMessage: "One of routes is nil or routes are the same")
                   return
               }
-        interactor.getRoute(from: from, to: to)
+        interactor.getRoute(from: from, to: to, of: .car)
     }
 
     func clear() {
@@ -156,39 +158,8 @@ final class MapKitScreenVC: UIViewController, IMapKitScreenVC {
         hasMapObjects = false
     }
 
-    @objc func textFieldDidChange(_ textField: UITextField) {
-        goButton.isEnabled = !(fromTextField.text?.isEmpty ?? true) && !(toTextField.text?.isEmpty ?? true)
-        clearButton.isEnabled = !(fromTextField.text?.isEmpty ?? true) || !(toTextField.text?.isEmpty ?? true) || hasMapObjects
-    }
-
     func onGetRouteError(error: String) {
         showError(errorMessage: error)
-    }
-
-    func onGetRoute(route: Route) {
-        clear()
-        hasMapObjects = true
-        let requestPoints : [YMKRequestPoint] = [
-            YMKRequestPoint(point: route.from, type: .waypoint, pointContext: nil),
-            YMKRequestPoint(point: route.to, type: .waypoint, pointContext: nil),
-        ]
-
-        let responseHandler = {[weak self] (routesResponse: [YMKDrivingRoute]?, error: Error?) -> Void in
-            if let routes = routesResponse {
-                self?.onRoutesReceived(routes)
-                self?.addPlacemark(for: [route.from, route.to],
-                                images: [UIImage(systemName: "a.circle.fill"), UIImage(systemName: "b.circle.fill")])
-            } else {
-                self?.onRoutesError(error!)
-            }
-        }
-
-        let drivingRouter = YMKDirections.sharedInstance().createDrivingRouter()
-        drivingSession = drivingRouter.requestRoutes(
-            with: requestPoints,
-            drivingOptions: YMKDrivingDrivingOptions(),
-            vehicleOptions: YMKDrivingVehicleOptions(),
-            routeHandler: responseHandler)
     }
 
     func addPlacemark(for points: [YMKPoint], images: [UIImage?]) {
@@ -201,25 +172,49 @@ final class MapKitScreenVC: UIViewController, IMapKitScreenVC {
         collection.clusterPlacemarks(withClusterRadius: 60, minZoom: 50)
     }
 
-    func onRoutesReceived(_ routes: [YMKDrivingRoute]) {
+    func onGetRoute(routePoints: Route, route: YMKDrivingRoute) {
+        clear()
+        let boundingBox = YMKBoundingBox(southWest: routePoints.from, northEast: routePoints.to)
+        let cameraPos = mapView.mapWindow.map.cameraPosition(with: boundingBox)
+        mapView.mapWindow.map.move(with: YMKCameraPosition(target: cameraPos.target,
+                                                           zoom: cameraPos.zoom,
+                                                           azimuth: cameraPos.azimuth,
+                                                           tilt: cameraPos.tilt))
         let mapObjects = mapView.mapWindow.map.mapObjects
-        guard let firstRoute = routes.first else {
-            showError(errorMessage: "Ops, can't find routes")
-            return
-        }
-        mapObjects.addPolyline(with: firstRoute.geometry)
-
+        mapObjects.addPolyline(with: route.geometry)
+        addPlacemark(for: [routePoints.from, routePoints.to],
+                        images: [UIImage(systemName: "a.circle.fill"),
+                                 UIImage(systemName: "b.circle.fill")])
     }
 
-    func onRoutesError(_ error: Error) {
-        let routingError = (error as NSError).userInfo[YRTUnderlyingErrorKey] as! YRTError
-        var errorMessage = "Unknown error"
-        if routingError.isKind(of: YRTNetworkError.self) {
-            errorMessage = "Network error"
-        } else if routingError.isKind(of: YRTRemoteError.self) {
-            errorMessage = "Remote server error"
-        }
-        showError(errorMessage: errorMessage)
+    func onGetRoute(routePoints: Route, route: YMKBicycleRoute) {
+        clear()
+        let boundingBox = YMKBoundingBox(southWest: routePoints.from, northEast: routePoints.to)
+        let cameraPos = mapView.mapWindow.map.cameraPosition(with: boundingBox)
+        mapView.mapWindow.map.move(with: YMKCameraPosition(target: cameraPos.target,
+                                                           zoom: cameraPos.zoom,
+                                                           azimuth: cameraPos.azimuth,
+                                                           tilt: cameraPos.tilt))
+        let mapObjects = mapView.mapWindow.map.mapObjects
+        mapObjects.addPolyline(with: route.geometry)
+        addPlacemark(for: [routePoints.from, routePoints.to],
+                        images: [UIImage(systemName: "a.circle.fill"),
+                                 UIImage(systemName: "b.circle.fill")])
+    }
+
+    func onGetRoute(routePoints: Route, route: YMKMasstransitRoute) {
+        clear()
+        let boundingBox = YMKBoundingBox(southWest: routePoints.from, northEast: routePoints.to)
+        let cameraPos = mapView.mapWindow.map.cameraPosition(with: boundingBox)
+        mapView.mapWindow.map.move(with: YMKCameraPosition(target: cameraPos.target,
+                                                           zoom: cameraPos.zoom,
+                                                           azimuth: cameraPos.azimuth,
+                                                           tilt: cameraPos.tilt))
+        let mapObjects = mapView.mapWindow.map.mapObjects
+        mapObjects.addPolyline(with: route.geometry)
+        addPlacemark(for: [routePoints.from, routePoints.to],
+                        images: [UIImage(systemName: "a.circle.fill"),
+                                 UIImage(systemName: "b.circle.fill")])
     }
 
     func showError(errorMessage: String) {
@@ -238,6 +233,11 @@ extension MapKitScreenVC: UITextFieldDelegate {
         textField.resignFirstResponder()
         getRoute()
         return true
+    }
+
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        goButton.isEnabled = !(fromTextField.text?.isEmpty ?? true) && !(toTextField.text?.isEmpty ?? true)
+        clearButton.isEnabled = !(fromTextField.text?.isEmpty ?? true) || !(toTextField.text?.isEmpty ?? true) || hasMapObjects
     }
 }
 
