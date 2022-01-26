@@ -68,6 +68,14 @@ class MapKitScreenViewModel: UIView {
         return button
     }()
 
+    lazy var routeTypeSegmentedControl: UISegmentedControl = {
+        let segmentedControl = UISegmentedControl(items: ["car", "bicycle", "walk"])
+        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        segmentedControl.selectedSegmentIndex = 0
+        segmentedControl.backgroundColor = .systemYellow
+        return segmentedControl
+    }()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -83,6 +91,7 @@ class MapKitScreenViewModel: UIView {
         addSubview(toTextField)
         addSubview(clearButton)
         addSubview(goButton)
+        addSubview(routeTypeSegmentedControl)
 
         NSLayoutConstraint.activate([
             fromTextField.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
@@ -104,6 +113,11 @@ class MapKitScreenViewModel: UIView {
             clearButton.leadingAnchor.constraint(equalTo: centerXAnchor, constant: 16),
             clearButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             clearButton.heightAnchor.constraint(equalToConstant: 30),
+
+            routeTypeSegmentedControl.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            routeTypeSegmentedControl.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            routeTypeSegmentedControl.bottomAnchor.constraint(equalTo: clearButton.topAnchor, constant: -16),
+            routeTypeSegmentedControl.heightAnchor.constraint(equalToConstant: 30)
         ])
     }
 }

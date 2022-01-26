@@ -20,6 +20,10 @@ final class MapKitScreenVC: UIViewController {
     private var drivingSession: YMKDrivingSession?
     private var hasMapObjects = false
 
+    private var currentRouteType: RouteType {
+        RouteType(rawValue: viewModel.routeTypeSegmentedControl.selectedSegmentIndex) ?? .car
+    }
+
     lazy var viewModel: MapKitScreenViewModel = {
         let viewModel = MapKitScreenViewModel(frame: view.frame)
         viewModel.fromTextField.addTarget(self,
@@ -32,6 +36,7 @@ final class MapKitScreenVC: UIViewController {
         viewModel.toTextField.delegate = self
         viewModel.clearButton.addTarget(self, action: #selector(onTapClear), for: .touchUpInside)
         viewModel.goButton.addTarget(self, action: #selector(onTapGo), for: .touchUpInside)
+        viewModel.routeTypeSegmentedControl.addTarget(self, action: #selector(onRouteTypeChanged), for: .valueChanged)
         return viewModel
     }()
 
@@ -54,12 +59,20 @@ final class MapKitScreenVC: UIViewController {
 
     @objc
     func onTapClear() {
+        interactor.clearRoutes()
         clear()
     }
 
     @objc
     func onTapGo() {
         getRoute()
+    }
+
+    @objc
+    private func onRouteTypeChanged() {
+        if (interactor.hasRoute) {
+            interactor.updateRoute(of: currentRouteType)
+        }
     }
 
     private func getRoute() {
@@ -69,7 +82,7 @@ final class MapKitScreenVC: UIViewController {
                   showError(errorMessage: "One of routes is nil or routes are the same")
                   return
               }
-        interactor.getRoute(from: from, to: to, of: .car)
+        interactor.getRoute(from: from, to: to, of: currentRouteType)
     }
 
     private func clear() {

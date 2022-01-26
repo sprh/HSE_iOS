@@ -11,12 +11,19 @@ import YandexMapsMobile
 
 protocol IMapKitScreenInteractor {
     func getRoute(from: String, to: String, of type: RouteType)
+
+    var hasRoute: Bool { get }
+    func clearRoutes()
+    func updateRoute(of type: RouteType)
 }
 
 final class MapKitScreenInteractor: IMapKitScreenInteractor {
     private let presenter: IMapKitScreenPresenter
-    private let queue = DispatchQueue(label: "MapKitScreenInteractor")
     private let entity: MapKitScreenEntity
+
+    var hasRoute: Bool {
+        entity.route != nil
+    }
 
     init(presenter: IMapKitScreenPresenter, entity: MapKitScreenEntity) {
         self.presenter = presenter
@@ -24,6 +31,7 @@ final class MapKitScreenInteractor: IMapKitScreenInteractor {
     }
 
     func getRoute(from: String, to: String, of type: RouteType) {
+        clearRoutes()
         var start: YMKPoint?
         var end: YMKPoint?
         let group = DispatchGroup()
@@ -54,15 +62,17 @@ final class MapKitScreenInteractor: IMapKitScreenInteractor {
             DispatchQueue.main.async { [weak self] in
                 if let start = start,
                    let end = end {
-                    let route = Route(from: start, to: end)
-                    self?.getSession(for: route, of: type)
+                    self?.entity.route = Route(from: start, to: end)
+                    self?.getSession(of: type)
                 }
             }
         }
     }
 
-    private func getSession(for route: Route,
-                            of type: RouteType) {
+    private func getSession(of type: RouteType) {
+        guard let route = entity.route else {
+            return
+        }
         let requestPoints : [YMKRequestPoint] = [
             YMKRequestPoint(point: route.from, type: .waypoint, pointContext: nil),
             YMKRequestPoint(point: route.to, type: .waypoint, pointContext: nil),
@@ -122,5 +132,13 @@ final class MapKitScreenInteractor: IMapKitScreenInteractor {
             CLGeocoder().geocodeAddressString(address)
             { completion($0?.first?.location?.coordinate, $1) }
         }
+    }
+
+    func clearRoutes() {
+        entity.clear()
+    }
+
+    func updateRoute(of type: RouteType) {
+        getSession(of: type)
     }
 }

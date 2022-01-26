@@ -7,6 +7,6 @@
 
 import Foundation
 
-enum RouteType {
+enum RouteType: Int {
     case car, bycycle, masstransit
 }
