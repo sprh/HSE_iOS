@@ -20,6 +20,7 @@
 		E3B3FAC2279DB34600B2C836 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B3FAC1279DB34600B2C836 /* Route.swift */; };
 		E3B3FAC427A1DFA100B2C836 /* RouteType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B3FAC327A1DFA100B2C836 /* RouteType.swift */; };
 		E3B3FAC627A1E00B00B2C836 /* MapKitScreenEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B3FAC527A1E00B00B2C836 /* MapKitScreenEntity.swift */; };
+		E3B3FAC827A1EA7900B2C836 /* MapKitScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B3FAC727A1EA7900B2C836 /* MapKitScreenViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		E3B3FAC1279DB34600B2C836 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		E3B3FAC327A1DFA100B2C836 /* RouteType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteType.swift; sourceTree = "<group>"; };
 		E3B3FAC527A1E00B00B2C836 /* MapKitScreenEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitScreenEntity.swift; sourceTree = "<group>"; };
+		E3B3FAC727A1EA7900B2C836 /* MapKitScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitScreenViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 				E3B3FAB6279D9A1F00B2C836 /* MapKitScreenPresenter.swift */,
 				E3B3FAB8279D9A2800B2C836 /* MapKitScreenGraph.swift */,
 				E3B3FAC527A1E00B00B2C836 /* MapKitScreenEntity.swift */,
+				E3B3FAC727A1EA7900B2C836 /* MapKitScreenViewModel.swift */,
 			);
 			path = MapKitScreen;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3B3FAB7279D9A1F00B2C836 /* MapKitScreenPresenter.swift in Sources */,
+				E3B3FAC827A1EA7900B2C836 /* MapKitScreenViewModel.swift in Sources */,
 				E3B3FAC427A1DFA100B2C836 /* RouteType.swift in Sources */,
 				E3B3FAB5279D9A1400B2C836 /* MapKitScreenInteractor.swift in Sources */,
 				E3B3FABF279DAEE000B2C836 /* MainButton.swift in Sources */,
