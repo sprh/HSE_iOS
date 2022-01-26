@@ -15,7 +15,8 @@ protocol IMapKitScreenVC: UIViewController {
 
 final class MapKitScreenVC: UIViewController, IMapKitScreenVC {
     private let interactor: IMapKitScreenInteractor
-    var drivingSession: YMKDrivingSession?
+    private var drivingSession: YMKDrivingSession?
+    private var hasMapObjects = false
 
 
     lazy var mapView: YMKMapView = {
@@ -36,6 +37,7 @@ final class MapKitScreenVC: UIViewController, IMapKitScreenVC {
         textField.becomeFirstResponder()
         textField.borderStyle = .roundedRect
         textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        textField.delegate = self
         return textField
     }()
 
@@ -46,6 +48,7 @@ final class MapKitScreenVC: UIViewController, IMapKitScreenVC {
         textField.placeholder = "To"
         textField.borderStyle = .roundedRect
         textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        textField.delegate = self
         return textField
     }()
 
@@ -128,13 +131,15 @@ final class MapKitScreenVC: UIViewController, IMapKitScreenVC {
 
     @objc
     func onTapClear() {
-        mapView.mapWindow.map.mapObjects.clear()
-        fromTextField.text = ""
-        toTextField.text = ""
+        clear()
     }
 
     @objc
     func onTapGo() {
+        getRoute()
+    }
+
+    func getRoute() {
         guard let from = fromTextField.text,
               let to = toTextField.text,
               from != to else {
@@ -144,10 +149,16 @@ final class MapKitScreenVC: UIViewController, IMapKitScreenVC {
         interactor.getRoute(from: from, to: to)
     }
 
+    func clear() {
+        mapView.mapWindow.map.mapObjects.clear()
+        fromTextField.text = ""
+        toTextField.text = ""
+        hasMapObjects = false
+    }
+
     @objc func textFieldDidChange(_ textField: UITextField) {
         goButton.isEnabled = !(fromTextField.text?.isEmpty ?? true) && !(toTextField.text?.isEmpty ?? true)
-        // TODO: update
-        clearButton.isEnabled = !(fromTextField.text?.isEmpty ?? true) || !(toTextField.text?.isEmpty ?? true)
+        clearButton.isEnabled = !(fromTextField.text?.isEmpty ?? true) || !(toTextField.text?.isEmpty ?? true) || hasMapObjects
     }
 
     func onGetRouteError(error: String) {
@@ -155,16 +166,20 @@ final class MapKitScreenVC: UIViewController, IMapKitScreenVC {
     }
 
     func onGetRoute(route: Route) {
+        clear()
+        hasMapObjects = true
         let requestPoints : [YMKRequestPoint] = [
             YMKRequestPoint(point: route.from, type: .waypoint, pointContext: nil),
             YMKRequestPoint(point: route.to, type: .waypoint, pointContext: nil),
-            ]
+        ]
 
-        let responseHandler = {(routesResponse: [YMKDrivingRoute]?, error: Error?) -> Void in
+        let responseHandler = {[weak self] (routesResponse: [YMKDrivingRoute]?, error: Error?) -> Void in
             if let routes = routesResponse {
-                self.onRoutesReceived(routes)
+                self?.onRoutesReceived(routes)
+                self?.addPlacemark(for: [route.from, route.to],
+                                images: [UIImage(systemName: "a.circle.fill"), UIImage(systemName: "b.circle.fill")])
             } else {
-                self.onRoutesError(error!)
+                self?.onRoutesError(error!)
             }
         }
 
@@ -176,6 +191,16 @@ final class MapKitScreenVC: UIViewController, IMapKitScreenVC {
             routeHandler: responseHandler)
     }
 
+    func addPlacemark(for points: [YMKPoint], images: [UIImage?]) {
+        let collection = mapView.mapWindow.map.mapObjects.addClusterizedPlacemarkCollection(with: self)
+        for i in 0..<min(points.count, images.count) {
+            collection.addPlacemark(with: points[i],
+                                    image: images[i] ?? UIImage(),
+                                    style: YMKIconStyle.init())
+        }
+        collection.clusterPlacemarks(withClusterRadius: 60, minZoom: 50)
+    }
+
     func onRoutesReceived(_ routes: [YMKDrivingRoute]) {
         let mapObjects = mapView.mapWindow.map.mapObjects
         guard let firstRoute = routes.first else {
@@ -183,6 +208,7 @@ final class MapKitScreenVC: UIViewController, IMapKitScreenVC {
             return
         }
         mapObjects.addPolyline(with: firstRoute.geometry)
+
     }
 
     func onRoutesError(_ error: Error) {
@@ -201,6 +227,22 @@ final class MapKitScreenVC: UIViewController, IMapKitScreenVC {
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
 
         present(alert, animated: true, completion: nil)
+    }
+}
+
+extension MapKitScreenVC: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if (toTextField.text?.isEmpty ?? true || fromTextField.text?.isEmpty ?? true) {
+            return false;
+        }
+        textField.resignFirstResponder()
+        getRoute()
+        return true
+    }
+}
+
+extension MapKitScreenVC: YMKClusterListener {
+    func onClusterAdded(with cluster: YMKCluster) {
     }
 }
 
