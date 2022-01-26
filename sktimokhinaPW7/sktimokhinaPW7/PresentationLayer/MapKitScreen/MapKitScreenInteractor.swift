@@ -5,12 +5,11 @@
 //  Created by Софья Тимохина on 23.01.2022.
 //
 
-import CoreLocation
 import YandexMapsMobile
 
 
 protocol IMapKitScreenInteractor {
-    func getRoute(from: String, to: String, of type: RouteType)
+    func getRoute(from: String, to: String, of type: RouteType, region: YMKVisibleRegion)
 
     var hasRoute: Bool { get }
     func clearRoutes()
@@ -20,6 +19,7 @@ protocol IMapKitScreenInteractor {
 final class MapKitScreenInteractor: IMapKitScreenInteractor {
     private let presenter: IMapKitScreenPresenter
     private let entity: MapKitScreenEntity
+    private let searchManager = YMKSearch.sharedInstance().createSearchManager(with: .combined)
 
     var hasRoute: Bool {
         entity.route != nil
@@ -30,34 +30,45 @@ final class MapKitScreenInteractor: IMapKitScreenInteractor {
         self.entity = entity
     }
 
-    func getRoute(from: String, to: String, of type: RouteType) {
+    func getRoute(from: String, to: String,
+                  of type: RouteType,
+                  region: YMKVisibleRegion) {
         clearRoutes()
+
         var start: YMKPoint?
         var end: YMKPoint?
         let group = DispatchGroup()
+        // from https://github.com/yandex/mapkit-ios-demo/blob/master/MapKitDemo/SearchViewController.swift
         group.enter()
-        getCoordinateFrom(address: from, completion: { [weak self] coords, error in
-            if let error = error {
-                self?.presenter.onGetRouteError(error: error.localizedDescription)
-                group.leave()
-                return
-            } else if let coords = coords {
-                start = YMKPoint(latitude: coords.latitude, longitude: coords.longitude)
+        var responseHandler = {[weak self] (searchResponse: YMKSearchResponse?, error: Error?) -> Void in
+            if let response = searchResponse {
+                start = response.point
+            } else {
+                self?.presenter.onGetRouteError(error: error?.localizedDescription ?? "Ops, can't find point")
             }
             group.leave()
-        })
+        }
+        entity.fromSearchSession = searchManager.submit(
+            withText: from,
+            geometry: YMKVisibleRegionUtils.toPolygon(with: region),
+            searchOptions: YMKSearchOptions(),
+            responseHandler: responseHandler)
+
         group.enter()
-        getCoordinateFrom(address: to, completion: { [weak
-                                                      self] coords, error in
-            if let error = error {
-                self?.presenter.onGetRouteError(error: error.localizedDescription)
-                group.leave()
-                return
-            } else if let coords = coords {
-                end = YMKPoint(latitude: coords.latitude, longitude: coords.longitude)
+        responseHandler = {[weak self] (searchResponse: YMKSearchResponse?, error: Error?) -> Void in
+            if let response = searchResponse {
+                end = response.point
+            } else {
+                self?.presenter.onGetRouteError(error: error?.localizedDescription ?? "Ops, can't find point")
             }
             group.leave()
-        })
+        }
+        entity.toSearchSession = searchManager.submit(
+            withText: to,
+            geometry: YMKVisibleRegionUtils.toPolygon(with: region),
+            searchOptions: YMKSearchOptions(),
+            responseHandler: responseHandler)
+
         group.notify(queue: .main) {
             DispatchQueue.main.async { [weak self] in
                 if let start = start,
@@ -126,19 +137,17 @@ final class MapKitScreenInteractor: IMapKitScreenInteractor {
         }
     }
 
-    private func getCoordinateFrom(address: String,
-                                   completion: @escaping(_ coordinate: CLLocationCoordinate2D?, _ error: Error?) -> () ) {
-        DispatchQueue.global(qos: .background).async {
-            CLGeocoder().geocodeAddressString(address)
-            { completion($0?.first?.location?.coordinate, $1) }
-        }
-    }
-
     func clearRoutes() {
         entity.clear()
     }
 
     func updateRoute(of type: RouteType) {
         getSession(of: type)
+    }
+}
+
+private extension YMKSearchResponse {
+    var point: YMKPoint? {
+        collection.children.first?.obj?.geometry.first?.point
     }
 }

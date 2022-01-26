@@ -12,6 +12,8 @@ class MapKitScreenEntity {
     private var bicycle: YMKBicycleSession?
     private var masstransit: YMKMasstransitSession?
     var route: Route?
+    var toSearchSession: YMKSearchSession?
+    var fromSearchSession: YMKSearchSession?
 
     var drivingSession: YMKDrivingSession? {
         get {

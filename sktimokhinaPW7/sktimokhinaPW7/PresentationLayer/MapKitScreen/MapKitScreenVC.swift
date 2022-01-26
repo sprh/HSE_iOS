@@ -82,7 +82,7 @@ final class MapKitScreenVC: UIViewController {
                   showError(errorMessage: "One of routes is nil or routes are the same")
                   return
               }
-        interactor.getRoute(from: from, to: to, of: currentRouteType)
+        interactor.getRoute(from: from, to: to, of: currentRouteType, region: mapView.mapWindow.focusRegion)
     }
 
     private func clear() {
@@ -90,6 +90,7 @@ final class MapKitScreenVC: UIViewController {
         viewModel.fromTextField.text = ""
         viewModel.toTextField.text = ""
         hasMapObjects = false
+        viewModel.goButton.isEnabled = false
     }
 
     private func showError(errorMessage: String) {
@@ -139,6 +140,7 @@ extension MapKitScreenVC: IMapKitScreenVC {
 
     func onGetRoute(routePoints: Route, route: YMKDrivingRoute) {
         clear()
+        print(route.jamSegments)
         let boundingBox = YMKBoundingBox(southWest: routePoints.from, northEast: routePoints.to)
         let cameraPos = mapView.mapWindow.map.cameraPosition(with: boundingBox)
         mapView.mapWindow.map.move(with: YMKCameraPosition(target: cameraPos.target,
