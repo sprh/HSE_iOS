@@ -76,6 +76,24 @@ class MapKitScreenViewModel: UIView {
         return segmentedControl
     }()
 
+    lazy var routeLenght: UIView = {
+        let view = UIView()
+//        view.isHidden = true
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.cornerRadius = 10
+        view.backgroundColor = .systemYellow
+        return view
+    }()
+
+    lazy var routeLenghtText: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 1
+        label.font = .preferredFont(forTextStyle: .caption1)
+        label.text = "test"
+        return label
+    }()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -92,6 +110,8 @@ class MapKitScreenViewModel: UIView {
         addSubview(clearButton)
         addSubview(goButton)
         addSubview(routeTypeSegmentedControl)
+        addSubview(routeLenght)
+        routeLenght.addSubview(routeLenghtText)
 
         NSLayoutConstraint.activate([
             fromTextField.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
@@ -117,7 +137,15 @@ class MapKitScreenViewModel: UIView {
             routeTypeSegmentedControl.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
             routeTypeSegmentedControl.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
             routeTypeSegmentedControl.bottomAnchor.constraint(equalTo: clearButton.topAnchor, constant: -16),
-            routeTypeSegmentedControl.heightAnchor.constraint(equalToConstant: 30)
+            routeTypeSegmentedControl.heightAnchor.constraint(equalToConstant: 30),
+
+            routeLenghtText.leadingAnchor.constraint(equalTo: routeLenght.leadingAnchor, constant: 6),
+            routeLenghtText.trailingAnchor.constraint(equalTo: routeLenght.trailingAnchor, constant: -6),
+            routeLenghtText.topAnchor.constraint(equalTo: routeLenght.topAnchor, constant: 6),
+            routeLenghtText.bottomAnchor.constraint(equalTo: routeLenght.bottomAnchor, constant: -6),
+
+            routeLenght.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            routeLenght.bottomAnchor.constraint(equalTo: routeTypeSegmentedControl.topAnchor, constant: -10),
         ])
     }
 }

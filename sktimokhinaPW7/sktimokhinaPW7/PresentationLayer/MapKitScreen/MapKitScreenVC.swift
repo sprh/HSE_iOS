@@ -142,7 +142,14 @@ extension MapKitScreenVC: IMapKitScreenVC {
     func onGetRoute(routePoints: Route, route: YMKDrivingRoute) {
         clear()
         let mapObjects = mapView.mapWindow.map.mapObjects
-        mapObjects.addPolyline(with: route.geometry)
+        let polyline = mapObjects.addColoredPolyline(with: route.geometry)
+        YMKRouteHelper.updatePolyline(withPolyline: polyline,
+                                      route: route,
+                                      style: YMKJamStyle(colors: [YMKJamTypeColor(jamType: .blocked, jam: .red),
+                                                                  YMKJamTypeColor(jamType: .hard, jam: .systemYellow),
+                                                                  YMKJamTypeColor(jamType: .free, jam: .green),
+                                                                  YMKJamTypeColor(jamType: .light, jam: .systemGreen),
+                                                                  YMKJamTypeColor(jamType: .unknown, jam: .gray)]))
         addPlacemark(for: [routePoints.from, routePoints.to],
                         images: [UIImage(systemName: "a.circle.fill"),
                                  UIImage(systemName: "b.circle.fill")])
