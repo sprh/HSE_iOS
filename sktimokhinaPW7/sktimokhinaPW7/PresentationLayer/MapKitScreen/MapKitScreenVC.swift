@@ -38,6 +38,8 @@ final class MapKitScreenVC: UIViewController {
         viewModel.goButton.addTarget(self, action: #selector(onTapGo), for: .touchUpInside)
         viewModel.routeTypeSegmentedControl.addTarget(self, action: #selector(onRouteTypeChanged),
                                                       for: .valueChanged)
+        viewModel.minusButton.addTarget(self, action: #selector(onTapMinus), for: .touchUpInside)
+        viewModel.plusButton.addTarget(self, action: #selector(onTapPlus), for: .touchUpInside)
         return viewModel
     }()
 
@@ -74,6 +76,24 @@ final class MapKitScreenVC: UIViewController {
         if (interactor.hasRoute) {
             interactor.updateRoute(of: currentRouteType)
         }
+    }
+
+    @objc
+    private func onTapMinus() {
+        moveCamera(fromCameraPosition: mapView.mapWindow.map.cameraPosition, value: -0.3)
+    }
+
+    @objc
+    private func onTapPlus() {
+        moveCamera(fromCameraPosition: mapView.mapWindow.map.cameraPosition, value: 0.3)
+    }
+
+    private func moveCamera(fromCameraPosition: YMKCameraPosition, value: Float = 0) {
+        mapView.mapWindow.map.move(with: YMKCameraPosition(target: fromCameraPosition.target,
+                                                           zoom: fromCameraPosition.zoom + value,
+                                                           azimuth: fromCameraPosition.azimuth,
+                                                           tilt: fromCameraPosition.tilt),
+                                   animationType: YMKAnimation(type: .smooth, duration: 1))
     }
 
     private func getRoute() {
@@ -186,10 +206,6 @@ extension MapKitScreenVC: IMapKitScreenVC {
 
     private func moveCamera(routePoints: Route) {
         let boundingBox = YMKBoundingBox(southWest: routePoints.from, northEast: routePoints.to)
-        let cameraPosition = mapView.mapWindow.map.cameraPosition(with: boundingBox)
-        mapView.mapWindow.map.move(with: YMKCameraPosition(target: cameraPosition.target,
-                                                           zoom: cameraPosition.zoom,
-                                                           azimuth: cameraPosition.azimuth,
-                                                           tilt: cameraPosition.tilt))
+        moveCamera(fromCameraPosition: mapView.mapWindow.map.cameraPosition(with: boundingBox), value: -0.3)
     }
 }

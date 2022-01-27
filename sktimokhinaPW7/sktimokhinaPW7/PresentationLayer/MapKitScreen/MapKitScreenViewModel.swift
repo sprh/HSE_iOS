@@ -94,6 +94,28 @@ class MapKitScreenViewModel: UIView {
         return label
     }()
 
+    lazy var plusButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.setImage(UIImage(systemName: "plus.circle.fill")?.withRenderingMode(.alwaysTemplate),
+                        for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.tintColor = .yellow
+        button.imageView?.contentMode = .scaleAspectFit
+        button.imageEdgeInsets = UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30)
+        return button
+    }()
+
+    lazy var minusButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.setImage(UIImage(systemName: "minus.circle.fill"),
+                        for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.imageView?.contentMode = .scaleAspectFit
+        button.tintColor = .yellow
+        button.imageEdgeInsets = UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30)
+        return button
+    }()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -111,6 +133,8 @@ class MapKitScreenViewModel: UIView {
         addSubview(goButton)
         addSubview(routeTypeSegmentedControl)
         addSubview(routeLenght)
+        addSubview(plusButton)
+        addSubview(minusButton)
         routeLenght.addSubview(routeLenghtText)
 
         NSLayoutConstraint.activate([
@@ -146,6 +170,12 @@ class MapKitScreenViewModel: UIView {
 
             routeLenght.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 10),
             routeLenght.bottomAnchor.constraint(equalTo: routeTypeSegmentedControl.topAnchor, constant: -10),
+
+            plusButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -25),
+            plusButton.bottomAnchor.constraint(equalTo: centerYAnchor, constant: 20),
+
+            minusButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -25),
+            minusButton.bottomAnchor.constraint(equalTo: centerYAnchor, constant: -20),
         ])
     }
 }
