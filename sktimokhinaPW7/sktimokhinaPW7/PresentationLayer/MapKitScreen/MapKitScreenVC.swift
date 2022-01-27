@@ -92,6 +92,8 @@ final class MapKitScreenVC: UIViewController {
         viewModel.toTextField.text = ""
         hasMapObjects = false
         viewModel.goButton.isEnabled = false
+        viewModel.clearButton.isEnabled = false
+        viewModel.routeLenght.isHidden = true
     }
 
     private func showError(errorMessage: String) {
@@ -154,6 +156,8 @@ extension MapKitScreenVC: IMapKitScreenVC {
                         images: [UIImage(systemName: "a.circle.fill"),
                                  UIImage(systemName: "b.circle.fill")])
         moveCamera(routePoints: routePoints)
+        viewModel.routeLenghtText.text = route.metadata.weight.distance.text
+        viewModel.routeLenght.isHidden = false
     }
 
     func onGetRoute(routePoints: Route, route: YMKBicycleRoute) {
@@ -164,6 +168,8 @@ extension MapKitScreenVC: IMapKitScreenVC {
                         images: [UIImage(systemName: "a.circle.fill"),
                                  UIImage(systemName: "b.circle.fill")])
         moveCamera(routePoints: routePoints)
+        viewModel.routeLenghtText.text = route.weight.distance.text
+        viewModel.routeLenght.isHidden = false
     }
 
     func onGetRoute(routePoints: Route, route: YMKMasstransitRoute) {
@@ -174,6 +180,8 @@ extension MapKitScreenVC: IMapKitScreenVC {
                         images: [UIImage(systemName: "a.circle.fill"),
                                  UIImage(systemName: "b.circle.fill")])
         moveCamera(routePoints: routePoints)
+        viewModel.routeLenghtText.text = route.metadata.weight.walkingDistance.text
+        viewModel.routeLenght.isHidden = false
     }
 
     private func moveCamera(routePoints: Route) {

@@ -78,7 +78,7 @@ class MapKitScreenViewModel: UIView {
 
     lazy var routeLenght: UIView = {
         let view = UIView()
-//        view.isHidden = true
+        view.isHidden = true
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerRadius = 10
         view.backgroundColor = .systemYellow
