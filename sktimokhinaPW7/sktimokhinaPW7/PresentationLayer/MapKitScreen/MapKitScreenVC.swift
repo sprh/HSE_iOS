@@ -40,6 +40,8 @@ final class MapKitScreenVC: UIViewController {
                                                       for: .valueChanged)
         viewModel.minusButton.addTarget(self, action: #selector(onTapMinus), for: .touchUpInside)
         viewModel.plusButton.addTarget(self, action: #selector(onTapPlus), for: .touchUpInside)
+        viewModel.mapView.mapWindow.map.addCameraListener(with: self)
+        viewModel.compassButton.addTarget(self, action: #selector(onTapCompass), for: .touchUpInside)
         return viewModel
     }()
 
@@ -86,6 +88,17 @@ final class MapKitScreenVC: UIViewController {
     @objc
     private func onTapPlus() {
         moveCamera(fromCameraPosition: mapView.mapWindow.map.cameraPosition, value: 0.3)
+    }
+
+    @objc
+    private func onTapCompass() {
+        let map = mapView.mapWindow.map
+        let cameraPosition = map.cameraPosition
+        map.move(with: YMKCameraPosition(target: cameraPosition.target,
+                                         zoom: cameraPosition.zoom,
+                                         azimuth: 0,
+                                         tilt: cameraPosition.tilt),
+                 animationType: YMKAnimation(type: .smooth, duration: 1))
     }
 
     private func moveCamera(fromCameraPosition: YMKCameraPosition, value: Float = 0) {
@@ -207,5 +220,12 @@ extension MapKitScreenVC: IMapKitScreenVC {
     private func moveCamera(routePoints: Route) {
         let boundingBox = YMKBoundingBox(southWest: routePoints.from, northEast: routePoints.to)
         moveCamera(fromCameraPosition: mapView.mapWindow.map.cameraPosition(with: boundingBox), value: -0.3)
+    }
+}
+
+extension MapKitScreenVC: YMKMapCameraListener {
+    func onCameraPositionChanged(with map: YMKMap, cameraPosition: YMKCameraPosition,
+                                 cameraUpdateReason: YMKCameraUpdateReason, finished: Bool) {
+        viewModel.compassButton.transform = CGAffineTransform(rotationAngle: CGFloat(cameraPosition.azimuth / 360))
     }
 }

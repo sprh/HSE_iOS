@@ -116,6 +116,18 @@ class MapKitScreenViewModel: UIView {
         return button
     }()
 
+
+    lazy var compassButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.setImage(UIImage(systemName: "safari.fill"),
+                        for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.imageView?.contentMode = .scaleAspectFit
+        button.tintColor = .yellow
+        button.imageEdgeInsets = UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30)
+        return button
+    }()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -135,6 +147,7 @@ class MapKitScreenViewModel: UIView {
         addSubview(routeLenght)
         addSubview(plusButton)
         addSubview(minusButton)
+        addSubview(compassButton)
         routeLenght.addSubview(routeLenghtText)
 
         NSLayoutConstraint.activate([
@@ -176,6 +189,9 @@ class MapKitScreenViewModel: UIView {
 
             minusButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -25),
             minusButton.bottomAnchor.constraint(equalTo: centerYAnchor, constant: -20),
+
+            compassButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -25),
+            compassButton.bottomAnchor.constraint(equalTo: routeTypeSegmentedControl.topAnchor, constant: -20),
         ])
     }
 }
