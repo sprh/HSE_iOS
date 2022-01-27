@@ -241,7 +241,7 @@ extension MapKitScreenVC: IMapKitScreenVC {
                                             style: YMKIconStyle.init())
             }
         }
-        foodCollection.clusterPlacemarks(withClusterRadius: 60, minZoom: 500)
+        foodCollection.clusterPlacemarks(withClusterRadius: 1, minZoom: 1)
     }
 }
 
