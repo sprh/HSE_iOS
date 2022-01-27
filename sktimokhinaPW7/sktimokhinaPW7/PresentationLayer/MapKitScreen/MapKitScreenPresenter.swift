@@ -14,9 +14,12 @@ protocol IMapKitScreenPresenter {
     func onGetRoute(routePoints: Route, route: YMKDrivingRoute)
     func onGetRoute(routePoints: Route, route: YMKBicycleRoute)
     func onGetRoute(routePoints: Route, route: YMKMasstransitRoute)
+    func onGetFood(points: [YMKGeoObjectCollectionItem])
 }
 
 final class MapKitScreenPresenter: IMapKitScreenPresenter {
+    weak var viewController: IMapKitScreenVC?
+
     func onGetRoute(routePoints: Route, route: YMKDrivingRoute) {
         viewController?.onGetRoute(routePoints: routePoints, route: route)
     }
@@ -29,9 +32,11 @@ final class MapKitScreenPresenter: IMapKitScreenPresenter {
         viewController?.onGetRoute(routePoints: routePoints, route: route)
     }
 
-    weak var viewController: IMapKitScreenVC?
-
     func onGetRouteError(error: String) {
         viewController?.onGetRouteError(error: error)
+    }
+
+    func onGetFood(points: [YMKGeoObjectCollectionItem]) {
+        viewController?.onGetFood(points: points)
     }
 }

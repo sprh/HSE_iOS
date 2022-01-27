@@ -13,12 +13,14 @@ protocol IMapKitScreenVC: UIViewController {
     func onGetRoute(routePoints: Route, route: YMKDrivingRoute)
     func onGetRoute(routePoints: Route, route: YMKBicycleRoute)
     func onGetRoute(routePoints: Route, route: YMKMasstransitRoute)
+    func onGetFood(points: [YMKGeoObjectCollectionItem])
 }
 
 final class MapKitScreenVC: UIViewController {
     private let interactor: IMapKitScreenInteractor
     private var drivingSession: YMKDrivingSession?
     private var hasMapObjects = false
+    lazy var foodCollection = mapView.mapWindow.map.mapObjects.addClusterizedPlacemarkCollection(with: self)
 
     private var currentRouteType: RouteType {
         RouteType(rawValue: viewModel.routeTypeSegmentedControl.selectedSegmentIndex) ?? .car
@@ -42,6 +44,7 @@ final class MapKitScreenVC: UIViewController {
         viewModel.plusButton.addTarget(self, action: #selector(onTapPlus), for: .touchUpInside)
         viewModel.mapView.mapWindow.map.addCameraListener(with: self)
         viewModel.compassButton.addTarget(self, action: #selector(onTapCompass), for: .touchUpInside)
+        viewModel.foodButton.addTarget(self, action: #selector(onTapFoodButton), for: .touchUpInside)
         return viewModel
     }()
 
@@ -101,6 +104,11 @@ final class MapKitScreenVC: UIViewController {
                  animationType: YMKAnimation(type: .smooth, duration: 1))
     }
 
+    @objc
+    private func onTapFoodButton() {
+        interactor.searchForFood(region: mapView.mapWindow.focusRegion)
+    }
+
     private func moveCamera(fromCameraPosition: YMKCameraPosition, value: Float = 0) {
         mapView.mapWindow.map.move(with: YMKCameraPosition(target: fromCameraPosition.target,
                                                            zoom: fromCameraPosition.zoom + value,
@@ -135,6 +143,12 @@ final class MapKitScreenVC: UIViewController {
 
         present(alert, animated: true, completion: nil)
     }
+
+    private func moveCamera(routePoints: Route) {
+        let boundingBox = YMKBoundingBox(southWest: routePoints.from, northEast: routePoints.to)
+        moveCamera(fromCameraPosition: mapView.mapWindow.map.cameraPosition(with: boundingBox),
+                   value: -0.3)
+    }
 }
 
 extension MapKitScreenVC: UITextFieldDelegate {
@@ -158,7 +172,7 @@ extension MapKitScreenVC: YMKClusterListener {
     func onClusterAdded(with cluster: YMKCluster) {
     }
 
-    private func addPlacemark(for points: [YMKPoint], images: [UIImage?]) {
+    private func addPlacemarks(for points: [YMKPoint], images: [UIImage?]) {
         let collection = mapView.mapWindow.map.mapObjects.addClusterizedPlacemarkCollection(with: self)
         for i in 0..<min(points.count, images.count) {
             collection.addPlacemark(with: points[i],
@@ -185,9 +199,9 @@ extension MapKitScreenVC: IMapKitScreenVC {
                                                                   YMKJamTypeColor(jamType: .free, jam: .green),
                                                                   YMKJamTypeColor(jamType: .light, jam: .systemGreen),
                                                                   YMKJamTypeColor(jamType: .unknown, jam: .gray)]))
-        addPlacemark(for: [routePoints.from, routePoints.to],
-                        images: [UIImage(systemName: "a.circle.fill"),
-                                 UIImage(systemName: "b.circle.fill")])
+        addPlacemarks(for: [routePoints.from, routePoints.to],
+                         images: [UIImage(systemName: "a.circle.fill"),
+                                  UIImage(systemName: "b.circle.fill")])
         moveCamera(routePoints: routePoints)
         viewModel.routeLenghtText.text = route.metadata.weight.distance.text
         viewModel.routeLenght.isHidden = false
@@ -197,9 +211,9 @@ extension MapKitScreenVC: IMapKitScreenVC {
         clear()
         let mapObjects = mapView.mapWindow.map.mapObjects
         mapObjects.addPolyline(with: route.geometry)
-        addPlacemark(for: [routePoints.from, routePoints.to],
-                        images: [UIImage(systemName: "a.circle.fill"),
-                                 UIImage(systemName: "b.circle.fill")])
+        addPlacemarks(for: [routePoints.from, routePoints.to],
+                         images: [UIImage(systemName: "a.circle.fill"),
+                                  UIImage(systemName: "b.circle.fill")])
         moveCamera(routePoints: routePoints)
         viewModel.routeLenghtText.text = route.weight.distance.text
         viewModel.routeLenght.isHidden = false
@@ -209,17 +223,25 @@ extension MapKitScreenVC: IMapKitScreenVC {
         clear()
         let mapObjects = mapView.mapWindow.map.mapObjects
         mapObjects.addPolyline(with: route.geometry)
-        addPlacemark(for: [routePoints.from, routePoints.to],
-                        images: [UIImage(systemName: "a.circle.fill"),
-                                 UIImage(systemName: "b.circle.fill")])
+        addPlacemarks(for: [routePoints.from, routePoints.to],
+                         images: [UIImage(systemName: "a.circle.fill"),
+                                  UIImage(systemName: "b.circle.fill")])
         moveCamera(routePoints: routePoints)
         viewModel.routeLenghtText.text = route.metadata.weight.walkingDistance.text
         viewModel.routeLenght.isHidden = false
     }
 
-    private func moveCamera(routePoints: Route) {
-        let boundingBox = YMKBoundingBox(southWest: routePoints.from, northEast: routePoints.to)
-        moveCamera(fromCameraPosition: mapView.mapWindow.map.cameraPosition(with: boundingBox), value: -0.3)
+    func onGetFood(points: [YMKGeoObjectCollectionItem]) {
+        foodCollection.clear()
+        hasMapObjects = true
+        for searchResult in points {
+            if let point = searchResult.obj?.geometry.first?.point {
+                foodCollection.addPlacemark(with: point,
+                                            image: UIImage(named: "food") ?? UIImage(),
+                                            style: YMKIconStyle.init())
+            }
+        }
+        foodCollection.clusterPlacemarks(withClusterRadius: 60, minZoom: 500)
     }
 }
 

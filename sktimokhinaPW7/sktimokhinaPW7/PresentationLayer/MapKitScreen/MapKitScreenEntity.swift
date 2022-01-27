@@ -14,6 +14,7 @@ class MapKitScreenEntity {
     var route: Route?
     var toSearchSession: YMKSearchSession?
     var fromSearchSession: YMKSearchSession?
+    var foodSearchSession: YMKSearchSession?
 
     var drivingSession: YMKDrivingSession? {
         get {

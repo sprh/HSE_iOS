@@ -46,7 +46,6 @@ class MapKitScreenViewModel: UIView {
                                                    enabledTextColor: .black,
                                                    disabledTextColor: .black)
         let button = MainButton(viewModel: buttonViewModel)
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.titleLabel?.adjustsFontForContentSizeCategory = true
         button.isEnabled = false
         button.layer.cornerRadius = 10
@@ -61,7 +60,6 @@ class MapKitScreenViewModel: UIView {
                                                    enabledTextColor: .black,
                                                    disabledTextColor: .black)
         let button = MainButton(viewModel: buttonViewModel)
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.titleLabel?.adjustsFontForContentSizeCategory = true
         button.isEnabled = false
         button.layer.cornerRadius = 10
@@ -128,6 +126,27 @@ class MapKitScreenViewModel: UIView {
         return button
     }()
 
+    lazy var bottomButtonsStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.distribution = .equalSpacing
+        return stackView
+    }()
+
+    lazy var foodButton: UIButton = {
+        let buttonViewModel = MainButton.ViewModel(font: .preferredFont(forTextStyle: .body),
+                                                   title: "Food",
+                                                   enabledBackgroundColor: .systemOrange,
+                                                   disabledBackgroundColor: .gray,
+                                                   enabledTextColor: .black,
+                                                   disabledTextColor: .black)
+        let button = MainButton(viewModel: buttonViewModel)
+        button.titleLabel?.adjustsFontForContentSizeCategory = true
+        button.layer.cornerRadius = 10
+        button.isEnabled = true
+        return button
+    }()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -141,13 +160,15 @@ class MapKitScreenViewModel: UIView {
         addSubview(mapView)
         addSubview(fromTextField)
         addSubview(toTextField)
-        addSubview(clearButton)
-        addSubview(goButton)
         addSubview(routeTypeSegmentedControl)
         addSubview(routeLenght)
         addSubview(plusButton)
         addSubview(minusButton)
         addSubview(compassButton)
+        addSubview(bottomButtonsStackView)
+        bottomButtonsStackView.addArrangedSubview(goButton)
+        bottomButtonsStackView.addArrangedSubview(clearButton)
+        bottomButtonsStackView.addArrangedSubview(foodButton)
         routeLenght.addSubview(routeLenghtText)
 
         NSLayoutConstraint.activate([
@@ -160,16 +181,6 @@ class MapKitScreenViewModel: UIView {
             toTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             toTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             toTextField.heightAnchor.constraint(equalToConstant: 30),
-
-            goButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
-            goButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            goButton.trailingAnchor.constraint(equalTo: centerXAnchor, constant: -16),
-            goButton.heightAnchor.constraint(equalToConstant: 30),
-
-            clearButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
-            clearButton.leadingAnchor.constraint(equalTo: centerXAnchor, constant: 16),
-            clearButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            clearButton.heightAnchor.constraint(equalToConstant: 30),
 
             routeTypeSegmentedControl.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
             routeTypeSegmentedControl.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
@@ -192,6 +203,21 @@ class MapKitScreenViewModel: UIView {
 
             compassButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -25),
             compassButton.bottomAnchor.constraint(equalTo: routeTypeSegmentedControl.topAnchor, constant: -20),
+
+
+            bottomButtonsStackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            bottomButtonsStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            bottomButtonsStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            bottomButtonsStackView.heightAnchor.constraint(equalToConstant: 30),
+
+            goButton.heightAnchor.constraint(equalToConstant: 30),
+            goButton.widthAnchor.constraint(equalToConstant: frame.width / 3 - 50),
+
+            clearButton.heightAnchor.constraint(equalToConstant: 30),
+            clearButton.widthAnchor.constraint(equalToConstant: frame.width / 3 - 50),
+
+            foodButton.heightAnchor.constraint(equalToConstant: 30),
+            foodButton.widthAnchor.constraint(equalToConstant: frame.width / 3 - 50),
         ])
     }
 }

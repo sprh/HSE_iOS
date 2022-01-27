@@ -10,31 +10,32 @@ import YandexMapsMobile
 
 protocol IMapKitScreenInteractor {
     func getRoute(from: String, to: String, of type: RouteType, region: YMKVisibleRegion)
-
+    
     var hasRoute: Bool { get }
     func clearRoutes()
     func updateRoute(of type: RouteType)
+    func searchForFood(region: YMKVisibleRegion)
 }
 
 final class MapKitScreenInteractor: IMapKitScreenInteractor {
     private let presenter: IMapKitScreenPresenter
     private let entity: MapKitScreenEntity
     private let searchManager = YMKSearch.sharedInstance().createSearchManager(with: .combined)
-
+    
     var hasRoute: Bool {
         entity.route != nil
     }
-
+    
     init(presenter: IMapKitScreenPresenter, entity: MapKitScreenEntity) {
         self.presenter = presenter
         self.entity = entity
     }
-
+    
     func getRoute(from: String, to: String,
                   of type: RouteType,
                   region: YMKVisibleRegion) {
         clearRoutes()
-
+        
         var start: YMKPoint?
         var end: YMKPoint?
         let group = DispatchGroup()
@@ -53,7 +54,7 @@ final class MapKitScreenInteractor: IMapKitScreenInteractor {
             geometry: YMKVisibleRegionUtils.toPolygon(with: region),
             searchOptions: YMKSearchOptions(),
             responseHandler: responseHandler)
-
+        
         group.enter()
         responseHandler = {[weak self] (searchResponse: YMKSearchResponse?, error: Error?) -> Void in
             if let response = searchResponse {
@@ -68,7 +69,7 @@ final class MapKitScreenInteractor: IMapKitScreenInteractor {
             geometry: YMKVisibleRegionUtils.toPolygon(with: region),
             searchOptions: YMKSearchOptions(),
             responseHandler: responseHandler)
-
+        
         group.notify(queue: .main) {
             DispatchQueue.main.async { [weak self] in
                 if let start = start,
@@ -79,7 +80,7 @@ final class MapKitScreenInteractor: IMapKitScreenInteractor {
             }
         }
     }
-
+    
     private func getSession(of type: RouteType) {
         guard let route = entity.route else {
             return
@@ -136,13 +137,32 @@ final class MapKitScreenInteractor: IMapKitScreenInteractor {
             )
         }
     }
-
+    
     func clearRoutes() {
         entity.clear()
     }
-
+    
     func updateRoute(of type: RouteType) {
         getSession(of: type)
+    }
+    
+    func searchForFood(region: YMKVisibleRegion) {
+        //        let group = DispatchGroup()
+        // from https://github.com/yandex/mapkit-ios-demo/blob/master/MapKitDemo/SearchViewController.swift
+        //        group.enter()
+        let responseHandler = {[weak self] (searchResponse: YMKSearchResponse?, error: Error?) -> Void in
+            if let response = searchResponse {
+                self?.presenter.onGetFood(points: response.collection.children)
+            } else {
+                self?.presenter.onGetRouteError(error: error?.localizedDescription ?? "Ops, can't find food")
+            }
+            //            group.leave()
+        }
+        entity.foodSearchSession = searchManager.submit(
+            withText: "food",
+            geometry: YMKVisibleRegionUtils.toPolygon(with: region),
+            searchOptions: YMKSearchOptions(),
+            responseHandler: responseHandler)
     }
 }
 
