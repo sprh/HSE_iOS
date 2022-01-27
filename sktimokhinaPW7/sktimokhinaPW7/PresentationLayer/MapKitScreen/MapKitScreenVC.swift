@@ -31,12 +31,13 @@ final class MapKitScreenVC: UIViewController {
                                           for: .editingChanged)
         viewModel.fromTextField.delegate = self
         viewModel.toTextField.addTarget(self,
-                                          action: #selector(textFieldDidChange(_:)),
-                                          for: .editingChanged)
+                                        action: #selector(textFieldDidChange(_:)),
+                                        for: .editingChanged)
         viewModel.toTextField.delegate = self
         viewModel.clearButton.addTarget(self, action: #selector(onTapClear), for: .touchUpInside)
         viewModel.goButton.addTarget(self, action: #selector(onTapGo), for: .touchUpInside)
-        viewModel.routeTypeSegmentedControl.addTarget(self, action: #selector(onRouteTypeChanged), for: .valueChanged)
+        viewModel.routeTypeSegmentedControl.addTarget(self, action: #selector(onRouteTypeChanged),
+                                                      for: .valueChanged)
         return viewModel
     }()
 
@@ -140,47 +141,40 @@ extension MapKitScreenVC: IMapKitScreenVC {
 
     func onGetRoute(routePoints: Route, route: YMKDrivingRoute) {
         clear()
-        print(route.jamSegments)
-        let boundingBox = YMKBoundingBox(southWest: routePoints.from, northEast: routePoints.to)
-        let cameraPos = mapView.mapWindow.map.cameraPosition(with: boundingBox)
-        mapView.mapWindow.map.move(with: YMKCameraPosition(target: cameraPos.target,
-                                                           zoom: cameraPos.zoom,
-                                                           azimuth: cameraPos.azimuth,
-                                                           tilt: cameraPos.tilt))
         let mapObjects = mapView.mapWindow.map.mapObjects
         mapObjects.addPolyline(with: route.geometry)
         addPlacemark(for: [routePoints.from, routePoints.to],
                         images: [UIImage(systemName: "a.circle.fill"),
                                  UIImage(systemName: "b.circle.fill")])
+        moveCamera(routePoints: routePoints)
     }
 
     func onGetRoute(routePoints: Route, route: YMKBicycleRoute) {
         clear()
-        let boundingBox = YMKBoundingBox(southWest: routePoints.from, northEast: routePoints.to)
-        let cameraPos = mapView.mapWindow.map.cameraPosition(with: boundingBox)
-        mapView.mapWindow.map.move(with: YMKCameraPosition(target: cameraPos.target,
-                                                           zoom: cameraPos.zoom,
-                                                           azimuth: cameraPos.azimuth,
-                                                           tilt: cameraPos.tilt))
         let mapObjects = mapView.mapWindow.map.mapObjects
         mapObjects.addPolyline(with: route.geometry)
         addPlacemark(for: [routePoints.from, routePoints.to],
                         images: [UIImage(systemName: "a.circle.fill"),
                                  UIImage(systemName: "b.circle.fill")])
+        moveCamera(routePoints: routePoints)
     }
 
     func onGetRoute(routePoints: Route, route: YMKMasstransitRoute) {
         clear()
-        let boundingBox = YMKBoundingBox(southWest: routePoints.from, northEast: routePoints.to)
-        let cameraPos = mapView.mapWindow.map.cameraPosition(with: boundingBox)
-        mapView.mapWindow.map.move(with: YMKCameraPosition(target: cameraPos.target,
-                                                           zoom: cameraPos.zoom,
-                                                           azimuth: cameraPos.azimuth,
-                                                           tilt: cameraPos.tilt))
         let mapObjects = mapView.mapWindow.map.mapObjects
         mapObjects.addPolyline(with: route.geometry)
         addPlacemark(for: [routePoints.from, routePoints.to],
                         images: [UIImage(systemName: "a.circle.fill"),
                                  UIImage(systemName: "b.circle.fill")])
+        moveCamera(routePoints: routePoints)
+    }
+
+    private func moveCamera(routePoints: Route) {
+        let boundingBox = YMKBoundingBox(southWest: routePoints.from, northEast: routePoints.to)
+        let cameraPosition = mapView.mapWindow.map.cameraPosition(with: boundingBox)
+        mapView.mapWindow.map.move(with: YMKCameraPosition(target: cameraPosition.target,
+                                                           zoom: cameraPosition.zoom,
+                                                           azimuth: cameraPosition.azimuth,
+                                                           tilt: cameraPosition.tilt))
     }
 }
