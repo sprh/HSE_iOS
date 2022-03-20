@@ -10,6 +10,7 @@ import UIKit
 
 protocol IImagesService {
     func loadImage(url: String, completion: @escaping (UIImage?) -> Void)
+    func loadImages(urls: [String], completion: @escaping ([UIImage?]) -> Void)
 }
 
 class ImagesService: IImagesService {
@@ -23,8 +24,7 @@ class ImagesService: IImagesService {
         return instance
     }
 
-    let queue = DispatchQueue(label: "ImagesService", attributes: [.concurrent])
-    let path: String = "https://api.themoviedb.org/3/discover/movie?api_key=7fc827acd9f3c9f8d0282e5b0ebe4187&language=ruRu"
+    let basePath: String = "https://image.tmdb.org/t/p/original/"
 
     private var session: URLSession = {
         let session = URLSession(configuration: .default)
@@ -39,28 +39,40 @@ class ImagesService: IImagesService {
         return URLRequest(url: url)
     }
 
-    func createTask(completion: @escaping (Result<[Movie], NetworkError>) -> Void,
+    func createTask(completion: @escaping (UIImage?) -> Void,
                     urlRequest: URLRequest) -> URLSessionDataTask {
         let task = self.session.dataTask(with: urlRequest) { data, response, error in
-            if let error = error {
-                completion(.failure(.loadingError(error.localizedDescription)))
-            } else if let data = data,
-                      let dataDictionary = try? JSONSerialization.jsonObject(with: data, options: .json5Allowed) as? [String: Any],
-                      let results = dataDictionary["results"] as? [[String: Any]],
-                      let resultsJsonData = try? JSONSerialization.data(withJSONObject: results),
-                      let movies = try? JSONDecoder().decode([Movie].self, from: resultsJsonData) {
-                completion(.success(movies))
-            } else if let response = response as? HTTPURLResponse {
-                completion(.failure(.serviceError(response.statusCode)))
-            } else {
-                completion(.failure(.unknownError))
+            guard let data = data,
+                  let image = UIImage(data: data) else {
+                completion(nil)
+                return
             }
+            completion(image)
         }
         return task
     }
 
     func loadImage(url: String, completion: @escaping (UIImage?) -> Void) {
-
+        guard let urlRequest = createURL(path: "\(basePath)\(url)") else { completion(nil); return }
+        let task = createTask(completion: completion, urlRequest: urlRequest)
+        task.resume()
     }
 
+    func loadImages(urls: [String], completion: @escaping ([UIImage?]) -> Void) {
+        let group = DispatchGroup()
+        var images: [UIImage?] = []
+
+        for url in urls {
+            group.enter()
+            DispatchQueue.global(qos: .background).async { [weak self] in
+                self?.loadImage(url: url) { image in
+                    images.append(image)
+                    group.leave()
+                }
+            }
+        }
+        group.notify(queue: .main) {
+            completion(images)
+        }
+    }
 }

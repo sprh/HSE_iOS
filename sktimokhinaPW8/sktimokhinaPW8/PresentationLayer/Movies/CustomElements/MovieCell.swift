@@ -37,5 +37,10 @@ class MovieCell: UITableViewCell {
             title.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             title.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
+        poster.image = movie.poster
+    }
+
+    func updateImage(_ image: UIImage) {
+        poster.image = image
     }
 }
